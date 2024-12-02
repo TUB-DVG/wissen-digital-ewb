@@ -520,12 +520,17 @@ class AbstractTechnicalFocus(models.Model):
                 if not field.name == "id":
                     firstObjAttr = getattr(self, field.name)
                     secondObjAttr = getattr(other, field.name)
-                    if (firstObjAttr is None and secondObjAttr == "") or (
-                        secondObjAttr is None and firstObjAttr == ""
-                    ):
-                        continue
-                    if str(firstObjAttr) != str(secondObjAttr):
-                        return False
+                    if isinstance(field, models.BooleanField):
+                        if bool(firstObjAttr) != bool(secondObjAttr):
+                            return False    
+
+                    else:
+                        if (firstObjAttr is None and secondObjAttr == "") or (
+                            secondObjAttr is None and firstObjAttr == ""
+                        ):
+                            continue
+                        if str(firstObjAttr) != str(secondObjAttr):
+                            return False
 
         return True
 

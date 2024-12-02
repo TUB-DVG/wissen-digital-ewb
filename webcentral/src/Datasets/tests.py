@@ -7,11 +7,12 @@ from django.core.management import (
 import pandas as pd
 
 from .models import Dataset, History
+from .admin import HistoryAdminApp
 from tools_over.models import (
     Classification,
     ApplicationArea,
 )
-
+from common.test_update import AbstractTestUpdate
 
 class TestDataImport(TestCase):
     """Class, which wraps a TestCase for the Datasets `data_import`"""
@@ -93,15 +94,16 @@ class TestDataImport(TestCase):
         )
 
 
-class TestDataUpdate(TestCase):
+class TestUpdate(AbstractTestUpdate):
     """ """
-
+    historyAdminAppCls = HistoryAdminApp 
+    historyModelCls = History
     def testUpdate(self):
         """Check if update with rollback feature is implemented"""
         call_command(
             "data_import",
             "Datasets",
-            "../doc/01_data/17_datasets/20230623_datasets.xlsx",
+            "../doc/01_data/17_datasets/datasets_with_weatherdata.xlsx",
         )
 
         call_command(
@@ -115,10 +117,20 @@ class TestDataUpdate(TestCase):
             name="Prozessorientierte Basisdaten für Umweltmanagementsysteme"
         )
 
-        self.assertEqual(len(updatedDataset.focus.all()), 2)
         self.assertEqual(updatedDataset.lastUpdate_de, "laufend")
         self.assertEqual(updatedDataset.lastUpdate_en, "ongoing")
 
+        # restore the old state of Dataset with the history object:
+        request = self.factory.post("/admin/Datasets/history/")
+        request.user = self.user
+
+        # execute the History object rollback
+        self.historyAdmin.rollbackHistory(request, History.objects.all())  
+        updatedDataset = Dataset.objects.get(
+            name="Prozessorientierte Basisdaten für Umweltmanagementsysteme"
+        )
+        self.assertTrue(updatedDataset.lastUpdate_de == "" or updatedDataset.lastUpdate_de == None)
+        self.assertTrue(updatedDataset.lastUpdate_en == "" or updatedDataset.lastUpdate_en == None)
 
 class TestDataExport(TestCase):
     """Class, which wraps a TestCase for the Datasets `data_export`"""
@@ -135,4 +147,3 @@ class TestDataExport(TestCase):
         excelFile = pd.ExcelFile("test.xlsx")
         excelSheetNames = excelFile.sheet_names
         self.assertEqual(set(excelSheetNames), set(["German", "English"]))
-        breakpoint()
