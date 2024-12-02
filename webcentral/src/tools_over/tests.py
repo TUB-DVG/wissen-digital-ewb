@@ -82,7 +82,7 @@ class TestToolsDataImport(TestCase):
         )
 
         self.assertGreater(len(License.objects.all()), 32)
-    
+
     def testImportOfNewToolsTable(self):
         """Test the import of the new tools table, espacially `lastUpdate`-attribute"""
         call_command(

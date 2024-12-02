@@ -327,7 +327,7 @@ class DataImportApp(DataImport):
             return obj, True
         idOfAlreadyPresentTool = tupleOrNone[0]
         return self._checkIfEqualAndUpdate(obj, tupleOrNone[1])
-    
+
     def _processDate(self, lastUpdate: str):
         """Process a string value into a datetime object."""
         reForDotDate = re.compile("[0-9]{4,4}\.[0-9]{2,2}\.[0-9]{2,2}")
