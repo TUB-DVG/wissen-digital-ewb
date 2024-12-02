@@ -4,7 +4,7 @@ import os.path
 import pandas as pd
 from typing import Tuple
 import datetime
-from wetterdienst.provider.dwd.observation import DwdObservationRequest
+#from wetterdienst.provider.dwd.observation import DwdObservationRequest
 
 PATH = pathlib.Path(__file__).parent.resolve()
 DATA_PATH = os.path.join(PATH, "Wärme_Strom.csv")
