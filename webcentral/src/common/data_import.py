@@ -19,8 +19,13 @@ from django.db.models import (
     ManyToManyRel,
     ManyToOneRel,
 )
+from django.db.models.query import QuerySet
+from django.core.serializers import serialize
 
 from common.models import DbDiff, Literature
+from protocols.models import Protocol
+
+# from .serializers import BackReferenceSerializer
 
 
 class DataImport:
@@ -31,6 +36,7 @@ class DataImport:
         self.path_to_file = path_to_data_file
         self.diffStr = ""
         self.diffStrDict = {}
+        # register_serializer("custom_json", BackReferenceSerializer)
 
     def importList(self, header, data) -> None:
         """Iterate over the list of databases-tuples and call
@@ -202,8 +208,14 @@ class DataImport:
         # get names of all djangoModel-objects
         if djangoModel.__name__ == "Subproject":
             attributeNameInModel = "referenceNumber_id"
+            return djangoModel.objects.get_or_create(
+                referenceNumber_id=categoryString
+            )[0]
+
         elif djangoModel.__name__ == "Norm":
             attributeNameInModel = "title"
+        elif djangoModel.__name__ == "Protocol":
+            attributeNameInModel = "name"
         else:
             attributeNameInModel = (
                 djangoModel.__name__[0].lower() + djangoModel.__name__[1:]
@@ -211,24 +223,28 @@ class DataImport:
         allNames = [
             getattr(x, attributeNameInModel) for x in djangoModel.objects.all()
         ]
-
-        # get the closest match
+        allNames = [element for element in allNames if element is not None]
         listOfClosestMatches = difflib.get_close_matches(
             categoryString, allNames, n=1, cutoff=0.8
         )
         if len(listOfClosestMatches) > 0:
             return listOfClosestMatches[0]
 
-        if djangoModel.__name__ not in ("Subproject", "Norm"):
+        if djangoModel == Protocol:
+            newlyCreatedRow = djangoModel.objects.create(
+                **{"name": categoryString}
+            )
+            return getattr(newlyCreatedRow, "name")
+        else:
             newlyCreatedRow = djangoModel.objects.create(
                 **{attributeNameInModel: categoryString}
             )
-            print(
-                f"""No nearest match for {categoryString} in {djangoModel}
-                was found. {categoryString} is created inside of
-                {djangoModel}""",
-            )
-            return getattr(newlyCreatedRow, attributeNameInModel)
+        print(
+            f"""No nearest match for {categoryString} in {djangoModel}
+            was found. {categoryString} is created inside of
+            {djangoModel}""",
+        )
+        return getattr(newlyCreatedRow, attributeNameInModel)
 
     def _iterateThroughListOfStrings(
         self, listOfStrings: list, djangoModel: Model
@@ -242,8 +258,58 @@ class DataImport:
             listOfModifiedStrings.append(modifiedStr)
         return listOfModifiedStrings
 
+    def getM2MelementsQueryset(
+        self, listOfStrings: list, djangoModel: Model
+    ) -> list:
+        """Get queryset of m2m-elements, which corresponds to the string elements of `listOfStrings`
+
+        Arguments:
+        djangoModel: models.Model
+            Django model ORM class of a ManyToManyField
+        listOfStrings: list
+            List of strings, whereby each string represents a ManyToMany-object of `djangoModel`
+
+        Returns:
+            queryset containing the `djangoModel`-objects
+        """
+        if djangoModel._meta.model_name == "subproject":
+            attrWithDe = "referenceNumber_id"
+        elif djangoModel._meta.model_name == "license":
+            listOfM2Mobjs = []
+            for objString in listOfStrings:
+                if isinstance(objString, tuple):
+                    listOfM2Mobjs.append(
+                        djangoModel.objects.get_or_create(
+                            license=objString[0],
+                            openSourceStatus=objString[1],
+                            licensingFeeRequirement=objString[2],
+                            openSourceStatus_en=objString[3],
+                            licensingFeeRequirement_en=objString[4],
+                        )[0]
+                    )
+                else:
+                    listOfM2Mobjs.append(
+                        djangoModel.objects.get_or_create(
+                            license=objString,
+                        )[0]
+                    )
+            return listOfM2Mobjs
+        else:
+            attrNamesOfModel = [
+                attr.name for attr in djangoModel._meta.get_fields()
+            ]
+            attrWithDe = next(
+                (attr for attr in attrNamesOfModel if "_de" in attr), None
+            )
+        listOfM2Mobjs = []
+        for objString in listOfStrings:
+            listOfM2Mobjs.append(
+                djangoModel.objects.get_or_create(**{attrWithDe: objString})[0]
+            )
+        return listOfM2Mobjs
+
     def _processListInput(self, inputStr, separator=";"):
-        """Process a cell, which includes a list of elements"""
+        """Process a cell, which includes a list of elements and separate the string by the `separator` and return a list"""
         returnList = []
         for element in inputStr.split(separator):
             if not self._checkIfOnlyContainsSpaces(element):
@@ -346,26 +412,27 @@ class DataImport:
         self, ormObj, header, row, headerExcel, dbAttr
     ):
         """ """
-        germanManyToManyStr = self._processListInput(
+        germanManyToManyList = self._processListInput(
             row[header.index(headerExcel)], ";;"
         )
 
-        englishManyToManyStr = self._processListInput(
+        englishManyToManyList = self._processListInput(
             row[header.index(f"{headerExcel}__en")], ";;"
         )
         elementsForAttr = getattr(ormObj, dbAttr).all()
+
         for ormRelObj in elementsForAttr:
-            for indexInGerList, germanyManyToManyElement in enumerate(
-                germanManyToManyStr
+            for indexInGerList, germanManyToManyElement in enumerate(
+                germanManyToManyList
             ):
-                if germanyManyToManyElement in str(ormRelObj):
+                if germanManyToManyElement in str(ormRelObj):
                     if getattr(ormRelObj, f"{dbAttr}_en") is None:
-                        if englishManyToManyStr[indexInGerList] is None:
-                            englishManyToManyStr[indexInGerList] = ""
+                        if englishManyToManyList[indexInGerList] is None:
+                            englishManyToManyList[indexInGerList] = ""
                         setattr(
                             ormRelObj,
                             f"{dbAttr}_en",
-                            englishManyToManyStr[indexInGerList],
+                            englishManyToManyList[indexInGerList],
                         )
                         ormRelObj.save()
         return ormObj
@@ -389,6 +456,12 @@ class DataImport:
                 return True
 
         return False
+
+    def _checkIfItemExistsInDB(self, itemName: str) -> tuple:
+        """Check if `djangoModel` holds a item with the name `itemName`"""
+        itemsWithName = self.DJANGO_MODEL_OBJ.objects.filter(name=itemName)
+        if len(itemsWithName) > 0:
+            return itemsWithName[0].id, itemsWithName[0]
 
     def _compareDjangoOrmObj(self, modelType, oldObj, newObj):
         """Compares 2 django orm objects of same model-type and creates a diff
@@ -463,6 +536,46 @@ class DataImport:
         if diffStr != "":
             diffStr = diffStrModelName + diffStr + ";;"
         self.diffStrDict[self.dictIdentifier] += diffStr
+
+    def _checkIfEqualAndUpdate(self, newObj, oldObj):
+        """ """
+        objsEqual = oldObj.isEqual(newObj)
+        if not objsEqual:
+            newHistoryObj = self.APP_HISTORY_MODEL_OBJ(
+                identifer=oldObj.name,
+                stringifiedObj=serialize(
+                    "custom_json", [oldObj], use_natural_foreign_keys=True
+                ),
+            )
+            # parsedJson = json.loads(newHistoryObj.stringifiedObj)
+            # parsedJson[0]["pk"] = obj.pk
+            # newHistoryObj.stringifiedObj = json.dumps(parsedJson)
+            newHistoryObj.save()
+
+            self._update(oldObj, newObj)
+            return newObj, True
+        else:
+            newObj.delete()
+            return oldObj, False
+
+    def _update(self, oldObj, newObj):
+        """Set all fields of the new ORM object into the old object."""
+
+        for field in newObj._meta.get_fields():
+            if field.name != "id":
+                if isinstance(field, models.ManyToManyField):
+                    getattr(oldObj, field.name).set(
+                        getattr(newObj, field.name).all()
+                    )
+                elif isinstance(field, models.ManyToManyRel):
+                    getattr(oldObj, f"{field.name}_set").set(
+                        getattr(newObj, f"{field.name}_set").all()
+                    )
+                else:
+                    setattr(oldObj, field.name, getattr(newObj, field.name))
+
+        oldObj.save()
+        newObj.delete()
 
     def _writeDiffStrToDB(self):
         """ """

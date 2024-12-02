@@ -11,11 +11,11 @@ from django.utils.translation import gettext as _
 from django.db.models import Q
 
 from tools_over.models import (
-    Focus,
     Tools,
 )
+from common.models import Focus
 from component_list.models import Component
-from TechnicalStandards.models import Protocol
+from protocols.models import Protocol
 
 
 def getFocusObjectFromGetRequest(focusStr) -> Focus:

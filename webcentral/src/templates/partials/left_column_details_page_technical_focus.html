@@ -1,0 +1,56 @@
+{% load i18n %}
+{% load template_tags %}
+{% load static %}
+<div class="nameHeading">{{ boxObject.name }}</div>
+{% if boxObject.image %}
+  <p>
+    <a href="{% url 'showImage' boxObject.id %}">
+      <img src=" {{ boxObject.image.url }}"
+           class=""
+           style="max-height: 300px"
+           alt="tool image" />
+    </a>
+  </p>
+{% endif %}
+<p>
+  <span class="columnHeading">Updates:</span> {{ boxObject.lastUpdate }}
+</p>
+<p>
+  <span class="columnHeading">{% translate 'Fokus' %}:</span> {{ boxObject|get_m2m_or_attr:"focus__focus" }}
+</p>
+<p>
+  <span class="columnHeading">{% translate 'Zielgruppe' %}:</span> {{ boxObject|get_m2m_or_attr:"targetGroup__targetGroup" }}
+</p>
+<p>
+  <span class="columnHeading">{% translate 'Entwickler/ Maintainer' %}:</span> {{ boxObject|get_m2m_or_attr:"provider" }}
+</p>
+<p>
+  <span class="columnHeading">{% translate 'Lizenz' %}:</span> {{ boxObject|get_m2m_or_attr:"license__license" }}
+</p>
+<p>
+  <span class="columnHeading">{% translate 'Klassifikation' %}:</span> {{ boxObject|get_m2m_or_attr:"classification__classification" }}
+</p>
+<p>
+  <span class="columnHeading">{% translate 'Lebenszyklusphase' %}:</span> {{ boxObject|get_m2m_or_attr:"lifefCyclePhase__lifefCyclePhase" }}
+</p>
+<p>
+  <span class="columnHeading">{% translate 'Räumliche Größenordnung der Anwendungsfälle' %}:</span> {{ boxObject|get_m2m_or_attr:"scale__scale" }}
+</p>
+<p>
+  <span class="columnHeading">{% translate 'Zielgruppe' %}:</span> {{ boxObject|get_m2m_or_attr:"targetGroup__targetGroup" }}
+</p>
+<p>
+  <span class="columnHeading">{% translate 'Alternativen' %}:</span> {{ boxObject|get_m2m_or_attr:"alternatives" }}
+</p>
+<p>
+  <span class="columnHeading">{% translate 'Entwicklungsstand' %}:</span> {{ boxObject|get_m2m_or_attr:"devStateStr" }}
+</p>
+<p>
+  <span class="columnHeading">{% translate 'Programmiersprachen' %}:</span> {{ boxObject|get_m2m_or_attr:"programmingLanguages" }}
+</p>
+<p>
+  <span class="columnHeading">{% translate 'konkrete Anwendungsfälle' %}:</span> {{ boxObject|get_m2m_or_attr:"specificApplication__referenceNumber_id"|safe }}
+</p>
+<p>
+  <span class="columnHeading">{% translate 'Zugänglichkeit' %}:</span> {{ boxObject|get_m2m_or_attr:"accessibility__accessibility" }}
+</p>

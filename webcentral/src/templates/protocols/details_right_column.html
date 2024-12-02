@@ -1,0 +1,103 @@
+{% load i18n %}
+{% load template_tags %}
+{% if boxObject.name %}
+  <h5>{% translate "Was ist" %} {{ boxObject.name }}?</h5>
+  <p>{{ boxObject.description }}</p>
+{% endif %}
+<p>
+  <h5>{% translate "weitere Informationen" %}</h5>
+  {{ boxObject.furtherInformation }}
+</p>
+
+<p>
+  <h5>{% translate "Einsatzbereich" %}</h5>
+  {{ boxObject|get_m2m_or_attr:"applicationArea__applicationArea" }}
+</p>
+<p>
+  <h5>{% translate "Medium" %}</h5>
+  {{ boxObject|get_m2m_or_attr:"communicationMediumCategory" }}
+</p>
+<p>
+  <h5>{% translate "Netzwerk Topologie" %}</h5>
+  {{ boxObject|get_m2m_or_attr:"networkTopology" }}
+</p>
+<h5 class="mt-4">{% translate "Unterstützte Übertragungsmedien" %}</h5>
+<p class="mb-0">
+  {{ boxObject|get_m2m_or_attr:"supportedTransmissionMediuems" }}
+</p>
+
+<h5 class="mt-4">
+  {% translate "Zugehörige Standards" %} ({% blocktranslate %}Spezifische Standards, denen jedes Protokoll entspricht{% endblocktranslate %})
+</h5>
+<p class="mb-0">{{ boxObject|get_m2m_or_attr:"associatedStandards" }}</p>
+
+<h5 class="mt-4">{% translate "Implementierte Sicherheitsmechanismen" %}</h5>
+<p class="mb-0">{{ boxObject|get_m2m_or_attr:"security" }}</p>
+
+<h5 class="mt-4">{% translate "Bandbreite" %}</h5>
+<p class="mb-0">{{ boxObject|get_m2m_or_attr:"bandwidth" }}</p>
+
+<h5 class="mt-4">{% translate "Frequenz" %}</h5>
+<p class="mb-0">{{ boxObject|get_m2m_or_attr:"frequency" }}</p>
+
+<h5 class="mt-4">{% translate "Reichweite" %}</h5>
+<p class="mb-0">{{ boxObject|get_m2m_or_attr:"range" }}</p>
+
+<h5 class="mt-4">
+  {% blocktranslate %}Geräte (maximale Anzahl an Geräten, die vernetzt werden können){% endblocktranslate %}
+</h5>
+<p class="mb-0">{{ boxObject|get_m2m_or_attr:"numberOfConnectedDevices" }}</p>
+
+<h5 class="mt-4">
+  {% blocktranslate %}Datenmodell Architektur (Datenmodell, in dem die Informationen/Attribute zu einem Objekt hinzugefügt werden ){% endblocktranslate %}
+</h5>
+<p class="mb-0">{{ boxObject|get_m2m_or_attr:"dataModelArchitecture" }}</p>
+
+<h5 class="mt-4">
+  Discovery ({% blocktranslate %}Funktion, um Geräte im Netzwerk automatisch zu identifzieren{% endblocktranslate %})
+</h5>
+
+<p class="mb-0">{{ boxObject|get_m2m_or_attr:"discovery" }}</p>
+
+<h5 class="mt-4">
+  Multi Master ({% blocktranslate %}Können mehrere Mastergeräte zeitgleich agieren{% endblocktranslate %})
+</h5>
+
+<p class="mb-0">{{ boxObject|get_m2m_or_attr:"multiMaster" }}</p>
+
+<h5 class="mt-4">
+  {% blocktranslate %}Paketgröße (Datenpaketgröße, die nach Maximum Transmission Unit übertragen werden können){% endblocktranslate %}
+</h5>
+
+<p class="mb-0">{{ boxObject|get_m2m_or_attr:"packetSize" }}</p>
+
+<h5 class="mt-4">
+  {% blocktranslate %}Priorität (Vorgehen, wie die Änderungen / Aktualisierungen vorgenommen werden){% endblocktranslate %}
+</h5>
+
+<p class="mb-0">{{ boxObject|get_m2m_or_attr:"priorities" }}</p>
+
+<h5 class="mt-4">
+  {% blocktranslate %}Kosten, um Hardwareuntersützung für weitere Protokolle zu ermöglichen (Gering, Durchschnittlich, Hoch){% endblocktranslate %}
+</h5>
+
+<p class="mb-0">{{ boxObject|get_m2m_or_attr:"price" }}</p>
+
+<h5 class="mt-4">
+  {% blocktranslate %}Implementierte OSI-Schichten (Anwendung [Application], Darstellung [Presentation], Sitzung [Session], Transport [Transport], Vermittlung/Paket [Network], Sicherung [Data Link], Bitübertragung [Phyiscal]){% endblocktranslate %}
+</h5>
+
+<p class="mb-0">{{ boxObject|get_m2m_or_attr:"osiLayers" }}</p>
+
+<h5 class="mt-4">
+  {% blocktranslate %}Ebenen der Gebäudeautomation (Feldebene, Automationsebene, Managementebene){% endblocktranslate %}
+</h5>
+
+<p class="mb-0">{{ boxObject|get_m2m_or_attr:"buildingAutomationLayer" }}</p>
+
+<h5 class="mt-4">Link</h5>
+
+<p class="mb-0">
+  <a href="{{ boxObject|get_m2m_or_attr:'resources' }}" target="_blank">{{ boxObject|get_m2m_or_attr:'resources' }}
+  </a>
+</p>

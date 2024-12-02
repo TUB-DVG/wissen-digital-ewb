@@ -17,7 +17,7 @@ def userEngagementDetails(request, engagementId):
     context["boxObject"] = userEngagementObj
     context["idOfSelectedObj"] = engagementId
 
-    return render(request, "pages/detailsPage.html", context)
+    return render(request, "pages/details_page.html", context)
 
 
 def userEngagementDetailsTitle(request, engagmentTitle):
@@ -38,7 +38,7 @@ def userEngagementDetailsTitle(request, engagmentTitle):
     context["boxObject"] = userEngagementObj
     context["idOfSelectedObj"] = engagementId
     context["pageTitle"] = userEngagementObj.category
-    return render(request, "pages/detailsPage.html", context)
+    return render(request, "pages/details_page.html", context)
 
 
 def _defineContextForView():

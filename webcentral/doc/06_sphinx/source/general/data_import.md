@@ -22,7 +22,7 @@ On the opened site, enter username and password from the `.env`-file. You should
 The data is organized 
 
 ## Data-import using the data_import command
-To import greater numbers of structured data of a specific type, python-scripts have been written. These are accessible through a django custom-command `data_import`. The command can be started using the django `manage.py`:
+To import greater numbers of structured data of a specific type, python-scripts have been written. These are accessible through a django custom-command `data_import`. The command can be started using the django `manage.py` script:
 ```
     python manage.py data_import <app_label> <path_to_xlsx_or_csv>
 ```
@@ -58,11 +58,22 @@ To import digital tools and digital applications into the database, a excel-file
 If only one sheet is present, the import algorithm will import the given table into the german fields and will skip the english fields. 
 If you would like to import both languages, please make sure that 2 worksheets are present with the names `German` and `English`
 ```
+In the structured data-file are columns present, where the corresponding cells hold multiple elements of a foreign table. Each of the elements are delimited by `;;`. These columns are:
+```
+    focus
+    applicationArea
+    classification
+    targetGroup
+    specificApplication
+    accessibility
+    scale 
+```
+
 The import script scans for these 2 specific sheets and imports the content of the sheet `German` into the fields with the suffices `_de`, while it imports the content of the sheet `English` to the fields with the suffice `_en`. If the two sheets `German` and `English` are not present, it will import the first sheet (the sheet most left, when the file is opened in Excel) into the german fields of the `Tools`. It will not import any present english translations. 
 ```{warning}
 Please make sure to keep the names of the headers as they are in the presented excel-file. Otherwise the import will fail.
 ```
-To map the english translation from the sheet `English` onto the model fields the same header names are used as in the sheet `German`. When the data is imported, the 2 sheets ge merged into one list datastructure. To differantiate between german and english fields, the header names of the english fields get the suffice `__en`.
+To map the english translation from the sheet `English` onto the model fields the same header names are used as in the sheet `German`. When the data is imported, the 2 sheets get merged into one list datastructure. To differantiate between german and english fields, the header names of the english fields get the suffice `__en`.
 inside the `data_import.py` in the `tools_over`-app a dictionary `MAPPING_EXCEL_DB_EN` is defined as a class-attribute. That datastructure holds the name of the imported english header as key and the corresponding name of the ORM-model-field as value. For `Tools` that feels redundant at the moment since each key-value-field differs only in one `_`, but it can be used in other model-import-scripts if the headername differs from the ORM field name.
 
 #### Tools update

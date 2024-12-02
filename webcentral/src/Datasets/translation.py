@@ -4,27 +4,26 @@ from modeltranslation.translator import (
 )
 
 from .models import (
-    collectedDatasets,
+    Dataset,
 )
 
 
-class collectedDatasetsTranslationOptions(TranslationOptions):
+class DatasetsTranslationOptions(TranslationOptions):
     fields = (
-        "nameDataset",
-        "useCaseCategory",
-        "categoryDataset",
-        "reference",
+        "name",
+        "provider",
         "availability",
         "coverage",
-        "includesNonResidential",
-        "shortDescriptionDe",
-        "comment",
-        "dataSources",
+        "furtherInformation",
+        "description",
+        # "dataSources",
         "resolution",
+        "lastUpdate",
+        "licenseNotes",
     )
 
 
 translator.register(
-    collectedDatasets,
-    collectedDatasetsTranslationOptions,
+    Dataset,
+    DatasetsTranslationOptions,
 )

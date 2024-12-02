@@ -3,8 +3,8 @@ from django.core.paginator import Paginator
 from django.utils.translation import gettext as _
 from django.db.models import Q
 
-from .models import collectedDatasets  # maybe I need also the other models
-
+# from .models import collectedDatasets  # maybe I need also the other models
+from .models import Dataset
 from common.views import createQ
 
 
@@ -20,9 +20,7 @@ def index(request):
     """
     shows the list of all projects including some key features
     """
-    datasets = (
-        collectedDatasets.objects.all()
-    )  # reads all data from table Teilprojekt
+    datasets = Dataset.objects.all()  # reads all data from table Teilprojekt
     filteredBy = [None] * 3
     searched = None
 
@@ -39,11 +37,11 @@ def index(request):
     listOfFilters = [
         {
             "filterValues": applicationAreaElementsList,
-            "filterName": "useCaseCategory__icontains",
+            "filterName": "applicationArea__applicationArea__icontains",
         },
         {
             "filterValues": categoryElementsList,
-            "filterName": "categoryDataset__icontains",
+            "filterName": "classification__classification__icontains",
         },
         {
             "filterValues": availabilityElementsList,
@@ -54,11 +52,10 @@ def index(request):
 
     searched = request.GET.get("searched", "")
     if searched != "":
-        complexCriterion &= Q(nameDataset__icontains=searched)
+        complexCriterion &= Q(name__icontains=searched)
 
-    datasets = collectedDatasets.objects.filter(complexCriterion)
+    datasets = Dataset.objects.filter(complexCriterion)
     # filteredBy = [useCaseCategory, categoryDataset, availability]
-
     datasets = list((datasets))
     # datasets_paginator to datasetsPaginator
 
@@ -76,7 +73,7 @@ def index(request):
         # filteredBy[1],
         # "availability":
         # filteredBy[2],
-        "heading": _(""),
+        "heading": _("Überblick über Datensätze"),
         "introductionText": _(
             """Offene Daten spielen eine entscheidende Rolle für die Energiewende, da sie den Zugang zu Informationen und die
           Zusammenarbeit zwischen verschiedenen Akteuren ermöglichen. Durch die Bereitstellung von offenen Daten tragen
@@ -86,6 +83,7 @@ def index(request):
         "nameOfTemplate": "datasets",
         "urlName": "dataset_list",
         "focusBorder": "technical",
+        "urlDetailsPage": "dataset_view",
         "optionList": [
             {
                 "placeholder": _("Anwendungsfall"),
@@ -149,30 +147,41 @@ def index(request):
                 "fieldName": "availability",
             },
         ],
+        "subHeading1": _("Anbieter"),
+        "subHeadingAttr1": "provider",
+        "subHeading2": _("Abdeckung"),
+        "subHeadingAttr2": _("coverage"),
     }
     if filtering:
-        return render(
-            request, "datasets_over/dataset-listings-results.html", context
-        )
-    return render(request, "datasets_over/dataset-listings.html", context)
+        return render(request, "partials/listing_results.html", context)
+    return render(request, "pages/grid_listing.html", context)
 
 
 def dataset_view(request, id):
     """
     shows of the key features one project
     """
-    dataset = get_object_or_404(collectedDatasets, pk=id)
-    nameDataset = dataset.nameDataset.split(", ")
-    useCaseCategory = dataset.useCaseCategory.split(", ")
-    categoryDataset = dataset.categoryDataset.split(", ")
-    print(useCaseCategory)
-    print(categoryDataset)
+    dataset = get_object_or_404(Dataset, pk=id)
+    nameDataset = dataset.name.split(", ")
+    # useCaseCategory = dataset.useCaseCategory.split(", ")
+    # categoryDataset = dataset.categoryDataset.split(", ")
+    # print(useCaseCategory)
+    # print(categoryDataset)
 
     context = {
         "dataset": dataset,
-        "useCaseCategory": useCaseCategory,
-        "categoryDataset": categoryDataset,
+        # "useCaseCategory": useCaseCategory,
+        # "categoryDataset": categoryDataset,
         "name": nameDataset,
+        "imageInBackButton": "assets/images/backArrowTechnical.svg",
+        "backLinkText": _("Datensätze"),
+        "backLink": "dataset_list",
+        "focusBorder": "technical",
     }
-
-    return render(request, "datasets_over/dataset-detail.html", context)
+    context["boxObject"] = dataset
+    context["leftColumn"] = (
+        "partials/left_column_details_page_technical_focus.html"
+    )
+    context["rightColumn"] = "datasets_over/details_right_column.html"
+    return render(request, "pages/details_page.html", context)
+    # return render(request, "datasets_over/dataset-detail.html", context)

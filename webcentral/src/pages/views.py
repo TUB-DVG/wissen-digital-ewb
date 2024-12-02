@@ -334,7 +334,7 @@ def environmentalIntegrityBox(request, idOfEnvironmentalImpactObj):
         "leftColumn": "pages/environmentalIntegrityLeftColumn.html",
         "rightColumn": "pages/environmentalIntegrityRightColumn.html",
     }
-    return render(request, "pages/detailsPage.html", context)
+    return render(request, "pages/details_page.html", context)
 
 
 def benchmarkingChallenges(request):
@@ -382,7 +382,7 @@ def dataSufficiencyBox(request, idOfObject):
         "leftColumn": "data_sufficiency/dataSufficiencyLeftColumn.html",
         "rightColumn": "data_sufficiency/dataSufficiencyRightColumn.html",
     }
-    return render(request, "pages/detailsPage.html", context)
+    return render(request, "pages/details_page.html", context)
 
 
 def dataSecurity(request):
@@ -447,7 +447,7 @@ def dataSecurity(request):
         "rightColumn": "partials/privacy_overview_right_column.html",
     }
 
-    return render(request, "pages/detailsPage.html", context)
+    return render(request, "pages/details_page.html", context)
 
 
 def iconsAndVis(request):
@@ -499,7 +499,7 @@ def iconsAndVis(request):
         "rightColumn": "partials/icons_right_column.html",
     }
 
-    return render(request, "pages/detailsPage.html", context)
+    return render(request, "pages/details_page.html", context)
 
 
 def criteriaCatalog(request):

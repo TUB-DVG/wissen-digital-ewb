@@ -22,15 +22,17 @@ from django.utils.translation import gettext as _
 
 # from django.db.models.functions import StringAgg
 
+from common.models import Classification
 from tools_over.models import (
     Tools,
-    Classification,
+    # Classification,
 )
 from project_listing.models import Subproject
 from TechnicalStandards.models import (
     Norm,
-    Protocol,
+    # Protocol,
 )
+from protocols.models import Protocol
 from user_integration.models import UserEngagement
 from businessModel.models import BusinessModel
 from positive_environmental_impact.models import EnvironmentalImpact
@@ -162,7 +164,7 @@ def resultSearch(request):
     # read data from data base
     # filtered tools
     criterionToolsOne = Q(name__icontains=searchInput)
-    criterionToolsTwo = Q(shortDescription__icontains=searchInput)
+    criterionToolsTwo = Q(description__icontains=searchInput)
 
     if request.LANGUAGE_CODE == "de":
         classificationQueryExpression = "classification__classification_de"
@@ -175,9 +177,7 @@ def resultSearch(request):
                 classificationQueryExpression, delimiter=", "
             )
         )
-        .values(
-            "id", "name", "shortDescription", "lastUpdate", "classificationAgg"
-        )
+        .values("id", "name", "description", "lastUpdate", "classificationAgg")
         .filter(criterionToolsOne | criterionToolsTwo)
     )
     # filtered projects
@@ -265,10 +265,10 @@ def resultSearch(request):
     ).filter(criterionProjectsOne | criterionProejctsTwo)
     # filtered norms
     criterionNormsOne = Q(name__icontains=searchInput)
-    criterionNormsTwo = Q(shortDescription__icontains=searchInput)
-    filteredNorms = Norm.objects.values(
-        "id", "name", "shortDescription"
-    ).filter(criterionNormsOne | criterionNormsTwo)
+    criterionNormsTwo = Q(description__icontains=searchInput)
+    filteredNorms = Norm.objects.values("id", "name", "description").filter(
+        criterionNormsOne | criterionNormsTwo
+    )
 
     # filtered protocols
     criterionProtocolsOne = Q(name__icontains=searchInput)
@@ -332,7 +332,7 @@ def resultSearch(request):
         tool["name"] = tool.pop("name")
         if len(tool["name"]) > 40:
             tool["name"] = tool["name"][:40] + " ... "
-        tool["description"] = tool.pop("shortDescription")
+        tool["description"] = tool.pop("description")
         # later use input from table tools for kindOfItem
         tool["kindOfItem"] = "digitales Werkzeug"
         # tool["classificationAgg"]

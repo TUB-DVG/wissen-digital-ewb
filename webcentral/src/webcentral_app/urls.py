@@ -42,6 +42,7 @@ urlpatterns += i18n_patterns(
     path("LastProfile/", include("LastProfile.urls")),
     path("", include("StartSearch.urls")),
     path("TechnicalStandards/", include("TechnicalStandards.urls")),
+    path("protocols/", include("protocols.urls")),
     path("publications/", include("publications.urls")),
     path("useCases_list/", include("use_cases.urls")),
     path("i18n/", include("django.conf.urls.i18n")),

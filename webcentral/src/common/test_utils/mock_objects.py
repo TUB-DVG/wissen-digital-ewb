@@ -11,8 +11,8 @@ def mock_excel_file():
     """Function, which creates a mocked excel file."""
     data_german = {
         "name": ["Sensormodul"],
-        "resources": ["Dokumentation API"],
-        "shortDescription": [
+        "resources": ["Dokumentation, API"],
+        "description": [
             "Ein fortschrittliches Sensormodul zur Erfassung von Umweltparametern."
         ],
         "applicationArea": ["Industrie;;Umweltüberwachung"],
@@ -34,7 +34,7 @@ def mock_excel_file():
         "licenseNotes": ["Freie Nutzung unter GPLv3"],
         "furtherInformation": ["Weitere Details auf der Website"],
         "alternatives": ["Sensormodul B"],
-        "specificApplication": ["CO2-Messung"],
+        "specificApplication": ["03ET1612F"],
         "released": ["1"],
         "releasedPlanned": ["0"],
         "yearOfRelease": ["2024"],
@@ -50,8 +50,8 @@ def mock_excel_file():
     # Define the corresponding data in English
     data_english = {
         "name": ["Sensor Module"],
-        "resources": ["Documentation API"],
-        "shortDescription": [
+        "resources": ["Documentation, API"],
+        "description": [
             "An advanced sensor module for capturing environmental parameters."
         ],
         "applicationArea": ["Industry;;Environmental Monitoring"],
@@ -73,7 +73,7 @@ def mock_excel_file():
         "licenseNotes": ["Free use under GPLv3"],
         "furtherInformation": ["More details on the website"],
         "alternatives": ["Sensor Module B"],
-        "specificApplication": ["CO2 Measurement"],
+        "specificApplication": ["03ET1612F"],
         "released": ["1"],
         "releasedPlanned": ["0"],
         "yearOfRelease": ["2024"],

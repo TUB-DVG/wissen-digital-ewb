@@ -1,0 +1,81 @@
+{% load static %}
+{% load i18n %}
+{% load template_tags %}
+{% for ormObj in page.object_list %}
+  <!-- Card item START -->
+  <style>
+ .card-title {
+    font-size: 16px;
+    font-family: Roboto, sans-serif;
+    color: black;
+    display: -webkit-box;       /* Enables flexbox behavior for text */
+    -webkit-line-clamp: 2;      /* Limits text to 4 lines */
+    -webkit-box-orient: vertical; /* Sets the box orientation to vertical */
+    overflow: hidden;           /* Hides any overflow text */
+    text-overflow: ellipsis;    /* Adds ellipsis (...) to truncated text */
+    max-height: calc(1.2em * 2); /* Adjusts height based on line height */
+    line-height: 1.2em;         /* Sets the line height for spacing */
+    height: calc(1.2em * 2); 
+ } 
+  .card-subtitle {
+    font-size: 14px;
+    font-family: Roboto, sans-serif;
+    color: black;
+    display: -webkit-box;       /* Enables flexbox behavior for text */
+    -webkit-line-clamp: 2;      /* Limits text to 4 lines */
+    -webkit-box-orient: vertical; /* Sets the box orientation to vertical */
+    overflow: hidden;           /* Hides any overflow text */
+    text-overflow: ellipsis;    /* Adds ellipsis (...) to truncated text */
+    max-height: calc(1.2em * 2); /* Adjusts height based on line height */
+    line-height: 1.2em;         /* Sets the line height for spacing */
+    height: calc(1.2em * 2); 
+ }
+.card-footer {
+    margin-top: auto;             /* Pushes the footer to the bottom */
+}
+
+  </style>
+
+  <div class="col-sm-6 col-lg-4 col-xl-3 card_hover">
+    <a href="{% url urlDetailsPage ormObj.id %}">
+      <div class="card border-{{ focusBorder }} h-100" id="{{ ormObj.id }}">
+        <input type="checkbox"
+               style="display: none;
+                      position:absolute;
+                      left:230px;
+                      top:2px"
+               class="comparisonInputTools" />
+        <div class="card-body pb-0">
+
+          <!-- Title -->
+          <div class="card-title"
+               style="font-size: 16px;
+                      font-familiy: Roboto;
+                      color: black">{{ ormObj.name }}</div>
+          <!-- Image -->
+          <div class="card-subtitle mt-2" style="color: black;">
+            <span class="{{ focusBorder }}-sub-heading">{% translate subHeading1 %}:</span>{{ ormObj|get_m2m_or_attr:subHeadingAttr1 }}
+          </div>
+          <div class="image-container d-flex" style="height: 150px;">
+            {% if ormObj.image %}
+              <img src="{{ ormObj.image.url }}"
+                   class="card-img-top px-4 pb-2 m-auto"
+                   style="max-height: 100%;
+                          width: auto;
+                          display: block"
+                   alt="weatherdata image" />
+            {% endif %}
+          </div>
+
+          <!-- Card footer -->
+          <div class="card-subtitle" style="color: black;">
+            <span class="{{ focusBorder }}-sub-heading">{% translate subHeading2 %}:</span>{{ ormObj|get_m2m_or_attr:subHeadingAttr2 }}
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- Card item END -->
+{% endfor %}
+{% include "partials/pagination.html" %}

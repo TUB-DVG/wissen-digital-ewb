@@ -7,12 +7,14 @@ from tools_over.models import (
     Focus,
     Tools,
     Classification,
+    ApplicationArea,
 )
 from component_list.models import (
     Category,
     Component,
     ComponentClass,
 )
+from project_listing.models import Subproject
 
 
 class TestDataImport(TestCase):
@@ -53,7 +55,7 @@ class TestDataImport(TestCase):
 
         """
         enargusCSVdataFile = (
-            "../../02_work_doc/01_daten/01_prePro/enargus_csv_20240606.csv"
+            "../doc/01_data/01_pre_pro/enargus_csv_20240606.csv"
         )
         dataImportObj = DataImport(enargusCSVdataFile)
 
@@ -73,6 +75,35 @@ class TestDataImport(TestCase):
 
         self.assertEqual(litLinkName, "Althaus,_Philipp,_Florian_2022")
 
+    def testImportSpecificApplications(self):
+        """Test if a Subproject object is created from a reference number string and holds the right reference number string."""
+        dataImportObj = DataImport("test.csv")
+
+        header = [
+            "specificApplication",
+        ]
+        data = ["03EGB0021H;;03EN3018A"]
+
+        processedSpecificApplicationList = dataImportObj._processListInput(
+            data[header.index("specificApplication")], separator=";;"
+        )
+        specificApplicationList = dataImportObj._iterateThroughListOfStrings(
+            processedSpecificApplicationList, Subproject
+        )
+        allSubprojects = Subproject.objects.all()
+        self.assertEqual(len(allSubprojects), 2)
+
+        listOfSubprojectIds = data[header.index("specificApplication")].split(
+            ";;"
+        )
+        for referenceIdStr in listOfSubprojectIds:
+            self.assertEqual(
+                len(
+                    Subproject.objects.filter(referenceNumber_id=referenceIdStr)
+                ),
+                1,
+            )
+
     def testImportOfEnglishTranslationForTools(self):
         """ """
         temp_file_obj = mock_excel_file()
@@ -80,8 +111,8 @@ class TestDataImport(TestCase):
         dataImportObj = DataImport(temp_file_obj.name)
 
         header = [
-            "shortDescription",
-            "shortDescription__en",
+            "description",
+            "description__en",
             "focus",
             "focus__en",
             "classification",
@@ -90,10 +121,10 @@ class TestDataImport(TestCase):
         data = [
             "Dies ist ein Test",
             "This is a test",
-            "betrieblich, rechtlich",
-            "operational, legal",
-            "Werkzeug, Digitale Anwendung",
-            "Tool, digital application",
+            "betrieblich;;rechtlich",
+            "operational;;legal",
+            "Werkzeug;;Digitale Anwendung",
+            "Tool;;digital application",
         ]
 
         focusOperational = Focus.objects.get_or_create(focus="betrieblich")[0]
@@ -108,7 +139,7 @@ class TestDataImport(TestCase):
 
         toolObj = Tools.objects.get_or_create(
             name="TestTool",
-            shortDescription="Dies ist ein Test",
+            description="Dies ist ein Test",
         )[0]
 
         toolObj.focus.add(focusOperational)
@@ -160,12 +191,78 @@ class TestDataImport(TestCase):
 
         # test import of regular attribute:
         toolObj = dataImportObj._importEnglishAttr(
-            toolObj, header, data, "shortDescription", "shortDescription"
+            toolObj, header, data, "description", "description"
         )
         self.assertEqual(
-            toolObj.shortDescription_en,
-            data[header.index("shortDescription__en")],
+            toolObj.description_en,
+            data[header.index("description__en")],
         )
+
+    def testGetMany2ManyElements(self):
+        """Test `getM2MelementsQueryset` returns a list of objects, which corresponds to `listOfStrings` for the provided `djangoModel`"""
+
+        temp_file_obj = mock_excel_file()
+
+        dataImportObj = DataImport(temp_file_obj.name)
+
+        # check if 2 Focus objects are created, when calling the method:
+        listOfStringsOne = [
+            "technisch",
+            "betrieblich",
+        ]
+
+        returnedQueryset = dataImportObj.getM2MelementsQueryset(
+            listOfStringsOne, Focus
+        )
+        self.assertEqual(len(returnedQueryset), 2)
+        self.assertTrue(
+            returnedQueryset[0].focus_de == "technisch"
+            or returnedQueryset[0].focus_de == "betrieblich"
+        )
+        self.assertTrue(
+            returnedQueryset[1].focus_de == "technisch"
+            or returnedQueryset[1].focus_de == "betrieblich"
+        )
+
+        # one of the elements is already present in the database the other is not
+        listOfStringsTwo = [
+            "technisch",
+            "ökologisch",
+        ]
+        returnedQueryset = dataImportObj.getM2MelementsQueryset(
+            listOfStringsTwo, Focus
+        )
+        self.assertEqual(len(returnedQueryset), 2)
+        self.assertTrue(
+            returnedQueryset[0].focus_de == "technisch"
+            or returnedQueryset[0].focus_de == "ökologisch"
+        )
+        self.assertTrue(
+            returnedQueryset[1].focus_de == "technisch"
+            or returnedQueryset[1].focus_de == "ökologisch"
+        )
+
+        listOfAppArea = [
+            "Gebäude",
+            "Sprache",
+            "Forschung",
+        ]
+        returnedQueryset = dataImportObj.getM2MelementsQueryset(
+            listOfAppArea, ApplicationArea
+        )
+        self.assertEqual(len(returnedQueryset), 3)
+
+        stringOfM2Mobj = [obj.applicationArea_de for obj in returnedQueryset]
+        self.assertEqual(set(listOfAppArea), set(stringOfM2Mobj))
+
+        listOfSpecificApplications = [
+            "03EWR020N",
+            "03EWR0201",
+        ]
+        returnedQueryset = dataImportObj.getM2MelementsQueryset(
+            listOfSpecificApplications, Subproject
+        )
+        self.assertEqual(len(returnedQueryset), 2)
 
     def testForeignKeyEnglishTranslationImport(self):
         """ """

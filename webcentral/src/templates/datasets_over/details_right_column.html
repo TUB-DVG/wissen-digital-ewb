@@ -1,0 +1,14 @@
+{% load i18n %}
+{% load template_tags %}
+{% if boxObject.name %}
+  <h5 class="mb-3">{% translate "Was ist" %} {{ boxObject.name }}?</h5>
+  <p class="mb-0">{{ boxObject.description }}</p>
+{% endif %}
+{% if boxObject.furtherInformation %}
+  <h5 class="mt-4">{% translate "weitere Informationen" %}</h5>
+  <p class="mb-0">{{ boxObject.furtherInformation }}</p>
+{% endif %}
+<h5 class="mt-4">{% translate "Einsatzbereich" %}</h5>
+<p class="mb-0">
+  {{ boxObject|get_m2m_or_attr:"applicationArea__applicationArea" }}
+</p>

@@ -7,10 +7,9 @@ from django.utils.translation import gettext as _
 
 from common.views import createQ
 from .models import (
-    TechnicalStandard,
     Norm,
-    Protocol,
 )
+from protocols.models import Protocol
 
 
 class UpdateProperties:
@@ -48,10 +47,10 @@ def norm(request):
             "filterValues": nameElementsList,
             "filterName": "name__icontains",
         },
-        {
-            "filterValues": sourceElementsList,
-            "filterName": "source__icontains",
-        },
+        # {
+        #     "filterValues": sourceElementsList,
+        #     "filterName": "source__icontains",
+        # },
     ]
     complexCriterion = createQ(listOfFilters)
     searched = request.GET.get("searched", "")
@@ -160,24 +159,29 @@ def norm(request):
                 # filteredBy[0],
                 "fieldName": "name",
             },
-            {
-                "placeholder": _("Quelle"),
-                "objects": [
-                    "https://ghgprotocol.org/",
-                    "Leitfaden Trinkwassererwärmung - Bundesverband Wärmepumpe",
-                    "ENEKA - Energiekartenkartografie",
-                    "Hottgenroth Software Katalog",
-                ],
-                "fieldName": "source",
-                # "filter":
-                # filteredBy[1],
-            },
+            # {
+            #     "placeholder": _("Quelle"),
+            #     "objects": [
+            #         "https://ghgprotocol.org/",
+            #         "Leitfaden Trinkwassererwärmung - Bundesverband Wärmepumpe",
+            #         "ENEKA - Energiekartenkartografie",
+            #         "Hottgenroth Software Katalog",
+            #     ],
+            #     "fieldName": "source",
+            #     # "filter":
+            #     # filteredBy[1],
+            # },
         ],
+        "urlDetailsPage": "TechnicalStandards_norm_details",
+        "subHeading1": _("Anbieter"),
+        "subHeadingAttr1": "provider",
+        "subHeading2": _("Lizenz"),
+        "subHeadingAttr2": _("license__license"),
     }
     if filtering:
         return render(
             request,
-            "TechnicalStandards/norm-listings-results.html",
+            "partials/listing_results.html",
             context,
         )
     if isAjaxRequest:
@@ -189,7 +193,7 @@ def norm(request):
         dataDict = {"html_from_view": html}
         return JsonResponse(data=dataDict, safe=False)
 
-    return render(request, "TechnicalStandards/norm-listings.html", context)
+    return render(request, "pages/grid_listing.html", context)
 
 
 def normDetailView(request, id):
@@ -200,213 +204,27 @@ def normDetailView(request, id):
     # bezeichnung (DIN etc), titel, kurzbeschreibung,quelle, link
     name = norms.name  # .split(", ") ### to check if split is needed
     title = norms.title
-    shortDescription = norms.shortDescription
-    source = norms.source  # .split(", ")
-    link = norms.link
+    # shortDescription = norms.shortDescription
+    # source = norms.source  # .split(", ")
+    # link = norms.link
     context = {
         "technicalStandards": norms,
         "name": name,
-        "shortDescription": shortDescription,
+        # "shortDescription": shortDescription,
         "title": title,
-        "source": source,
-        "link": link,
+        # "source": source,
+        # "link": link,
         "focusBorder": "technical",
+        "imageInBackButton": "assets/images/backArrowTechnical.svg",
+        "backLinkText": _("Normen"),
+        "backLink": "TechnicalStandards_norm_list",
     }
-    return render(request, "TechnicalStandards/norm-detail.html", context)
-
-
-def protocol(request):
-    """
-    shows the list of all PROTOCOLS including some key features
-    """
-    protocols = Protocol.objects.all()
-    filteredBy = [None] * 3
-    searched = None
-
-    filtering = bool(request.GET.get("filtering", False))
-
-    nameElements = request.GET.get("name-hidden", "")
-    nameElementsList = nameElements.split(",")
-
-    transmissionElements = request.GET.get("transmission-hidden", "")
-    transmissionElementsList = transmissionElements.split(",")
-
-    ossElements = request.GET.get("oss-hidden", "")
-    ossElementsList = ossElements.split(",")
-
-    listOfFilters = [
-        {
-            "filterValues": nameElementsList,
-            "filterName": "name__icontains",
-        },
-        {
-            "filterValues": transmissionElementsList,
-            "filterName": "supportedTransmissionMediuems__icontains",
-        },
-        {
-            "filterValues": ossElementsList,
-            "filterName": "openSourceStatus__icontains",
-        },
-    ]
-    complexCriterion = createQ(listOfFilters)
-
-    # communicationMediumCategory	openSourceStatus
-    # if ((request.GET.get("name") != None)| (request.GET.get("transmission") != None) |(request.GET.get("oss") != None) |(request.GET.get("searched") != None)):
-    #     name=request.GET.get('name', "")
-    #     communicationMediumCategory=request.GET.get("transmission", "")
-    #     openSourceStatus=request.GET.get("oss", "")
-    searched = request.GET.get("searched", "")
-    if searched != "":
-        criterionProtocolsOne = Q(associatedStandards__icontains=searched)
-        criterionProtocolsTwo = Q(networkTopology__icontains=searched)
-        criterionProtocolsThree = Q(security__icontains=searched)
-        criterionProtocolsFour = Q(name__icontains=searched)
-        complexCriterion &= (
-            criterionProtocolsOne
-            | criterionProtocolsTwo
-            | criterionProtocolsThree
-            | criterionProtocolsFour
-        )
-    protocols = Protocol.objects.filter(complexCriterion)
-    # breakpoint()
-    # filteredBy = [name,communicationMediumCategory,openSourceStatus]
-
-    protocols = list(sorted(protocols, key=lambda obj: obj.name))
-
-    protocolsPaginator = Paginator(protocols, 12)
-
-    pageNum = request.GET.get("page", None)
-    page = protocolsPaginator.get_page(pageNum)
-
-    context = {
-        "page": page,
-        "search": searched,
-        "name": filteredBy[0],
-        "communicationMediumCategory": filteredBy[1],
-        "openSourceStatus": filteredBy[2],
-        "nameOfTemplate": "protocols",
-        "urlName": "TechnicalStandards_protocol_list",
-        "heading": _("Überblick über technische Standards")
-        + " - "
-        + _("Protokolle"),
-        "introductionText": _(
-            """Auf dieser Seite befinden sich unterschiedliche technische Protokolle, die im Sommer 2023 erfasst worden sind."""
-        ),
-        "pathToExplanationTemplate": "TechnicalStandards/protocol-explanation.html",
-        "optionList": [
-            {
-                "placeholder": "Name",
-                "objects": [
-                    "BACnet",
-                    "KNX",
-                    "Zigbee",
-                    "Modbus",
-                    "MQTT",
-                    "LonWorks",
-                    "OPC UA",
-                    "DALI",
-                    "EnOcean",
-                    "LoRaWan",
-                    "m-Bus",
-                    "profibus",
-                ],
-                "filter": filteredBy[0],
-                "fieldName": "name",
-            },
-            {
-                "placeholder": "Übertragungsmethoden",
-                "objects": [
-                    _("Verkabelt") + " & " + _("Drahtlos"),
-                    _("Drahtlos"),
-                    _("Verkabelt"),
-                ],
-                "filter": filteredBy[1],
-                "fieldName": "transmission",
-            },
-            {
-                "placeholder": _("Open-Source-Status"),
-                "objects": [
-                    "Open Source",
-                    _("Proprietär"),
-                ],
-                "filter": filteredBy[2],
-                "fieldName": "oss",
-            },
-        ],
-        "focusBorder": "technical",
-        "renderComparisonRadio": True,
-        "model": "Protocols",
-    }
-    if filtering:
-        return render(
-            request,
-            "TechnicalStandards/protocol-listings-results.html",
-            context,
-        )
-    isAjaxRequest = request.headers.get("x-requested-with") == "XMLHttpRequest"
-    if isAjaxRequest:
-        html = render_to_string(
-            template_name="TechnicalStandards/protocol-listings-results.html",
-        )
-        dataDict = {"html_from_view": html}
-        return JsonResponse(data=dataDict, safe=False)
-
-    return render(request, "TechnicalStandards/protocol-listings.html", context)
-
-
-def protocolDetailView(request, id):
-    """
-    shows of the key features of one norm
-    """
-    protocols = get_object_or_404(Protocol, pk=id)
-    # bezeichnung (DIN etc), titel, kurzbeschreibung,quelle, link
-    name = protocols.name  # .split(", ") ### to check if split is needed
-    link = protocols.link
-    communicationMediumCategory = protocols.communicationMediumCategory
-    supportedTransmissionMediuems = protocols.supportedTransmissionMediuems
-    associatedStandards = protocols.associatedStandards
-    openSourceStatus = protocols.openSourceStatus
-    licensingFeeRequirement = protocols.licensingFeeRequirement
-    networkTopology = protocols.networkTopology
-    security = protocols.security
-    bandwidth = protocols.bandwidth
-    frequency = protocols.frequency
-    range = protocols.range
-    numberOfConnectedDevices = protocols.numberOfConnectedDevices
-    dataModelArchitecture = protocols.dataModelArchitecture
-    discovery = protocols.discovery
-    multiMaster = protocols.multiMaster
-    packetSize = protocols.packetSize
-    priorities = protocols.priorities
-    price = protocols.price
-    osiLayers = protocols.osiLayers
-    buildingAutomationLayer = protocols.buildingAutomationLayer
-    context = {
-        "technicalStandards": protocols,
-        "name": name,
-        "link": link,
-        "communicationMediumCategory ": communicationMediumCategory,
-        "supportedTransmissionMediuems": supportedTransmissionMediuems,
-        "associatedStandards": associatedStandards,
-        "openSourceStatus": openSourceStatus,
-        "licensingFeeRequirement": licensingFeeRequirement,
-        "networkTopology": networkTopology,
-        "security": security,
-        "bandwidth": bandwidth,
-        "frequency": frequency,
-        "range": range,
-        "numberOfConnectedDevices": numberOfConnectedDevices,
-        "dataModelArchitecture": dataModelArchitecture,
-        "discovery": discovery,
-        "multiMaster": multiMaster,
-        "packetSize": packetSize,
-        "priorities": priorities,
-        "price": price,
-        "osiLayers": osiLayers,
-        "buildingAutomationLayer": buildingAutomationLayer,
-        "focusBorder": "technical",
-    }
-    return render(request, "TechnicalStandards/protocol-detail.html", context)
+    context["boxObject"] = norms
+    context["leftColumn"] = (
+        "partials/left_column_details_page_technical_focus.html"
+    )
+    context["rightColumn"] = "TechnicalStandards/details_right_column.html"
+    return render(request, "pages/details_page.html", context)
 
 
 def protocolComparison(request):

@@ -191,12 +191,17 @@ def index(request):
             },
         ],
         "renderComparisonRadio": True,
+        "urlDetailsPage": "tool_view",
+        "subHeading1": _("Nutzerschnittstelle"),
+        "subHeadingAttr1": "userInterface__userInterface",
+        "subHeading2": _("Updates"),
+        "subHeadingAttr2": _("lastUpdate"),
     }
 
     if filtering:
-        return render(request, "partials/listing-grid.html", context)
+        return render(request, "partials/listing_results.html", context)
 
-    return render(request, "tools_over/tool-listings.html", context)
+    return render(request, "pages/grid_listing.html", context)
 
 
 def indexApps(request):
@@ -343,11 +348,16 @@ def indexApps(request):
             },
         ],
         "renderComparisonRadio": True,
+        "urlDetailsPage": "app_view",
+        "subHeading1": _("Nutzerschnittstelle"),
+        "subHeadingAttr1": "userInterface__userInterface",
+        "subHeading2": _("Updates"),
+        "subHeadingAttr2": _("lastUpdate"),
     }
     if filtering:
-        return render(request, "partials/listing-grid.html", context)
+        return render(request, "partials/listing_results.html", context)
 
-    return render(request, "tools_over/tool-listings.html", context)
+    return render(request, "pages/grid_listing.html", context)
 
 
 def indexBusinessApplication(request):
@@ -496,10 +506,15 @@ def indexBusinessApplication(request):
             },
         ],
         "renderComparisonRadio": True,
+        "urlDetailsPage": "businessAppView",
+        "subHeading1": _("Nutzerschnittstelle"),
+        "subHeadingAttr1": "userInterface__userInterface",
+        "subHeading2": _("Updates"),
+        "subHeadingAttr2": _("lastUpdate"),
     }
     if filtering:
-        return render(request, "tools_over/tool-listings-results.html", context)
-    return render(request, "tools_over/tool-listings.html", context)
+        return render(request, "partials/listing_results.html", context)
+    return render(request, "pages/grid_listing.html", context)
 
 
 def businessApplicationView(request, id):
@@ -562,8 +577,16 @@ def businessApplicationView(request, id):
         "lastUpdateClass": updateProperties.className,
         "lastUpdateColor": updateProperties.colorClass,
         "lastUpdateLabel": updateProperties.label,
+        "imageInBackButton": "assets/images/backArrowOperational.svg",
+        "backLinkText": _("Geschäftsmodellanwendungen"),
+        "backLink": "businessModelApplication",
     }
-    return render(request, "tools_over/tool-detail.html", context)
+    context["boxObject"] = tool
+    context["leftColumn"] = (
+        "partials/left_column_details_page_technical_focus.html"
+    )
+    context["rightColumn"] = "tools_over/details_right_column.html"
+    return render(request, "pages/details_page.html", context)
 
 
 def toolView(request, id):
@@ -626,9 +649,16 @@ def toolView(request, id):
         "lastUpdateClass": updateProperties.className,
         "lastUpdateColor": updateProperties.colorClass,
         "lastUpdateLabel": updateProperties.label,
+        "imageInBackButton": "assets/images/backArrowTechnical.svg",
+        "backLinkText": _("Werkzeuge"),
+        "backLink": "tool_list",
     }
-
-    return render(request, "tools_over/tool-detail.html", context)
+    context["boxObject"] = tool
+    context["leftColumn"] = (
+        "partials/left_column_details_page_technical_focus.html"
+    )
+    context["rightColumn"] = "tools_over/details_right_column.html"
+    return render(request, "pages/details_page.html", context)
 
 
 def AppView(request, id):
@@ -691,9 +721,17 @@ def AppView(request, id):
         "lastUpdateClass": updateProperties.className,
         "lastUpdateColor": updateProperties.colorClass,
         "lastUpdateLabel": updateProperties.label,
+        "imageInBackButton": "assets/images/backArrowTechnical.svg",
+        "backLinkText": _("Anwendungen"),
+        "backLink": "app_list",
     }
 
-    return render(request, "tools_over/tool-detail.html", context)
+    context["boxObject"] = tool
+    context["leftColumn"] = (
+        "partials/left_column_details_page_technical_focus.html"
+    )
+    context["rightColumn"] = "tools_over/details_right_column.html"
+    return render(request, "pages/details_page.html", context)
 
 
 def toolComparison(request):

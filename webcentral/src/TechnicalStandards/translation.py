@@ -4,9 +4,7 @@ from modeltranslation.translator import (
 )
 
 from .models import (
-    TechnicalStandard,
     Norm,
-    Protocol,
 )
 
 
@@ -14,29 +12,32 @@ class NormTranslationOptions(TranslationOptions):
     fields = (
         "title",
         "name",
-        "shortDescription",
-        "source",
+        "description",
+        "provider",
+        "furtherInformation",
+        "alternatives",
+        "yearOfRelease",
     )
 
 
-class ProtocolTranslationOptions(TranslationOptions):
-    fields = (
-        "communicationMediumCategory",
-        "supportedTransmissionMediuems",
-        "openSourceStatus",
-        "licensingFeeRequirement",
-        "networkTopology",
-        "security",
-        "bandwidth",
-        "frequency",
-        "range",
-        "multiMaster",
-        "discovery",
-        "priorities",
-        "osiLayers",
-        "buildingAutomationLayer",
-    )
+# class ProtocolTranslationOptions(TranslationOptions):
+#     fields = (
+#         "communicationMediumCategory",
+#         "supportedTransmissionMediuems",
+#         "openSourceStatus",
+#         "licensingFeeRequirement",
+#         "networkTopology",
+#         "security",
+#         "bandwidth",
+#         "frequency",
+#         "range",
+#         "multiMaster",
+#         "discovery",
+#         "priorities",
+#         "osiLayers",
+#         "buildingAutomationLayer",
+#     )
 
 
 translator.register(Norm, NormTranslationOptions)
-translator.register(Protocol, ProtocolTranslationOptions)
+# translator.register(Protocol, ProtocolTranslationOptions)

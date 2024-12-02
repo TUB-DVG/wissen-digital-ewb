@@ -2,6 +2,7 @@ from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
 
 from .models import *
+from common.admin import HistoryAdmin
 
 
 class NormAdmin(TranslationAdmin):
@@ -11,8 +12,10 @@ class NormAdmin(TranslationAdmin):
 admin.site.register(Norm, NormAdmin)
 
 
-class ProtocolAdmin(TranslationAdmin):
-    pass
+class HistoryAdminApp(HistoryAdmin):
+    """ """
+
+    modelInstance = Norm
 
 
-admin.site.register(Protocol, ProtocolAdmin)
+admin.site.register(History, HistoryAdminApp)

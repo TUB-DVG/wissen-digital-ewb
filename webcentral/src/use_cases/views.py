@@ -144,7 +144,7 @@ def index(request):
     }
     if filtering:
         return render(
-            request, "use_cases/usecase-listings-results.html", context
+            request, "partials/usecase-listings-results.html", context
         )
 
     return render(request, "use_cases/usecase-listings.html", context)

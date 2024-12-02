@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "use_cases.apps.UseCasesConfig",
     "pages.apps.PagesConfig",
     "TechnicalStandards.apps.TechnicalStandardsConfig",
+    "protocols.apps.ProtocolsConfig",
     "project_listing.apps.ProjectListingConfig",
     "tools_over.apps.ToolsOverConfig",
     "weatherdata_over.apps.WeatherdataOverConfig",
@@ -85,6 +86,9 @@ MIDDLEWARE = [
     "django_plotly_dash.middleware.BaseMiddleware",
 ]
 
+SERIALIZATION_MODULES = {
+    "custom_json": "common.serializers",
+}
 # Content Security Policy
 CSP_IMG_SRC = ("'self'", "data:image/webp*")
 CSP_STYLE_SRC = (

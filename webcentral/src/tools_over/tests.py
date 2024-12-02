@@ -14,11 +14,12 @@ from django.test import RequestFactory
 import pandas as pd
 
 from common.test_utils.mock_objects import mock_excel_file
-from common.models import DbDiff
+from common.test_update import AbstractTestUpdate
+from common.models import DbDiff, License
 from .data_export import DataExport
 from .data_import import DataImportApp
 from .models import Tools, Focus, History
-from .admin import HistoryAdmin
+from .admin import HistoryAdminApp
 
 User = get_user_model()
 
@@ -45,7 +46,7 @@ class TestToolsDataImport(TestCase):
         call_command(
             "data_import",
             "tools_over",
-            "../doc/01_data/02_tool_over/2024_05_EWB_tools_with_english_translation.xlsx",
+            "../doc/01_data/02_tool_over/tools_with_weatherdata.xlsx",
         )
 
         # test if the english translation was imported:
@@ -80,15 +81,17 @@ class TestToolsDataImport(TestCase):
             1,
         )
 
+        self.assertGreater(len(License.objects.all()), 32)
+
     def testImportOfNewToolsTable(self):
         """Test the import of the new tools table, espacially `lastUpdate`-attribute"""
         call_command(
             "data_import",
             "tools_over",
-            "../doc/01_data/02_tool_over/2024_11_13_tools_new_logos.xlsx",
+            "../doc/01_data/02_tool_over/tools_with_weatherdata.xlsx",
         )
         geoTool = Tools.objects.get(name="GEO-HANDlight")
-        self.assertEqual(geoTool.lastUpdate_de, "2024-10-17")
+        self.assertEqual(geoTool.lastUpdate_de, "2024-10-17 00:00:00")
         self.assertEqual(
             Tools.objects.get(name="MonKey").lastUpdate_de, "unbekannt"
         )
@@ -111,8 +114,8 @@ class TestToolsDataImport(TestCase):
         # self.assertEqual(imported_tools_obj.name_en, data[0][header.index("name__en")])
 
         self.assertEqual(
-            imported_tools_obj.shortDescription_en,
-            data[0][header.index("shortDescription__en")],
+            imported_tools_obj.description_en,
+            data[0][header.index("description__en")],
         )
         self.assertEqual(
             imported_tools_obj.userInterfaceNotes_en,
@@ -227,14 +230,14 @@ class TestExportClass(TestCase):
         call_command(
             "data_import",
             "tools_over",
-            "../doc/01_data/02_tool_over/2024_05_EWB_tools_with_english_translation.xlsx",
+            "../doc/01_data/02_tool_over/tools_with_weatherdata.xlsx",
         )
 
         # test if the english translation was imported:
         wufiToolsQS = Tools.objects.filter(name__icontains="Wufi")
         self.assertEqual(len(wufiToolsQS), 1)
         self.assertEqual(
-            wufiToolsQS[0].shortDescription_en,
+            wufiToolsQS[0].description_en,
             "WUFI (Wärme Und Feuchte Instationär) is a software family for the realistic transient calculation of heat and moisture transport in multi-layer components and buildings under natural climatic conditions.",
         )
 
@@ -250,7 +253,7 @@ class TestExportClass(TestCase):
                 (
                     "name",
                     "resources",
-                    "shortDescription",
+                    "description",
                     "applicationArea",
                     "provider",
                     "usage",
@@ -288,7 +291,7 @@ class TestExportClass(TestCase):
                 (
                     "name",
                     "resources",
-                    "shortDescription",
+                    "description",
                     "applicationArea",
                     "provider",
                     "usage",
@@ -327,31 +330,38 @@ class TestExportClass(TestCase):
         os.remove("testTools.xlsx")
 
 
-class TestUpdate(TestCase):
+class TestUpdate(AbstractTestUpdate):
     """Testclass for the update process of data for the `tools_over`-app."""
 
-    def setUpAdmin(self):
-        """setUp method for all methods of `DbDiffAdminTest`"""
-        # Create test data
-
-        self.site = AdminSite()
-        self.historyAdmin = HistoryAdmin(History, self.site)
-
-        # Create a test user and request factory
-        self.user = User.objects.create_superuser(
-            username="admin", password="password", email="admin@example.com"
-        )
-        self.factory = RequestFactory()
+    # def setUpAdmin(self):
+    #     """setUp method for all methods of `DbDiffAdminTest`"""
+    #
+    #     self.site = AdminSite()
+    #     self.historyAdmin = HistoryAdminApp(History, self.site)
+    #
+    #     # Create a test user and request factory
+    #     self.user = User.objects.create_superuser(
+    #         username="admin", password="password", email="admin@example.com"
+    #     )
+    #     self.factory = RequestFactory()
+    historyAdminAppCls = HistoryAdminApp
+    historyModelCls = History
 
     def testUpdateOfNewDataWorks(self):
-        """Test if starting the update-process and finalizing with the updated
-        dataset works.
+        """Load the full tools list and update it with the full tool list, which
+        has one differing tool. Check if only one History object is created.
 
         """
+        # call_command(
+        #     "data_import",
+        #     "project_listing",
+        #
+        # )
+
         call_command(
             "data_import",
             "tools_over",
-            "../doc/01_data/02_tool_over/2024_05_EWB_tools_with_english_translation.xlsx",
+            "../doc/01_data/02_tool_over/tools_with_weatherdata.xlsx",
         )
 
         self.assertGreater(len(Tools.objects.all()), 100)
@@ -366,30 +376,20 @@ class TestUpdate(TestCase):
 
         # one History object should be present:
         historyObjs = History.objects.all()
-        self.assertLessEqual(len(historyObjs), 5)
+        self.assertEqual(len(historyObjs), 1)
 
         wufiTool = Tools.objects.filter(name__icontains="Wufi")
 
         self.assertEqual(len(wufiTool), 1)
-        self.assertTrue("Test" in wufiTool[0].shortDescription_de)
-
-        cSharpTool = Tools.objects.filter(name__icontains="C#")
-        self.assertEqual(len(cSharpTool), 1)
-        self.assertEqual(cSharpTool[0].yearOfRelease, "2001")
-
-        vsaTool = Tools.objects.filter(name__icontains="VSA")
-        self.assertEqual(len(vsaTool), 1)
-        self.assertEqual(len(vsaTool[0].usage.all()), 5)
-        self.assertEqual(
-            vsaTool[0].usage.all().filter(usage_de="Test")[0].usage_en, "Test"
-        )
+        self.assertTrue("hallo" in wufiTool[0].description_de)
+        self.assertTrue("Hello" in wufiTool[0].description_en)
 
     def testUpdateWithSameData(self):
         """Loading the same data 2 times should create no History objects"""
         call_command(
             "data_import",
             "tools_over",
-            "../doc/01_data/02_tool_over/2024_05_EWB_tools_with_english_translation.xlsx",
+            "../doc/01_data/02_tool_over/tools_with_weatherdata.xlsx",
         )
 
         numberOfTools = len(Tools.objects.all())
@@ -397,7 +397,7 @@ class TestUpdate(TestCase):
         call_command(
             "data_import",
             "tools_over",
-            "../doc/01_data/02_tool_over/2024_05_EWB_tools_with_english_translation.xlsx",
+            "../doc/01_data/02_tool_over/tools_with_weatherdata.xlsx",
         )
 
         self.assertEqual(len(History.objects.all()), 0)
@@ -405,25 +405,26 @@ class TestUpdate(TestCase):
 
     def testUpdateM2M(self):
         """Test if it is pssible to update a Many2Many-Relation."""
-        self.setUpAdmin()
+
         call_command(
             "data_import",
             "tools_over",
-            "../doc/01_data/02_tool_over/2024_05_EWB_tools_with_english_translation.xlsx",
+            "../doc/01_data/02_tool_over/tools_with_weatherdata.xlsx",
         )
 
         call_command(
             "data_import",
             "tools_over",
-            "../doc/01_data/02_tool_over/test_data/test_data_testing_update_wufi.xlsx",
+            "../doc/01_data/02_tool_over/test_data/test_data_m2m_update.xlsx",
         )
 
-        wufiTool = Tools.objects.get(name__icontains="WUFI")
+        cSharp = Tools.objects.get(name__icontains="C#")
 
         self.assertEqual(
             len(
                 Tools.objects.filter(
-                    name__icontains="WUFI", focus__focus_de="kulturell"
+                    name__icontains="C#",
+                    applicationArea__applicationArea_de="Test-Kategorie",
                 )
             ),
             1,
@@ -436,36 +437,5 @@ class TestUpdate(TestCase):
         # execute the History object rollback
 
         self.historyAdmin.rollbackHistory(request, History.objects.all())
-        wufiTool = Tools.objects.get(name__icontains="WUFI")
-        self.assertEqual(len(wufiTool.focus.all()), 1)
-        self.assertEqual(wufiTool.focus.all()[0].focus_de, "technisch")
-
-
-# class TestTools(TestCase):
-#
-#     @patch("sys.stdout", new_callable=StringIO)
-#     @patch("sys.stderr", new_callable=StringIO)
-#     def testCallDataImportForTools(self, mock_stderr, mock_stdout):
-#         """Check if data-import can be called for data of tools
-#         data-import-functionality.
-#         """
-#         test_tool_obj = mock_excel_file()
-#         call_command(
-#             "data_import",
-#             "tools_over",
-#             test_tool_obj.name,
-#         )
-#
-#         # check if the tool was imported
-#         # english translation should also be imported
-#         imported_tool = Tools.objects.get(name_de=df_german["name"])
-#         self.assertEqual(
-#             imported_tool.shortDescription_de,
-#             df_german["shortDescription"],
-#             "German version of short description is not as expected.",
-#         )
-#         self.assertEqual(
-#             imported_tool.shortDescription_en,
-#             df_english["shortDescription"],
-#             "English version of short description is not as expected.",
-#         )
+        cSharp = Tools.objects.get(name__icontains="C#")
+        self.assertEqual(len(cSharp.applicationArea.all()), 2)

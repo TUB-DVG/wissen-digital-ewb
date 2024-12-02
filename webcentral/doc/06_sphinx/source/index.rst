@@ -31,6 +31,7 @@ End user guide
    general/interacting_with_the_app
    general/configuration_env_file
    general/structure_project_repo
+   general/data_model
    general/data_import
    general/migrations
    general/production
@@ -42,7 +43,7 @@ Developer guide
    :maxdepth: 2
    :caption: Contents:
    
-   dev/template_strucuture
+   dev/template_structure
    dev/style_guide
    dev/static_code_analysis
    dev/pyproject_toml
@@ -52,6 +53,8 @@ Developer guide
    dev/csp
    dev/use_cases
    dev/save_page_views
+   dev/data_import
+   dev/data_export
 
 HowTo Guides
 ============
