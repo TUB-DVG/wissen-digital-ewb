@@ -151,7 +151,9 @@ case $command in
             cat $2 | docker exec -i database psql -U ${POSTGRES_USER} -d ${POSTGRES_DB}
         fi
         ;;
-
+    "clear_sessions")
+      docker exec -it $container_id python src/manage.py clear_sessions 
+    ;;
     "test")
         if [ -z "$2" ]
         then
