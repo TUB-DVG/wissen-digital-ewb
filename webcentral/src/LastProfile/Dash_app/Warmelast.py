@@ -14,7 +14,8 @@ from dash import (
     State,
 )
 from django_plotly_dash import DjangoDash
-#from wetterdienst.provider.dwd.observation import DwdObservationRequest
+
+# from wetterdienst.provider.dwd.observation import DwdObservationRequest
 from typing import Tuple
 from plotly.subplots import make_subplots
 from dash.exceptions import PreventUpdate
@@ -25,7 +26,7 @@ from .Warmelastapproximation_csv import heatLoad
 locale.setlocale(locale.LC_ALL, "de_DE.utf8")  # German time
 
 app = DjangoDash("Warmelast")
-'''
+"""
 # Setting up the resolution for data filtering
 resolution = "HOURLY"
 
@@ -52,12 +53,12 @@ except ValueError:
     polledStationNames = []
     api_error = True
     error_message = "Error accessing station data from Wetterdienst API. Please try again later."
-'''
+"""
 polledStationNames = []
 placeholderState = _("Auswahl des Bundesland")
 # App layout
 app.layout = html.Div(
-    [   # Title
+    [  # Title
         dcc.Store(id="on-load", data="loaded"),
         html.H1(
             _("Wärmelast Approximation"),
@@ -110,7 +111,7 @@ app.layout = html.Div(
         dcc.Dropdown(
             options=[
                 {"label": _("Testreferenzjahr"), "value": "on"},
-                #{"label": _("Wetterstation"), "value": "off"},
+                # {"label": _("Wetterstation"), "value": "off"},
             ],
             placeholder=_("Berechnungstyp"),
             id="referenceYear",
@@ -599,7 +600,7 @@ def update_layout(data):
     )
     optionsReferenceYear = [
         {"label": _("Testreferenzjahr"), "value": "on"},
-        #{"label": _("Wetterstation"), "value": "off"},
+        # {"label": _("Wetterstation"), "value": "off"},
     ]
     placeholderReferenceYear = _("Berechnungstyp")
     placeholderStationPlaceholder = _("Auswahl der Station")
