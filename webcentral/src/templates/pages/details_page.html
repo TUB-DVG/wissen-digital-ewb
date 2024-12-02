@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% block title %}
-  {{ pageTitle }}
+  {% if boxObject.name %}
+    {{ boxObject.name }}
+  {% else %} 
+    {{ pageTitle }}
+  {% endif %} 
 {% endblock title %}
 {% load static %}
 {% block content %}
