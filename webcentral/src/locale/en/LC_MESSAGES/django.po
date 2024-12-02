@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-02 12:43+0000\n"
+"POT-Creation-Date: 2024-12-02 13:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -586,10 +586,9 @@ msgid ""
 "Softwarekatalogen, Normendatenbanken und in Forschungsprojekten der "
 "Energiewendebauen Projekte erfasst worden."
 msgstr ""
-"On this page, there are various technical standards that were recorded in "
-"the fall of 2022. These were collected through research in software "
-"catalogs, standards databases, and in research projects of the "
-"Energiewendebauen projects."
+"On this page you will find different technical norms, which were recorded in "
+"autumn 2022. These were recorded through research in software catalogs, "
+"standards databases and in energy transition building research projects."
 
 #: TechnicalStandards/views.py:87
 msgid "Bezeichnung"
@@ -1816,7 +1815,7 @@ msgid ""
 "Umweltauswirkungen beitragen."
 msgstr ""
 "Standards and protocols play a central role in the context of building "
-"automation and also in the energy transition in the building sector.Norms "
+"automation and also in the energy transition in the building sector. Norms "
 "are intended to establish standards and guidelines that ensure that "
 "buildings are designed, constructed and operated in accordance with the "
 "latest technological developments and sustainable principles. These "
@@ -1885,10 +1884,10 @@ msgstr ""
 "standards databases and in energy transition building research projects. "
 "These are German, Austrian, European or international standards and "
 "guidelines for the planning, construction and/or operation of ventilation, "
-"drinking water, hot water, drainage, heating, cooling and other energy "
-"systems in buildings . Other technical standards, such as soundproofing, "
-"lighting, and gas installation, are also included. The following aspects "
-"were recorded for each norm:"
+"drinking water, hot water, challenges in the development and implementation "
+"of drainage, heating, cooling and other energy systems in buildings. Other "
+"technical standards, such as soundproofing, lighting, and gas installation, "
+"are also included. The following aspects were recorded for each norm:"
 
 #: templates/TechnicalStandards/explanation.html:73
 #: templates/TechnicalStandards/norm-explanation.html:15
@@ -1965,13 +1964,14 @@ msgstr ""
 "them:"
 
 #: templates/TechnicalStandards/explanation.html:131
+#: templates/TechnicalStandards/protocol-explanation.html:41
 msgid "Name des Protokolls"
 msgstr "Name of the protocol"
 
 #: templates/TechnicalStandards/explanation.html:134
 #: templates/TechnicalStandards/protocol-explanation.html:58
 msgid "Übertragungsmethoden"
-msgstr "transmission media"
+msgstr "Transmission media"
 
 #: templates/TechnicalStandards/explanation.html:134
 msgid ""
@@ -2012,7 +2012,7 @@ msgstr "Is there a fee to cover the costs of use and/or certification?"
 #: templates/TechnicalStandards/explanation.html:150
 #: templates/TechnicalStandards/protocol-explanation.html:74
 msgid "Netzwerktopologie"
-msgstr "network topology"
+msgstr "Network topology"
 
 #: templates/TechnicalStandards/explanation.html:150
 #: templates/TechnicalStandards/protocol-explanation.html:74
@@ -2263,9 +2263,8 @@ msgid ""
 "              verschiedenen Komponenten und Geräten innerhalb des Systems "
 "übertragen (verkabelt, drahtlos oder verkabelt & drahtlos)?"
 msgstr ""
-"how are data transmitted between the\n"
-"              different components and devices within the system (wired, "
-"wireless, or both wired & wireless)?"
+"How is data transmitted between the various components "
+"and devices within the system (wired, wireless or wired & wireless)?"
 
 #: templates/TechnicalStandards/protocol-explanation.html:98
 msgid ""
