@@ -8,6 +8,7 @@ admin.site.register(Dataset)
 
 
 class HistoryAdminApp(HistoryAdmin):
-   modelInstance = Dataset 
+    modelInstance = Dataset
+
 
 admin.site.register(History, HistoryAdminApp)

@@ -305,9 +305,9 @@ class TestUpdate(AbstractTestUpdate):
     #         username="admin", password="password", email="admin@example.com"
     #     )
     #     self.factory = RequestFactory()
-    historyAdminAppCls = HistoryAdminApp 
-    historyModelCls = History 
-    
+    historyAdminAppCls = HistoryAdminApp
+    historyModelCls = History
+
     def testUpdateOfNewDataWorks(self):
         """Load the full tools list and update it with the full tool list, which
         has one differing tool. Check if only one History object is created.
@@ -366,7 +366,7 @@ class TestUpdate(AbstractTestUpdate):
 
     def testUpdateM2M(self):
         """Test if it is pssible to update a Many2Many-Relation."""
-        
+
         call_command(
             "data_import",
             "tools_over",

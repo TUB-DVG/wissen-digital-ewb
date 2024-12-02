@@ -13,16 +13,17 @@ class AbstractTestUpdate(TestCase):
     to test the Update process
 
     """
+
     def setUp(self):
         """setUp method for all methods of `DbDiffAdminTest`"""
 
         self.site = AdminSite()
-        self.historyAdmin = self.historyAdminAppCls(self.historyModelCls, self.site)
+        self.historyAdmin = self.historyAdminAppCls(
+            self.historyModelCls, self.site
+        )
 
         # Create a test user and request factory
         self.user = User.objects.create_superuser(
             username="admin", password="password", email="admin@example.com"
         )
         self.factory = RequestFactory()
-
-

@@ -168,5 +168,3 @@ class Protocol(AbstractTechnicalFocus):
 
 class History(AbstractHistory):
     """History model for the Protocols model. Implements a rollback feature for `Dataset`-model"""
-
-    

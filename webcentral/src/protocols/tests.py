@@ -7,6 +7,7 @@ from .models import Protocol, History
 from .data_import import DataImportApp
 from .admin import HistoryAdminApp
 
+
 class TestDataImport(TestCase):
     """Test the import of structured protocol data."""
 
@@ -24,7 +25,7 @@ class TestDataImport(TestCase):
             self.assertEqual(len(protocol.focus.all()), 1)
             self.assertEqual(protocol.focus.all()[0].focus_de, "technisch")
             self.assertEqual(protocol.focus.all()[0].focus_en, "technical")
-            
+
             self.assertEqual(len(protocol.license.all()), 1)
             self.assertNotEqual(
                 protocol.license.all()[0].openSourceStatus_en, None
@@ -79,11 +80,11 @@ class TestDataImport(TestCase):
                 returnedListOfLicenseObjs[index].licensingFeeRequirement_en,
             )
 
+
 class TestUpdate(AbstractTestUpdate):
-    """Class to group together all the tests for the update process.
-    """
-    
-    historyAdminAppCls = HistoryAdminApp 
+    """Class to group together all the tests for the update process."""
+
+    historyAdminAppCls = HistoryAdminApp
     historyModelCls = History
 
     def test2TimesSameData(self):
@@ -120,26 +121,28 @@ class TestUpdate(AbstractTestUpdate):
             "../doc/01_data/18_protocols/test_data/test_update_dali.xlsx",
         )
         self._checkElementsUnique()
-        
+
         allObjs = History.objects.all()
         self.assertEqual(len(allObjs), 1)
-        
+
         # check if the Dali protocol is updated to the data in ``test_update_dali.xlsx
         daliObj = Protocol.objects.get(name="DALI")
-        self.assertEqual(daliObj.communicationMediumCategory_de, "Verkabelt, Drahtlos & getestet")
+        self.assertEqual(
+            daliObj.communicationMediumCategory_de,
+            "Verkabelt, Drahtlos & getestet",
+        )
         # test if the old state of the protocol can be restored
         request = self.factory.post("/admin/protocols/history/")
         request.user = self.user
         self.historyAdmin.rollbackHistory(request, History.objects.all())
-        daliObj = Protocol.objects.get(name="DALI")  
-        self.assertEqual(daliObj.communicationMediumCategory_de, "Verkabelt & Drahtlos")
-
+        daliObj = Protocol.objects.get(name="DALI")
+        self.assertEqual(
+            daliObj.communicationMediumCategory_de, "Verkabelt & Drahtlos"
+        )
 
     def _checkElementsUnique(self):
-        """Check if each protocol is only represented one time.
-
-        """
+        """Check if each protocol is only represented one time."""
         allProtocols = Protocol.objects.all()
         for protocol in allProtocols:
             searchForDuplicate = Protocol.objects.filter(name=protocol.name)
-            self.assertEqual(len(searchForDuplicate), 1)  
+            self.assertEqual(len(searchForDuplicate), 1)

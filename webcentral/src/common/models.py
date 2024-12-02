@@ -41,12 +41,15 @@ class Literature(models.Model):
 
 
 class LicenseManager(models.Manager):
-    def get_by_natural_key(self, license_de, openSourceStatus_de, licensingFeeRequirement):
+    def get_by_natural_key(
+        self, license_de, openSourceStatus_de, licensingFeeRequirement
+    ):
         return self.get(
             license_de=license_de,
             openSourceStatus_de=openSourceStatus_de,
-            licensingFeeRequirement=licensingFeeRequirement,  
+            licensingFeeRequirement=licensingFeeRequirement,
         )
+
 
 class License(models.Model):
     """ORM-class containing license information of tools, datasets, norms and protocols"""
@@ -65,15 +68,18 @@ class License(models.Model):
         null=True,
     )
 
-    objects = LicenseManager()  
-    
+    objects = LicenseManager()
+
     def natural_key(self):
-        return (self.license_de, self.openSourceStatus_de, self.licensingFeeRequirement)  
-    
+        return (
+            self.license_de,
+            self.openSourceStatus_de,
+            self.licensingFeeRequirement,
+        )
+
     def __str__(self):
         return str(self.license)
 
-    
 
 class ClassificationManager(models.Manager):
     def get_by_natural_key(self, classification_de, classification_en):
@@ -522,7 +528,7 @@ class AbstractTechnicalFocus(models.Model):
                     secondObjAttr = getattr(other, field.name)
                     if isinstance(field, models.BooleanField):
                         if bool(firstObjAttr) != bool(secondObjAttr):
-                            return False    
+                            return False
 
                     else:
                         if (firstObjAttr is None and secondObjAttr == "") or (
@@ -619,7 +625,7 @@ class AbstractTechnicalFocus(models.Model):
                         field.name
                     ]:
                         if field.name != "specificApplication":
-                            
+
                             listOfM2Mobjs.append(
                                 getattr(
                                     self, field.name

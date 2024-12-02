@@ -4,6 +4,7 @@ from modeltranslation.admin import TranslationAdmin
 from .models import Protocol, History
 from common.admin import HistoryAdmin
 
+
 class ProtocolAdmin(TranslationAdmin):
     pass
 

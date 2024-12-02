@@ -14,6 +14,7 @@ from tools_over.models import (
 )
 from common.test_update import AbstractTestUpdate
 
+
 class TestDataImport(TestCase):
     """Class, which wraps a TestCase for the Datasets `data_import`"""
 
@@ -96,8 +97,10 @@ class TestDataImport(TestCase):
 
 class TestUpdate(AbstractTestUpdate):
     """ """
-    historyAdminAppCls = HistoryAdminApp 
+
+    historyAdminAppCls = HistoryAdminApp
     historyModelCls = History
+
     def testUpdate(self):
         """Check if update with rollback feature is implemented"""
         call_command(
@@ -125,12 +128,19 @@ class TestUpdate(AbstractTestUpdate):
         request.user = self.user
 
         # execute the History object rollback
-        self.historyAdmin.rollbackHistory(request, History.objects.all())  
+        self.historyAdmin.rollbackHistory(request, History.objects.all())
         updatedDataset = Dataset.objects.get(
             name="Prozessorientierte Basisdaten für Umweltmanagementsysteme"
         )
-        self.assertTrue(updatedDataset.lastUpdate_de == "" or updatedDataset.lastUpdate_de == None)
-        self.assertTrue(updatedDataset.lastUpdate_en == "" or updatedDataset.lastUpdate_en == None)
+        self.assertTrue(
+            updatedDataset.lastUpdate_de == ""
+            or updatedDataset.lastUpdate_de == None
+        )
+        self.assertTrue(
+            updatedDataset.lastUpdate_en == ""
+            or updatedDataset.lastUpdate_en == None
+        )
+
 
 class TestDataExport(TestCase):
     """Class, which wraps a TestCase for the Datasets `data_export`"""
