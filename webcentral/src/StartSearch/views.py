@@ -177,9 +177,7 @@ def resultSearch(request):
                 classificationQueryExpression, delimiter=", "
             )
         )
-        .values(
-            "id", "name", "description", "lastUpdate", "classificationAgg"
-        )
+        .values("id", "name", "description", "lastUpdate", "classificationAgg")
         .filter(criterionToolsOne | criterionToolsTwo)
     )
     # filtered projects
@@ -268,9 +266,9 @@ def resultSearch(request):
     # filtered norms
     criterionNormsOne = Q(name__icontains=searchInput)
     criterionNormsTwo = Q(description__icontains=searchInput)
-    filteredNorms = Norm.objects.values(
-        "id", "name", "description"
-    ).filter(criterionNormsOne | criterionNormsTwo)
+    filteredNorms = Norm.objects.values("id", "name", "description").filter(
+        criterionNormsOne | criterionNormsTwo
+    )
 
     # filtered protocols
     criterionProtocolsOne = Q(name__icontains=searchInput)
