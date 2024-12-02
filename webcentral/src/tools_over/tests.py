@@ -82,6 +82,22 @@ class TestToolsDataImport(TestCase):
         )
 
         self.assertGreater(len(License.objects.all()), 32)
+    
+    def testImportOfNewToolsTable(self):
+        """Test the import of the new tools table, espacially `lastUpdate`-attribute"""
+        call_command(
+            "data_import",
+            "tools_over",
+            "../doc/01_data/02_tool_over/2024_11_13_tools_new_logos.xlsx",
+        )
+        geoTool = Tools.objects.get(name="GEO-HANDlight")
+        self.assertEqual(geoTool.lastUpdate_de, "2024-10-17")
+        self.assertEqual(
+            Tools.objects.get(name="MonKey").lastUpdate_de, "unbekannt"
+        )
+        self.assertEqual(
+            Tools.objects.get(name="MonKey").lastUpdate_en, "unknown"
+        )
 
     def test_import_of_english_translation(self):
         # create test-data
@@ -178,6 +194,29 @@ class TestToolsDataImport(TestCase):
                         getattr(manyToManyElement, f"{attributeNameStr}_en"),
                         f"English translation for {attributeNameStr} is not {listOfExpectedTranslations[expectedIndex]}",
                     )
+
+    def testLastUpdateProcessing(self):
+        """Test if the processing of `lastUpdate`-field works"""
+        file_obj_excel = mock_excel_file()
+        dataImportApp = DataImportApp(file_obj_excel.name)
+
+        self.assertEqual(dataImportApp._processDate("2024-11-15"), "2024-11-15")
+        self.assertEqual(
+            dataImportApp._processDate(" 2024-11-15"), "2024-11-15"
+        )
+        self.assertEqual(dataImportApp._processDate("2024.11.15"), "2024-11-15")
+        self.assertEqual(
+            dataImportApp._processDate(" 2024.11.15"), "2024-11-15"
+        )
+        self.assertEqual(
+            dataImportApp._processDate("'2024-11-15"), "2024-11-15"
+        )
+
+        self.assertEqual(
+            dataImportApp._processDate("'2024.11.15"), "2024-11-15"
+        )
+        self.assertEqual(dataImportApp._processDate("laufend"), "laufend")
+        self.assertEqual(dataImportApp._processDate("unbekannt"), "unbekannt")
 
 
 class TestExportClass(TestCase):
@@ -400,34 +439,3 @@ class TestUpdate(AbstractTestUpdate):
         self.historyAdmin.rollbackHistory(request, History.objects.all())
         cSharp = Tools.objects.get(name__icontains="C#")
         self.assertEqual(len(cSharp.applicationArea.all()), 2)
-        # self.assertEqual(wufiTool.focus.all()[0].focus_de, "technisch")
-
-
-# class TestTools(TestCase):
-#
-#     @patch("sys.stdout", new_callable=StringIO)
-#     @patch("sys.stderr", new_callable=StringIO)
-#     def testCallDataImportForTools(self, mock_stderr, mock_stdout):
-#         """Check if data-import can be called for data of tools
-#         data-import-functionality.
-#         """
-#         test_tool_obj = mock_excel_file()
-#         call_command(
-#             "data_import",
-#             "tools_over",
-#             test_tool_obj.name,
-#         )
-#
-#         # check if the tool was imported
-#         # english translation should also be imported
-#         imported_tool = Tools.objects.get(name_de=df_german["name"])
-#         self.assertEqual(
-#             imported_tool.shortDescription_de,
-#             df_german["shortDescription"],
-#             "German version of short description is not as expected.",
-#         )
-#         self.assertEqual(
-#             imported_tool.shortDescription_en,
-#             df_english["shortDescription"],
-#             "English version of short description is not as expected.",
-#         )

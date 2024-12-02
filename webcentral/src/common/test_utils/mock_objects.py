@@ -26,7 +26,7 @@ def mock_excel_file():
         "frameworksLibraries": ["TensorFlow;;Keras"],
         "databaseSystem": ["MySQL, MongoDB"],
         "classification": ["Sensorik"],
-        "focus": ["technisch, betrieblich"],
+        "focus": ["technisch;;betrieblich"],
         "scale": ["Groß"],
         "lastUpdate": ["2024-07-11"],
         "accessibility": ["Online verfügbar"],
@@ -79,7 +79,7 @@ def mock_excel_file():
         "yearOfRelease": ["2024"],
         "developmentState": ["1"],
         "technicalStandardsNorms": ["ISO 9001"],
-        "technicalStandardsProtocols": ["HTTP, MQTT"],
+        "technicalStandardsProtocols": ["HTTP;;MQTT"],
         "image": ["sensor_image.png"],
     }
 

@@ -1,9 +1,3 @@
-@media (max-width: 991px) {
-    .navbar {
-        padding: 0 1em
-    }
-}
-
 .navbar-light {
   .navbar-nav {
     .nav-link{
@@ -13,6 +7,31 @@
       }
     }
   }
+}
+
+.nav-link:hover {
+  color: unset !important;
+}
+.nav-item {
+  padding: 5px 5px;
+}
+.navbar-nav .dropdown-menu {
+  top: 3rem !important;
+}
+
+#search-form1{
+  display: flex;
+  justify-content: flex-end;
+}
+#navbarCllapse{
+  display: flex;
+  justify-content: flex-end;
+}
+#searchText {
+    display: block;         /* Ensures it behaves as a block element */
+    width: 100%;            /* Takes up all available width */
+    max-width: 100%;        /* Prevents overflow */
+    box-sizing: border-box; /* Ensures padding is included in the width */
 }
 
 .dropdown-menu {
@@ -137,4 +156,18 @@
 }
 .dropdown-toggle::after {
     display: none !important;
+}
+.dropdown-toggle:hover .coloredImage,
+.dropdown-menu:hover + a .coloredImage {
+  display: inline !important;
+}
+.dropdown-toggle:hover .uncoloredImage,
+.dropdown-menu:hover + a .uncoloredImage {
+  display: none !important;
+}
+
+@media (max-width: 991px) {
+    .navbar {
+        padding: 0 1em
+    }
 }
