@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-03 14:21+0000\n"
+"POT-Creation-Date: 2024-12-02 12:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,7 +59,8 @@ msgstr "Gas Infrastructure"
 #: templates/LastProfile/explanation.html:111
 #: templates/LastProfile/explanation.html:179
 #: templates/partials/_navbar.html:58
-#: templates/start_search/start_search.html:171 weatherdata_over/views.py:173
+#: templates/partials/_navbar.html:58
+#: templates/start_search/start_search.html:171
 msgid "Wetterdaten"
 msgstr "Weather data"
 
@@ -496,6 +497,7 @@ msgstr "Catalog of criteria"
 
 #: StartSearch/views.py:433 templates/pages/userEngagement.html:4
 #: templates/partials/_navbar.html:122
+#: templates/partials/_navbar.html:122
 #: templates/start_search/start_search.html:252 user_integration/views.py:14
 #: user_integration/views.py:36
 msgid "Nutzendenintegration"
@@ -515,6 +517,7 @@ msgstr ""
 #: StartSearch/views.py:450 pages/views.py:304 pages/views.py:332
 #: templates/pages/environmentalIntegrityPositiv.html:4
 #: templates/partials/_navbar.html:164
+#: templates/partials/_navbar.html:164
 #: templates/start_search/start_search.html:302
 msgid "Positive Umweltwirkungen"
 msgstr "Positive environmental impacts"
@@ -522,6 +525,7 @@ msgstr "Positive environmental impacts"
 #: StartSearch/views.py:461 component_list/views.py:323
 #: component_list/views.py:370 pages/views.py:261
 #: templates/pages/environmentalIntegrityNegativ.html:4
+#: templates/partials/_navbar.html:158
 #: templates/partials/_navbar.html:158
 #: templates/start_search/start_search.html:292
 msgid "Negative Umweltwirkungen"
@@ -1597,6 +1601,7 @@ msgid "Überblick über den Lastprofilgenerator"
 msgstr "Overview of the load profile generator"
 
 #: templates/LastProfile/explanation.html:23 templates/partials/_navbar.html:63
+#: templates/LastProfile/explanation.html:23 templates/partials/_navbar.html:63
 #: templates/start_search/start_search.html:195
 msgid "Lastprofile"
 msgstr "Load profiles"
@@ -1787,6 +1792,7 @@ msgid "Kurzbeschreibung"
 msgstr "Short description"
 
 #: templates/TechnicalStandards/explanation.html:16
+#: templates/partials/_navbar.html:53
 #: templates/partials/_navbar.html:53
 #: templates/start_search/start_search.html:159
 msgid "Technische Standards"
@@ -2271,6 +2277,7 @@ msgstr ""
 
 #: templates/admin/publications/import_bibtex.html:14
 #: templates/admin/tools_over/history/change_form.html:30
+#: templates/admin/tools_over/history/change_form.html:30
 msgid "Home"
 msgstr ""
 
@@ -2302,6 +2309,7 @@ msgstr ""
 
 #: templates/admin/publications/publication_change_list.html:15
 #: templates/admin/tools_over/history/change_form.html:40
+#: templates/admin/tools_over/history/change_form.html:40
 #, python-format
 msgid "Add %(name)s"
 msgstr ""
@@ -2316,17 +2324,15 @@ msgid_plural "Please correct the errors below."
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/admin/tools_over/history/submit_line.html:4
-msgid "Rollback"
+#: templates/admin/tools_over/history/change_form.html:6
+msgid "Error:"
 msgstr ""
 
-#: templates/admin/tools_over/history/submit_line.html:7
-msgid "Close"
-msgstr ""
-
-#: templates/admin/tools_over/history/submit_line.html:11
-msgid "Delete"
-msgstr ""
+#: templates/admin/tools_over/history/change_form.html:81
+msgid "Please correct the error below."
+msgid_plural "Please correct the errors below."
+msgstr[0] ""
+msgstr[1] ""
 
 #: templates/component_list/componentComparisonResults.html:4
 msgid "Komponentenliste Vergleich Ergebnisse"
@@ -2438,6 +2444,13 @@ msgstr ""
 "natural persons. The term data minimization from the GDPR replaces the terms "
 "data economy and data avoidance previously used in the Federal Data "
 "Protection Act (§3a BDSG)."
+"This distinguishes data sufficiency from the legal concept of data "
+"minimization. The latter is a data protection principle defined in Article "
+"5, Section 1(c) of the General Data Protection Regulation (GDPR) for "
+"personal data and aims to reduce the risk to the rights and freedoms of "
+"natural persons. The term data minimization from the GDPR replaces the terms "
+"data economy and data avoidance previously used in the Federal Data "
+"Protection Act (§3a BDSG)."
 
 #: templates/data_sufficiency/explanation.html:9
 msgid ""
@@ -2448,6 +2461,11 @@ msgid ""
 "eine Abgrenzung zu dem juristischen Begriff zu verdeutlichen, werden "
 "unterschiedliche Begriffe verwendet."
 msgstr ""
+"While data minimization prevents risks to fundamental rights caused by "
+"extensive, unnecessary data processing, data sufficiency aims to minimize "
+"the ecological impacts of collecting, processing, and storing extensive, "
+"unnecessary data. To clarify the distinction from the legal term, different "
+"terminology is used."
 "While data minimization prevents risks to fundamental rights caused by "
 "extensive, unnecessary data processing, data sufficiency aims to minimize "
 "the ecological impacts of collecting, processing, and storing extensive, "
@@ -2475,12 +2493,17 @@ msgstr ""
 "usage phase. When digital solutions developed in research projects are "
 "brought to market, the dissemination of data-efficient technologies can "
 "create ecological benefits through economies of scale."
+"usage phase. When digital solutions developed in research projects are "
+"brought to market, the dissemination of data-efficient technologies can "
+"create ecological benefits through economies of scale."
 
 #: templates/data_sufficiency/explanation.html:15
 msgid ""
 "Im Folgenden werden Strategien für einen suffizienten Umgang mit vorgestellt "
 "und auf die ökologischen Wirkungen beim Umgang mit Daten hingewiesen."
 msgstr ""
+"The following presents strategies for sufficient data handling and "
+"highlights the ecological impacts of data management."
 "The following presents strategies for sufficient data handling and "
 "highlights the ecological impacts of data management."
 
@@ -3507,21 +3530,34 @@ msgstr ""
 "Protection based on a resolution by the German Bundestag."
 
 #: templates/partials/_navbar.html:43
+#: templates/partials/_navbar.html:43
 msgid "Digitale Werkzeuge"
 msgstr "Digital tools"
 
 #: templates/partials/_navbar.html:48
+#: templates/partials/_navbar.html:48
 msgid "Digitale Anwendungen"
 msgstr "Digital applications"
 
+#: templates/partials/_navbar.html:69
+#: templates/partials/_navbar.html:69
+#: templates/start_search/start_search.html:183 weatherdata_over/views.py:86
+msgid "Datensätze"
+msgstr "Datasets"
+
+#: templates/partials/_navbar.html:97
+msgid "Technisch"
+msgstr "Technical"
 #: templates/partials/_navbar.html:97
 msgid "Technisch"
 msgstr "Technical"
 
 #: templates/partials/_navbar.html:111
+#: templates/partials/_navbar.html:111
 msgid "Geschäfts&shy;modell&shy;"
 msgstr "Business model"
 
+#: templates/partials/_navbar.html:116
 #: templates/partials/_navbar.html:116
 msgid "Geschäfts&shy;modell&shy;anwendungen"
 msgstr "Business model applications"
@@ -3531,9 +3567,15 @@ msgid "Betrieblich"
 msgstr "Operational"
 
 #: templates/partials/_navbar.html:196
+#: templates/partials/_navbar.html:148
+msgid "Betrieblich"
+msgstr "Operational"
+
+#: templates/partials/_navbar.html:196
 msgid "Ökologisch"
 msgstr "Ecological"
 
+#: templates/partials/_navbar.html:210
 #: templates/partials/_navbar.html:210
 #: templates/start_search/start_search.html:356
 msgid "Daten&shy;schutz&shy;übersicht"
@@ -3542,7 +3584,11 @@ msgstr "Privacy overview"
 #: templates/partials/_navbar.html:242
 msgid "Rechtlich"
 msgstr "Legal"
+#: templates/partials/_navbar.html:242
+msgid "Rechtlich"
+msgstr "Legal"
 
+#: templates/partials/_navbar.html:249
 #: templates/partials/_navbar.html:249
 #: templates/start_search/start_search.html:208
 #: templates/start_search/start_search.html:394
@@ -3550,15 +3596,22 @@ msgid "Anwendungsfälle"
 msgstr "Use cases"
 
 #: templates/partials/_navbar.html:254
+#: templates/partials/_navbar.html:254
 #: templates/start_search/start_search.html:404
 msgid "Veröffentlichungen"
 msgstr "Publications"
 
 #: templates/partials/_navbar.html:259
+#: templates/partials/_navbar.html:259
 #: templates/start_search/start_search.html:413
 msgid "CityGML Visualisierung"
 msgstr "CityGML visualization"
 
+#: templates/partials/_navbar.html:285
+msgid "Global"
+msgstr ""
+
+#: templates/partials/_navbar.html:297
 #: templates/partials/_navbar.html:285
 msgid "Global"
 msgstr ""
@@ -4684,10 +4737,10 @@ msgid ""
 "                Datensätze, digitale Werkzeuge bzw. Anwendungen und weitere\n"
 "                Forschungsergebnisse."
 msgstr ""
-"The technical focus of investigating digitalization in energy research within "
-"the built environment primarily targets tools for technical planning, energy "
-"efficient operation, and optimization. This encompasses datasets, digital "
-"tools, applications, and other research results."
+"The technical focus of investigating digitalization in energy research "
+"within the built environment primarily targets tools for technical planning, "
+"energy efficient operation, and optimization. This encompasses datasets, "
+"digital tools, applications, and other research results."
 
 #: templates/start_search/start_search.html:133 tools_over/views.py:653
 msgid "Werkzeuge"
@@ -4879,8 +4932,8 @@ msgid ""
 "Dienstleistung."
 msgstr ""
 "What do the developers describe as the area of application of their digital "
-"application? Options are administration, research/teaching, industry "
-"and services."
+"application? Options are administration, research/teaching, industry and "
+"services."
 
 #: templates/tools_over/explanationApps.html:33
 msgid ""
@@ -4967,7 +5020,8 @@ msgid ""
 "Bausektor/Energiewendebauen (bspw. Förderkennzeichen)."
 msgstr ""
 "Identification of concrete examples of the use of applications in the "
-"construction sector/energy transition construction (e.g., funding indicators)."
+"construction sector/energy transition construction (e.g., funding "
+"indicators)."
 
 #: templates/tools_over/explanationApps.html:76
 #: templates/tools_over/explanationTools.html:72
@@ -5019,8 +5073,8 @@ msgstr "Is a publication planned? (if not already done)"
 msgid ""
 "Quelle für weitere Information zur Anwendung, z.B. git-Repo, Projektwebseite."
 msgstr ""
-"Source for further information about the application, e.g., git repo, project "
-"website."
+"Source for further information about the application, e.g., git repo, "
+"project website."
 
 #: templates/tools_over/explanationApps.html:102
 msgid ""
@@ -5098,6 +5152,12 @@ msgid ""
 msgstr ""
 "Which norms or standards serve as the basis or orientation for the "
 "application?"
+
+#: templates/tools_over/explanationApps.html:132
+#: templates/tools_over/explanationTools.html:131
+#: templates/use_cases/explanation.html:74
+msgid "Weiterführende Informationen:"
+msgstr "Additional information:"
 
 #: templates/tools_over/explanationApps.html:136
 #: templates/tools_over/explanationTools.html:135
@@ -5253,8 +5313,7 @@ msgid ""
 "Dienstleistung."
 msgstr ""
 "What do the developers describe as the area of application of their digital "
-"tool? Options are administration, research/teaching, industry "
-"and services."
+"tool? Options are administration, research/teaching, industry and services."
 
 #: templates/tools_over/explanationTools.html:29
 msgid ""
@@ -5425,12 +5484,6 @@ msgid ""
 "Werkzeug?"
 msgstr ""
 "Which norms or standards serve as the basis or orientation for the tool?"
-
-#: templates/tools_over/explanationApps.html:132
-#: templates/tools_over/explanationTools.html:131
-#: templates/use_cases/explanation.html:74
-msgid "Weiterführende Informationen:"
-msgstr "Additional information:"
 
 #: templates/tools_over/tool-detail.html:94
 msgid "weitere Informationen"
