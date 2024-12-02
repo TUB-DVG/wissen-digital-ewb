@@ -434,7 +434,6 @@ class AbstractTechnicalFocus(models.Model):
         blank=True,
         db_comment="Further information - Information of miscellaneous subjects",
     )
-
     image = models.ImageField(
         null=True,
         blank=True,
@@ -452,12 +451,6 @@ class AbstractTechnicalFocus(models.Model):
     accessibility = models.ManyToManyField(
         Accessibility,
         db_comment="Accessibility - How accessible is the dataset?",
-    )
-    programmingLanguages = models.CharField(
-        max_length=500,
-        blank=True,
-        null=True,
-        db_comment="Programming languages - Which programming languages are mainly used to implment the item.",
     )
     provider = models.CharField(
         max_length=300,

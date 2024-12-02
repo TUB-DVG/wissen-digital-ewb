@@ -83,7 +83,12 @@ class Tools(AbstractTechnicalFocus):
         blank=True,
         null=True,
     )
-
+    programmingLanguages = models.CharField(
+        max_length=500,
+        blank=True,
+        null=True,
+        db_comment="Programming languages - Which programming languages are mainly used to implment the item.",
+    ) 
     @property
     def imageOrDefault(self):
         if self.image and hasattr(self.image, "url"):
