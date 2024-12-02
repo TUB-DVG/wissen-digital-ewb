@@ -88,10 +88,10 @@ class TestToolsDataImport(TestCase):
         call_command(
             "data_import",
             "tools_over",
-            "../doc/01_data/02_tool_over/2024_11_13_tools_new_logos.xlsx",
+            "../doc/01_data/02_tool_over/tools_with_weatherdata.xlsx",
         )
         geoTool = Tools.objects.get(name="GEO-HANDlight")
-        self.assertEqual(geoTool.lastUpdate_de, "2024-10-17")
+        self.assertEqual(geoTool.lastUpdate_de, "2024-10-17 00:00:00")
         self.assertEqual(
             Tools.objects.get(name="MonKey").lastUpdate_de, "unbekannt"
         )

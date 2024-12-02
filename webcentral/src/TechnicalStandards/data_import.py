@@ -48,15 +48,12 @@ class DataImportApp(DataImport):
         "provider": ("provider", None),
         "resources": ("resources", None),
         "description": ("description", None),
-        # "availability": ("availability", None),
         "alternatives": ("alternatives", None),
         "developmentState": ("developmentState", None),
         "description": ("description", None),
         "furtherInformation": ("furtherInformation", None),
         "image": ("image", None),
-        # "lastUpdate": ("lastUpdate", None),
         "license": ("license", License),
-        # "licenseNotes": ("licenseNotes", None),
         "accessibility": ("accessibility", Accessibility),
         "yearOfRelease": ("yearOfRelease", None),
         "released": ("released", None),
@@ -66,7 +63,6 @@ class DataImportApp(DataImport):
             Protocol,
         ),
         "usage": ("usage", Usage),
-        "programmingLanguages": ("programmingLanguages", None),
     }
 
     MAPPING_EXCEL_DB_EN = {
@@ -85,8 +81,6 @@ class DataImportApp(DataImport):
         "furtherInformation__en": "furtherInformation_en",
         "usage__en": "usage_en",
         "yearOfRelease__en": "yearOfRelease_en",
-        # "availability__en": "availability_en",
-        # "lastUpdate__en": "lastUpdate_en",
         "license__en": "license_en",
     }
 

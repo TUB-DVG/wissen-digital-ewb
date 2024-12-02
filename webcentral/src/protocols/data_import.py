@@ -86,7 +86,6 @@ class DataImportApp(DataImport):
         "buildingAutomationLayer": ("buildingAutomationLayer", None),
         "exampleProject": ("exampleProject", None),
         "image": ("image", None),
-        "programmingLanguages": ("programmingLanguages", None),
     }
 
     MAPPING_EXCEL_DB_EN = {
