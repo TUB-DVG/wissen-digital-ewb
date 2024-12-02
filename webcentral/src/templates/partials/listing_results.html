@@ -38,8 +38,13 @@
 
   <div class="col-sm-6 col-lg-4 col-xl-3 card_hover">
     <a href="{% url urlDetailsPage ormObj.id %}">
-      <div class="card border-{{ focusBorder }} h-100">
-
+      <div class="card border-{{ focusBorder }} h-100" id="{{ ormObj.id }}">
+        <input type="checkbox"
+             style="display: none;
+                    position:absolute;
+                    left:230px;
+                    top:2px"
+             class="comparisonInputTools" /> 
         <div class="card-body pb-0">
 
           <!-- Title -->

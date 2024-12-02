@@ -175,7 +175,7 @@ def dataset_view(request, id):
         "name": nameDataset,
         "imageInBackButton": "assets/images/backArrowTechnical.svg",
         "backLinkText": _("Datensätze"),
-        "backLink": "TechnicalStandards_protocol_list",
+        "backLink": "dataset_list",
         "focusBorder": "technical",
     }
     context["boxObject"] = dataset

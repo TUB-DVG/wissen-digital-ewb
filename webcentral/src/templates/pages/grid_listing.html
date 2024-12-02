@@ -30,6 +30,13 @@ Page content START -->
         <!-- Filter bar START -->
 
         {% include "partials/search_bar.html" %}
+        
+        <div class="compareBox {{ focusBorder }}-cards"
+             id="compareBox"
+             style="display: none">
+          {% include "partials/comparison.html" %}
+        </div>
+
         <div class="row mt-3">
           <!-- Main content START -->
 
@@ -56,6 +63,7 @@ Page content START -->
 Page content END -->
 
     </main>
+    <script>var modelName = "{{ model }}";</script> 
     <!-- **************** MAIN CONTENT END **************** -->
 
   {% endblock %}
