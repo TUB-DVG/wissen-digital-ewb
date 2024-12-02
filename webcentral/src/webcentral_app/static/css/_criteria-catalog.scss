@@ -33,6 +33,20 @@
     // h2 {
     //     font-size: 25px;
     // }
+
+
+    .search__icons { 
+        width: fit-content !important;
+        display: flex !important;
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+}
+
+#container-criteria-catalog-details.search__container {
+    flex-wrap: wrap;
+    column-gap: 16px;
+    row-gap: 8px;
 }
 
 .select-style {
@@ -48,4 +62,15 @@
   .same-horizontal-position-lvl-1 {
     position: relative; /* or absolute, depending on your layout */
     left: 50px; /* or any value you want */
+}
+
+@media only screen and (max-width: 600px) {
+    .sticky-element-li {
+        overflow: scroll;
+    }
+
+    p,
+    p > * {
+      min-width: fit-content;
+    }
 }

@@ -53,6 +53,20 @@
       flex-basis: 75%;
     }
 
+    @media only screen and (max-width: 1024px) {
+      .columns {
+        flex-wrap: wrap;
+      }
+
+      .column__left {
+          flex-basis: 100%;
+      }
+
+      .column__right {
+        flex-basis: 100%;
+      }
+    }
+
     @media only screen and (min-width: 1070px) {
       .column__right-image-background {
         /*padding-block: 30px;
