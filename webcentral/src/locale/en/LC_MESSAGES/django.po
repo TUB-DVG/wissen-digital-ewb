@@ -4684,8 +4684,8 @@ msgid ""
 "                Datensätze, digitale Werkzeuge bzw. Anwendungen und weitere\n"
 "                Forschungsergebnisse."
 msgstr ""
-"The technical focus of investigating digitalization in energy researchwithin "
-"the built environment primarily targets tools for technical planning,energy "
+"The technical focus of investigating digitalization in energy research within "
+"the built environment primarily targets tools for technical planning, energy "
 "efficient operation, and optimization. This encompasses datasets, digital "
 "tools, applications, and other research results."
 
@@ -4743,10 +4743,10 @@ msgid ""
 "                mit Daten sowie dessen Auswirkungen thematisiert."
 msgstr ""
 "The ecological focus when examining digitalization in energy research in the "
-"built environment aims to evaluate environmental impacts resuluting from the "
-"use of digital applications. his includes assessing both positive effects, "
-"such as energy savings,and potential negative effects, like increased "
-"material consumption.Adequate data handling and its implications are also "
+"built environment aims to evaluate environmental impacts resulting from the "
+"use of digital applications. This includes assessing both positive effects, "
+"such as energy savings, and potential negative effects, like increased "
+"material consumption. Adequate data handling and its implications are also "
 "discussed in this context."
 
 #: templates/start_search/start_search.html:327
@@ -4770,7 +4770,7 @@ msgstr ""
 "The legal focus emphasizes the importance of data protection in "
 "digitalization within the built environment. It addresses the emergence of "
 "data protection risks and their potential to impede innovation. "
-"Concurrently, it clarifiesdata protection laws for various applications in "
+"Concurrently, it clarifies data protection laws for various applications in "
 "the building sector, offering concrete action recommendations for projects."
 
 #: templates/start_search/start_search.html:381
@@ -4854,7 +4854,7 @@ msgstr ""
 "create products with specific functionalities. Frameworks, libraries, "
 "programming languages and standards are also listed under tools. A digital "
 "application, on the other hand, is a standalone piece of software designed "
-"for a specific use case. Typically, a digital application is consists of a "
+"for a specific use case. Typically, a digital application consists of a "
 "chain of tools with possible direct interaction with the end user. Platforms "
 "are also listed under Applications. It is entirely possible to have a tool "
 "that can also be classified as an application. In a first step, we collect "
@@ -4879,8 +4879,8 @@ msgid ""
 "Dienstleistung."
 msgstr ""
 "What do the developers describe as the area of application of their digital "
-"application? Options include administration, research/teaching, industry, "
-"and service."
+"application? Options are administration, research/teaching, industry "
+"and services."
 
 #: templates/tools_over/explanationApps.html:33
 msgid ""
@@ -4928,7 +4928,7 @@ msgid ""
 "            kann nach Abschluss des Projektes die Weiterentwicklung bzw. die "
 "Wartung eingestellt werden."
 msgstr ""
-"When was the last update done? Particularly in the case of digital "
+"When did the last update occur? Particularly in the case of digital "
 "applications that are developed as part of research projects, further "
 "development or maintenance can be stopped after the project has been "
 "completed."
@@ -4938,7 +4938,7 @@ msgid ""
 "Wie zugänglich ist die Anwendung? Ist es kostenpflichtig, open-source oder "
 "freeware?"
 msgstr ""
-"How accessible is the application? Is it paid, open source or freeware?"
+"How accessible is the application? Is it paid, open-source or freeware?"
 
 #: templates/tools_over/explanationApps.html:64
 msgid ""
@@ -4967,7 +4967,7 @@ msgid ""
 "Bausektor/Energiewendebauen (bspw. Förderkennzeichen)."
 msgstr ""
 "Identification of concrete examples of the use of applications in the "
-"construction sector/energy transition construction (e.g. funding indicators)."
+"construction sector/energy transition construction (e.g., funding indicators)."
 
 #: templates/tools_over/explanationApps.html:76
 #: templates/tools_over/explanationTools.html:72
@@ -5019,7 +5019,7 @@ msgstr "Is a publication planned? (if not already done)"
 msgid ""
 "Quelle für weitere Information zur Anwendung, z.B. git-Repo, Projektwebseite."
 msgstr ""
-"Source for further information about the application, e.g. git repo, project "
+"Source for further information about the application, e.g., git repo, project "
 "website."
 
 #: templates/tools_over/explanationApps.html:102
@@ -5035,12 +5035,12 @@ msgid ""
 "              <li>bereit für den produktiven Einsatz (Released)</li>"
 msgstr ""
 "What is the current development status? The following options are possible: "
-"<ol><li>first draft (pre-alpha)</li>\n"
-" <li>Essential functions (Alpha)</li>\n"
-" <li>not yet fully tested (Beta)</li>\n"
-" <li>all functions preserved, possibly containing errors (release Canditate "
+"<ol><li>First draft (pre-alpha)</li>\n"
+" <li>Essential functions (alpha)</li>\n"
+" <li>Not yet fully tested (beta)</li>\n"
+" <li>All functions preserved, possibly containing errors (Release Canditate "
 "- RC)</li>\n"
-" <li>ready for productive use (released)</li>"
+" <li>Ready for productive use (released)</li>"
 
 #: templates/tools_over/explanationApps.html:112
 #: templates/tools_over/explanationTools.html:110
@@ -5139,7 +5139,7 @@ msgid ""
 "zu digitalen Stundenzetteln oder digitalen Werkzeugen zur Kalkulation von "
 "Mengen gesammelt."
 msgstr ""
-"The website baulinks collects information about software with a focus on "
+"The baulinks website collects information about software with a focus on "
 "architecture and crafts. In addition to CAD tools or digital tools for "
 "planning, information on digital timesheets or digital tools for calculating "
 "quantities is also collected."
@@ -5231,16 +5231,16 @@ msgid ""
 msgstr ""
 "A general distinction is made here between digital tools and digital "
 "applications. A digital tool is a piece of software used in conjunction with "
-"other tools by developers or engineers, to create products with specific "
+"other tools by developers or engineers, for creating products with specific "
 "functionalities. Frameworks, libraries, programming languages and standards "
 "are also listed under tools. A digital application, on the other hand, is a "
 "standalone piece of software designed for a specific use case. Typically, a "
-"digital application is consists of a chain of tools with possible direct "
+"digital application consists of a chain of tools with possible direct "
 "interaction with the end user. Platforms are also listed under Applications. "
 "It is entirely possible to have a tool that can also be classified as an "
 "application. In a first step, we collect these digital tools and "
 "applications and make them available to you as an overview and inspiration. "
-"A detailed compilation of the tools and applications can only be done "
+"A detailed compilation of the tools and applications can only be undertaken "
 "together with the users, so please feel free to contact us. We look forward "
 "to hearing your application examples from your projects.<br>When putting "
 "together the tools, we took the following aspects into account:"
@@ -5253,8 +5253,8 @@ msgid ""
 "Dienstleistung."
 msgstr ""
 "What do the developers describe as the area of application of their digital "
-"tool? Optionen sind Verwaltung, Forschung/Lehre, Industrie, und "
-"Dienstleistung."
+"tool? Options are administration, research/teaching, industry "
+"and services."
 
 #: templates/tools_over/explanationTools.html:29
 msgid ""
@@ -5301,7 +5301,7 @@ msgid ""
 "            kann nach Abschluss des Projektes die Weiterentwicklung bzw. die "
 "Wartung eingestellt werden."
 msgstr ""
-"When was the last update done? Particularly in the case of digital tools "
+"When did the last update occur? Particularly in the case of digital tools "
 "that are developed as part of research projects, further development or "
 "maintenance can be stopped after the project has been completed."
 
@@ -5309,7 +5309,7 @@ msgstr ""
 msgid ""
 "Wie zugänglich ist das Werkzeug? Ist es kostenpflichtig, open-source oder "
 "freeware?"
-msgstr "How accessible is the tool? Is it paid, open source or freeware?"
+msgstr "How accessible is the tool? Is it paid, open-source or freeware?"
 
 #: templates/tools_over/explanationTools.html:60
 msgid ""
@@ -5326,7 +5326,7 @@ msgid ""
 "Bausektor/Energiewendebauen (bspw. Förderkennzeichen)."
 msgstr ""
 "Identification of concrete examples of the use of tools in the construction "
-"sector/energy transition construction (e.g. funding indicators)."
+"sector/energy transition construction (e.g., funding indicators)."
 
 #: templates/tools_over/explanationTools.html:69
 msgid ""
@@ -5334,7 +5334,7 @@ msgid ""
 "Bausektor/Energiewendebauen (bspw. Projekt Nummer)."
 msgstr ""
 "Identification of concrete examples of the use of tools in the construction "
-"sector/energy transition (e.g. project number)."
+"sector/energy transition (e.g., project number)."
 
 #: templates/tools_over/explanationTools.html:73
 msgid "Wer ist für die Entwicklung und Wartung des Werkzeugs verantwortlich?"
@@ -5369,7 +5369,7 @@ msgstr "If the tool is published, in what year was it released?"
 msgid ""
 "Quelle für weitere Information zum Werkzeug, z.B. git-Repo, Projektwebseite."
 msgstr ""
-"Source for further information about the tool, e.g. git repo, project "
+"Source for further information about the tool, e.g., git repo, project "
 "website."
 
 #: templates/tools_over/explanationTools.html:98
@@ -5380,15 +5380,15 @@ msgstr ""
 
 #: templates/tools_over/explanationTools.html:100
 msgid "erster Entwurf (pre-Alpha)"
-msgstr "first draft (pre-alpha)"
+msgstr "First draft (pre-alpha)"
 
 #: templates/tools_over/explanationTools.html:101
 msgid "wesentliche Funktionen (Alpha)"
-msgstr "essential functions (alpha)"
+msgstr "Essential functions (alpha)"
 
 #: templates/tools_over/explanationTools.html:102
 msgid "noch nicht vollständig gestetet (Beta)"
-msgstr "not yet fully tested (beta)"
+msgstr "Not yet fully tested (beta)"
 
 #: templates/tools_over/explanationTools.html:104
 msgid "alle Funktion erhalten, evtl. Fehler enthalten (Release Canditate - RC)"
@@ -5397,7 +5397,7 @@ msgstr ""
 
 #: templates/tools_over/explanationTools.html:106
 msgid "bereit für den produktiven Einsatz (Released)"
-msgstr "ready for productive use (released)"
+msgstr "Ready for productive use (released)"
 
 #: templates/tools_over/explanationTools.html:111
 msgid ""
@@ -5426,10 +5426,51 @@ msgid ""
 msgstr ""
 "Which norms or standards serve as the basis or orientation for the tool?"
 
+#: templates/tools_over/explanationApps.html:132
 #: templates/tools_over/explanationTools.html:131
 #: templates/use_cases/explanation.html:74
 msgid "Weiterführende Informationen:"
 msgstr "Additional information:"
+
+#: templates/tools_over/tool-detail.html:94
+msgid "weitere Informationen"
+msgstr "Further information"
+
+#: templates/tools_over/tool-detail.html:103
+msgid "konkrete Anwendungsfälle"
+msgstr "concrete use cases"
+
+#: templates/tools_over/tool-detail.html:117
+msgid "Entwickler/ Maintainer"
+msgstr "Developer/maintainer"
+
+#: templates/tools_over/tool-detail.html:121
+msgid "generelle Art des Werkzeugs"
+msgstr "general type of tool"
+
+#: templates/tools_over/tool-detail.html:125
+msgid "Fokus der Anwendung"
+msgstr "Focus of the application"
+
+#: templates/tools_over/tool-detail.html:129
+msgid "Ist das Tool veröffentlicht?"
+msgstr "Is the tool published?"
+
+#: templates/tools_over/tool-detail.html:131
+msgid "Ja"
+msgstr "Yes"
+
+#: templates/tools_over/tool-detail.html:139
+msgid "Ist eine Veröffentlichung geplant?"
+msgstr "Is a publication planned? (if not already done)"
+
+#: templates/tools_over/tool-detail.html:174
+msgid "Wichtigste Bibliotheken (bei Umsetzung genutzt)"
+msgstr "Most important libraries (used during implementation)"
+
+#: templates/tools_over/tool-detail.html:192
+msgid "Normen/ Standard (Basis/Orientierung des Tools)"
+msgstr "Norms/standard (basis/orientation of the tool)"
 
 #: templates/use_cases/explanation.html:4
 msgid "Wir gehen hier auf verschiedene Fragestellungen ein"
