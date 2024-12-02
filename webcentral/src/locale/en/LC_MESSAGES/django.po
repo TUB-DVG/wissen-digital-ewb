@@ -3174,7 +3174,7 @@ msgstr ""
 "encourage consideration of business model development as early as possible "
 "in order to support the efficient development of digital applications."
 
-#: templates/pages/copyright.html:31
+#: templates/pages/impressum.html:57
 msgid ""
 "\n"
 "              Der Herausgeber ist bestrebt, in allen Publikationen die "
@@ -3187,7 +3187,7 @@ msgstr ""
 "\n"
 "The publisher endeavors to observe the copyrights of the images, graphics, sound and video documents, and texts used in all publications; to use images, graphics, sound and video documents, and texts created by the publisher; or to use license-free graphics, sound and video documents, and texts."
 
-#: templates/pages/copyright.html:36
+#: templates/pages/impressum.html:62
 msgid ""
 "\n"
 "              Alle innerhalb des Internetangebotes genannten und ggf. durch "
@@ -3201,7 +3201,7 @@ msgstr ""
 "\n"
 "All brands and trademarks mentioned within the website and possibly protected by third parties are subject without restriction to the provisions of the applicable trademark law and the ownership rights of the respective registered owners. The fact alone that a trademark appears within a text does not imply that it is not protected by the rights of third parties!"
 
-#: templates/pages/copyright.html:41
+#: templates/pages/impressum.html:67
 msgid ""
 "\n"
 "              Das Copyright für veröffentlichte, vom Herausgeber selbst "
