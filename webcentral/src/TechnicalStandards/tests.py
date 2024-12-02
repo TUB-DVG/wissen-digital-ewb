@@ -128,7 +128,7 @@ class TestDataImport(TransactionTestCase):
 
         self._checkRegularField(allNorms[0], "image", "norm.jpg", None)
         self._checkRegularField(allNorms[0], "developmentState", 1, None)
-        
+
         self._checkRegularField(
             allNorms[0],
             "furtherInformation",
