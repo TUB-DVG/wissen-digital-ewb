@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-18 14:55+0000\n"
+"POT-Creation-Date: 2024-12-03 12:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -518,6 +518,34 @@ msgstr "Data sufficiency"
 msgid "2024-09-01"
 msgstr ""
 
+#: TechnicalStandards/dashApp/protocolToolChain.py:358
+msgid "Sankey Diagramm der Werkzeugketten"
+msgstr "Sankey diagram of tool chains"
+
+#: TechnicalStandards/dashApp/protocolToolChain.py:362
+msgid "Gleicher Gewichtungsfaktor für alle Projekte"
+msgstr "Equal weighting factor for all projects"
+
+#: TechnicalStandards/dashApp/protocolToolChain.py:364
+msgid "Gleicher Gewichtungsfaktor für alle Kombinationen"
+msgstr "Equal weighting factor for all combinations"
+
+#: TechnicalStandards/dashApp/protocolToolChain.py:371
+msgid "Transparenz"
+msgstr "Transparency"
+
+#: TechnicalStandards/dashApp/protocolToolChain.py:373
+msgid "Maximale Länge der Knotenbeschriftung"
+msgstr "Maximum label length"
+
+#: TechnicalStandards/dashApp/protocolToolChain.py:375
+msgid "Farbe der 'Keine Antwort ausgewählt' Knoten"
+msgstr "Color of 'None' nodes"
+
+#: TechnicalStandards/dashApp/protocolToolChain.py:379
+msgid "Diagramm aktualisieren"
+msgstr "Update diagram"
+
 #: TechnicalStandards/views.py:78
 #: templates/TechnicalStandards/norm-listings.html:4
 msgid "Überblick über technische Standards - Normen"
@@ -559,12 +587,22 @@ msgid "Protokolle"
 msgstr "protocols"
 
 #: TechnicalStandards/views.py:293
+#, fuzzy
+#| msgid ""
+#| "Auf dieser Seite befinden sich unterschiedlichen technische Normen, die "
+#| "im Herbst 2022 erfasst worden sind. Diese sind durch Recherche in "
+#| "Softwarekatalogen, Normendatenbanken und in Forschungsprojekten der "
+#| "Energiewendebauen Projekte erfasst worden."
 msgid ""
 "Auf dieser Seite befinden sich unterschiedliche technische Protokolle, die "
-"im Sommer 2023 erfasst worden sind."
+"im Sommer 2023 und Frühjahr 2024 erfasst worden sind. Zu sehen sind zudem "
+"die unterschiedlichen Werkzeugketten, in denen die Protokolle verwendet "
+"werden."
 msgstr ""
-"On this page, you will find various technical protocols that were recorded "
-"in the summer of 2023."
+"On this page, there are various technical standards that were recorded in "
+"the fall of 2022. These were collected through research in software "
+"catalogs, standards databases, and in research projects of the "
+"Energiewendebauen projects."
 
 #: TechnicalStandards/views.py:319 TechnicalStandards/views.py:321
 msgid "Verkabelt"
@@ -577,7 +615,7 @@ msgstr "Wireless"
 #: TechnicalStandards/views.py:327
 #: templates/TechnicalStandards/explanation.html:144
 #: templates/TechnicalStandards/protocol-detail.html:273
-#: templates/TechnicalStandards/protocol-explanation.html:54
+#: templates/TechnicalStandards/protocol-explanation.html:68
 msgid "Open-Source-Status"
 msgstr "Open-Source-status"
 
@@ -767,42 +805,42 @@ msgstr "Overview of protocols"
 
 #: common/views.py:266 templates/TechnicalStandards/explanation.html:138
 #: templates/TechnicalStandards/protocol-detail.html:71
-#: templates/TechnicalStandards/protocol-explanation.html:48
+#: templates/TechnicalStandards/protocol-explanation.html:62
 msgid "Unterstützte Übertragungsmedien"
 msgstr "Supported transmission media"
 
 #: common/views.py:271 templates/TechnicalStandards/explanation.html:141
 #: templates/TechnicalStandards/protocol-detail.html:80
-#: templates/TechnicalStandards/protocol-explanation.html:51
+#: templates/TechnicalStandards/protocol-explanation.html:65
 msgid "Zugehörige Standards"
 msgstr "Related standards"
 
 #: common/views.py:276 templates/TechnicalStandards/explanation.html:153
 #: templates/TechnicalStandards/protocol-detail.html:87
-#: templates/TechnicalStandards/protocol-explanation.html:63
+#: templates/TechnicalStandards/protocol-explanation.html:77
 msgid "Implementierte Sicherheitsmechanismen"
 msgstr "Implemented security mechanisms"
 
 #: common/views.py:281 templates/TechnicalStandards/explanation.html:156
 #: templates/TechnicalStandards/protocol-detail.html:95
-#: templates/TechnicalStandards/protocol-explanation.html:66
+#: templates/TechnicalStandards/protocol-explanation.html:80
 msgid "Bandbreite"
 msgstr "Bandwidth"
 
 #: common/views.py:286 templates/TechnicalStandards/explanation.html:159
 #: templates/TechnicalStandards/protocol-detail.html:103
-#: templates/TechnicalStandards/protocol-explanation.html:69
+#: templates/TechnicalStandards/protocol-explanation.html:83
 msgid "Frequenz"
 msgstr "Frequency"
 
 #: common/views.py:291 templates/TechnicalStandards/explanation.html:162
 #: templates/TechnicalStandards/protocol-detail.html:109
-#: templates/TechnicalStandards/protocol-explanation.html:72
+#: templates/TechnicalStandards/protocol-explanation.html:86
 msgid "Reichweite"
 msgstr "Range"
 
 #: common/views.py:296 templates/TechnicalStandards/explanation.html:171
-#: templates/TechnicalStandards/protocol-explanation.html:81
+#: templates/TechnicalStandards/protocol-explanation.html:95
 msgid "Datenmodell Architektur"
 msgstr "Data model architecture"
 
@@ -811,17 +849,17 @@ msgid "Multi Master"
 msgstr "Multi Master"
 
 #: common/views.py:306 templates/TechnicalStandards/explanation.html:180
-#: templates/TechnicalStandards/protocol-explanation.html:90
+#: templates/TechnicalStandards/protocol-explanation.html:104
 msgid "Priorität"
 msgstr "Priority"
 
 #: common/views.py:311 templates/TechnicalStandards/explanation.html:165
-#: templates/TechnicalStandards/protocol-explanation.html:75
+#: templates/TechnicalStandards/protocol-explanation.html:89
 msgid "Implementierte OSI-Schichten"
 msgstr "Implemented OSI-layer"
 
 #: common/views.py:316 templates/TechnicalStandards/explanation.html:168
-#: templates/TechnicalStandards/protocol-explanation.html:78
+#: templates/TechnicalStandards/protocol-explanation.html:92
 msgid "Ebenen der Gebäudeautomation"
 msgstr "Levels of building automation"
 
@@ -1878,7 +1916,7 @@ msgid "Name des Protokolls"
 msgstr "Name of the protocol"
 
 #: templates/TechnicalStandards/explanation.html:134
-#: templates/TechnicalStandards/protocol-explanation.html:44
+#: templates/TechnicalStandards/protocol-explanation.html:58
 msgid "Übertragungsmethoden"
 msgstr "transmission media"
 
@@ -1892,27 +1930,27 @@ msgstr ""
 "the system (wired, wireless or wired & wireless)?"
 
 #: templates/TechnicalStandards/explanation.html:138
-#: templates/TechnicalStandards/protocol-explanation.html:48
+#: templates/TechnicalStandards/protocol-explanation.html:62
 msgid "wie werden Signale übertragen?"
 msgstr "how are signals transmitted?"
 
 #: templates/TechnicalStandards/explanation.html:141
-#: templates/TechnicalStandards/protocol-explanation.html:51
+#: templates/TechnicalStandards/protocol-explanation.html:65
 msgid "spezifische Standards, denen jedes Protokoll zugeordnet werden kann."
 msgstr "specific standards to which each protocol can be assigned."
 
 #: templates/TechnicalStandards/explanation.html:144
-#: templates/TechnicalStandards/protocol-explanation.html:54
+#: templates/TechnicalStandards/protocol-explanation.html:68
 msgid "ist das Protokoll öffentlich und frei verfügbar?"
 msgstr "is the protocol public and freely available?"
 
 #: templates/TechnicalStandards/explanation.html:147
-#: templates/TechnicalStandards/protocol-explanation.html:57
+#: templates/TechnicalStandards/protocol-explanation.html:71
 msgid "Lizenzgebühr"
 msgstr "License fee"
 
 #: templates/TechnicalStandards/explanation.html:147
-#: templates/TechnicalStandards/protocol-explanation.html:57
+#: templates/TechnicalStandards/protocol-explanation.html:71
 msgid ""
 "ist eine Gebühr zur Abdeckung der Kosten für die Nutzung und/oder die "
 "Zertifizierung fällig?"
@@ -1920,12 +1958,12 @@ msgstr "Is there a fee to cover the costs of use and/or certification?"
 
 #: templates/TechnicalStandards/explanation.html:150
 #: templates/TechnicalStandards/protocol-detail.html:300
-#: templates/TechnicalStandards/protocol-explanation.html:60
+#: templates/TechnicalStandards/protocol-explanation.html:74
 msgid "Netzwerktopologie"
 msgstr "network topology"
 
 #: templates/TechnicalStandards/explanation.html:150
-#: templates/TechnicalStandards/protocol-explanation.html:60
+#: templates/TechnicalStandards/protocol-explanation.html:74
 msgid ""
 "was ist die physische und logische Anordnung von Geräten und Komponenten in "
 "einem Netzwerk?"
@@ -1934,7 +1972,7 @@ msgstr ""
 "network?"
 
 #: templates/TechnicalStandards/explanation.html:153
-#: templates/TechnicalStandards/protocol-explanation.html:63
+#: templates/TechnicalStandards/protocol-explanation.html:77
 msgid ""
 "ob und welche Mechanismen sind im Protokoll implementiert, um die "
 "Datensicherheit zu gewährleisten?"
@@ -1943,7 +1981,7 @@ msgstr ""
 "security?"
 
 #: templates/TechnicalStandards/explanation.html:156
-#: templates/TechnicalStandards/protocol-explanation.html:66
+#: templates/TechnicalStandards/protocol-explanation.html:80
 msgid ""
 "die Kapazität des Kommunikationskanals, Daten zwischen den verschiedenen "
 "Komponenten des Systems zu übertragen."
@@ -1952,7 +1990,7 @@ msgstr ""
 "various components of the system."
 
 #: templates/TechnicalStandards/explanation.html:159
-#: templates/TechnicalStandards/protocol-explanation.html:69
+#: templates/TechnicalStandards/protocol-explanation.html:83
 msgid ""
 "die Frequenz, die Wellenlänge oder die Trägerfrequenz, die von den "
 "drahtlosen Kommunikationsgeräten im System verwendet wird."
@@ -1961,7 +1999,7 @@ msgstr ""
 "communication devices in the system."
 
 #: templates/TechnicalStandards/explanation.html:162
-#: templates/TechnicalStandards/protocol-explanation.html:72
+#: templates/TechnicalStandards/protocol-explanation.html:86
 msgid ""
 "die maximale Entfernung, über die die Kommunikation zwischen den "
 "verschiedenen Geräten und Komponenten des Systems aufrechterhalten werden "
@@ -1972,7 +2010,7 @@ msgstr ""
 "becoming too weak."
 
 #: templates/TechnicalStandards/explanation.html:165
-#: templates/TechnicalStandards/protocol-explanation.html:75
+#: templates/TechnicalStandards/protocol-explanation.html:89
 msgid ""
 "die Anwendung der Schichten des OSI-Referenzmodells für die Kommunikation "
 "zwischen den verschiedenen Komponenten des Systems."
@@ -1981,12 +2019,12 @@ msgstr ""
 "between the various components of the system."
 
 #: templates/TechnicalStandards/explanation.html:168
-#: templates/TechnicalStandards/protocol-explanation.html:78
+#: templates/TechnicalStandards/protocol-explanation.html:92
 msgid "die hierarchische Struktur eines Gebäudeautomation Systems."
 msgstr "the hierarchical structure of a building automation system."
 
 #: templates/TechnicalStandards/explanation.html:171
-#: templates/TechnicalStandards/protocol-explanation.html:81
+#: templates/TechnicalStandards/protocol-explanation.html:95
 msgid "wie werden Informationen oder Attribute zu einem Objekt hinzugefügt?"
 msgstr "how do you add information or attributes to an object?"
 
@@ -2003,22 +2041,22 @@ msgstr ""
 "devices during data transfer?"
 
 #: templates/TechnicalStandards/explanation.html:177
-#: templates/TechnicalStandards/protocol-explanation.html:87
+#: templates/TechnicalStandards/protocol-explanation.html:101
 msgid "können mehrere Mastergeräte zeitgleich agieren?"
 msgstr "Can several master devices act at the same time?"
 
 #: templates/TechnicalStandards/explanation.html:180
-#: templates/TechnicalStandards/protocol-explanation.html:90
+#: templates/TechnicalStandards/protocol-explanation.html:104
 msgid "Vorgehen, wie die Änderungen oder Aktualisierungen vorgenommen werden."
 msgstr "Procedure for how the changes or updates are made."
 
 #: templates/TechnicalStandards/explanation.html:183
-#: templates/TechnicalStandards/protocol-explanation.html:93
+#: templates/TechnicalStandards/protocol-explanation.html:107
 msgid "Typische Anwendung"
 msgstr "Typical application"
 
 #: templates/TechnicalStandards/explanation.html:183
-#: templates/TechnicalStandards/protocol-explanation.html:93
+#: templates/TechnicalStandards/protocol-explanation.html:107
 msgid "ggf. Beispielhafte Anwendung."
 msgstr "If applicable, exemplary application."
 
@@ -2068,10 +2106,6 @@ msgstr ""
 #: templates/TechnicalStandards/norm-listings.html:58
 #: templates/TechnicalStandards/norm-listings.html:70
 #: templates/TechnicalStandards/norm-listings.html:82
-#: templates/TechnicalStandards/protocol-listings.html:38
-#: templates/TechnicalStandards/protocol-listings.html:50
-#: templates/TechnicalStandards/protocol-listings.html:62
-#: templates/TechnicalStandards/protocol-listings.html:74
 #: templates/datasets_over/dataset-listings.html:49
 #: templates/partials/search-bar.html:74
 #: templates/tools_over/tool-listings.html:37
@@ -2187,6 +2221,22 @@ msgid "Warum brauchen wir Protokolle in der Gebäudeautomation?"
 msgstr "Why do we need protocols in building automation?"
 
 #: templates/TechnicalStandards/protocol-explanation.html:24
+#, fuzzy
+#| msgid ""
+#| "Protokolle sind in der Gebäudeautomation unverzichtbar, da sie eine "
+#| "nahtlose\n"
+#| "          Kommunikation zwischen verschiedenen Geräten und Systemen "
+#| "innerhalb des Gebäudes \n"
+#| "          ermöglichen. In der Gebäudeautomation kommen oft Produkte "
+#| "verschiedener Hersteller \n"
+#| "          zum Einsatz, die möglicherweise proprietäre "
+#| "Kommunikationsmethoden verwenden. \n"
+#| "          Protokolle dienen als gemeinsame Sprache, die Interoperabilität "
+#| "gewährleistet \n"
+#| "          und Datensilos vermeidet. Gerade der umfängliche Datenaustausch "
+#| "in Echtzeit ermöglicht\n"
+#| "          schnelle Reaktionen auf veränderte Bedingungen und kann damit "
+#| "die Gesamteffizienz des Systems verbessern."
 msgid ""
 "Protokolle sind in der Gebäudeautomation unverzichtbar, da sie eine "
 "nahtlose\n"
@@ -2201,7 +2251,8 @@ msgid ""
 "          und Datensilos vermeidet. Gerade der umfängliche Datenaustausch in "
 "Echtzeit ermöglicht\n"
 "          schnelle Reaktionen auf veränderte Bedingungen und kann damit die "
-"Gesamteffizienz des Systems verbessern."
+"Gesamteffizienz des Systems verbessern. \n"
+"          "
 msgstr ""
 "Protocols are essential in building automation because they enable seamless "
 "communication between different devices and systems within the building. "
@@ -2211,12 +2262,43 @@ msgstr ""
 "exchange in real time in particular enables rapid reactions to changing "
 "conditions and can therefore Improve overall system efficiency."
 
-#: templates/TechnicalStandards/protocol-explanation.html:33
+#: templates/TechnicalStandards/protocol-explanation.html:35
+msgid "Welche Protokolle werden in welcher Kombination verwendet?"
+msgstr ""
+
+#: templates/TechnicalStandards/protocol-explanation.html:39
+msgid ""
+"Diese Protokolle sind in der Regel aber nur einer von vielen Bausteinen in "
+"einem Gebäudeautomations- oder Monitoring System.\n"
+"  Damit die Komplexität innerhalb einer Werkzeugkette sichtbar wird, haben "
+"wir im Frühjahr 2024 eine Befragung durchgeführt,\n"
+"  um die typischen Anwendungskombinationen für Protokolle zu erfassen. Die "
+"Protokolle werden in der Regel in Kombination mit einer oder mehreren der "
+"folgenden Komponenten verwendet:\n"
+"  Software für Monitoring und Analyse, Datenbanken für die Speicherung der "
+"Messdaten, Messkonzepte für die Strukturierung der Messdaten und Sensorik, "
+"Datenpunktschemata für die Strukturierung von (Meta-)Daten,\n"
+"  sowie Programmiersprachen, für die Analyse und Verknüpfung der Bausteine."
+msgstr ""
+
+#: templates/TechnicalStandards/protocol-explanation.html:47
+#, fuzzy
+#| msgid ""
+#| "Auf dieser Seite sind verschiedenen Protokolle,\n"
+#| "          die im Sommer 2023 erfasst worden sind, ausführlich "
+#| "beschrieben. Diese sind durch Recherche in der entsprechenden "
+#| "Fachliteratur, in\n"
+#| "          Dokumentationen von Hard- und Software, und in Unterlagen aus "
+#| "den Forschungsprojekten der Energiewendebauen\n"
+#| "           zusammengetragen worden. Wir haben 12 häufig verwendete und "
+#| "moderne Protokolle ausgewählt und für diese die\n"
+#| "           folgenden Eigenschaften zusammengefasst:"
 msgid ""
 "Auf dieser Seite sind verschiedenen Protokolle,\n"
-"          die im Sommer 2023 erfasst worden sind, ausführlich beschrieben. "
-"Diese sind durch Recherche in der entsprechenden Fachliteratur, in\n"
-"          Dokumentationen von Hard- und Software, und in Unterlagen aus den "
+"          die im Sommer 2023 und Frühjahr 2024 erfasst worden sind, "
+"ausführlich beschrieben. Diese sind durch Recherche in der entsprechenden "
+"Fachliteratur, in\n"
+"          Dokumentationen von Hard- und Software, und in Befragungen aus den "
 "Forschungsprojekten der Energiewendebauen\n"
 "           zusammengetragen worden. Wir haben 12 häufig verwendete und "
 "moderne Protokolle ausgewählt und für diese die\n"
@@ -2229,7 +2311,7 @@ msgstr ""
 "used and modern protocols and summarized the following characteristics for "
 "them:"
 
-#: templates/TechnicalStandards/protocol-explanation.html:44
+#: templates/TechnicalStandards/protocol-explanation.html:58
 msgid ""
 "wie werden Daten zwischen den\n"
 "              verschiedenen Komponenten und Geräten innerhalb des Systems "
@@ -2239,7 +2321,7 @@ msgstr ""
 "              different components and devices within the system (wired, "
 "wireless, or both wired & wireless)?"
 
-#: templates/TechnicalStandards/protocol-explanation.html:84
+#: templates/TechnicalStandards/protocol-explanation.html:98
 msgid ""
 "ob das Protokoll die „Discovery“ Funktion verfügt, um Geräte bei der "
 "Datenübertragungautomatisch zu identifizieren?"
@@ -5713,6 +5795,13 @@ msgstr "Free to use"
 #: weatherdata_over/views.py:98
 msgid "MIT-Lizenz"
 msgstr "MIT license"
+
+#~ msgid ""
+#~ "Auf dieser Seite befinden sich unterschiedliche technische Protokolle, "
+#~ "die im Sommer 2023 erfasst worden sind."
+#~ msgstr ""
+#~ "On this page, you will find various technical protocols that were "
+#~ "recorded in the summer of 2023."
 
 #~ msgid ""
 #~ "Sowohl die Materialisierung als auch der Energieaufwand für den Betrieb "
