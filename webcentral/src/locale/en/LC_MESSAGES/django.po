@@ -600,8 +600,8 @@ msgid ""
 "werden."
 msgstr ""
 "On this page, there are various technical standards that were recorded in "
-"the fall of 2022. These were collected through research in software "
-"catalogs, standards databases, and in research projects of the "
+"the summer of 2023 and spring of 2024. These were collected through research "
+"in software catalogs, standards databases, and in research projects of the "
 "Energiewendebauen projects."
 
 #: TechnicalStandards/views.py:319 TechnicalStandards/views.py:321
@@ -2264,7 +2264,7 @@ msgstr ""
 
 #: templates/TechnicalStandards/protocol-explanation.html:35
 msgid "Welche Protokolle werden in welcher Kombination verwendet?"
-msgstr ""
+msgstr "Which protocols are used in which combination?"
 
 #: templates/TechnicalStandards/protocol-explanation.html:39
 msgid ""
@@ -2279,7 +2279,15 @@ msgid ""
 "Messdaten, Messkonzepte für die Strukturierung der Messdaten und Sensorik, "
 "Datenpunktschemata für die Strukturierung von (Meta-)Daten,\n"
 "  sowie Programmiersprachen, für die Analyse und Verknüpfung der Bausteine."
-msgstr ""
+msgstr "These protocols are often only one component in a more complex "
+"toolchain. In order to make the complexity of a toolchain visible, we conducted "
+"a survey in the spring of 2024 to capture the typical application combinations "
+"for protocols. These protocols are often used in combination with the "
+"following components:\n"
+"  Software for monitoring and analysis, databases for storing measurement "
+"data, measurement concepts for structuring measurement data, data point "
+"schemas for structuring (meta-)data, and programming languages for analyzing "
+"and linking the building blocks."
 
 #: templates/TechnicalStandards/protocol-explanation.html:47
 #, fuzzy
@@ -2304,12 +2312,12 @@ msgid ""
 "moderne Protokolle ausgewählt und für diese die\n"
 "           folgenden Eigenschaften zusammengefasst:"
 msgstr ""
-"Various protocols that were recorded in summer 2023 are described in detail "
-"on the page. These were compiled through research in the relevant specialist "
-"literature, in documentation of hardware and software, and in documents from "
-"energy transition building research projects. We have selected 12 commonly "
-"used and modern protocols and summarized the following characteristics for "
-"them:"
+"Various protocols that were recorded in summer 2023 and spring 2024 are "
+"described in detail on the page. These were compiled through research in the "
+"relevant specialist literature, in documentation of hardware and software, "
+"energy transition building research projects, and surveys. We have selected 12 "
+"commonly used and modern protocols and summarized the following characteristics "
+"for them:"
 
 #: templates/TechnicalStandards/protocol-explanation.html:58
 msgid ""
