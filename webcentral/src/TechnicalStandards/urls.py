@@ -1,6 +1,7 @@
 from django.urls import path
 from .dashApp import protocolToolChain
 from . import views
+from protocols.views import *
 
 urlpatterns = [
     path("", views.index, name="TechnicalStandards"),
@@ -12,7 +13,7 @@ urlpatterns = [
     ),
     path(
         "comparison/",
-        views.protocolComparison,
+        protocolComparison,
         name="TechnicalStandards_protocol_comparison",
     ),
 ]
