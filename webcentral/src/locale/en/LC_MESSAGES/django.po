@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-02 13:18+0000\n"
+"POT-Creation-Date: 2024-12-03 13:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: Datasets/views.py:76
+msgid "Überblick über Datensätze"
+msgstr "Overview of datasets"
+
+#: Datasets/views.py:78
 #: Datasets/views.py:76
 msgid "Überblick über Datensätze"
 msgstr "Overview of datasets"
@@ -36,127 +41,174 @@ msgstr ""
 "transparency."
 
 #: Datasets/views.py:89 StartSearch/views.py:471
+#: Datasets/views.py:89 StartSearch/views.py:471
 msgid "Anwendungsfall"
 msgstr "Use case"
 
+#: Datasets/views.py:91
 #: Datasets/views.py:91
 msgid "Potential Erneuerbare Energie"
 msgstr "Renewable energy potential"
 
 #: Datasets/views.py:92
+#: Datasets/views.py:92
 msgid "Standardlastprofile"
 msgstr "Standard load profiles"
 
+#: Datasets/views.py:93
 #: Datasets/views.py:93
 msgid "Energiesystemmodell"
 msgstr "Energy system model"
 
 #: Datasets/views.py:94
+#: Datasets/views.py:94
 msgid "Infrastruktur Gas"
 msgstr "Gas Infrastructure"
 
 #: Datasets/views.py:95 Datasets/views.py:122
+#: Datasets/views.py:95 Datasets/views.py:122
 #: templates/LastProfile/explanation.html:111
 #: templates/LastProfile/explanation.html:179
 #: templates/partials/_navbar.html:58
-#: templates/partials/_navbar.html:58
-#: templates/start_search/start_search.html:171
+#: templates/start_search/start_search.html:171 weatherdata_over/views.py:173
 msgid "Wetterdaten"
 msgstr "Weather data"
 
+#: Datasets/views.py:96
 #: Datasets/views.py:96
 msgid "Wärmebedarf"
 msgstr "Heat demand"
 
 #: Datasets/views.py:97 Datasets/views.py:118
+#: Datasets/views.py:97 Datasets/views.py:118
 msgid "Zeitreihen"
 msgstr "Time series"
 
+#: Datasets/views.py:102
 #: Datasets/views.py:102
 msgid "Sonstiges"
 msgstr "Miscellaneous"
 
 #: Datasets/views.py:109 common/views.py:74 component_list/views.py:275
+#: Datasets/views.py:109 common/views.py:74 component_list/views.py:275
 #: templates/weatherdata_over/weatherdata-detail.html:215
+#: weatherdata_over/views.py:95
 #: weatherdata_over/views.py:95
 msgid "Kategorie"
 msgstr "Category"
 
 #: Datasets/views.py:111
+#: Datasets/views.py:111
 msgid "Übertragungsnetzentwicklungspläne"
 msgstr "Transmission network development plans"
 
+#: Datasets/views.py:112
 #: Datasets/views.py:112
 msgid "Gebäudebestandsentwicklung"
 msgstr "Building stock development"
 
 #: Datasets/views.py:113
+#: Datasets/views.py:113
 msgid "Standardlastprofile für Strom"
 msgstr "Standard load profiles for electricity"
 
+#: Datasets/views.py:114
 #: Datasets/views.py:114
 msgid "Digitales Geländemodell"
 msgstr "Digital terrain model"
 
 #: Datasets/views.py:115
+#: Datasets/views.py:115
 msgid "Gebäudegrundrisse"
 msgstr "Building floor plans"
 
+#: Datasets/views.py:116 templates/LastProfile/explanation.html:61
 #: Datasets/views.py:116 templates/LastProfile/explanation.html:61
 msgid "Gebäude"
 msgstr "Building"
 
 #: Datasets/views.py:116
+#: Datasets/views.py:116
 msgid "Modell"
 msgstr "Model"
 
+#: Datasets/views.py:117
 #: Datasets/views.py:117
 msgid "Gebäudetypologie"
 msgstr "Building typology"
 
 #: Datasets/views.py:119
+#: Datasets/views.py:119
 msgid "Gebäudebestand"
 msgstr "Building stock"
 
+#: Datasets/views.py:120
 #: Datasets/views.py:120
 msgid "Infrastruktur"
 msgstr "Infrastructure"
 
 #: Datasets/views.py:121
+#: Datasets/views.py:121
 msgid "Bedarfsdaten"
 msgstr "Demand data"
 
+#: Datasets/views.py:123
 #: Datasets/views.py:123
 msgid "Daten"
 msgstr "Data"
 
 #: Datasets/views.py:124
+#: Datasets/views.py:124
 msgid "Statistiken"
 msgstr "Statistics"
 
+#: Datasets/views.py:125
 #: Datasets/views.py:125
 msgid "Landnutzung"
 msgstr "land use"
 
 #: Datasets/views.py:126
+#: Datasets/views.py:126
 msgid "Datenbasis"
 msgstr "Database"
 
+#: Datasets/views.py:127
 #: Datasets/views.py:127
 msgid "Potential"
 msgstr "Potential"
 
 #: Datasets/views.py:128
+#: Datasets/views.py:128
 msgid "Löser"
 msgstr "Solver"
 
+#: Datasets/views.py:130
 #: Datasets/views.py:130
 msgid "Andere"
 msgstr "Others"
 
 #: Datasets/views.py:136 templates/datasets_over/explanation.html:28
+#: Datasets/views.py:136 templates/datasets_over/explanation.html:28
 msgid "Verfügbarkeit"
 msgstr "Availability"
+
+#: Datasets/views.py:150 TechnicalStandards/views.py:176
+#: weatherdata_over/views.py:117
+msgid "Anbieter"
+msgstr ""
+
+#: Datasets/views.py:152
+msgid "Abdeckung"
+msgstr "Covering"
+
+#: Datasets/views.py:153
+msgid "coverage"
+msgstr ""
+
+#: Datasets/views.py:177 templates/partials/_navbar.html:69
+#: templates/start_search/start_search.html:183 weatherdata_over/views.py:97
+msgid "Datensätze"
+msgstr "Datasets"
 
 #: Datasets/views.py:150 TechnicalStandards/views.py:176
 #: weatherdata_over/views.py:117
@@ -497,7 +549,6 @@ msgstr "Catalog of criteria"
 
 #: StartSearch/views.py:433 templates/pages/userEngagement.html:4
 #: templates/partials/_navbar.html:122
-#: templates/partials/_navbar.html:122
 #: templates/start_search/start_search.html:252 user_integration/views.py:14
 #: user_integration/views.py:36
 msgid "Nutzendenintegration"
@@ -515,8 +566,8 @@ msgid "2024-07-01"
 msgstr ""
 
 #: StartSearch/views.py:450 pages/views.py:304 pages/views.py:332
+#: StartSearch/views.py:450 pages/views.py:304 pages/views.py:332
 #: templates/pages/environmentalIntegrityPositiv.html:4
-#: templates/partials/_navbar.html:164
 #: templates/partials/_navbar.html:164
 #: templates/start_search/start_search.html:302
 msgid "Positive Umweltwirkungen"
@@ -524,8 +575,8 @@ msgstr "Positive environmental impacts"
 
 #: StartSearch/views.py:461 component_list/views.py:323
 #: component_list/views.py:370 pages/views.py:261
+#: component_list/views.py:370 pages/views.py:261
 #: templates/pages/environmentalIntegrityNegativ.html:4
-#: templates/partials/_navbar.html:158
 #: templates/partials/_navbar.html:158
 #: templates/start_search/start_search.html:292
 msgid "Negative Umweltwirkungen"
@@ -540,45 +591,11 @@ msgstr "Data sufficiency"
 msgid "2024-09-01"
 msgstr ""
 
-#: TechnicalStandards/dashApp/protocolToolChain.py:359
-#: TechnicalStandards/dashApp/protocolToolChain.py:449
-msgid "Sankey Diagramm der Werkzeugketten"
-msgstr "Sankey diagram of tool chains"
-
-#: TechnicalStandards/dashApp/protocolToolChain.py:364
-#: TechnicalStandards/dashApp/protocolToolChain.py:452
-msgid "Gleicher Gewichtungsfaktor für alle Projekte"
-msgstr "Equal weighting factor for all projects"
-
-#: TechnicalStandards/dashApp/protocolToolChain.py:369
-#: TechnicalStandards/dashApp/protocolToolChain.py:456
-msgid "Gleicher Gewichtungsfaktor für alle Kombinationen"
-msgstr "Equal weighting factor for all combinations"
-
-#: TechnicalStandards/dashApp/protocolToolChain.py:377
-#: TechnicalStandards/dashApp/protocolToolChain.py:460
-msgid "Transparenz"
-msgstr "Transparency"
-
-#: TechnicalStandards/dashApp/protocolToolChain.py:380
-#: TechnicalStandards/dashApp/protocolToolChain.py:461
-msgid "Maximale Länge der Knotenbeschriftung"
-msgstr "Maximum label length"
-
-#: TechnicalStandards/dashApp/protocolToolChain.py:385
-#: TechnicalStandards/dashApp/protocolToolChain.py:462
-msgid "Farbe der 'Keine Antwort ausgewählt' Knoten"
-msgstr "Color of 'None' nodes"
-
-#: TechnicalStandards/dashApp/protocolToolChain.py:392
-#: TechnicalStandards/dashApp/protocolToolChain.py:463
-msgid "Diagramm aktualisieren"
-msgstr "Update diagram"
-
 #: TechnicalStandards/views.py:77
 msgid "Überblick über technische Standards - Normen"
 msgstr "Overview of technical standards - Norms"
 
+#: TechnicalStandards/views.py:79
 #: TechnicalStandards/views.py:79
 msgid ""
 "Auf dieser Seite befinden sich unterschiedlichen technische Normen, die im "
@@ -590,6 +607,7 @@ msgstr ""
 "autumn 2022. These were recorded through research in software catalogs, "
 "standards databases and in energy transition building research projects."
 
+#: TechnicalStandards/views.py:87
 #: TechnicalStandards/views.py:87
 msgid "Bezeichnung"
 msgstr "Designation"
@@ -604,11 +622,27 @@ msgstr "Designation"
 #: weatherdata_over/views.py:104 weatherdata_over/views.py:119
 msgid "Lizenz"
 msgstr "License"
+#: TechnicalStandards/views.py:178 common/views.py:211
+#: templates/partials/left_column_details_page_technical_focus.html:28
+#: templates/tools_over/details_right_column.html:19
+#: templates/tools_over/explanationApps.html:63
+#: templates/tools_over/explanationTools.html:59
+#: templates/weatherdata_over/explanation.html:24
+#: templates/weatherdata_over/weatherdata-detail.html:229
+#: weatherdata_over/views.py:104 weatherdata_over/views.py:119
+msgid "Lizenz"
+msgstr "License"
 
+#: TechnicalStandards/views.py:179 weatherdata_over/views.py:120
+msgid "license__license"
 #: TechnicalStandards/views.py:179 weatherdata_over/views.py:120
 msgid "license__license"
 msgstr ""
 
+#: TechnicalStandards/views.py:219
+#: templates/TechnicalStandards/explanation.html:55
+msgid "Normen"
+msgstr "Norms"
 #: TechnicalStandards/views.py:219
 #: templates/TechnicalStandards/explanation.html:55
 msgid "Normen"
@@ -641,6 +675,17 @@ msgstr ""
 "exploitation. The challenges associated with business model development, "
 "which projects of the research initiative Energiewendebauen are confronted "
 "with, have been systematically addressed and are presented here."
+
+#: common/models.py:500
+#, fuzzy
+#| msgid "Veröffentlichungen"
+msgid "Veröffentlichungskandidat"
+msgstr "Publications"
+
+#: common/models.py:501 templates/tools_over/explanationApps.html:85
+#: templates/tools_over/explanationTools.html:81
+msgid "Veröffentlicht"
+msgstr "Published"
 
 #: common/models.py:500
 #, fuzzy
@@ -712,6 +757,7 @@ msgid "Quellen"
 msgstr "Sources"
 
 #: common/views.py:148 component_list/views.py:154 pages/views.py:271
+#: common/views.py:148 component_list/views.py:154 pages/views.py:271
 #: templates/component_list/components.html:4
 msgid "Aufwände für verwendete Komponenten"
 msgstr "Effort for used components"
@@ -724,11 +770,17 @@ msgstr "Attribute"
 #: templates/protocols/details_right_column.html:13
 #: templates/tools_over/details_right_column.html:9
 #: templates/tools_over/explanationApps.html:27
+#: common/views.py:169 templates/datasets_over/details_right_column.html:11
+#: templates/protocols/details_right_column.html:13
+#: templates/tools_over/details_right_column.html:9
+#: templates/tools_over/explanationApps.html:27
 #: templates/tools_over/explanationTools.html:23
+#: templates/weatherdata_over/details_right_column.html:11
 #: templates/weatherdata_over/details_right_column.html:11
 msgid "Einsatzbereich"
 msgstr "Area of application"
 
+#: common/views.py:174 templates/tools_over/details_right_column.html:11
 #: common/views.py:174 templates/tools_over/details_right_column.html:11
 msgid "Verwendung"
 msgstr "Applications"
@@ -737,9 +789,17 @@ msgstr "Applications"
 #: templates/partials/left_column_details_page_technical_focus.html:34
 #: templates/tools_over/explanationApps.html:37
 #: templates/tools_over/explanationTools.html:33 tools_over/views.py:344
+#: common/views.py:179
+#: templates/partials/left_column_details_page_technical_focus.html:34
+#: templates/tools_over/explanationApps.html:37
+#: templates/tools_over/explanationTools.html:33 tools_over/views.py:344
 msgid "Lebenszyklusphase"
 msgstr "Life cycle phase"
 
+#: common/views.py:184
+#: templates/partials/left_column_details_page_technical_focus.html:22
+#: templates/partials/left_column_details_page_technical_focus.html:40
+#: templates/tools_over/explanationApps.html:47
 #: common/views.py:184
 #: templates/partials/left_column_details_page_technical_focus.html:22
 #: templates/partials/left_column_details_page_technical_focus.html:40
@@ -755,6 +815,9 @@ msgstr "User interface"
 #: common/views.py:195
 #: templates/partials/left_column_details_page_technical_focus.html:37
 #: templates/tools_over/explanationApps.html:124
+#: common/views.py:195
+#: templates/partials/left_column_details_page_technical_focus.html:37
+#: templates/tools_over/explanationApps.html:124
 #: templates/tools_over/explanationTools.html:122
 msgid "Räumliche Größenordnung der Anwendungsfälle"
 msgstr "Spatial scale of use cases"
@@ -763,9 +826,14 @@ msgstr "Spatial scale of use cases"
 #: templates/partials/left_column_details_page_technical_focus.html:52
 #: templates/tools_over/explanationApps.html:59
 #: templates/tools_over/explanationTools.html:55 tools_over/views.py:338
+#: common/views.py:201
+#: templates/partials/left_column_details_page_technical_focus.html:52
+#: templates/tools_over/explanationApps.html:59
+#: templates/tools_over/explanationTools.html:55 tools_over/views.py:338
 msgid "Zugänglichkeit"
 msgstr "Accessibility"
 
+#: common/views.py:206
 #: common/views.py:206
 msgid "Programmiersprache (Umsetzung)"
 msgstr "Programming language (implementation)"
@@ -773,10 +841,14 @@ msgstr "Programming language (implementation)"
 #: common/views.py:216
 #: templates/partials/left_column_details_page_technical_focus.html:46
 #: templates/tools_over/explanationApps.html:101
+#: common/views.py:216
+#: templates/partials/left_column_details_page_technical_focus.html:46
+#: templates/tools_over/explanationApps.html:101
 #: templates/tools_over/explanationTools.html:97
 msgid "Entwicklungsstand"
 msgstr "Level of development"
 
+#: common/views.py:226 templates/tools_over/details_right_column.html:29
 #: common/views.py:226 templates/tools_over/details_right_column.html:29
 msgid "Veröffentlichungsjahr"
 msgstr "Year of publication"
@@ -801,38 +873,38 @@ msgid "Übersicht über Protokolle"
 msgstr "Overview of protocols"
 
 #: common/views.py:266 templates/TechnicalStandards/explanation.html:138
-#: templates/TechnicalStandards/protocol-explanation.html:62
+#: templates/TechnicalStandards/protocol-explanation.html:48
 #: templates/protocols/details_right_column.html:24
 msgid "Unterstützte Übertragungsmedien"
 msgstr "Supported transmission media"
 
 #: common/views.py:271 templates/TechnicalStandards/explanation.html:141
-#: templates/TechnicalStandards/protocol-explanation.html:65
+#: templates/TechnicalStandards/protocol-explanation.html:51
 #: templates/protocols/details_right_column.html:30
 msgid "Zugehörige Standards"
 msgstr "Related standards"
 
 #: common/views.py:276 templates/TechnicalStandards/explanation.html:153
-#: templates/TechnicalStandards/protocol-explanation.html:77
+#: templates/TechnicalStandards/protocol-explanation.html:63
 #: templates/protocols/details_right_column.html:34
 msgid "Implementierte Sicherheitsmechanismen"
 msgstr "Implemented security mechanisms"
 
 #: common/views.py:281 templates/TechnicalStandards/explanation.html:156
-#: templates/TechnicalStandards/protocol-explanation.html:80
+#: templates/TechnicalStandards/protocol-explanation.html:66
 #: templates/protocols/details_right_column.html:37
 msgid "Bandbreite"
 msgstr "Bandwidth"
 
 #: common/views.py:286 templates/TechnicalStandards/explanation.html:159
-#: templates/TechnicalStandards/protocol-explanation.html:83
+#: templates/TechnicalStandards/protocol-explanation.html:69
 #: templates/protocols/details_right_column.html:40
 msgid "Frequenz"
 msgstr "Frequency"
 
 #: common/views.py:291 protocols/views.py:88
 #: templates/TechnicalStandards/explanation.html:162
-#: templates/TechnicalStandards/protocol-explanation.html:86
+#: templates/TechnicalStandards/protocol-explanation.html:72
 #: templates/protocols/details_right_column.html:43
 msgid "Reichweite"
 msgstr "Range"
@@ -908,6 +980,11 @@ msgstr ""
 msgid "Quelle"
 msgstr "Source"
 
+#: component_list/views.py:183 templates/TechnicalStandards/explanation.html:79
+#: templates/TechnicalStandards/norm-explanation.html:21
+msgid "Quelle"
+msgstr "Source"
+
 #: component_list/views.py:190
 msgid "Energieverbrauch Nutzungsphase (gesamt; in kWh/Jahr)"
 msgstr "Energy consumption usage phase (total; in kWh/year)"
@@ -949,9 +1026,11 @@ msgid "Zu den Aufwänden für Datenverarbeitungsprozesse"
 msgstr "Expenditure for data processing procedures"
 
 #: component_list/views.py:333 pages/views.py:289
+#: component_list/views.py:333 pages/views.py:289
 msgid "Die Daten-Wertschöpfungkette"
 msgstr "The data value chain"
 
+#: component_list/views.py:365 component_list/views.py:402 pages/views.py:284
 #: component_list/views.py:365 component_list/views.py:402 pages/views.py:284
 #: templates/partials/dataProcessingLeftColumn.html:3
 msgid "Aufwände für Datenverarbeitungsprozesse"
@@ -966,6 +1045,7 @@ msgstr "To Effort for used components"
 msgid "Zurück"
 msgstr "Back"
 
+#: pages/views.py:50
 #: pages/views.py:50
 msgid ""
 "Der Fokus in einem Forschungsprojekt liegt häufig in einem innovativen "
@@ -992,9 +1072,11 @@ msgstr ""
 "the development from prototype to business model."
 
 #: pages/views.py:61
+#: pages/views.py:61
 msgid "Herausforderungen bei der Entwicklung und Umsetzung"
 msgstr "Challenges in development and implementation"
 
+#: pages/views.py:64
 #: pages/views.py:64
 msgid ""
 "Bei der Umsetzung von Prototypen digitaler Anwendungen in ein "
@@ -1013,9 +1095,11 @@ msgstr ""
 "and possible solutions provides assistance in this regard."
 
 #: pages/views.py:76
+#: pages/views.py:76
 msgid "Anwendungen zur Entwicklung von Geschäftsmodellen"
 msgstr "Applications for the development of business models"
 
+#: pages/views.py:79
 #: pages/views.py:79
 msgid ""
 "Die Entwicklung erfolgreicher Geschäftsmodelle erfordert die "
@@ -1033,6 +1117,7 @@ msgstr ""
 "tools for the development or improvement of business models provides "
 "assistance in this regard."
 
+#: pages/views.py:101
 #: pages/views.py:101
 msgid ""
 "<p>Die Nutzendenintegration beschreibt die direkte oder indirekte "
@@ -1053,6 +1138,7 @@ msgstr ""
 "digital applications.</p>"
 
 #: pages/views.py:104
+#: pages/views.py:104
 msgid ""
 "<p>Nutzendenintegration <b>erhöht die Gebrauchstauglichkeit bzw. "
 "Nutzendenfreundlichkeit – oder kurz: die Usability – digitaler Anwendungen</"
@@ -1069,6 +1155,7 @@ msgstr ""
 "oriented manner.</p>"
 
 #: pages/views.py:107
+#: pages/views.py:107
 msgid ""
 "<p>Maßnahmen wie die Nutzendenintegration, die für eine gute Usability vor "
 "der Markteinführung einer digitalen Anwendung sorgen, erhöhen die "
@@ -1080,6 +1167,7 @@ msgstr ""
 "the effort required for maintenance or upkeep of the application, and "
 "thereby save costs to a significant extent.</p>"
 
+#: pages/views.py:110
 #: pages/views.py:110
 msgid ""
 "<p>Die Methoden der Nutzendenintegration können nach <b>Methoden der "
@@ -1112,6 +1200,7 @@ msgstr ""
 "for representative statements to be made.</p>"
 
 #: pages/views.py:113
+#: pages/views.py:113
 msgid ""
 "<p>Auf dieser Wissensplattform werden <b>12 bewährte Methoden der "
 "Nutzendenintegration</b> mit ihren jeweiligen Zielstellungen, Abläufen sowie "
@@ -1130,6 +1219,7 @@ msgstr ""
 "used in other phases as well.</p>"
 
 #: pages/views.py:116
+#: pages/views.py:116
 msgid ""
 "<h6 style=\"font-size: 22px\">Methoden der Nutzendenintegration für die "
 "Analysephase vor Beginn der Anwendungsentwicklung</h6>"
@@ -1138,21 +1228,26 @@ msgstr ""
 "Phase Before the Start of Application Development</h6>"
 
 #: pages/views.py:118
+#: pages/views.py:118
 msgid "Teilnehmende Beobachtung"
 msgstr "Participant observation"
 
+#: pages/views.py:119
 #: pages/views.py:119
 msgid "Einzel-Interview"
 msgstr "Individual interview"
 
 #: pages/views.py:141
+#: pages/views.py:141
 msgid "Gruppen-Interview/Fokusgruppe"
 msgstr "Group interview/focus group"
 
 #: pages/views.py:146
+#: pages/views.py:146
 msgid "Personas"
 msgstr "Personas"
 
+#: pages/views.py:153
 #: pages/views.py:153
 msgid ""
 "Methoden der Nutzendenintegration für die Konzeptionsphase zu Beginn der "
@@ -1162,17 +1257,21 @@ msgstr ""
 "Application Development"
 
 #: pages/views.py:160
+#: pages/views.py:160
 msgid "A/B-Test"
 msgstr "A/B testing"
 
+#: pages/views.py:165
 #: pages/views.py:165
 msgid "Prototyping"
 msgstr "Prototyping"
 
 #: pages/views.py:175
+#: pages/views.py:175
 msgid "Styleguide"
 msgstr "Style Guide"
 
+#: pages/views.py:182
 #: pages/views.py:182
 msgid ""
 "Methoden der Nutzendenintegration für die Umsetzungs- und Evaluationsphase "
@@ -1182,29 +1281,36 @@ msgstr ""
 "During and After Application Development"
 
 #: pages/views.py:189
+#: pages/views.py:189
 msgid "Lautes Denken"
 msgstr "Thinking aloud"
 
+#: pages/views.py:194
 #: pages/views.py:194
 msgid "Eyetracking"
 msgstr "Eye tracking"
 
 #: pages/views.py:199
+#: pages/views.py:199
 msgid "Heuristische Evaluation"
 msgstr "Heuristic evaluation"
 
+#: pages/views.py:204
 #: pages/views.py:204
 msgid "Usability-Befragung"
 msgstr "Usability survey"
 
 #: pages/views.py:216
+#: pages/views.py:216
 msgid "Methoden der Nutzendenintegration"
 msgstr "Methods for user integration"
 
 #: pages/views.py:225
+#: pages/views.py:225
 msgid "Methoden zur Nutzendenintegration"
 msgstr "Methods for user integration"
 
+#: pages/views.py:227
 #: pages/views.py:227
 msgid ""
 "Entscheidender Erfolgsfaktor für Nutzen und Nutzung digitaler Produkte ist "
@@ -1224,9 +1330,11 @@ msgstr ""
 "observations, and personas."
 
 #: pages/views.py:247
+#: pages/views.py:247
 msgid "Digitale Anwendungen zeichnen sich oftmals durch"
 msgstr "Digital applications often have "
 
+#: pages/views.py:256
 #: pages/views.py:256
 msgid ""
 " aus. Sie können sich jedoch auch negativ auf die Umwelt auswirken bzw. sie "
@@ -1263,6 +1371,7 @@ msgstr ""
 "\"efforts for frequently used components.\""
 
 #: pages/views.py:273
+#: pages/views.py:273
 msgid ""
 "Die Implementierung einer digitalen Anwendung in bspw. Gebäuden ist in der "
 "Regel mit einem Energie- und Ressourcenaufwand für die Hardwarekomponenten "
@@ -1287,9 +1396,11 @@ msgstr ""
 "overview of hardware-related environmental impacts."
 
 #: pages/views.py:277
+#: pages/views.py:277
 msgid "Backbone der Daten-Wertschöpfungskette (Fokus Betriebsoptimierung)"
 msgstr "Backbone of the data value chain (focus on operational optimization)"
 
+#: pages/views.py:286
 #: pages/views.py:286
 msgid ""
 "Bei der Nutzung digitaler Technologien für den Einsatz in Gebäuden und "
@@ -1308,6 +1419,7 @@ msgstr ""
 "use of the corresponding data infrastructure are explained in more detail "
 "here. Simple estimates based on data volume are also made."
 
+#: pages/views.py:307
 #: pages/views.py:307
 msgid ""
 "Die Reduktion des Energiebedarfs und der CO<sub>2</sub>-Emissionen von "
@@ -1350,6 +1462,7 @@ msgid "Datensuffizienz"
 msgstr "Data sufficiency"
 
 #: pages/views.py:353
+#: pages/views.py:353
 msgid ""
 "Sowohl die Materialisierung als auch der Energieaufwand für den Betrieb "
 "immer größer werdender Rechenkapazitäten sind mit negativen Umweltwirkungen "
@@ -1370,6 +1483,7 @@ msgstr ""
 "impacts of (in-)sufficient data handling are still under-researched and "
 "often remain overlooked in practice."
 
+#: pages/views.py:392
 #: pages/views.py:392
 msgid ""
 "Beim Einsatz digitaler Anwendungen im Gebäude- und Quartierssektor\n"
@@ -1451,18 +1565,22 @@ msgstr ""
 "organizational protective measures."
 
 #: pages/views.py:427
+#: pages/views.py:427
 msgid "Effiziente Datenminimierung im Gebäude- und Quartierssektor"
 msgstr "Efficient data minimization in the building and district sector"
 
+#: pages/views.py:435
 #: pages/views.py:435
 msgid "Sammlung von Leitfäden, Literatur und Gerichtsentscheidungen"
 msgstr "Collection of guidelines, literature and court decisions"
 
 #: pages/views.py:442 pages/views.py:443
+#: pages/views.py:442 pages/views.py:443
 #: templates/partials/privacy_overview_left_column.html:4
 msgid "Datenschutzübersicht"
 msgstr "Privacy overview"
 
+#: pages/views.py:457
 #: pages/views.py:457
 msgid ""
 "Icons können auch im Gebäude- und Quartiersbereich die grafische\n"
@@ -1536,14 +1654,10 @@ msgstr "protocols"
 #: protocols/views.py:85
 msgid ""
 "Auf dieser Seite befinden sich unterschiedliche technische Protokolle, die "
-"im Sommer 2023 und Frühjahr 2024 erfasst worden sind. Zu sehen sind zudem "
-"die unterschiedlichen Werkzeugketten, in denen die Protokolle verwendet "
-"werden."
+"im Sommer 2023 erfasst worden sind."
 msgstr ""
-"On this page, there are various technical standards that were recorded in "
-"the summer of 2023 and spring of 2024. These were collected through research "
-"in software catalogs, standards databases, and in research projects of the "
-"Energiewendebauen projects."
+"On this page, you will find various technical protocols that were recorded "
+"in the summer of 2023."
 
 #: protocols/views.py:113 protocols/views.py:115
 msgid "Verkabelt"
@@ -1554,7 +1668,7 @@ msgid "Drahtlos"
 msgstr "Wireless"
 
 #: protocols/views.py:121 templates/TechnicalStandards/explanation.html:144
-#: templates/TechnicalStandards/protocol-explanation.html:68
+#: templates/TechnicalStandards/protocol-explanation.html:54
 msgid "Open-Source-Status"
 msgstr "Open-Source-status"
 
@@ -1599,7 +1713,6 @@ msgstr ""
 msgid "Überblick über den Lastprofilgenerator"
 msgstr "Overview of the load profile generator"
 
-#: templates/LastProfile/explanation.html:23 templates/partials/_navbar.html:63
 #: templates/LastProfile/explanation.html:23 templates/partials/_navbar.html:63
 #: templates/start_search/start_search.html:195
 msgid "Lastprofile"
@@ -1653,6 +1766,7 @@ msgstr ""
 
 #: templates/LastProfile/explanation.html:61
 #: templates/tools_over/explanationApps.html:32
+#: templates/tools_over/explanationTools.html:28 tools_over/views.py:332
 #: templates/tools_over/explanationTools.html:28 tools_over/views.py:332
 msgid "Nutzung"
 msgstr "Use type"
@@ -1790,8 +1904,20 @@ msgstr "Title"
 msgid "Kurzbeschreibung"
 msgstr "Short description"
 
+#: templates/TechnicalStandards/details_right_column.html:3
+msgid "Titel"
+msgstr "Title"
+
+#: templates/TechnicalStandards/details_right_column.html:7
+#: templates/TechnicalStandards/explanation.html:76
+#: templates/TechnicalStandards/norm-explanation.html:18
+#: templates/tools_over/explanationApps.html:23
+#: templates/tools_over/explanationTools.html:19
+#: templates/weatherdata_over/explanation.html:15
+msgid "Kurzbeschreibung"
+msgstr "Short description"
+
 #: templates/TechnicalStandards/explanation.html:16
-#: templates/partials/_navbar.html:53
 #: templates/partials/_navbar.html:53
 #: templates/start_search/start_search.html:159
 msgid "Technische Standards"
@@ -2010,7 +2136,7 @@ msgid ""
 msgstr "Is there a fee to cover the costs of use and/or certification?"
 
 #: templates/TechnicalStandards/explanation.html:150
-#: templates/TechnicalStandards/protocol-explanation.html:74
+#: templates/TechnicalStandards/protocol-explanation.html:60
 msgid "Netzwerktopologie"
 msgstr "Network topology"
 
@@ -2263,8 +2389,8 @@ msgid ""
 "              verschiedenen Komponenten und Geräten innerhalb des Systems "
 "übertragen (verkabelt, drahtlos oder verkabelt & drahtlos)?"
 msgstr ""
-"How is data transmitted between the various components "
-"and devices within the system (wired, wireless or wired & wireless)?"
+"How is data transmitted between the various components and devices within "
+"the system (wired, wireless or wired & wireless)?"
 
 #: templates/TechnicalStandards/protocol-explanation.html:98
 msgid ""
@@ -2275,7 +2401,6 @@ msgstr ""
 "devices during data transfer?"
 
 #: templates/admin/publications/import_bibtex.html:14
-#: templates/admin/tools_over/history/change_form.html:30
 #: templates/admin/tools_over/history/change_form.html:30
 msgid "Home"
 msgstr ""
@@ -2308,20 +2433,9 @@ msgstr ""
 
 #: templates/admin/publications/publication_change_list.html:15
 #: templates/admin/tools_over/history/change_form.html:40
-#: templates/admin/tools_over/history/change_form.html:40
 #, python-format
 msgid "Add %(name)s"
 msgstr ""
-
-#: templates/admin/tools_over/history/change_form.html:6
-msgid "Error:"
-msgstr ""
-
-#: templates/admin/tools_over/history/change_form.html:81
-msgid "Please correct the error below."
-msgid_plural "Please correct the errors below."
-msgstr[0] ""
-msgstr[1] ""
 
 #: templates/admin/tools_over/history/change_form.html:6
 msgid "Error:"
@@ -2442,14 +2556,13 @@ msgstr ""
 "personal data and aims to reduce the risk to the rights and freedoms of "
 "natural persons. The term data minimization from the GDPR replaces the terms "
 "data economy and data avoidance previously used in the Federal Data "
-"Protection Act (§3a BDSG)."
-"This distinguishes data sufficiency from the legal concept of data "
-"minimization. The latter is a data protection principle defined in Article "
-"5, Section 1(c) of the General Data Protection Regulation (GDPR) for "
-"personal data and aims to reduce the risk to the rights and freedoms of "
-"natural persons. The term data minimization from the GDPR replaces the terms "
-"data economy and data avoidance previously used in the Federal Data "
-"Protection Act (§3a BDSG)."
+"Protection Act (§3a BDSG).This distinguishes data sufficiency from the legal "
+"concept of data minimization. The latter is a data protection principle "
+"defined in Article 5, Section 1(c) of the General Data Protection Regulation "
+"(GDPR) for personal data and aims to reduce the risk to the rights and "
+"freedoms of natural persons. The term data minimization from the GDPR "
+"replaces the terms data economy and data avoidance previously used in the "
+"Federal Data Protection Act (§3a BDSG)."
 
 #: templates/data_sufficiency/explanation.html:9
 msgid ""
@@ -2464,12 +2577,11 @@ msgstr ""
 "extensive, unnecessary data processing, data sufficiency aims to minimize "
 "the ecological impacts of collecting, processing, and storing extensive, "
 "unnecessary data. To clarify the distinction from the legal term, different "
-"terminology is used."
-"While data minimization prevents risks to fundamental rights caused by "
-"extensive, unnecessary data processing, data sufficiency aims to minimize "
-"the ecological impacts of collecting, processing, and storing extensive, "
-"unnecessary data. To clarify the distinction from the legal term, different "
-"terminology is used."
+"terminology is used.While data minimization prevents risks to fundamental "
+"rights caused by extensive, unnecessary data processing, data sufficiency "
+"aims to minimize the ecological impacts of collecting, processing, and "
+"storing extensive, unnecessary data. To clarify the distinction from the "
+"legal term, different terminology is used."
 
 #: templates/data_sufficiency/explanation.html:12
 msgid ""
@@ -2491,10 +2603,10 @@ msgstr ""
 "sufficiency should be considered during development with a view to the later "
 "usage phase. When digital solutions developed in research projects are "
 "brought to market, the dissemination of data-efficient technologies can "
-"create ecological benefits through economies of scale."
-"usage phase. When digital solutions developed in research projects are "
-"brought to market, the dissemination of data-efficient technologies can "
-"create ecological benefits through economies of scale."
+"create ecological benefits through economies of scale.usage phase. When "
+"digital solutions developed in research projects are brought to market, the "
+"dissemination of data-efficient technologies can create ecological benefits "
+"through economies of scale."
 
 #: templates/data_sufficiency/explanation.html:15
 msgid ""
@@ -2502,10 +2614,14 @@ msgid ""
 "und auf die ökologischen Wirkungen beim Umgang mit Daten hingewiesen."
 msgstr ""
 "The following presents strategies for sufficient data handling and "
-"highlights the ecological impacts of data management."
-"The following presents strategies for sufficient data handling and "
-"highlights the ecological impacts of data management."
+"highlights the ecological impacts of data management.The following presents "
+"strategies for sufficient data handling and highlights the ecological "
+"impacts of data management."
 
+#: templates/datasets_over/details_right_column.html:4
+#: templates/protocols/details_right_column.html:4
+#: templates/tools_over/details_right_column.html:4
+#: templates/weatherdata_over/details_right_column.html:4
 #: templates/datasets_over/details_right_column.html:4
 #: templates/protocols/details_right_column.html:4
 #: templates/tools_over/details_right_column.html:4
@@ -2514,6 +2630,12 @@ msgstr ""
 msgid "Was ist"
 msgstr "What is"
 
+#: templates/datasets_over/details_right_column.html:8
+#: templates/protocols/details_right_column.html:8
+#: templates/tools_over/details_right_column.html:7
+#: templates/weatherdata_over/details_right_column.html:8
+msgid "weitere Informationen"
+msgstr "Further information"
 #: templates/datasets_over/details_right_column.html:8
 #: templates/protocols/details_right_column.html:8
 #: templates/tools_over/details_right_column.html:7
@@ -2574,6 +2696,10 @@ msgid ""
 "Welcher Kategorie kann das Datenset zugeordnet\n"
 "            werden."
 msgstr "Which category can the data set be assigned to?"
+
+#: templates/datasets_over/explanation.html:23
+msgid "Anwendungsbereich"
+msgstr "Scope"
 
 #: templates/datasets_over/explanation.html:23
 msgid "Anwendungsbereich"
@@ -3226,42 +3352,52 @@ msgid "Für welchen Zweck möchtest du Daten verarbeiten?"
 msgstr "For what purpose do you want to process data?"
 
 #: templates/pages/environmentalIntegrityLeftColumn.html:5
+#: templates/pages/environmentalIntegrityLeftColumn.html:5
 msgid "Förderkennzeichen"
 msgstr "Funding code"
 
+#: templates/pages/environmentalIntegrityLeftColumn.html:18
 #: templates/pages/environmentalIntegrityLeftColumn.html:18
 msgid "Laufzeit"
 msgstr "Duration"
 
 #: templates/pages/environmentalIntegrityLeftColumn.html:21
+#: templates/pages/environmentalIntegrityLeftColumn.html:21
 msgid "Partner"
 msgstr "Partners"
 
+#: templates/pages/environmentalIntegrityLeftColumn.html:24
 #: templates/pages/environmentalIntegrityLeftColumn.html:24
 msgid "Projektwebseite"
 msgstr "Project website"
 
 #: templates/pages/environmentalIntegrityLeftColumn.html:28
+#: templates/pages/environmentalIntegrityLeftColumn.html:28
 msgid "Konsortium"
 msgstr "Consortium"
 
+#: templates/pages/environmentalIntegrityLeftColumn.html:33
 #: templates/pages/environmentalIntegrityLeftColumn.html:33
 msgid "Weitere"
 msgstr "Further"
 
 #: templates/pages/environmentalIntegrityLeftColumn.html:37
+#: templates/pages/environmentalIntegrityLeftColumn.html:37
 msgid "Digitale Anwendung(en)"
 msgstr "Digital applications"
 
+#: templates/pages/environmentalIntegrityLeftColumn.html:40
 #: templates/pages/environmentalIntegrityLeftColumn.html:40
 #: templates/user_integration/userEngagementDetailsRightColumn.html:32
 msgid "Ziele"
 msgstr "Goals"
 
 #: templates/pages/environmentalIntegrityLeftColumn.html:43
+#: templates/pages/environmentalIntegrityLeftColumn.html:43
 msgid "Strategien"
 msgstr "Strategies"
 
+#: templates/pages/environmentalIntegrityLeftColumn.html:46
 #: templates/pages/environmentalIntegrityLeftColumn.html:46
 msgid "Relevanz"
 msgstr "Relevance"
@@ -3356,6 +3492,65 @@ msgid ""
 "entfernen."
 msgstr ""
 "When we become aware of legal violations, we will promptly remove such links."
+
+#: templates/pages/impressum.html:57
+msgid ""
+"\n"
+"              Der Herausgeber ist bestrebt, in allen Publikationen die "
+"Urheberrechte der verwendeten Bilder, Grafiken, Ton- und Videodokumente "
+"sowie Texte zu beachten, von ihm selbst erstellte Bilder, Grafiken, Ton- und "
+"Videodokumente sowie Texte zu nutzen oder auf lizenzfreie Grafiken, Ton- und "
+"Videodokumente sowie Texte zurückzugreifen.\n"
+"            "
+msgstr ""
+"\n"
+"The publisher endeavors to observe the copyrights of the images, graphics, "
+"sound and video documents, and texts used in all publications; to use "
+"images, graphics, sound and video documents, and texts created by the "
+"publisher; or to use license-free graphics, sound and video documents, and "
+"texts."
+
+#: templates/pages/impressum.html:62
+msgid ""
+"\n"
+"              Alle innerhalb des Internetangebotes genannten und ggf. durch "
+"Dritte geschützten Marken- und Warenzeichen unterliegen uneingeschränkt den "
+"Bestimmungen des jeweils gültigen Kennzeichenrechts und den Besitzrechten "
+"der jeweiligen eingetragenen Eigentümer. Allein aufgrund der bloßen Nennung "
+"ist nicht der Schluss zu ziehen, dass Markenzeichen nicht durch Rechte "
+"Dritter geschützt sind!\n"
+"            "
+msgstr ""
+"\n"
+"All brands and trademarks mentioned within the website and possibly "
+"protected by third parties are subject without restriction to the provisions "
+"of the applicable trademark law and the ownership rights of the respective "
+"registered owners. The fact alone that a trademark appears within a text "
+"does not imply that it is not protected by the rights of third parties!"
+
+#: templates/pages/impressum.html:67
+msgid ""
+"\n"
+"              Das Copyright für veröffentlichte, vom Herausgeber selbst "
+"erstellte Inhalte und Objekte bleibt allein beim Herausgeber der Seiten. "
+"Eine Vervielfältigung, Verarbeitung, Einspeicherung oder Verwendung solcher "
+"Grafiken, Ton- und Videodokumente sowie Texte in anderen elektronischen oder "
+"gedruckten Publikationen ist ohne ausdrückliche Zustimmung des Autors nicht "
+"gestattet. Unberührt davon bleibt das Kopieren und Herunterladen für den "
+"privaten, wissenschaftlichen und nicht kommerziellen Gebrauch. Wir erlauben "
+"ausdrücklich und begrüßen das Zitieren unserer Dokumente und Webseiten sowie "
+"das Setzen von Links auf unsere Website.\n"
+"            "
+msgstr ""
+"\n"
+"The copyright for published content and objects created by the publisher "
+"themselves remains solely with the publisher of the pages. Any duplication, "
+"processing, storage or use of objects such as diagrams, sound and video "
+"documents, or texts in other electronic or printed publications is not "
+"permitted without the author's agreement. This does not apply to copying and "
+"downloading for private, scientific and non-commercial use. We expressly "
+"permit and welcome the citing of our documents and web pages as well as the "
+"linking to our website."
 
 #: templates/pages/impressum.html:57
 msgid ""
@@ -3529,34 +3724,21 @@ msgstr ""
 "Protection based on a resolution by the German Bundestag."
 
 #: templates/partials/_navbar.html:43
-#: templates/partials/_navbar.html:43
 msgid "Digitale Werkzeuge"
 msgstr "Digital tools"
 
 #: templates/partials/_navbar.html:48
-#: templates/partials/_navbar.html:48
 msgid "Digitale Anwendungen"
 msgstr "Digital applications"
 
-#: templates/partials/_navbar.html:69
-#: templates/partials/_navbar.html:69
-#: templates/start_search/start_search.html:183 weatherdata_over/views.py:86
-msgid "Datensätze"
-msgstr "Datasets"
-
-#: templates/partials/_navbar.html:97
-msgid "Technisch"
-msgstr "Technical"
 #: templates/partials/_navbar.html:97
 msgid "Technisch"
 msgstr "Technical"
 
-#: templates/partials/_navbar.html:111
 #: templates/partials/_navbar.html:111
 msgid "Geschäfts&shy;modell&shy;"
 msgstr "Business model"
 
-#: templates/partials/_navbar.html:116
 #: templates/partials/_navbar.html:116
 msgid "Geschäfts&shy;modell&shy;anwendungen"
 msgstr "Business model applications"
@@ -3566,15 +3748,9 @@ msgid "Betrieblich"
 msgstr "Operational"
 
 #: templates/partials/_navbar.html:196
-#: templates/partials/_navbar.html:148
-msgid "Betrieblich"
-msgstr "Operational"
-
-#: templates/partials/_navbar.html:196
 msgid "Ökologisch"
 msgstr "Ecological"
 
-#: templates/partials/_navbar.html:210
 #: templates/partials/_navbar.html:210
 #: templates/start_search/start_search.html:356
 msgid "Daten&shy;schutz&shy;übersicht"
@@ -3583,11 +3759,7 @@ msgstr "Privacy overview"
 #: templates/partials/_navbar.html:242
 msgid "Rechtlich"
 msgstr "Legal"
-#: templates/partials/_navbar.html:242
-msgid "Rechtlich"
-msgstr "Legal"
 
-#: templates/partials/_navbar.html:249
 #: templates/partials/_navbar.html:249
 #: templates/start_search/start_search.html:208
 #: templates/start_search/start_search.html:394
@@ -3595,22 +3767,15 @@ msgid "Anwendungsfälle"
 msgstr "Use cases"
 
 #: templates/partials/_navbar.html:254
-#: templates/partials/_navbar.html:254
 #: templates/start_search/start_search.html:404
 msgid "Veröffentlichungen"
 msgstr "Publications"
 
 #: templates/partials/_navbar.html:259
-#: templates/partials/_navbar.html:259
 #: templates/start_search/start_search.html:413
 msgid "CityGML Visualisierung"
 msgstr "CityGML visualization"
 
-#: templates/partials/_navbar.html:285
-msgid "Global"
-msgstr ""
-
-#: templates/partials/_navbar.html:297
 #: templates/partials/_navbar.html:285
 msgid "Global"
 msgstr ""
@@ -4409,14 +4574,47 @@ msgstr "Alternatives"
 msgid "konkrete Anwendungsfälle"
 msgstr "concrete use cases"
 
+#: templates/partials/images_navbar.html:47
+msgid "Alles durchsuchen"
+msgstr "Search topics"
+
+#: templates/partials/left_column_details_page_technical_focus.html:19
+#: templates/publications/publications-detail.html:144
+#: templates/start_search/result_search.html:83 use_cases/views.py:113
+msgid "Fokus"
+msgstr "Focus"
+
+#: templates/partials/left_column_details_page_technical_focus.html:25
+msgid "Entwickler/ Maintainer"
+msgstr "Developer/maintainer"
+
+#: templates/partials/left_column_details_page_technical_focus.html:31
+msgid "Klassifikation"
+msgstr ""
+
+#: templates/partials/left_column_details_page_technical_focus.html:43
+#: templates/tools_over/explanationApps.html:68
+#: templates/tools_over/explanationTools.html:64
+msgid "Alternativen"
+msgstr "Alternatives"
+
+#: templates/partials/left_column_details_page_technical_focus.html:49
+msgid "konkrete Anwendungsfälle"
+msgstr "concrete use cases"
+
 #: templates/partials/listing-grid.html:26
 #: templates/tools_over/details_right_column.html:13
+#: templates/tools_over/details_right_column.html:13
 #: templates/tools_over/explanationApps.html:42
+#: templates/tools_over/explanationTools.html:38 tools_over/views.py:195
+#: tools_over/views.py:352 tools_over/views.py:510
 #: templates/tools_over/explanationTools.html:38 tools_over/views.py:195
 #: tools_over/views.py:352 tools_over/views.py:510
 msgid "Nutzerschnittstelle"
 msgstr "User interface"
 
+#: templates/partials/listing-grid.html:52 tools_over/views.py:197
+#: tools_over/views.py:354 tools_over/views.py:512
 #: templates/partials/listing-grid.html:52 tools_over/views.py:197
 #: tools_over/views.py:354 tools_over/views.py:512
 msgid "Updates"
@@ -4550,18 +4748,29 @@ msgstr "search term"
 
 #: templates/partials/search_bar.html:111
 #: templates/partials/search_bar.html:132
+#: templates/partials/search_bar.html:74
+#: templates/weatherdata_over/data-service-listings.html:60
+msgid "Suchbegriff"
+msgstr "search term"
+
+#: templates/partials/search_bar.html:111
+#: templates/partials/search_bar.html:132
 msgid "Aufsteigend"
 msgstr "Ascending"
 
+#: templates/partials/search_bar.html:114
+#: templates/partials/search_bar.html:133
 #: templates/partials/search_bar.html:114
 #: templates/partials/search_bar.html:133
 msgid "Absteigend"
 msgstr "Descending"
 
 #: templates/partials/search_bar.html:167
+#: templates/partials/search_bar.html:167
 msgid "Detail Ansicht"
 msgstr "Details view"
 
+#: templates/partials/search_bar.html:171
 #: templates/partials/search_bar.html:171
 msgid "Vergleichsmodus"
 msgstr "Comparison mode"
@@ -4570,7 +4779,7 @@ msgstr "Comparison mode"
 #, fuzzy
 #| msgid "Netzwerktopologie"
 msgid "Netzwerk Topologie"
-msgstr "network topology"
+msgstr "Network topology"
 
 #: templates/protocols/details_right_column.html:30
 msgid "Spezifische Standards, denen jedes Protokoll entspricht"
@@ -4632,10 +4841,6 @@ msgid ""
 msgstr ""
 "Levels of building automation (field level, automation level, management "
 "level)"
-
-#: templates/protocols/protocols_listing.html:4
-msgid "Überblick über technische Standards - Protokolle"
-msgstr "Overview of technical standards - Protocols"
 
 #: templates/publications/publications-detail.html:65
 msgid "Abstrakt"
@@ -4742,11 +4947,13 @@ msgstr ""
 "digital tools, applications, and other research results."
 
 #: templates/start_search/start_search.html:133 tools_over/views.py:653
+#: templates/start_search/start_search.html:133 tools_over/views.py:653
 msgid "Werkzeuge"
 msgstr "Tools"
 
 #: templates/start_search/start_search.html:145
 #: templates/weatherdata_over/weatherdata-detail.html:119
+#: tools_over/views.py:725
 #: tools_over/views.py:725
 msgid "Anwendungen"
 msgstr "Applications"
@@ -4852,7 +5059,7 @@ msgstr "Yes"
 
 #: templates/tools_over/details_right_column.html:35
 msgid "Ist eine Veröffentlichung geplant?"
-msgstr "Is a publication planned?"
+msgstr "Is a publication planned? (if not already done)"
 
 #: templates/tools_over/details_right_column.html:43
 #: templates/tools_over/explanationApps.html:97
@@ -5243,6 +5450,7 @@ msgstr ""
 "These are aimed particularly at people who work in accounting and consulting."
 
 #: templates/tools_over/explanationBusinessApps.html:4 tools_over/views.py:474
+#: templates/tools_over/explanationBusinessApps.html:4 tools_over/views.py:474
 msgid ""
 "Neben der wissenschaftlichen Entwicklung digitaler Anwendungen,\n"
 "          müssen erprobte Technologien auch ökonomisch umgesetzt werden. \n"
@@ -5484,46 +5692,6 @@ msgid ""
 msgstr ""
 "Which norms or standards serve as the basis or orientation for the tool?"
 
-#: templates/tools_over/tool-detail.html:94
-msgid "weitere Informationen"
-msgstr "Further information"
-
-#: templates/tools_over/tool-detail.html:103
-msgid "konkrete Anwendungsfälle"
-msgstr "concrete use cases"
-
-#: templates/tools_over/tool-detail.html:117
-msgid "Entwickler/ Maintainer"
-msgstr "Developer/maintainer"
-
-#: templates/tools_over/tool-detail.html:121
-msgid "generelle Art des Werkzeugs"
-msgstr "general type of tool"
-
-#: templates/tools_over/tool-detail.html:125
-msgid "Fokus der Anwendung"
-msgstr "Focus of the application"
-
-#: templates/tools_over/tool-detail.html:129
-msgid "Ist das Tool veröffentlicht?"
-msgstr "Is the tool published?"
-
-#: templates/tools_over/tool-detail.html:131
-msgid "Ja"
-msgstr "Yes"
-
-#: templates/tools_over/tool-detail.html:139
-msgid "Ist eine Veröffentlichung geplant?"
-msgstr "Is a publication planned? (if not already done)"
-
-#: templates/tools_over/tool-detail.html:174
-msgid "Wichtigste Bibliotheken (bei Umsetzung genutzt)"
-msgstr "Most important libraries (used during implementation)"
-
-#: templates/tools_over/tool-detail.html:192
-msgid "Normen/ Standard (Basis/Orientierung des Tools)"
-msgstr "Norms/standard (basis/orientation of the tool)"
-
 #: templates/use_cases/explanation.html:4
 msgid "Wir gehen hier auf verschiedene Fragestellungen ein"
 msgstr "We will address various questions"
@@ -5726,6 +5894,7 @@ msgstr "Overview of weather data services"
 
 #: templates/weatherdata_over/data-service-listings.html:25
 #: weatherdata_over/views.py:83
+#: weatherdata_over/views.py:83
 msgid "Überblick über Wetterdaten-Services"
 msgstr "Overview of weather data services"
 
@@ -5788,6 +5957,10 @@ msgstr "Example application"
 msgid "Kurzinformationen"
 msgstr "Quick information"
 
+#: templates/weatherdata_over/weatherdata-detail.html:205
+msgid "Kurzinformationen"
+msgstr "Quick information"
+
 #: tools_over/views.py:156
 msgid ""
 "Die hier vorgestellten digitalen Werkzeuge entsprechen den Werkzeugen, die "
@@ -5814,6 +5987,13 @@ msgid "lastUpdate"
 msgstr "Updates"
 
 #: tools_over/views.py:325
+#: tools_over/views.py:198 tools_over/views.py:355 tools_over/views.py:513
+#, fuzzy
+#| msgid "Updates"
+msgid "lastUpdate"
+msgstr "Updates"
+
+#: tools_over/views.py:325
 msgid ""
 "Die hier vorgestellten digitalen Anwendungen entsprechen den Anwendungen, "
 "die im Rahmen der Auswertung des Fragebogens der wissenschaftlichen "
@@ -5831,6 +6011,12 @@ msgstr ""
 "          Accordingly, all digital applications are used, developed, or "
 "further developed by projects funded under the \n"
 "          Energiewendebauen research initiative."
+
+#: tools_over/views.py:581
+#, fuzzy
+#| msgid "Geschäfts&shy;modell&shy;anwendungen"
+msgid "Geschäftsmodellanwendungen"
+msgstr "Business model applications"
 
 #: tools_over/views.py:581
 #, fuzzy
@@ -5879,6 +6065,7 @@ msgid "Übersicht Methoden Nutzendenintegration"
 msgstr "Methods for user integration"
 
 #: weatherdata_over/views.py:87
+#: weatherdata_over/views.py:87
 msgid ""
 "Die hier vorgestellten Wetterdaten bzw. Anwendungen zum Umgang mit "
 "Wetterdaten\n"
@@ -5895,19 +6082,25 @@ msgstr ""
 "Energiewendebauen. Research in Germany is the main focus."
 
 #: weatherdata_over/views.py:98
+#: weatherdata_over/views.py:98
 msgid "Anwendung"
 msgstr "Application"
 
 #: weatherdata_over/views.py:106
+#: weatherdata_over/views.py:106
 msgid "Frei nutzbar"
 msgstr "Free to use"
 
+#: weatherdata_over/views.py:109
 #: weatherdata_over/views.py:109
 msgid "MIT-Lizenz"
 msgstr "MIT license"
 
 #~ msgid "Übertragung"
 #~ msgstr "Transmission"
+
+#~ msgid "Überblick über technische Standards - Protokolle"
+#~ msgstr "Overview of technical standards - Protocols"
 
 #~ msgid "Geographische Abdeckung"
 #~ msgstr "Geographic coverage"
@@ -5929,13 +6122,6 @@ msgstr "MIT license"
 
 #~ msgid "Normen/ Standard (Basis/Orientierung des Tools)"
 #~ msgstr "Norms/standard (basis/orientation of the tool)"
-
-#~ msgid ""
-#~ "Auf dieser Seite befinden sich unterschiedliche technische Protokolle, "
-#~ "die im Sommer 2023 erfasst worden sind."
-#~ msgstr ""
-#~ "On this page, you will find various technical protocols that were "
-#~ "recorded in the summer of 2023."
 
 #~ msgid ""
 #~ "Sowohl die Materialisierung als auch der Energieaufwand für den Betrieb "
