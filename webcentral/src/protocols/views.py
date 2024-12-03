@@ -223,6 +223,7 @@ def protocolDetailView(request, id):
     context["rightColumn"] = "protocols/details_right_column.html"
     return render(request, "pages/details_page.html", context)
 
+
 def protocolComparison(request):
     ids = request.GET.getlist("id")  # Retrieve list of ids from GET parameters
     protocols = []
