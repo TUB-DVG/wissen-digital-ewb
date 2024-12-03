@@ -360,7 +360,10 @@ app.layout = html.Div(
             id="combi-dropdown",
             options=[
                 {"label": "Jedes Projekt hat gleiches Gewicht", "value": True},
-                {"label": "Jede Kombination hat gleiches Gewicht", "value": False},
+                {
+                    "label": "Jede Kombination hat gleiches Gewicht",
+                    "value": False,
+                },
             ],
             value=False,
         ),
