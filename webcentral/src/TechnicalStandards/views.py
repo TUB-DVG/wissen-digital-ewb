@@ -225,20 +225,3 @@ def normDetailView(request, id):
     )
     context["rightColumn"] = "TechnicalStandards/details_right_column.html"
     return render(request, "pages/details_page.html", context)
-
-
-def protocolComparison(request):
-    ids = request.GET.getlist("id")  # Retrieve list of ids from GET parameters
-    protocols = []
-    for id in ids:
-        protocol = get_object_or_404(Protocol, pk=id)
-        protocols.append(protocol)
-
-    context = {
-        "protocols": protocols,
-        "focusBorder": "technical",
-    }
-
-    return render(
-        request, "TechnicalStandards/protocol-comparison.html", context
-    )

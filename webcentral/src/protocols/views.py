@@ -82,7 +82,7 @@ def protocol(request):
         + " - "
         + _("Protokolle"),
         "introductionText": _(
-            """Auf dieser Seite befinden sich unterschiedliche technische Protokolle, die im Sommer 2023 erfasst worden sind."""
+            """Auf dieser Seite befinden sich unterschiedliche technische Protokolle, die im Sommer 2023 und Frühjahr 2024 erfasst worden sind. Zu sehen sind zudem die unterschiedlichen Werkzeugketten, in denen die Protokolle verwendet werden."""
         ),
         "pathToExplanationTemplate": "TechnicalStandards/protocol-explanation.html",
         "listingSubHeadingOneKey": _("Reichweite"),
@@ -150,7 +150,7 @@ def protocol(request):
         dataDict = {"html_from_view": html}
         return JsonResponse(data=dataDict, safe=False)
 
-    return render(request, "pages/grid_listing.html", context)
+    return render(request, "protocols/protocols_listing.html", context)
 
 
 def protocolDetailView(request, id):
@@ -222,3 +222,20 @@ def protocolDetailView(request, id):
     )
     context["rightColumn"] = "protocols/details_right_column.html"
     return render(request, "pages/details_page.html", context)
+
+
+def protocolComparison(request):
+    ids = request.GET.getlist("id")  # Retrieve list of ids from GET parameters
+    protocols = []
+    for id in ids:
+        protocol = get_object_or_404(Protocol, pk=id)
+        protocols.append(protocol)
+
+    context = {
+        "protocols": protocols,
+        "focusBorder": "technical",
+    }
+
+    return render(
+        request, "TechnicalStandards/protocol-comparison.html", context
+    )
