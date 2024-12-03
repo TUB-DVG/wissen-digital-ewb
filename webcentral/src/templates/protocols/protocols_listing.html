@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+  {% translate 'Überblick über technische Standards - Protokolle' %}
+{% endblock %}
+{% block content %}
+  {% load static %}
+  {% load plotly_dash %}
+
+  <!DOCTYPE html>
+
+  <style>
+    table {
+        width: 50%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+    th, td {
+        border: 2px solid #000; /* Set the border thickness and color */
+        padding: 8px 12px;
+        text-align: center;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    caption {
+        caption-side: top;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    .notes {
+        margin-top: 10px;
+        font-style: italic;
+    }
+    .plotly > div {
+      padding-bottom: 100% !important;
+    }
+
+    @media screen and (min-width: 600px) {
+      .plotly > div {
+        padding-bottom: 51.7% !important;
+      }
+    }
+
+  @media screen and (min-width: 1400px) {
+    .plotly > div {
+      padding-bottom: 45.2% !important;
+    }
+  }
+  </style>
+
+  <!-- **************** MAIN CONTENT START **************** -->
+  <main>
+
+    <section class="py-4">
+      <div class="container">
+        <div class="row">
+          <div class="descriptionBox">
+            {% include "partials/explanation_show_more.html" %}
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="pt-0">
+      <div class="container {{ focusBorder }}-cards">
+
+        <!-- Plotly chart START -->
+        <div class="plotly">{% plotly_app name='protocolToolChain' ratio=10 %}</div>
+        <!-- Plotly chart END -->
+        <!-- Filter bar START -->
+        {% include "partials/search-bar.html" %}
+        <!-- Filter bar END -->
+
+        <!-- Comparison button START -->
+        <div class="compareBox {{ focusBorder }}-cards" id="compareBox">
+          {% include "partials/comparison.html" %}
+        </div>
+        <!-- Comparison button END -->
+        <!-- standards grid row START -->
+        <div class="row mt-3">
+          <!-- Main content START -->
+          <div class="col-12">
+            <!-- Course Grid START -->
+            <div class="row g-4" id="protocol-listing-results">
+              {% include './protocol-listings-results.html' %}
+            </div>
+            <!-- standards grid END -->
+          </div>
+          <!-- Main content END -->
+        </div>
+        <!-- Row END -->
+      </div>
+    </section>
+    <!-- =======================
+     Page content END -->
+  </main>
+{% endblock %}

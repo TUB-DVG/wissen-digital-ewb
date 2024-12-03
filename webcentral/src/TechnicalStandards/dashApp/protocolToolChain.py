@@ -355,12 +355,12 @@ app = DjangoDash("protocolToolChain")
 
 app.layout = html.Div(
     [
-        html.H4("Sankey Diagram monitoring Questionair"),
+        html.H4("Sankey Diagramm der Werkzeugketten"),
         dcc.Dropdown(
             id="combi-dropdown",
             options=[
-                {"label": "Each project has same weight", "value": True},
-                {"label": "Each combination gas same weight", "value": False},
+                {"label": "Jedes Projekt hat gleiches Gewicht", "value": True},
+                {"label": "Jede Kombination hat gleiches Gewicht", "value": False},
             ],
             value=False,
         ),
