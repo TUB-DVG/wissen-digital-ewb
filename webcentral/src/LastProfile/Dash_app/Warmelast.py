@@ -529,7 +529,7 @@ def downloadAsCsv(
             ]
             heatApproximation.columns = [
                 [
-                    "Jahreswärmebedarfs in kWh/a :" + str(heatRequirement),
+                    "Jahreswärmebedarf in kWh/a :" + str(heatRequirement),
                     "",
                     "",
                     "",
