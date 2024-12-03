@@ -46,9 +46,6 @@
   <span class="columnHeading">{% translate 'Entwicklungsstand' %}:</span> {{ boxObject|get_m2m_or_attr:"devStateStr" }}
 </p>
 <p>
-  <span class="columnHeading">{% translate 'Programmiersprachen' %}:</span> {{ boxObject|get_m2m_or_attr:"programmingLanguages" }}
-</p>
-<p>
   <span class="columnHeading">{% translate 'konkrete Anwendungsfälle' %}:</span> {{ boxObject|get_m2m_or_attr:"specificApplication__referenceNumber_id"|safe }}
 </p>
 <p>
