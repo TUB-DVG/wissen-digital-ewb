@@ -356,32 +356,41 @@ app = DjangoDash("protocolToolChain")
 
 app.layout = html.Div(
     [
-        html.H4(_("Sankey Diagramm der Werkzeugketten"),
-                id="headingApp"),
+        html.H4(_("Sankey Diagramm der Werkzeugketten"), id="headingApp"),
         dcc.Dropdown(
             id="combi-dropdown",
             options=[
-                {"label": _("Gleicher Gewichtungsfaktor für alle Projekte"), "value": True},
                 {
-                    "label": _("Gleicher Gewichtungsfaktor für alle Kombinationen"),
+                    "label": _("Gleicher Gewichtungsfaktor für alle Projekte"),
+                    "value": True,
+                },
+                {
+                    "label": _(
+                        "Gleicher Gewichtungsfaktor für alle Kombinationen"
+                    ),
                     "value": False,
                 },
             ],
             value=False,
         ),
         dcc.Graph(id="sankey-graph"),
-        html.P(_("Transparenz"), 
-               id="slider-label"),
+        html.P(_("Transparenz"), id="slider-label"),
         dcc.Slider(id="slider", min=0, max=1, value=0.2, step=0.1),
-        html.P(_("Maximale Länge der Knotenbeschriftung"), 
-               id="maxlength-slider-label"),
+        html.P(
+            _("Maximale Länge der Knotenbeschriftung"),
+            id="maxlength-slider-label",
+        ),
         dcc.Slider(id="maxlength-slider", min=5, max=30, value=15, step=1),
-        html.P(_("Farbe der 'Keine Antwort ausgewählt' Knoten"), 
-               id="color-of-none-slider-label"),
+        html.P(
+            _("Farbe der 'Keine Antwort ausgewählt' Knoten"),
+            id="color-of-none-slider-label",
+        ),
         dcc.Slider(
             id="color-of-none-slider", min=0, max=255, value=255, step=10
         ),
-        html.Button(_("Diagramm aktualisieren"), id="update-button", n_clicks=0),
+        html.Button(
+            _("Diagramm aktualisieren"), id="update-button", n_clicks=0
+        ),
         dcc.Store(id="on-load", storage_type="session"),
     ],
 )
@@ -420,13 +429,15 @@ def process_and_visualize_excel(
     # create_sankey(df_relation, folder_path, df_anzahl, opacity, combiTimes=True)
     return fig
 
+
 # ------------------------------------------------------------------------------
 # Connect the Plotly graphs with Dash Components
+
 
 @app.callback(
     Output("headingApp", "children"),
     Output("combi-dropdown", "options"),
-    Output("slider-label", "children"), 
+    Output("slider-label", "children"),
     Output("maxlength-slider-label", "children"),
     Output("color-of-none-slider-label", "children"),
     Output("update-button", "children"),
@@ -437,8 +448,14 @@ def update_layout(data):
     # Define translations up front to ensure they are evaluated
     headingAppTranslation = _("Sankey Diagramm der Werkzeugketten")
     optionsDropdown = [
-        {"label": _("Gleicher Gewichtungsfaktor für alle Projekte"), "value": True},
-        {"label": _("Gleicher Gewichtungsfaktor für alle Kombinationen"), "value": False},
+        {
+            "label": _("Gleicher Gewichtungsfaktor für alle Projekte"),
+            "value": True,
+        },
+        {
+            "label": _("Gleicher Gewichtungsfaktor für alle Kombinationen"),
+            "value": False,
+        },
     ]
     sliderLabel = _("Transparenz")
     maxlengthSliderLabel = _("Maximale Länge der Knotenbeschriftung")
