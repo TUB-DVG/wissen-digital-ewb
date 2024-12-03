@@ -225,6 +225,3 @@ def normDetailView(request, id):
     )
     context["rightColumn"] = "TechnicalStandards/details_right_column.html"
     return render(request, "pages/details_page.html", context)
-
-
-
