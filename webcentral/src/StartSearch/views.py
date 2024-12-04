@@ -28,6 +28,7 @@ from tools_over.models import (
     # Classification,
 )
 from project_listing.models import Subproject
+from Datasets.models import Dataset
 from TechnicalStandards.models import (
     Norm,
     # Protocol,
@@ -40,6 +41,14 @@ from component_list.models import Component
 from use_cases.models import UseCase
 from publications.models.publication import Publication
 from data_sufficiency.models import DataSufficiency
+
+
+def formatDate(dateStr):
+    """ """
+    if isinstance(dateStr, str) and dateStr.find(":") > 0:
+        return dateStr.split(" ")[0]
+
+    return dateStr
 
 
 def findPicturesForFocus(searchResultObj, tool=False):
@@ -65,6 +74,8 @@ def findPicturesForFocus(searchResultObj, tool=False):
         focusStrList = ["technisch"]
         if searchResultObj["kindOfItem"] == "Kriterienkatalog":
             focusStrList = ["rechtlich"]
+        if searchResultObj["kindOfItem"] == "Datensatz":
+            focusStrList = ["technisch"]
         if searchResultObj["kindOfItem"] == "Nutzendenintegration":
             focusStrList = ["betrieblich"]
         if searchResultObj["kindOfItem"] == "Geschäftsmodelle":
@@ -306,6 +317,14 @@ def resultSearch(request):
         | criterionPublicationTwo
         | criterionPublicationThree
     ).values("id", "title", "authors", "abstract")
+
+    criterionDatasetsOne = Q(name__icontains=searchInput)
+    criterionDatasetsTwo = Q(description__icontains=searchInput)
+    # get topics for tags:
+    filteredDataset = Dataset.objects.filter(
+        criterionDatasetsOne | criterionDatasetsTwo
+    ).values("id", "name", "description", "lastUpdate")
+
     # filteredTopicsOfCriteriaCatalog = Topic.objects.values(
     #     "id",
     #     "heading",
@@ -317,6 +336,12 @@ def resultSearch(request):
     # rename fields in queryset list-dicts
     # for filteredTools (bezeichung > name, kurzbeschreibung > description )
     # and extend list by needed fields like kindOfItems
+    for datasetObj in filteredDataset:
+        datasetObj["kindOfItem"] = "Datensatz"
+        datasetObj["classificationAgg"] = _("Datensatz")
+        datasetObj["date"] = formatDate(datasetObj["lastUpdate"])
+        datasetObj["virtDate"] = date.fromisoformat("2049-09-09")
+        datasetObj["pathToFocusImage"] = findPicturesForFocus(datasetObj)
 
     for publicationObj in filteredPublications:
         publicationObj["name"] = publicationObj["title"]
@@ -341,7 +366,7 @@ def resultSearch(request):
         # replancning unspecific time values like "laufend" or
         # no given date
         toolDate = tool.pop("lastUpdate")
-        toolVirtDate = toolDate
+        toolVirtDate = formatDate(toolDate)
         if toolDate == "laufend" or toolDate == "ongoing":
             toolVirtDate = date.fromisoformat("2049-09-09")
         elif toolDate == "unbekannt" or toolDate == "unknown" or toolDate == "":
@@ -497,6 +522,7 @@ def resultSearch(request):
             filteredUseCases,
             filteredPublications,
             filteredDataSufficiency,
+            filteredDataset,
         )
     )
     # sort data list by name/kindOfItem and so on

@@ -12,3 +12,19 @@
 <p class="mb-0">
   {{ boxObject|get_m2m_or_attr:"applicationArea__applicationArea" }}
 </p>
+<h5 class="mt-4">{% translate "Links" %}</h5>
+<p class="mb-0">{{ boxObject|get_m2m_or_attr:"resources" }}</p>
+<h5 class="mt-4">{% translate "Verfügbarkeit" %}</h5>
+<p class="mb-0">{{ boxObject|get_m2m_or_attr:"availability" }}</p>
+<h5 class="mt-4">
+  {% translate "Geographische Abdeckung - Im Datensatz enthaltene Regionen" %}
+</h5>
+<p class="mb-0">{{ boxObject|get_m2m_or_attr:"coverage" }}</p>
+<h5 class="mt-4">
+  {% translate "Räumliche Auflösung – räumlicher Detaillierungsgrad der Daten" %}
+</h5>
+<p class="mb-0">{{ boxObject|get_m2m_or_attr:"resolution" }}</p>
+<h5 class="mt-4">
+  {% translate "Weitere Informationen zur verwendeten Lizenz" %}
+</h5>
+<p class="mb-0">{{ boxObject|get_m2m_or_attr:"licenseNotes" }}</p>
