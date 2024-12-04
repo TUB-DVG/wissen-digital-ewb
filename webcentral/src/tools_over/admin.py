@@ -24,4 +24,5 @@ class HistoryAdminApp(HistoryAdmin):
     modelInstance = Tools
     historyModelInstance = History
 
+
 admin.site.register(History, HistoryAdminApp)
