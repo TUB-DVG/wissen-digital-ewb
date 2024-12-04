@@ -9,6 +9,6 @@ admin.site.register(Dataset)
 
 class HistoryAdminApp(HistoryAdmin):
     modelInstance = Dataset
-
+    historyModelInstance = History 
 
 admin.site.register(History, HistoryAdminApp)

@@ -9,6 +9,7 @@ DbDiff conflicts.
 """
 
 import importlib
+import json
 
 from modeltranslation.admin import TranslationAdmin
 from django.contrib import admin
@@ -242,7 +243,7 @@ class HistoryAdmin(admin.ModelAdmin):
 
         deserializedStringyfiedObj = serializers.deserialize(
             "custom_json",
-            self.modelInstance.objects.get(id=int(object_id)).stringifiedObj,
+            self.historyModelInstance.objects.get(id=int(object_id)).stringifiedObj,
         )
         oldTool = list(deserializedStringyfiedObj)[0].object
 
@@ -250,7 +251,7 @@ class HistoryAdmin(admin.ModelAdmin):
 
         extra_context["oldTool"] = oldTool
         extra_context["rollbackStateStringified"] = json.loads(
-            self.modelInstance.objects.get(id=int(object_id)).stringifiedObj
+            self.historyModelInstance.objects.get(id=int(object_id)).stringifiedObj
         )[0]["fields"]
         extra_context["currentStateStringified"] = json.loads(
             serializers.serialize(
