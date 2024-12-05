@@ -87,8 +87,10 @@ flowchart TD
     C -->|No| F[Create Example Tool]
 ```
 #### Rollback a tool
-A tool can be rolled back to its previous state using the admin-panel. 
-
+A tool can be rolled back to its previous state using the admin-panel. For the apps `TechnicalStandards`, `tools_over`, `protocols` and `Datasets` this rolback feature is implemented. If a item is imported via the `data_import` custom command and a item with the same name is already present in the database, it is checked if the new item differs from the state inside the database. If this is the case, the old state is serialized as a JSON-string and stored in a model called `History`. If the user finds out, that the nwly imported state contains wrong data, a rollback can be performed. For that, it has to be navigated to the History admin listing page of the respective app.  
+![Shows how to find the app specific history model](../img/app_specific_history_model.png)
+In the image above can be seen, where to find the history model. For each app it is located inside the app specific navigation container on the left side of the admin panel.
+Please check the how-to guide "Updating and rollback tools" to understand how to rollback to a previpus state.
 ### Enargus data import
 The data from the enargus database can be imported via the `data_import` custom django management command. Since the data is given as a XML-file but the `data_import` command only allows tabular input as CSV or excel-file, a preprocessing step has to be done. This step can be started using the `run`-script:
 ```
