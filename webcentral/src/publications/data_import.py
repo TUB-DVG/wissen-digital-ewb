@@ -14,7 +14,7 @@ from .models import (
 
 class DataImportApp(DataImport):
     DJANGO_MODEL = "Publication"
-    DJANGO_MODEL_OBJ = Publication 
+    DJANGO_MODEL_OBJ = Publication
     DJANGO_APP = "publications"
     MAPPING_EXCEL_DB_EN = {
         "title__en": "title_en",
@@ -28,9 +28,9 @@ class DataImportApp(DataImport):
         "copyright": ("abstract", None),
         "abstract": ("abstract", None),
         "url": ("url", None),
-        "type": ("type", Type), 
+        "type": ("type", Type),
     }
-    
+
     def __init__(self, path_to_data_file):
         """Constructor of the app-specific data_import
 
@@ -52,7 +52,7 @@ class DataImportApp(DataImport):
             if isinstance(m2MModel, type) and issubclass(
                 m2MModel, models.Model
             ):
-                
+
                 m2mList = self._processListInput(
                     row[header.index(tableKey)],
                     separator=";;",
