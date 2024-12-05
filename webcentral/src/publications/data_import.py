@@ -7,21 +7,30 @@ import pandas as pd
 from common.data_import import DataImport
 from tools_over.models import Focus
 from .models import (
-    UseCase,
+    Publication,
+    Type,
 )
 
 
 class DataImportApp(DataImport):
     DJANGO_MODEL = "Publication"
+    DJANGO_MODEL_OBJ = Publication 
     DJANGO_APP = "publications"
     MAPPING_EXCEL_DB_EN = {
-        "Wirkebene__en": "levelOfAction_en",
-        "Detailgrad__en": "degreeOfDetail_en",
-        "Name des Effekts__en": "effectName_en",
-        "Kurzbeschreibung der Wirkung__en": "effectDescription_en",
-        "Quelle / Hinweise__en": "furtherInformation_en",
+        "title__en": "title_en",
+        "abstract__en": "abstract_en",
+        "copyright__en": "copyright_en",
+        # "Kurzbeschreibung der Wirkung__en": "effectDescription_en",
+        # "Quelle / Hinweise__en": "furtherInformation_en",
     }
-
+    MAPPING_EXCEL_DB = {
+        "title": ("title", None),
+        "copyright": ("abstract", None),
+        "abstract": ("abstract", None),
+        "url": ("url", None),
+        "type": ("type", Type), 
+    }
+    
     def __init__(self, path_to_data_file):
         """Constructor of the app-specific data_import
 
@@ -36,45 +45,29 @@ class DataImportApp(DataImport):
 
     def getOrCreate(self, row: list, header: list, data: list):
         """create a UseCase object from row and header of a Spreadsheet"""
-        itemCode = row[header.index("Item-Code")]
-        useCase = row[header.index("Use-Case")]
-        sriLevel = row[header.index("SRI-Zuordnung")]
-        levelOfAction = row[header.index("Wirkebene")]
-        detail = row[header.index("Detailgrad")]
-        # focus = row[header.index('Perspektive')]
-        effects = row[
-            header.index(
-                "Lfd Nr. Effekte dieser Perspektive bei dem jeweiligen Detailgrad"
-            )
-        ]
-        ratingOfEffect = row[header.index("Wertung des Effektes")]
-        nameOfEffect = row[header.index("Name des Effekts")]
-        shortDescriptionOfEffect = row[
-            header.index("Kurzbeschreibung der Wirkung")
-        ]
-        source = row[header.index("Quelle / Hinweise")]
-        icon = row[header.index("ICON")]
+        readInValues = {}
+        readInValuesM2M = {}
+        for tableTuple in self.MAPPING_EXCEL_DB:
+            (tableKey, m2MModel) = self.MAPPING_EXCEL_DB[tableTuple]
+            if isinstance(m2MModel, type) and issubclass(
+                m2MModel, models.Model
+            ):
+                
+                m2mList = self._processListInput(
+                    row[header.index(tableKey)],
+                    separator=";;",
+                )
+                m2mList = self._iterateThroughListOfStrings(m2mList, m2MModel)
+                readInValuesM2M[tableKey] = self.getM2MelementsQueryset(
+                    m2mList, m2MModel
+                )
+            else:
+                if row[header.index(tableKey)] == "":
+                    readInValues[tableKey] = None
+                else:
+                    readInValues[tableKey] = row[header.index(tableKey)]
 
-        focusList = row[header.index("Perspektive")].split(",")
-        processedFocusList = self._correctReadInValue(
-            row[header.index("Perspektive")]
-        )
-        focusList = self._iterateThroughListOfStrings(processedFocusList, Focus)
-        focusElements = Focus.objects.filter(focus__in=focusList)
-
-        obj, created = UseCase.objects.get_or_create(
-            item_code=itemCode,
-            useCase=useCase,
-            sriLevel=sriLevel,
-            levelOfAction=levelOfAction,
-            degreeOfDetail=detail,
-            idPerspectiveforDetail=effects,
-            effectEvaluation=ratingOfEffect,
-            effectName=nameOfEffect,
-            effectDescription=shortDescriptionOfEffect,
-            furtherInformation=source,
-            icon=icon,
-        )
+        obj = self.DJANGO_MODEL_OBJ(**readInValues)
 
         obj.focus.add(*focusElements)
         if self._englishHeadersPresent(header):
