@@ -6,7 +6,7 @@ from common.test_update import AbstractTestUpdate
 from .models import Protocol, History
 from .data_import import DataImportApp
 from .admin import HistoryAdminApp
-
+from common.test_utils import AbstractTestExport
 
 class TestDataImport(TestCase):
     """Test the import of structured protocol data."""
