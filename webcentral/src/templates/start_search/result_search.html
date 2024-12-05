@@ -97,7 +97,7 @@
                 {% for dataSet in data %}
                   <!-- Table row -->
                   {% if dataSet.kindOfItem == "Forschungsprojekt" %}
-                    <tr data-href="https://ewb.innoecos.com/Group/{{ dataSet.referenceNumber_id }}/Informationen/Start/Blog">
+                    <tr data-href="https://www.enargus.de/search/?q={{ dataSet.referenceNumber_id }}">
                     {% elif dataSet.kindOfItem == "digitales Werkzeug" %}
                       <tr data-href="{% url 'tool_view' dataSet.id %}">
                       {% elif dataSet.kindOfItem == "Norm" %}
