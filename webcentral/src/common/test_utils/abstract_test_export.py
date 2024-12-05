@@ -1,5 +1,5 @@
 from django.test import TestCase
-from django.core.mangement import call_command
+from django.core.management import call_command
 import pandas as pd
 
 
@@ -23,10 +23,11 @@ class AbstractTestExport(TestCase):
 
         """
         
-        exportObj = self.appSpecificExportClass("hi")
-        
-        exportObjTwo = self.appSpecificExportClass("test_export.xlsx")
-        exportObjTwo.exportToXlsx()
+        call_command(
+            "data_export",
+            self.appName,
+            "test_export.xlsx",
+        )        
 
         self.assertTrue(os.path.exists("test_export.xlsx"))
         
@@ -36,7 +37,7 @@ class AbstractTestExport(TestCase):
             set(excelFileAsDf.keys()) == set("German", "English")
         )
         
-        for sheet in excelFileAsDf.values()
+        for sheet in excelFileAsDf.values():
             self.assertGreaterEqual(len(sheet), self.numberExpectedRowsXlsx)
             self.assertEqual(set(sheet.keys()), set(self.expectedColumns))
 
