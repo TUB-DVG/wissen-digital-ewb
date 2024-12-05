@@ -109,7 +109,9 @@ class Locator(object):
     aboutPageTopHeading = "//h2"
     aboutPageSubHeading = "//h3"
     aboutPageEWBImage = "//img[@id='ewbImage']"
-    aboutPageEinsteinCenterLink = "//a[@href='https://www.digital-future.berlin/']"
+    aboutPageEinsteinCenterLink = (
+        "//a[@href='https://www.digital-future.berlin/']"
+    )
     aboutPageUDKLink = "//a[@href='https://www.ziw.udk-berlin.de/']"
     aboutPageLinkToIOeW = "//a[@href='https://www.ioew.de/']"
     aboutPageImgOfEinsteinCenter = "//img[@id='ecdfImage']"
