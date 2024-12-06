@@ -37,7 +37,7 @@ extensions = [
 
 templates_path = ["templates"]
 exclude_patterns = []
-
+myst_fence_as_directive = ["mermaid"]
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
