@@ -14,8 +14,6 @@ from dash import (
     State,
 )
 from django_plotly_dash import DjangoDash
-
-# from wetterdienst.provider.dwd.observation import DwdObservationRequest
 from typing import Tuple
 from plotly.subplots import make_subplots
 from dash.exceptions import PreventUpdate
@@ -26,36 +24,9 @@ from .Warmelastapproximation_csv import heatLoad
 locale.setlocale(locale.LC_ALL, "de_DE.utf8")  # German time
 
 app = DjangoDash("Warmelast")
-"""
-# Setting up the resolution for data filtering
-resolution = "HOURLY"
-
-# Selecting the dataset
-
-dataset = "AIR_TEMPERATURE"
-# Parameter variable selection
-
-parameter = "TEMPERATURE_AIR_MEAN_2M"
-# Setting up the Period
-data = []
-period = "RECENT"
-# Acquiring all the stations that provide data according to selected filters
-api_error = False
-error_message = ""
-
-stations = DwdObservationRequest(
-    parameter=parameter, resolution=resolution, period=period
-)
-placeholderState = _("Auswahl des Bundesland")
-try:
-    polledStationNames = stations.all().df["state"].unique()
-except ValueError:
-    polledStationNames = []
-    api_error = True
-    error_message = "Error accessing station data from Wetterdienst API. Please try again later."
-"""
 polledStationNames = []
 placeholderState = _("Auswahl des Bundesland")
+
 # App layout
 app.layout = html.Div(
     [  # Title
@@ -393,10 +364,8 @@ def updateHeatGraph(
     heat = heatLoad(
         int(application),
         heatRequirement,
-        StationId,
         startDate,
         endDate,
-        referenceYear,
     )
     # global heat_approximation
     heatApproximation = heat[1]
