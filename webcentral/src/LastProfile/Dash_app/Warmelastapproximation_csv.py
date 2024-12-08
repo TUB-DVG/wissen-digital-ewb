@@ -235,4 +235,3 @@ def heatLoad(
         }
     )
     return missingValues, heatApproximationDf
-
