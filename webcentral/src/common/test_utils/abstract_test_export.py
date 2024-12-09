@@ -3,8 +3,10 @@ from django.core.management import call_command
 import pandas as pd
 from abc import ABC, abstractproperty
 
+
 class AbstractTestExport:
     """ """
+
     # @property
     # def appName(self):
     #     """Name of the application."""
@@ -24,7 +26,6 @@ class AbstractTestExport:
     # def expectedColumns(self):
     #     """List of expected column names in the exported Excel file."""
     #     pass
-    
 
     def testExportFile(self):
         """Test if the sorting into the two dictionaries representanting the english

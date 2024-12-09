@@ -5,11 +5,9 @@ import pandas as pd
 
 class AbstractTestImport(TestCase):
     """ """
-    
-    def __init__(self, appName, appNameClass, importFile):
-        """
 
-        """
+    def __init__(self, appName, appNameClass, importFile):
+        """ """
         self.appName = appName
         self.importFile = importFile
         self.appNameClass = appNameClass
