@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-03 14:21+0000\n"
+"POT-Creation-Date: 2024-12-09 08:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,7 @@ msgstr ""
 "data, companies, researchers and administration also contribute to "
 "transparency."
 
-#: Datasets/views.py:89 StartSearch/views.py:471
+#: Datasets/views.py:89 StartSearch/views.py:496
 msgid "Anwendungsfall"
 msgstr "Use case"
 
@@ -153,7 +153,8 @@ msgstr "Solver"
 msgid "Andere"
 msgstr "Others"
 
-#: Datasets/views.py:136 templates/datasets_over/explanation.html:28
+#: Datasets/views.py:136 templates/datasets_over/details_right_column.html:17
+#: templates/datasets_over/explanation.html:28
 msgid "Verfügbarkeit"
 msgstr "Availability"
 
@@ -472,54 +473,58 @@ msgstr "For the selected stations exist "
 msgid " fehlende Werte, die in der Grafik rot markiert sind. "
 msgstr " missing values, which are marked in red in the plot. "
 
-#: StartSearch/views.py:324
+#: StartSearch/views.py:341
+msgid "Datensatz"
+msgstr "Dataset"
+
+#: StartSearch/views.py:349
 msgid "Veröffentlichung"
 msgstr "Publication"
 
-#: StartSearch/views.py:370
+#: StartSearch/views.py:395
 msgid "Forschungsprojekt"
 msgstr "Research project"
 
-#: StartSearch/views.py:384 StartSearch/views.py:396 StartSearch/views.py:417
+#: StartSearch/views.py:409 StartSearch/views.py:421 StartSearch/views.py:442
 msgid "noch nicht hinterlegt"
 msgstr "not yet filed"
 
-#: StartSearch/views.py:395
+#: StartSearch/views.py:420
 msgid "Protokoll"
 msgstr "Protocol"
 
-#: StartSearch/views.py:416 pages/views.py:512
+#: StartSearch/views.py:441 pages/views.py:512
 #: templates/partials/_navbar.html:205
 #: templates/start_search/start_search.html:346
 msgid "Kriterienkatalog"
 msgstr "Catalog of criteria"
 
-#: StartSearch/views.py:433 templates/pages/userEngagement.html:4
+#: StartSearch/views.py:458 templates/pages/userEngagement.html:4
 #: templates/partials/_navbar.html:122
 #: templates/start_search/start_search.html:252 user_integration/views.py:14
 #: user_integration/views.py:36
 msgid "Nutzendenintegration"
 msgstr "User integration"
 
-#: StartSearch/views.py:443 businessModel/views.py:14 businessModel/views.py:40
+#: StartSearch/views.py:468 businessModel/views.py:14 businessModel/views.py:40
 #: pages/views.py:47 templates/partials/_navbar.html:106
 #: templates/start_search/start_search.html:242
 msgid "Geschäftsmodelle"
 msgstr "Business models"
 
-#: StartSearch/views.py:444 StartSearch/views.py:451 StartSearch/views.py:462
-#: StartSearch/views.py:472
+#: StartSearch/views.py:469 StartSearch/views.py:476 StartSearch/views.py:487
+#: StartSearch/views.py:497
 msgid "2024-07-01"
 msgstr ""
 
-#: StartSearch/views.py:450 pages/views.py:304 pages/views.py:332
+#: StartSearch/views.py:475 pages/views.py:304 pages/views.py:332
 #: templates/pages/environmentalIntegrityPositiv.html:4
 #: templates/partials/_navbar.html:164
 #: templates/start_search/start_search.html:302
 msgid "Positive Umweltwirkungen"
 msgstr "Positive environmental impacts"
 
-#: StartSearch/views.py:461 component_list/views.py:323
+#: StartSearch/views.py:486 component_list/views.py:323
 #: component_list/views.py:370 pages/views.py:261
 #: templates/pages/environmentalIntegrityNegativ.html:4
 #: templates/partials/_navbar.html:158
@@ -527,49 +532,49 @@ msgstr "Positive environmental impacts"
 msgid "Negative Umweltwirkungen"
 msgstr "Negative environmental impacts"
 
-#: StartSearch/views.py:479 templates/pages/dataSufficiency.html:4
+#: StartSearch/views.py:504 templates/pages/dataSufficiency.html:4
 #: templates/start_search/start_search.html:311
 msgid "Datensuffizenz"
 msgstr "Data sufficiency"
 
-#: StartSearch/views.py:480
+#: StartSearch/views.py:505
 msgid "2024-09-01"
 msgstr ""
 
 #: TechnicalStandards/dashApp/protocolToolChain.py:359
 #: TechnicalStandards/dashApp/protocolToolChain.py:449
 msgid "Sankey Diagramm der Werkzeugketten"
-msgstr "Sankey diagram of tool chains"
+msgstr ""
 
 #: TechnicalStandards/dashApp/protocolToolChain.py:364
 #: TechnicalStandards/dashApp/protocolToolChain.py:452
 msgid "Gleicher Gewichtungsfaktor für alle Projekte"
-msgstr "Equal weighting factor for all projects"
+msgstr ""
 
 #: TechnicalStandards/dashApp/protocolToolChain.py:369
 #: TechnicalStandards/dashApp/protocolToolChain.py:456
 msgid "Gleicher Gewichtungsfaktor für alle Kombinationen"
-msgstr "Equal weighting factor for all combinations"
+msgstr ""
 
 #: TechnicalStandards/dashApp/protocolToolChain.py:377
 #: TechnicalStandards/dashApp/protocolToolChain.py:460
 msgid "Transparenz"
-msgstr "Transparency"
+msgstr ""
 
 #: TechnicalStandards/dashApp/protocolToolChain.py:380
 #: TechnicalStandards/dashApp/protocolToolChain.py:461
 msgid "Maximale Länge der Knotenbeschriftung"
-msgstr "Maximum label length"
+msgstr ""
 
 #: TechnicalStandards/dashApp/protocolToolChain.py:385
 #: TechnicalStandards/dashApp/protocolToolChain.py:462
 msgid "Farbe der 'Keine Antwort ausgewählt' Knoten"
-msgstr "Color of 'None' nodes"
+msgstr ""
 
 #: TechnicalStandards/dashApp/protocolToolChain.py:392
 #: TechnicalStandards/dashApp/protocolToolChain.py:463
 msgid "Diagramm aktualisieren"
-msgstr "Update diagram"
+msgstr ""
 
 #: TechnicalStandards/views.py:77
 msgid "Überblick über technische Standards - Normen"
@@ -582,10 +587,9 @@ msgid ""
 "Softwarekatalogen, Normendatenbanken und in Forschungsprojekten der "
 "Energiewendebauen Projekte erfasst worden."
 msgstr ""
-"On this page, there are various technical standards that were recorded in "
-"the fall of 2022. These were collected through research in software "
-"catalogs, standards databases, and in research projects of the "
-"Energiewendebauen projects."
+"On this page you will find different technical norms, which were recorded in "
+"autumn 2022. These were recorded through research in software catalogs, "
+"standards databases and in energy transition building research projects."
 
 #: TechnicalStandards/views.py:87
 msgid "Bezeichnung"
@@ -629,15 +633,15 @@ msgid ""
 "Projekte der Forschungsinitiative Energiewendebauen konfrontiert sehen, "
 "wurden systematisch aufgearbeitet und werden hier vorgestellt. "
 msgstr ""
-"The digital application has been successfully tested in a prototype? There "
-"is nothing standing in the way of its use as a finished product and the "
-"digital application can soon be used on a large scale? Often, the path to a "
-"functioning business model is long. Especially with digital applications, "
-"challenges arise along the technology development stages. This is also the "
-"case when transitioning from technological development to economic "
-"exploitation. The challenges associated with business model development, "
-"which projects of the research initiative Energiewendebauen are confronted "
-"with, have been systematically addressed and are presented here."
+"Has the digital application been successfully tested in a prototype? Is "
+"nothing standing in the way of its use as a finished product and can the "
+"digital application soon be used on a large scale? Often, the path to a "
+"functioning business model is a long one, especially when it comes to "
+"digital applications. This is also the case when transitioning from "
+"technological development to economic exploitation. The challenges "
+"associated with business model development, which projects of the "
+"Energiewendebauen research initative are confronted with, have been "
+"systematically addressed and are presented here."
 
 #: common/models.py:500
 #, fuzzy
@@ -977,16 +981,16 @@ msgid ""
 "auch eine Sammlung von Tools erstellt, die bei der Entwicklung vom Prototyp "
 "zum Geschäftsmodell unterstützen."
 msgstr ""
-"The focus in a research project often lies in an innovative product, a "
-"digital application, or a new software. In most cases, the development ends "
-"with the creation of the prototype in the research project. However, it is "
-"desirable to translate it into a business model for successful development. "
-"The information found here is intended to help support the development of "
-"business models and overcome challenges that arise. For this purpose, "
-"challenges have been collected, clustered, and initial solution approaches "
-"have been discussed from previous research projects in interviews and "
-"workshops. In addition, a collection of tools has been created to support "
-"the development from prototype to business model."
+"The focus in a research project is often centered around an innovative "
+"product, a digital application, or a new software. In most cases, the "
+"development ends with the creation of the prototype in the research project. "
+"However, it is desirable to translate it into a business model for "
+"successful development. The information found here is intended to help "
+"support the development of business models and overcome challenges that "
+"arise. For this purpose, challenges have been collected, clustered, and "
+"initial solution approaches have been discussed from previous research "
+"projects in interviews and workshops. In addition, a collection of tools has "
+"been created to support the development from prototype to business model."
 
 #: pages/views.py:61
 msgid "Herausforderungen bei der Entwicklung und Umsetzung"
@@ -1007,7 +1011,7 @@ msgstr ""
 "arise from structural factors such as funding conditions, technical or "
 "organizational factors such as transferability, as well as economic and "
 "social factors such as difficult financing models. An overview of obstacles "
-"and possible solutions provides assistance in this regard."
+"and possible solutions can provide assistance in this regard."
 
 #: pages/views.py:76
 msgid "Anwendungen zur Entwicklung von Geschäftsmodellen"
@@ -1027,7 +1031,7 @@ msgstr ""
 "a variety of actors and framework conditions. In this regard, it can be "
 "helpful to use a guide or structure to consider all factors that should be "
 "taken into account for successful implementation. An overview of supporting "
-"tools for the development or improvement of business models provides "
+"tools for the development or improvement of business models can provide "
 "assistance in this regard."
 
 #: pages/views.py:101
@@ -1094,19 +1098,19 @@ msgid ""
 "Nutzungsgewohnheiten von Nutzenden entspricht. Hier haben quantitative "
 "Methoden ihre Stärken, da sie hierzu repräsentative Aussagen ermöglichen.</p>"
 msgstr ""
-"<p>The methods of user integration can be distinguished into <b>methods of "
-"the analysis phase, methods of the conceptualization phase, and methods of "
-"the implementation and evaluation phase</b>. Qualitative methods (e.g., "
-"interviews or participant observation) are primarily used in the early "
-"phases of digital application development, while quantitative methods (e.g., "
-"usability surveys) are typically applied in later phases. This is because, "
-"in the early phases of digital application development, the focus is mainly "
-"on exploring the needs, prior knowledge, and usage habits of users. "
-"Qualitative methods are particularly suitable for this exploration. In the "
-"later phases of application development, the focus is primarily on testing "
-"how well the developed digital application meets the needs, prior knowledge, "
-"and usage habits of users. Here, quantitative methods excel, as they allow "
-"for representative statements to be made.</p>"
+"determine these environmental burdens<p>The methods of user integration can "
+"be distinguished into <b>methods of the analysis phase, methods of the "
+"conceptualization phase, and methods of the implementation and evaluation "
+"phase</b>. Qualitative methods (e.g., interviews or participant observation) "
+"are primarily used in the early phases of digital application development, "
+"while quantitative methods (e.g., usability surveys) are typically applied "
+"in later phases. This is because, in the early phases of digital application "
+"development, the focus is mainly on exploring the needs, prior knowledge, "
+"and usage habits of users. Qualitative methods are particularly suitable for "
+"this exploration. In the later phases of application development, the focus "
+"is primarily on testing how well the developed digital application meets the "
+"needs, prior knowledge, and usage habits of users. Here, quantitative "
+"methods excel, as they allow for representative statements to be made.</p>"
 
 #: pages/views.py:113
 msgid ""
@@ -1255,9 +1259,9 @@ msgstr ""
 "total of these efforts allows for an estimation of the environmental burdens "
 "caused by the digital application.\n"
 "\n"
-"To determine these environmental burdens, guidance for estimation is "
-"therefore divided into the areas of \"efforts for data processing\" and "
-"\"efforts for frequently used components.\""
+"In order to determine these environmental burdens, guidance for estimation "
+"is therefore divided into the areas of “efforts for data processing” and "
+"“efforts for frequently used components.”"
 
 #: pages/views.py:273
 msgid ""
@@ -1498,7 +1502,7 @@ msgstr ""
 "Icons can also support the graphical preparation of complex issues in "
 "buildings and neighborhoods and can be used to convey information to both "
 "professional and non-professional target groups. In Module 4 of the "
-"accompanying research, in collaboration with the \"Privacy Icons\" project "
+"accompanying research, in collaboration with the “Privacy Icons” project "
 "of the Digital Self-Determination Research Group, an open source icon set "
 "was developed for this purpose, which was released for free use and "
 "modification. The icon set is aimed at a wide variety of actors. On the one "
@@ -1508,7 +1512,7 @@ msgstr ""
 "variety of issues in the building and district sector, for example to "
 "prepare research results in a comprehensible manner or to explain digital "
 "applications. The icon set consists of over 150 icons of different "
-"categories (e.g. Data and Identifiers, Purposes, Actors and Technical "
+"categories (e.g., Data and Identifiers, Purposes, Actors and Technical "
 "Means). It is supplemented by a set of building graphics and other "
 "visualization components, which together form a construction kit that allows "
 "consideration from a legal, economic-ecological and technical perspective "
@@ -1531,16 +1535,21 @@ msgid "Protokolle"
 msgstr "protocols"
 
 #: protocols/views.py:85
+#, fuzzy
+#| msgid ""
+#| "Auf dieser Seite befinden sich unterschiedlichen technische Normen, die "
+#| "im Herbst 2022 erfasst worden sind. Diese sind durch Recherche in "
+#| "Softwarekatalogen, Normendatenbanken und in Forschungsprojekten der "
+#| "Energiewendebauen Projekte erfasst worden."
 msgid ""
 "Auf dieser Seite befinden sich unterschiedliche technische Protokolle, die "
 "im Sommer 2023 und Frühjahr 2024 erfasst worden sind. Zu sehen sind zudem "
 "die unterschiedlichen Werkzeugketten, in denen die Protokolle verwendet "
 "werden."
 msgstr ""
-"On this page, there are various technical standards that were recorded in "
-"the summer of 2023 and spring of 2024. These were collected through research "
-"in software catalogs, standards databases, and in research projects of the "
-"Energiewendebauen projects."
+"On this page you will find different technical norms, which were recorded in "
+"autumn 2022. These were recorded through research in software catalogs, "
+"standards databases and in energy transition building research projects."
 
 #: protocols/views.py:113 protocols/views.py:115
 msgid "Verkabelt"
@@ -1623,9 +1632,9 @@ msgstr ""
 "a load profile generator for electricity demand. The load profiles are "
 "displayed as time series. The load profiles are based on the (building) use "
 "type, the annual electricity or heat requirements and the calculation "
-"period, which must be specified. To calculate the heat load, the ambient "
-"temperature corresponding to the calculation period is also used with the "
-"respective weather data.<br>The generated load profiles can also be "
+"period, which must be specified. In order to calculate the heat load, the "
+"ambient temperature corresponding to the calculation period is also used "
+"with the respective weather data.<br>The generated load profiles can also be "
 "downloaded."
 
 #: templates/LastProfile/explanation.html:51
@@ -1750,8 +1759,8 @@ msgid ""
 "            Hellwig, 2003, \"Entwicklung und Anwendung parametrisierter\n"
 "            Standard-Lastprofile\""
 msgstr ""
-"Hellwig, 2003, 'Entwicklung und Anwendung parametrisierter Standard-"
-"Lastprofile'"
+"Hellwig, 2003, “Entwicklung und Anwendung parametrisierter Standard-"
+"Lastprofile”"
 
 #: templates/LastProfile/explanation.html:177
 msgid "Download der Disseration"
@@ -1810,7 +1819,7 @@ msgid ""
 "Umweltauswirkungen beitragen."
 msgstr ""
 "Standards and protocols play a central role in the context of building "
-"automation and also in the energy transition in the building sector.Norms "
+"automation and also in the energy transition in the building sector. Norms "
 "are intended to establish standards and guidelines that ensure that "
 "buildings are designed, constructed and operated in accordance with the "
 "latest technological developments and sustainable principles. These "
@@ -1879,10 +1888,10 @@ msgstr ""
 "standards databases and in energy transition building research projects. "
 "These are German, Austrian, European or international standards and "
 "guidelines for the planning, construction and/or operation of ventilation, "
-"drinking water, hot water, drainage, heating, cooling and other energy "
-"systems in buildings . Other technical standards, such as soundproofing, "
-"lighting, and gas installation, are also included. The following aspects "
-"were recorded for each norm:"
+"drinking water, hot water, challenges in the development and implementation "
+"of drainage, heating, cooling and other energy systems in buildings. Other "
+"technical standards, such as soundproofing, lighting, and gas installation, "
+"are also included. The following aspects were recorded for each norm:"
 
 #: templates/TechnicalStandards/explanation.html:73
 #: templates/TechnicalStandards/norm-explanation.html:15
@@ -1959,13 +1968,14 @@ msgstr ""
 "them:"
 
 #: templates/TechnicalStandards/explanation.html:131
+#: templates/TechnicalStandards/protocol-explanation.html:55
 msgid "Name des Protokolls"
 msgstr "Name of the protocol"
 
 #: templates/TechnicalStandards/explanation.html:134
 #: templates/TechnicalStandards/protocol-explanation.html:58
 msgid "Übertragungsmethoden"
-msgstr "transmission media"
+msgstr "Transmission media"
 
 #: templates/TechnicalStandards/explanation.html:134
 msgid ""
@@ -2006,7 +2016,7 @@ msgstr "Is there a fee to cover the costs of use and/or certification?"
 #: templates/TechnicalStandards/explanation.html:150
 #: templates/TechnicalStandards/protocol-explanation.html:74
 msgid "Netzwerktopologie"
-msgstr "network topology"
+msgstr "Network topology"
 
 #: templates/TechnicalStandards/explanation.html:150
 #: templates/TechnicalStandards/protocol-explanation.html:74
@@ -2127,10 +2137,10 @@ msgid ""
 msgstr ""
 "These are German, Austrian, European or international standards and "
 "guidelines for the planning, construction and/or operation of ventilation, "
-"drinking water, hot water, drainage, heating, cooling and other energy "
-"systems in buildings . Other technical norms, such as soundproofing, "
-"lighting, and gas installation, are also included. The following aspects "
-"were recorded for each norm:"
+"drinking water, hot water, challenges in the development and implementation "
+"of drainage, heating, cooling and other energy systems in buildings. Other "
+"technical norms, such as soundproofing, lighting, and gas installation, are "
+"also included. The following aspects were recorded for each norm:"
 
 #: templates/TechnicalStandards/norm-explanation.html:24
 msgid "ein Link, über den die Norm abgerufen (ggf. gekauft) werden kann."
@@ -2257,9 +2267,8 @@ msgid ""
 "              verschiedenen Komponenten und Geräten innerhalb des Systems "
 "übertragen (verkabelt, drahtlos oder verkabelt & drahtlos)?"
 msgstr ""
-"how are data transmitted between the\n"
-"              different components and devices within the system (wired, "
-"wireless, or both wired & wireless)?"
+"How is data transmitted between the various components and devices within "
+"the system (wired, wireless or wired & wireless)?"
 
 #: templates/TechnicalStandards/protocol-explanation.html:98
 msgid ""
@@ -2269,10 +2278,38 @@ msgstr ""
 "whether the protocol has the “discovery” function to automatically identify "
 "devices during data transfer?"
 
+#: templates/admin/Datasets/history/change_form.html:6
+#: templates/admin/TechnicalStandards/history/change_form.html:6
+#: templates/admin/protocols/history/change_form.html:6
+#: templates/admin/tools_over/history/change_form.html:6
+msgid "Error:"
+msgstr ""
+
+#: templates/admin/Datasets/history/change_form.html:30
+#: templates/admin/TechnicalStandards/history/change_form.html:30
+#: templates/admin/protocols/history/change_form.html:30
 #: templates/admin/publications/import_bibtex.html:14
 #: templates/admin/tools_over/history/change_form.html:30
 msgid "Home"
 msgstr ""
+
+#: templates/admin/Datasets/history/change_form.html:40
+#: templates/admin/TechnicalStandards/history/change_form.html:40
+#: templates/admin/protocols/history/change_form.html:40
+#: templates/admin/publications/publication_change_list.html:15
+#: templates/admin/tools_over/history/change_form.html:40
+#, python-format
+msgid "Add %(name)s"
+msgstr ""
+
+#: templates/admin/Datasets/history/change_form.html:81
+#: templates/admin/TechnicalStandards/history/change_form.html:81
+#: templates/admin/protocols/history/change_form.html:81
+#: templates/admin/tools_over/history/change_form.html:81
+msgid "Please correct the error below."
+msgid_plural "Please correct the errors below."
+msgstr[0] ""
+msgstr[1] ""
 
 #: templates/admin/publications/import_bibtex.html:15
 #: templates/admin/publications/import_bibtex.html:16
@@ -2298,34 +2335,6 @@ msgstr ""
 
 #: templates/admin/publications/import_bibtex.html:72
 msgid "Import"
-msgstr ""
-
-#: templates/admin/publications/publication_change_list.html:15
-#: templates/admin/tools_over/history/change_form.html:40
-#, python-format
-msgid "Add %(name)s"
-msgstr ""
-
-#: templates/admin/tools_over/history/change_form.html:6
-msgid "Error:"
-msgstr ""
-
-#: templates/admin/tools_over/history/change_form.html:81
-msgid "Please correct the error below."
-msgid_plural "Please correct the errors below."
-msgstr[0] ""
-msgstr[1] ""
-
-#: templates/admin/tools_over/history/submit_line.html:4
-msgid "Rollback"
-msgstr ""
-
-#: templates/admin/tools_over/history/submit_line.html:7
-msgid "Close"
-msgstr ""
-
-#: templates/admin/tools_over/history/submit_line.html:11
-msgid "Delete"
 msgstr ""
 
 #: templates/component_list/componentComparisonResults.html:4
@@ -2437,7 +2446,13 @@ msgstr ""
 "personal data and aims to reduce the risk to the rights and freedoms of "
 "natural persons. The term data minimization from the GDPR replaces the terms "
 "data economy and data avoidance previously used in the Federal Data "
-"Protection Act (§3a BDSG)."
+"Protection Act (§3a BDSG).This distinguishes data sufficiency from the legal "
+"concept of data minimization. The latter is a data protection principle "
+"defined in Article 5, Section 1(c) of the General Data Protection Regulation "
+"(GDPR) for personal data and aims to reduce the risk to the rights and "
+"freedoms of natural persons. The term data minimization from the GDPR "
+"replaces the terms data economy and data avoidance previously used in the "
+"Federal Data Protection Act (§3a BDSG)."
 
 #: templates/data_sufficiency/explanation.html:9
 msgid ""
@@ -2452,7 +2467,11 @@ msgstr ""
 "extensive, unnecessary data processing, data sufficiency aims to minimize "
 "the ecological impacts of collecting, processing, and storing extensive, "
 "unnecessary data. To clarify the distinction from the legal term, different "
-"terminology is used."
+"terminology is used.While data minimization prevents risks to fundamental "
+"rights caused by extensive, unnecessary data processing, data sufficiency "
+"aims to minimize the ecological impacts of collecting, processing, and "
+"storing extensive, unnecessary data. To clarify the distinction from the "
+"legal term, different terminology is used."
 
 #: templates/data_sufficiency/explanation.html:12
 msgid ""
@@ -2474,7 +2493,10 @@ msgstr ""
 "sufficiency should be considered during development with a view to the later "
 "usage phase. When digital solutions developed in research projects are "
 "brought to market, the dissemination of data-efficient technologies can "
-"create ecological benefits through economies of scale."
+"create ecological benefits through economies of scale.usage phase. When "
+"digital solutions developed in research projects are brought to market, the "
+"dissemination of data-efficient technologies can create ecological benefits "
+"through economies of scale."
 
 #: templates/data_sufficiency/explanation.html:15
 msgid ""
@@ -2482,7 +2504,9 @@ msgid ""
 "und auf die ökologischen Wirkungen beim Umgang mit Daten hingewiesen."
 msgstr ""
 "The following presents strategies for sufficient data handling and "
-"highlights the ecological impacts of data management."
+"highlights the ecological impacts of data management.The following presents "
+"strategies for sufficient data handling and highlights the ecological "
+"impacts of data management."
 
 #: templates/datasets_over/details_right_column.html:4
 #: templates/protocols/details_right_column.html:4
@@ -2497,6 +2521,26 @@ msgstr "What is"
 #: templates/tools_over/details_right_column.html:7
 #: templates/weatherdata_over/details_right_column.html:8
 msgid "weitere Informationen"
+msgstr "Further information"
+
+#: templates/datasets_over/details_right_column.html:15
+#, fuzzy
+#| msgid "Link"
+msgid "Links"
+msgstr "Link"
+
+#: templates/datasets_over/details_right_column.html:20
+msgid "Geographische Abdeckung - Im Datensatz enthaltene Regionen"
+msgstr ""
+
+#: templates/datasets_over/details_right_column.html:24
+msgid "Räumliche Auflösung – räumlicher Detaillierungsgrad der Daten"
+msgstr ""
+
+#: templates/datasets_over/details_right_column.html:28
+#, fuzzy
+#| msgid "Weitere Informationen"
+msgid "Weitere Informationen zur verwendeten Lizenz"
 msgstr "Further information"
 
 #: templates/datasets_over/explanation.html:5
@@ -2756,11 +2800,11 @@ msgid ""
 msgstr ""
 "In order to best protect your transmitted data, we use SSL encryption for "
 "all data transmission. You can recognize such encrypted connections by the "
-"prefix \"https://\" in the page link in the address bar or by the green/"
-"closed lock symbol in your browser. Unencrypted pages are identified by "
-"\"http://\" or an open or red lock symbol. All data that you transmit to "
-"this website - such as inquiries or logins - cannot be read by third parties "
-"thanks to SSL encryption."
+"prefix “https://” in the page link in the address bar or by the green/closed "
+"lock symbol in your browser. Unencrypted pages are identified by “http://” "
+"or an open or red lock symbol. All data that you transmit to this website - "
+"such as inquiries or logins - cannot be read by third parties thanks to SSL "
+"encryption."
 
 #: templates/pages/Datenschutzhinweis.html:113
 msgid "Social-Media-Drittanbieter"
@@ -2822,7 +2866,7 @@ msgstr ""
 "processed in the USA. If you are logged in with your user account for the "
 "respective network, the network operator may be able to assign the "
 "information collected from your specific visit to your personal account. If "
-"you interact using a \"Share\" button on the respective network, this "
+"you interact using a “Share” button on the respective network, this "
 "information can be saved in your user account and, if necessary, published. "
 "If you want to prevent the collected information from being directly "
 "assigned to your user account, you must log out before clicking on the "
@@ -2857,16 +2901,16 @@ msgid ""
 "          YouTube-Video, die Sie gerade aufgerufen haben, selbst wenn Sie "
 "nicht beim Videoportal eingeloggt sind oder dort kein Konto besitzen."
 msgstr ""
-"To display video content, our website uses, among other things, a plugin to "
-"integrate YouTube videos. The provider of the video portal is YouTube, LLC, "
-"901 Cherry Ave., San Bruno, CA 94066, USA. When you access a page with an "
-"integrated YouTube plugin, a connection to the YouTube servers is not "
-"immediately established. Instead, a local image (\"thumbnail\") is loaded to "
-"announce the video and points to YouTube as a third-party provider. Users "
-"must actively start the YouTube video. Only then will YouTube find out the "
-"IP address of your device and the page with the YouTube video that you have "
-"just accessed, even if you are not logged in to the video portal or do not "
-"have an account there."
+"In order to display video content, our website uses, among other things, a "
+"plugin to integrate YouTube videos. The provider of the video portal is "
+"YouTube, LLC, 901 Cherry Ave., San Bruno, CA 94066, USA. When you access a "
+"page with an integrated YouTube plugin, a connection to the YouTube servers "
+"is not immediately established. Instead, a local image (“thumbnail”) is "
+"loaded to announce the video and points to YouTube as a third-party "
+"provider. Users must actively start the YouTube video. Only then will "
+"YouTube find out the IP address of your device and the page with the YouTube "
+"video that you have just accessed, even if you are not logged in to the "
+"video portal or do not have an account there."
 
 #: templates/pages/Datenschutzhinweis.html:150
 msgid ""
@@ -2891,7 +2935,7 @@ msgid ""
 "Einzelheiten zum Umgang mit Nutzerdaten finden Sie in der "
 "Datenschutzerklärung von YouTube unter:"
 msgstr ""
-"Details on how to handle user data can be found in YouTube's privacy policy "
+"Details on how to handle user data can be found in YouTube’s privacy policy "
 "at:"
 
 #: templates/pages/Datenschutzhinweis.html:161
@@ -2930,10 +2974,10 @@ msgid ""
 "Bestimmungen \n"
 "          verpflichtet."
 msgstr ""
-"We also take internal university data protection very seriously. Our "
-"employees and those of usWe require the service companies we commission to "
-"maintain confidentiality and compliance with data protection lawsregulations "
-"obligated."
+"We also take internal university data protection of our employees and "
+"ourselves very seriously. We require the service companies we commission to "
+"maintain confidentiality and compliance with data protection laws "
+"regulations."
 
 #: templates/pages/Datenschutzhinweis.html:177
 msgid "Auskunftsrecht"
@@ -2947,9 +2991,9 @@ msgid ""
 "Kontaktadresse. Gerne stehen wir Ihnen für weitergehende Fragen zu unseren \n"
 "          Datenschutzhinweisen zur Verfügung."
 msgstr ""
-"You will receive information about your data stored by us free of charge at "
-"any time without giving any reason. For thisPlease contact the contact "
-"address given in the legal notice. We would be happy to answer any further "
+"You can receive information about your data stored by us free of charge at "
+"any time without giving any reason. To do so, please contact the contact "
+"address provided in the legal notice. We will be happy to answer any further "
 "questions you may have about our data protection information."
 
 #: templates/pages/Datenschutzhinweis.html:184
@@ -3028,7 +3072,7 @@ msgid ""
 msgstr ""
 "Please note that data protection regulations and data protection practices "
 "can change continuously, so it is necessary to stay abreast of changes in "
-"legal regulations and theContinuously inform company practices."
+"legal regulations and keep informed about company practices."
 
 #: templates/pages/about.html:17
 msgid "Wissensplattform"
@@ -3098,30 +3142,49 @@ msgid ""
 "          Dokumentation, Modul 2: Gebäude, Modul 3: Quartiere, Modul 4:\n"
 "          Digitalisierung, Modul 5: Vernetzung und Kommunikation)."
 msgstr ""
-"A total of five modules evaluate the focus of the contentEnergy Transition "
-"Building Research Initiative, network them and develop them further (Module "
-"1: Monitoring and Documentation, Module 2: Buildings, Module3: "
+"A total of five modules is used to evaluate the focus of Energy Transition "
+"Building Research Initiative content, network them and develop them further "
+"(Module 1: Monitoring and Documentation, Module 2: Buildings, Module3: "
 "Neighborhoods, Module 4: Digitalization, Module 5: Networking and "
 "Communication)"
 
 #: templates/pages/about.html:62
+#, fuzzy
+#| msgid ""
+#| "Das Modul 4 (Digitalisierung) wird von der TU Berlin\n"
+#| "          mit der\n"
+#| "          <a href=\"https://ewb.innoecos.com/Group/Einstein.Center."
+#| "Digital.Future\" target=\"_blank\">\n"
+#| "            Einstein Center Digital Future Professur\n"
+#| "          </a>\n"
+#| "          für die digitale Vernetzung von Gebäuden,\n"
+#| "          Energieversorgungsanlagen und Nutzenden zusammen mit der\n"
+#| "          <a href=\"https://ewb.innoecos.com/Group/Berlin.Career.College."
+#| "Zentralinstitut.fuer.Weiterbildung.ZIW\" target=\"_blank\">\n"
+#| "            Universität der Künste Berlin und der Einstein Center "
+#| "Digital\n"
+#| "            Future Professur Digitale Selbstbestimmung\n"
+#| "          </a>\n"
+#| "          und dem\n"
+#| "          <a href=\"https://ewb.innoecos.com/Group/IOeW/\" "
+#| "target=\"_blank\">\n"
+#| "            Institut für ökologische Wirtschaftsforschung\n"
+#| "          </a>\n"
+#| "          bearbeitet."
 msgid ""
 "Das Modul 4 (Digitalisierung) wird von der TU Berlin\n"
 "          mit der\n"
-"          <a href=\"https://ewb.innoecos.com/Group/Einstein.Center.Digital."
-"Future\" target=\"_blank\">\n"
+"          <a href=\"https://www.digital-future.berlin/\" target=\"_blank\">\n"
 "            Einstein Center Digital Future Professur\n"
 "          </a>\n"
 "          für die digitale Vernetzung von Gebäuden,\n"
 "          Energieversorgungsanlagen und Nutzenden zusammen mit der\n"
-"          <a href=\"https://ewb.innoecos.com/Group/Berlin.Career.College."
-"Zentralinstitut.fuer.Weiterbildung.ZIW\" target=\"_blank\">\n"
+"          <a href=\"https://www.ziw.udk-berlin.de/\" target=\"_blank\">\n"
 "            Universität der Künste Berlin und der Einstein Center Digital\n"
 "            Future Professur Digitale Selbstbestimmung\n"
 "          </a>\n"
 "          und dem\n"
-"          <a href=\"https://ewb.innoecos.com/Group/IOeW/\" "
-"target=\"_blank\">\n"
+"          <a href=\"https://www.ioew.de/\" target=\"_blank\">\n"
 "            Institut für ökologische Wirtschaftsforschung\n"
 "          </a>\n"
 "          bearbeitet."
@@ -3500,9 +3563,9 @@ msgid ""
 "        Bundesministeriums für Wirtschaft und Klimaschutz gefördert."
 msgstr ""
 "The knowledge platform - digitization of energy transition construction is "
-"being created as part of the research project \"BF2020 accompanying research "
+"being created as part of the research project “BF2020 accompanying research "
 "on energy transition construction - module digitization; Sub-project: TU "
-"Berlin: Knowledge Platform\" (FKZ: 03EWB004A).</br>This project was funded "
+"Berlin: Knowledge Platform” (FKZ: 03EWB004A).</br>This project was funded "
 "with public funds from the Federal Ministry for Economic Affairs and Climate "
 "Protection based on a resolution by the German Bundestag."
 
@@ -4172,7 +4235,7 @@ msgid ""
 "dich Schritt für Schritt durch die Anforderungen der DSGVO, wenn du Daten "
 "für einen der folgenden Zweck-Kategorien verarbeiten möchtest. "
 msgstr ""
-"The General Data Protection Regulation (GDPR) also obliges data-processing "
+"The General Data Protection Regulation (GDPR) also requires data-processing "
 "actors in the context of buildings and neighborhoods to comply with data "
 "protection requirements (such as the necessity of a legal basis, "
 "transparency obligations, or data minimization). This criteria catalog "
@@ -4220,8 +4283,8 @@ msgid ""
 "Suchfeld gezielt durchsuchen."
 msgstr ""
 "The following criteria catalog includes all obligations from the GDPR in the "
-"form of 'criteria' and 'requirements,' which are specified for each purpose "
-"category. The catalog divides the GDPR requirements into 14 'topics' and can "
+"form of “criteria” and “requirements”, which are specified for each purpose "
+"category. The catalog divides the GDPR requirements into 14 “topics” and can "
 "be specifically searched using a dropdown system and a search field."
 
 #: templates/partials/description_criteria_catalog.html:80
@@ -4229,7 +4292,7 @@ msgid ""
 "Er dient einerseits dazu, Datenschutzrecht und die dahinter liegenden Ziele "
 "und Wertungen für die LeserInnen verständlich zu machen."
 msgstr ""
-"It serves, on the one hand, to make data protection law and the underlying "
+"On the one hand, it serves to make data protection law and the underlying "
 "goals and values understandable to the readers."
 
 #: templates/partials/description_criteria_catalog.html:83
@@ -4238,7 +4301,7 @@ msgid ""
 "Verantwortliche vor der Verarbeitung personenbezogener Daten beachten "
 "sollten."
 msgstr ""
-"On the other hand, the 'requirements' can be understood as a checklist that "
+"On the other hand, the “requirements” can be understood as a checklist that "
 "those responsible should follow before processing personal data."
 
 #: templates/partials/description_criteria_catalog.html:86
@@ -4326,7 +4389,7 @@ msgid ""
 "bereitzustellen."
 msgstr ""
 "In addition, the release of a set of building graphics and other "
-"visualization components is planned to provide users with a 'toolkit' for "
+"visualization components is planned to provide users with a “toolkit” for "
 "visualizing a project or an individual application."
 
 #: templates/partials/images_navbar.html:47
@@ -4371,32 +4434,32 @@ msgid "Updates"
 msgstr "Updates"
 
 #: templates/partials/pagination.html:8
-#: templates/start_search/result_search.html:166
+#: templates/start_search/result_search.html:168
 msgid "erste"
 msgstr "first"
 
 #: templates/partials/pagination.html:12
-#: templates/start_search/result_search.html:171
+#: templates/start_search/result_search.html:173
 msgid "vorherige"
 msgstr "previous"
 
 #: templates/partials/pagination.html:16
-#: templates/start_search/result_search.html:176
+#: templates/start_search/result_search.html:178
 msgid "Seite"
 msgstr "Site"
 
 #: templates/partials/pagination.html:16
-#: templates/start_search/result_search.html:176
+#: templates/start_search/result_search.html:178
 msgid "von"
 msgstr "from"
 
 #: templates/partials/pagination.html:22
-#: templates/start_search/result_search.html:181
+#: templates/start_search/result_search.html:183
 msgid "nächste"
 msgstr "next"
 
 #: templates/partials/pagination.html:26
-#: templates/start_search/result_search.html:185
+#: templates/start_search/result_search.html:187
 msgid "letzte"
 msgstr "last"
 
@@ -4518,7 +4581,7 @@ msgstr "Comparison mode"
 #, fuzzy
 #| msgid "Netzwerktopologie"
 msgid "Netzwerk Topologie"
-msgstr "network topology"
+msgstr "Network topology"
 
 #: templates/protocols/details_right_column.html:30
 msgid "Spezifische Standards, denen jedes Protokoll entspricht"
@@ -4646,7 +4709,7 @@ msgstr "Type of result"
 msgid "Aktualität"
 msgstr "Actuality"
 
-#: templates/start_search/result_search.html:193
+#: templates/start_search/result_search.html:195
 msgid "Die Suche hat keine Ergebnisse ergeben."
 msgstr "The search returned no results."
 
@@ -4684,10 +4747,10 @@ msgid ""
 "                Datensätze, digitale Werkzeuge bzw. Anwendungen und weitere\n"
 "                Forschungsergebnisse."
 msgstr ""
-"The technical focus of investigating digitalization in energy researchwithin "
-"the built environment primarily targets tools for technical planning,energy "
-"efficient operation, and optimization. This encompasses datasets, digital "
-"tools, applications, and other research results."
+"The technical focus of investigating digitalization in energy research "
+"within the built environment primarily targets tools for technical planning, "
+"energy efficient operation, and optimization. This encompasses datasets, "
+"digital tools, applications, and other research results."
 
 #: templates/start_search/start_search.html:133 tools_over/views.py:653
 msgid "Werkzeuge"
@@ -4743,10 +4806,10 @@ msgid ""
 "                mit Daten sowie dessen Auswirkungen thematisiert."
 msgstr ""
 "The ecological focus when examining digitalization in energy research in the "
-"built environment aims to evaluate environmental impacts resuluting from the "
-"use of digital applications. his includes assessing both positive effects, "
-"such as energy savings,and potential negative effects, like increased "
-"material consumption.Adequate data handling and its implications are also "
+"built environment aims to evaluate environmental impacts resulting from the "
+"use of digital applications. This includes assessing both positive effects, "
+"such as energy savings, and potential negative effects, like increased "
+"material consumption. Adequate data handling and its implications are also "
 "discussed in this context."
 
 #: templates/start_search/start_search.html:327
@@ -4770,7 +4833,7 @@ msgstr ""
 "The legal focus emphasizes the importance of data protection in "
 "digitalization within the built environment. It addresses the emergence of "
 "data protection risks and their potential to impede innovation. "
-"Concurrently, it clarifiesdata protection laws for various applications in "
+"Concurrently, it clarifies data protection laws for various applications in "
 "the building sector, offering concrete action recommendations for projects."
 
 #: templates/start_search/start_search.html:381
@@ -4800,7 +4863,7 @@ msgstr "Yes"
 
 #: templates/tools_over/details_right_column.html:35
 msgid "Ist eine Veröffentlichung geplant?"
-msgstr "Is a publication planned?"
+msgstr "Is a publication planned? (if not already done)"
 
 #: templates/tools_over/details_right_column.html:43
 #: templates/tools_over/explanationApps.html:97
@@ -4854,7 +4917,7 @@ msgstr ""
 "create products with specific functionalities. Frameworks, libraries, "
 "programming languages and standards are also listed under tools. A digital "
 "application, on the other hand, is a standalone piece of software designed "
-"for a specific use case. Typically, a digital application is consists of a "
+"for a specific use case. Typically, a digital application consists of a "
 "chain of tools with possible direct interaction with the end user. Platforms "
 "are also listed under Applications. It is entirely possible to have a tool "
 "that can also be classified as an application. In a first step, we collect "
@@ -4879,8 +4942,8 @@ msgid ""
 "Dienstleistung."
 msgstr ""
 "What do the developers describe as the area of application of their digital "
-"application? Options include administration, research/teaching, industry, "
-"and service."
+"application? Options are administration, research/teaching, industry and "
+"services."
 
 #: templates/tools_over/explanationApps.html:33
 msgid ""
@@ -4928,7 +4991,7 @@ msgid ""
 "            kann nach Abschluss des Projektes die Weiterentwicklung bzw. die "
 "Wartung eingestellt werden."
 msgstr ""
-"When was the last update done? Particularly in the case of digital "
+"When did the last update occur? Particularly in the case of digital "
 "applications that are developed as part of research projects, further "
 "development or maintenance can be stopped after the project has been "
 "completed."
@@ -4938,7 +5001,7 @@ msgid ""
 "Wie zugänglich ist die Anwendung? Ist es kostenpflichtig, open-source oder "
 "freeware?"
 msgstr ""
-"How accessible is the application? Is it paid, open source or freeware?"
+"How accessible is the application? Is it paid, open-source or freeware?"
 
 #: templates/tools_over/explanationApps.html:64
 msgid ""
@@ -4967,7 +5030,8 @@ msgid ""
 "Bausektor/Energiewendebauen (bspw. Förderkennzeichen)."
 msgstr ""
 "Identification of concrete examples of the use of applications in the "
-"construction sector/energy transition construction (e.g. funding indicators)."
+"construction sector/energy transition construction (e.g., funding "
+"indicators)."
 
 #: templates/tools_over/explanationApps.html:76
 #: templates/tools_over/explanationTools.html:72
@@ -5019,8 +5083,8 @@ msgstr "Is a publication planned? (if not already done)"
 msgid ""
 "Quelle für weitere Information zur Anwendung, z.B. git-Repo, Projektwebseite."
 msgstr ""
-"Source for further information about the application, e.g. git repo, project "
-"website."
+"Source for further information about the application, e.g., git repo, "
+"project website."
 
 #: templates/tools_over/explanationApps.html:102
 msgid ""
@@ -5035,12 +5099,12 @@ msgid ""
 "              <li>bereit für den produktiven Einsatz (Released)</li>"
 msgstr ""
 "What is the current development status? The following options are possible: "
-"<ol><li>first draft (pre-alpha)</li>\n"
-" <li>Essential functions (Alpha)</li>\n"
-" <li>not yet fully tested (Beta)</li>\n"
-" <li>all functions preserved, possibly containing errors (release Canditate "
+"<ol><li>First draft (pre-alpha)</li>\n"
+" <li>Essential functions (alpha)</li>\n"
+" <li>Not yet fully tested (beta)</li>\n"
+" <li>All functions preserved, possibly containing errors (Release Canditate "
 "- RC)</li>\n"
-" <li>ready for productive use (released)</li>"
+" <li>Ready for productive use (released)</li>"
 
 #: templates/tools_over/explanationApps.html:112
 #: templates/tools_over/explanationTools.html:110
@@ -5099,6 +5163,12 @@ msgstr ""
 "Which norms or standards serve as the basis or orientation for the "
 "application?"
 
+#: templates/tools_over/explanationApps.html:132
+#: templates/tools_over/explanationTools.html:131
+#: templates/use_cases/explanation.html:74
+msgid "Weiterführende Informationen:"
+msgstr "Additional information:"
+
 #: templates/tools_over/explanationApps.html:136
 #: templates/tools_over/explanationTools.html:135
 msgid ""
@@ -5139,7 +5209,7 @@ msgid ""
 "zu digitalen Stundenzetteln oder digitalen Werkzeugen zur Kalkulation von "
 "Mengen gesammelt."
 msgstr ""
-"The website baulinks collects information about software with a focus on "
+"The baulinks website collects information about software with a focus on "
 "architecture and crafts. In addition to CAD tools or digital tools for "
 "planning, information on digital timesheets or digital tools for calculating "
 "quantities is also collected."
@@ -5231,16 +5301,16 @@ msgid ""
 msgstr ""
 "A general distinction is made here between digital tools and digital "
 "applications. A digital tool is a piece of software used in conjunction with "
-"other tools by developers or engineers, to create products with specific "
+"other tools by developers or engineers, for creating products with specific "
 "functionalities. Frameworks, libraries, programming languages and standards "
 "are also listed under tools. A digital application, on the other hand, is a "
 "standalone piece of software designed for a specific use case. Typically, a "
-"digital application is consists of a chain of tools with possible direct "
+"digital application consists of a chain of tools with possible direct "
 "interaction with the end user. Platforms are also listed under Applications. "
 "It is entirely possible to have a tool that can also be classified as an "
 "application. In a first step, we collect these digital tools and "
 "applications and make them available to you as an overview and inspiration. "
-"A detailed compilation of the tools and applications can only be done "
+"A detailed compilation of the tools and applications can only be undertaken "
 "together with the users, so please feel free to contact us. We look forward "
 "to hearing your application examples from your projects.<br>When putting "
 "together the tools, we took the following aspects into account:"
@@ -5253,8 +5323,7 @@ msgid ""
 "Dienstleistung."
 msgstr ""
 "What do the developers describe as the area of application of their digital "
-"tool? Optionen sind Verwaltung, Forschung/Lehre, Industrie, und "
-"Dienstleistung."
+"tool? Options are administration, research/teaching, industry and services."
 
 #: templates/tools_over/explanationTools.html:29
 msgid ""
@@ -5301,7 +5370,7 @@ msgid ""
 "            kann nach Abschluss des Projektes die Weiterentwicklung bzw. die "
 "Wartung eingestellt werden."
 msgstr ""
-"When was the last update done? Particularly in the case of digital tools "
+"When did the last update occur? Particularly in the case of digital tools "
 "that are developed as part of research projects, further development or "
 "maintenance can be stopped after the project has been completed."
 
@@ -5309,7 +5378,7 @@ msgstr ""
 msgid ""
 "Wie zugänglich ist das Werkzeug? Ist es kostenpflichtig, open-source oder "
 "freeware?"
-msgstr "How accessible is the tool? Is it paid, open source or freeware?"
+msgstr "How accessible is the tool? Is it paid, open-source or freeware?"
 
 #: templates/tools_over/explanationTools.html:60
 msgid ""
@@ -5326,7 +5395,7 @@ msgid ""
 "Bausektor/Energiewendebauen (bspw. Förderkennzeichen)."
 msgstr ""
 "Identification of concrete examples of the use of tools in the construction "
-"sector/energy transition construction (e.g. funding indicators)."
+"sector/energy transition construction (e.g., funding indicators)."
 
 #: templates/tools_over/explanationTools.html:69
 msgid ""
@@ -5334,7 +5403,7 @@ msgid ""
 "Bausektor/Energiewendebauen (bspw. Projekt Nummer)."
 msgstr ""
 "Identification of concrete examples of the use of tools in the construction "
-"sector/energy transition (e.g. project number)."
+"sector/energy transition (e.g., project number)."
 
 #: templates/tools_over/explanationTools.html:73
 msgid "Wer ist für die Entwicklung und Wartung des Werkzeugs verantwortlich?"
@@ -5369,7 +5438,7 @@ msgstr "If the tool is published, in what year was it released?"
 msgid ""
 "Quelle für weitere Information zum Werkzeug, z.B. git-Repo, Projektwebseite."
 msgstr ""
-"Source for further information about the tool, e.g. git repo, project "
+"Source for further information about the tool, e.g., git repo, project "
 "website."
 
 #: templates/tools_over/explanationTools.html:98
@@ -5380,15 +5449,15 @@ msgstr ""
 
 #: templates/tools_over/explanationTools.html:100
 msgid "erster Entwurf (pre-Alpha)"
-msgstr "first draft (pre-alpha)"
+msgstr "First draft (pre-alpha)"
 
 #: templates/tools_over/explanationTools.html:101
 msgid "wesentliche Funktionen (Alpha)"
-msgstr "essential functions (alpha)"
+msgstr "Essential functions (alpha)"
 
 #: templates/tools_over/explanationTools.html:102
 msgid "noch nicht vollständig gestetet (Beta)"
-msgstr "not yet fully tested (beta)"
+msgstr "Not yet fully tested (beta)"
 
 #: templates/tools_over/explanationTools.html:104
 msgid "alle Funktion erhalten, evtl. Fehler enthalten (Release Canditate - RC)"
@@ -5397,7 +5466,7 @@ msgstr ""
 
 #: templates/tools_over/explanationTools.html:106
 msgid "bereit für den produktiven Einsatz (Released)"
-msgstr "ready for productive use (released)"
+msgstr "Ready for productive use (released)"
 
 #: templates/tools_over/explanationTools.html:111
 msgid ""
@@ -5425,11 +5494,6 @@ msgid ""
 "Werkzeug?"
 msgstr ""
 "Which norms or standards serve as the basis or orientation for the tool?"
-
-#: templates/tools_over/explanationTools.html:131
-#: templates/use_cases/explanation.html:74
-msgid "Weiterführende Informationen:"
-msgstr "Additional information:"
 
 #: templates/use_cases/explanation.html:4
 msgid "Wir gehen hier auf verschiedene Fragestellungen ein"
@@ -5494,7 +5558,7 @@ msgstr ""
 "The framework of the Smart Readiness Indicator, developed according to EU "
 "regulations to assess the intelligence capability of buildings, is used as "
 "the basis. \n"
-"          Within this framework, 'Services' are defined, which are "
+"          Within this framework, “Services” are defined, which are "
 "considered here as use cases.\n"
 "          The following aspects are considered:"
 
@@ -5759,7 +5823,7 @@ msgstr ""
 "On this page, we present a detailed analysis of various use cases in the "
 "context of the Smart Readiness Indicator. The goal is to uncover the "
 "different effects of digitalization and highlight the interaction of various "
-"requirements. In doing so, we address several key questions:"
+"requirements. In doing so, we address various questions:"
 
 #: use_cases/views.py:119
 msgid "Level der Wirkebene"
@@ -5813,6 +5877,16 @@ msgstr "Free to use"
 msgid "MIT-Lizenz"
 msgstr "MIT license"
 
+#~ msgid "der \"User Agent-String\" Ihres Webbrowsers,"
+#~ msgstr "the “User Agent-String” of your web browser"
+
+#~ msgid ""
+#~ "Auf dieser Seite befinden sich unterschiedliche technische Protokolle, "
+#~ "die im Sommer 2023 erfasst worden sind."
+#~ msgstr ""
+#~ "On this page, you will find various technical protocols that were "
+#~ "recorded in the summer of 2023."
+
 #~ msgid "Übertragung"
 #~ msgstr "Transmission"
 
@@ -5821,9 +5895,6 @@ msgstr "MIT license"
 
 #~ msgid "Auflösung"
 #~ msgstr "Resolution"
-
-#~ msgid "Datensatz"
-#~ msgstr "Dataset"
 
 #~ msgid "generelle Art des Werkzeugs"
 #~ msgstr "general type of tool"
@@ -5836,13 +5907,6 @@ msgstr "MIT license"
 
 #~ msgid "Normen/ Standard (Basis/Orientierung des Tools)"
 #~ msgstr "Norms/standard (basis/orientation of the tool)"
-
-#~ msgid ""
-#~ "Auf dieser Seite befinden sich unterschiedliche technische Protokolle, "
-#~ "die im Sommer 2023 erfasst worden sind."
-#~ msgstr ""
-#~ "On this page, you will find various technical protocols that were "
-#~ "recorded in the summer of 2023."
 
 #~ msgid ""
 #~ "Sowohl die Materialisierung als auch der Energieaufwand für den Betrieb "
@@ -6178,7 +6242,7 @@ msgstr "MIT license"
 #~ "The framework of the Smart Readiness Indicator, developed according to EU "
 #~ "regulations to assess the intelligence capability of buildings, is used "
 #~ "as the basis. \n"
-#~ "          Within this framework, 'Services' are defined, which are "
+#~ "          Within this framework, “Services” are defined, which are "
 #~ "considered here as use cases.\n"
 #~ "          The following aspects are considered:"
 
