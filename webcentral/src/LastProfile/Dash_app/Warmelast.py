@@ -102,8 +102,8 @@ app.layout = html.Div(
         # Data range picker : choose the date range used for the approximation
         dcc.DatePickerRange(
             display_format=" DD/MM/YYYY",
-            min_date_allowed='2015-01-01',
-            max_date_allowed='2045-12-31',
+            min_date_allowed="2015-01-01",
+            max_date_allowed="2045-12-31",
             start_date_placeholder_text=_("Start Datum"),
             end_date_placeholder_text=_("End Datum"),
             id="datePicker",
