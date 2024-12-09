@@ -6,7 +6,7 @@
 {% endif %}
 <p>
   <h5>{% translate "weitere Informationen" %}</h5>
-  {{ boxObject.furtherInformation }}
+  {{ boxObject|get_m2m_or_attr:"furtherInformation" }}
 </p>
 
 <p>
