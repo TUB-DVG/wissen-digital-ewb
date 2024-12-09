@@ -1,18 +1,30 @@
 from django.test import TestCase
 from django.core.management import call_command
 import pandas as pd
+from abc import ABC, abstractproperty
 
-
-class AbstractTestExport(TestCase):
+class AbstractTestExport:
     """ """
-
-    def setUp(self):
-        """ """
-        call_command(
-            "data_import",
-            self.appName,
-            self.importFile,
-        )
+    # @property
+    # def appName(self):
+    #     """Name of the application."""
+    #     pass
+    #
+    # @abstractproperty
+    # def importFile(self):
+    #     """Path to the import file for this application."""
+    #     pass
+    #
+    # @abstractproperty
+    # def numberExpectedRowsXlsx(self):
+    #     """Number of expected rows in the exported Excel file."""
+    #     pass
+    #
+    # @abstractproperty
+    # def expectedColumns(self):
+    #     """List of expected column names in the exported Excel file."""
+    #     pass
+    
 
     def testExportFile(self):
         """Test if the sorting into the two dictionaries representanting the english

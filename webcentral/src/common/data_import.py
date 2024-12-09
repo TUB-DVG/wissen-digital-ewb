@@ -24,7 +24,7 @@ from django.core.serializers import serialize
 
 from common.models import DbDiff, Literature
 from protocols.models import Protocol
-
+from publications.models import Type
 # from .serializers import BackReferenceSerializer
 
 
@@ -294,6 +294,10 @@ class DataImport:
                         )[0]
                     )
             return listOfM2Mobjs
+        elif djangoModel._meta.model_name == "type":
+            return djangoModel.objects.get_or_create(
+                type=listOfStrings[0],
+            )[0]
         else:
             attrNamesOfModel = [
                 attr.name for attr in djangoModel._meta.get_fields()

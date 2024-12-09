@@ -2,10 +2,11 @@ from datetime import (
     datetime,
     timedelta,
 )
+from django.db import models
 import pandas as pd
 
 from common.data_import import DataImport
-from tools_over.models import Focus
+from common.models import Focus
 from .models import (
     Publication,
     Type,
@@ -20,6 +21,7 @@ class DataImportApp(DataImport):
         "title__en": "title_en",
         "abstract__en": "abstract_en",
         "copyright__en": "copyright_en",
+        "focus__en": "focus_en",
         # "Kurzbeschreibung der Wirkung__en": "effectDescription_en",
         # "Quelle / Hinweise__en": "furtherInformation_en",
     }
@@ -29,6 +31,7 @@ class DataImportApp(DataImport):
         "abstract": ("abstract", None),
         "url": ("url", None),
         "type": ("type", Type),
+        "focus": ("focus", Focus),
     }
 
     def __init__(self, path_to_data_file):
@@ -58,9 +61,14 @@ class DataImportApp(DataImport):
                     separator=";;",
                 )
                 m2mList = self._iterateThroughListOfStrings(m2mList, m2MModel)
-                readInValuesM2M[tableKey] = self.getM2MelementsQueryset(
-                    m2mList, m2MModel
-                )
+                if m2MModel != Type:
+                    readInValuesM2M[tableKey] = self.getM2MelementsQueryset(
+                        m2mList, m2MModel
+                    )
+                else:
+                    readInValues[tableKey] = self.getM2MelementsQueryset(
+                        m2mList, m2MModel
+                    )
             else:
                 if row[header.index(tableKey)] == "":
                     readInValues[tableKey] = None
@@ -68,10 +76,10 @@ class DataImportApp(DataImport):
                     readInValues[tableKey] = row[header.index(tableKey)]
 
         obj = self.DJANGO_MODEL_OBJ(**readInValues)
-
-        obj.focus.add(*focusElements)
+        obj.save()
+        obj.focus.add(*readInValuesM2M["focus"])
         if self._englishHeadersPresent(header):
             self._importEnglishTranslation(
                 obj, header, row, self.MAPPING_EXCEL_DB_EN
             )
-        return obj, created
+        return obj, True
