@@ -24,8 +24,7 @@ from .Warmelastapproximation_csv import heatLoad
 locale.setlocale(locale.LC_ALL, "de_DE.utf8")  # German time
 
 app = DjangoDash("Warmelast")
-polledStationNames = []
-placeholderState = _("Auswahl des Bundesland")
+
 
 # App layout
 app.layout = html.Div(
@@ -36,73 +35,29 @@ app.layout = html.Div(
             style={"text-align": "center"},
             id="headingApp",
         ),
-        html.Div(
-            [
-                html.P(
-                    _(
-                        "Als Testrefenzjahr haben wir die folgenden Werte gewählt:"
-                    ),
-                    id="container1",
-                ),
-                # html.Br(),
-                html.P(
-                    _("Koordinatensystem : Lambert konform konisch"),
-                    id="container2",
-                ),
-                # html.Br(),
-                html.P(_("Rechtswert        : 4201500 Meter"), id="container3"),
-                # html.Br(),
-                html.P(_("Hochwert          : 2848500 Meter"), id="container4"),
-                # html.Br(),
-                html.P(
-                    _("Höhenlage        : 36 Meter über NN"), id="container5"
-                ),
-                # html.Br(),
-                html.P(
-                    _("Erstellung des Datensatzes im Mai 2016"), id="container6"
-                ),
-                # html.Br(),
-                html.P(
-                    _("Art des TRY       : mittleres Jahr"), id="container7"
-                ),
-                # html.Br(),
-                html.P(_("Bezugszeitraum    : 1995-2012"), id="container8"),
-                # html.Br(),
-                html.P(
-                    _(
-                        "Datenbasis        : Beobachtungsdaten Zeitraum 1995-2012"
-                    ),
-                    id="container9",
-                ),
-            ],
-            id="hideText",
-            style={"display": "none"},
-        ),
         # Dropdown for the application options
         dcc.Dropdown(
             options=[
-                {"label": _("Testreferenzjahr"), "value": "on"},
-                # {"label": _("Wetterstation"), "value": "off"},
+                {"label": _("2015"), "value": "2015"},
+                {"label": _("2045"), "value": "2045"},
             ],
             placeholder=_("Berechnungstyp"),
             id="referenceYear",
-            value="on",
+            value="2015",
         ),
-        html.Div(
-            [
-                # Dropdown for State options for the Wetterdienst station choice
-                dcc.Dropdown(
-                    polledStationNames,
-                    placeholder=placeholderState,
-                    id="state",
-                ),
-                # Dropdown for the available wetterdienst stations in the chosen State
-                dcc.Dropdown(
-                    placeholder=_("Auswahl der Station"), id="station"
-                ),
+        dcc.Dropdown(
+            options = [{"label": f"Zone{i}", "value": f"Zone{i}"} for i in range(16)],
+            placeholder=_("Auswahl der Zone"),
+            id="Zone",
+        ),
+        dcc.Dropdown(
+            options=[
+                {"label": _("kalt"), "value": "kalt"},
+                {"label": _("normal"), "value": "normal"},
+                {"label": _("warm"), "value": "warm"},
             ],
-            id="hideElements",
-            style={"display": "block"},
+            placeholder=_("Auswahl der Temperatur"),
+            id="Temp",
         ),
         dcc.Dropdown(
             options=[
@@ -196,61 +151,7 @@ app.layout = html.Div(
     },
 )
 # ------------------------------------------------------------------------------
-# Connect the Plotly graphs with Dash Components
-
-
-# Hide explanation text for refrenceyear run
-@app.callback(
-    Output(component_id="datePicker", component_property="start_date"),
-    Output(component_id="datePicker", component_property="end_date"),
-    Output(component_id="heatRequirement", component_property="value"),
-    Output(component_id="application", component_property="value"),
-    Output(component_id="displayMonth", component_property="value"),
-    Input(component_id="referenceYear", component_property="value"),
-    prevent_initial_call=True,
-    allow_duplicate=True,
-)
-def resetData(visibility_state):
-    return None, None, None, None, "All"
-
-
-# Hide explanation text for refrenceyear run
-@app.callback(
-    Output(component_id="hideText", component_property="style"),
-    Input(component_id="referenceYear", component_property="value"),
-)
-def showHideTxt(visibility_state):
-    if visibility_state == "off":
-        return {"display": "none"}
-    if visibility_state == "on":
-        return {"display": "block"}
-
-
-# Hide unnecessary elements for refrenceyear run
-@app.callback(
-    Output(component_id="hideElements", component_property="style"),
-    Input(component_id="referenceYear", component_property="value"),
-)
-def showHideElement(visibility_state):
-    if visibility_state == "off":
-        return {"display": "block"}
-    if visibility_state == "on":
-        return {"display": "none"}
-
-
-# Selection of station
-@app.callback(
-    Output("station", "options"),
-    Input("state", "value"),
-    prevent_initial_call=True,
-)
-# The following funtion provides the list of available stations in the chosen Bundesland
-def stationSelection(state: str) -> list:
-    return [
-        {"label": row["name"], "value": row["station_id"]}
-        for index, row in stations.all().df.to_pandas().iterrows()
-        if row["state"] == state
-    ]
+# Connect the Plotly graphs with Dash Component
 
 
 # Setting of the available date frame
@@ -258,18 +159,14 @@ def stationSelection(state: str) -> list:
     Output(component_id="datePicker", component_property="min_date_allowed"),
     Output(component_id="datePicker", component_property="max_date_allowed"),
     Input(component_id="referenceYear", component_property="value"),
-    Input(component_id="station", component_property="value"),
+
 )
 # The following function returns the data range provided by the chosen station
-def dateRangePicker(referenceYear: str, stationId: int) -> Tuple[str, str]:
-    if referenceYear == "on":
-        minDate = datetime.datetime.strptime("01/01/2021", "%m/%d/%Y")
-        maxDate = datetime.datetime.strptime("12/31/2021", "%m/%d/%Y")
-    else:
-        data = stations.filter_by_station_id(station_id=stationId)
-        stationData = data.values.all().df  # .to_pandas()
-        minDate = (min(stationData["date"])).date()
-        maxDate = (max(stationData["date"])).date()
+def dateRangePicker(referenceYear: str) -> Tuple[str, str]:
+    referenceYear = int(referenceYear)
+    minDate = datetime.datetime.strptime(f"01/01/{referenceYear}", "%m/%d/%Y")
+    maxDate = datetime.datetime.strptime(f"12/31/{referenceYear}", "%m/%d/%Y")
+
     return minDate, maxDate
 
 
@@ -329,11 +226,12 @@ def displayMonths(endDate: str, dataOnLoad, startDate: str) -> list:
     Input(component_id="approximationStart", component_property="n_clicks"),
     Input(component_id="displayMonth", component_property="value"),
     State(component_id="application", component_property="value"),
-    State(component_id="station", component_property="value"),
     State(component_id="heatRequirement", component_property="value"),
     State(component_id="datePicker", component_property="start_date"),
     State(component_id="datePicker", component_property="end_date"),
     State(component_id="referenceYear", component_property="value"),
+    State(component_id="Zone", component_property="value"),
+    State(component_id="Temp", component_property="value"),
     # prevent_initial_call = True
 )
 # This function calculates the approximations and displays it
@@ -342,11 +240,12 @@ def updateHeatGraph(
     n_clicks: int,
     displayMonth: str,
     application: str,
-    StationId: int,
     heatRequirement: int,
     startDate: str,
     endDate: str,
     referenceYear: str,
+    zone: str,
+    temperature: str,
 ):
 
     if n_clicks == 0 or n_clicks is None:
@@ -366,6 +265,9 @@ def updateHeatGraph(
         heatRequirement,
         startDate,
         endDate,
+        referenceYear,
+        zone,
+        temperature,
     )
     # global heat_approximation
     heatApproximation = heat[1]
@@ -454,10 +356,6 @@ def updateHeatGraph(
     Input("heatRequirement", "value"),
     Input("datePicker", "start_date"),
     Input("datePicker", "end_date"),
-    Input("state", "value"),
-    Input("station", "value"),
-    Input("referenceYear", "value"),
-    State("station", "options"),
     State("application", "options"),
     prevent_initial_call=True,
 )
@@ -468,54 +366,36 @@ def downloadAsCsv(
     heatRequirement: int,
     startDate: str,
     endDate: str,
-    state: str,
-    station: str,
-    referenceYear: str,
-    labelsStation,
     labelsApplication,
 ):
     # To Do Add download for Wärmelast
     changed_id = [p["prop_id"] for p in dash.callback_context.triggered][0]
     if "btn-download-csv" in changed_id:
-        if referenceYear == "off":
-            heatApproximation = pd.DataFrame.from_dict(
-                jsonifiedHeatApproximation
-            )
-            labelStation = [
-                x["label"] for x in labelsStation if x["value"] == station
-            ]
-            labelsApplication = [
-                x["label"]
-                for x in labelsApplication
-                if x["value"] == application
-            ]
-            heatApproximation.columns = [
-                [
-                    "Jahreswärmebedarf in kWh/a :" + str(heatRequirement),
-                    "",
-                    "",
-                    "",
-                ],
-                ["Anwendung:" + labelsApplication[0], "", "", ""],
-                ["Zeitraum : Von " + startDate + " Bis " + endDate, "", "", ""],
-                [
-                    "Bundesland:" + state + " Station:" + labelStation[0],
-                    "",
-                    "",
-                    "",
-                ],
-                ["", "", "", ""],
-                [
-                    "Datum",
-                    "WärmeLast in kW",
-                    "TrinkwasserWärmeLast in kW",
-                    "FehlendeWerte(Angepasst)",
-                ],
-            ]
-        if referenceYear == "on":
-            heatApproximation = pd.DataFrame.from_dict(
-                jsonifiedHeatApproximation
-            )
+        heatApproximation = pd.DataFrame.from_dict(
+            jsonifiedHeatApproximation
+        )
+        labelsApplication = [
+            x["label"]
+            for x in labelsApplication
+            if x["value"] == application
+        ]
+        heatApproximation.columns = [
+            [
+                "Jahreswaermebedarf in kWh/a :" + str(heatRequirement),
+                "",
+                "",
+                "",
+            ],
+            ["Anwendung:" + labelsApplication[0], "", "", ""],
+            ["Zeitraum : Von " + startDate + " Bis " + endDate, "", "", ""],
+            ["", "", "", ""],
+            [
+                "Datum",
+                "WaermeLast in kW",
+                "TrinkwasserWärmeLast in kW",
+                "FehlendeWerte(Angepasst)",
+            ],
+        ]
         return dcc.send_data_frame(
             heatApproximation.to_csv,
             "WarmeData.csv",
@@ -529,19 +409,12 @@ def downloadAsCsv(
 
 
 @app.callback(
-    Output("headingApp", "children"),
-    Output("container1", "children"),
-    Output("container2", "children"),
-    Output("container3", "children"),
-    Output("container4", "children"),
-    Output("container5", "children"),
-    Output("container6", "children"),
-    Output("container7", "children"),
-    Output("container8", "children"),
-    Output("container9", "children"),
     Output("referenceYear", "options"),
     Output("referenceYear", "placeholder"),
-    Output("station", "placeholder"),
+    Output("Zone", "options"),
+    Output("Zone", "placeholder"),
+    Output("Temp", "options"),
+    Output("Temp", "placeholder"),
     Output("application", "options"),
     Output("application", "placeholder"),
     Output("heatRequirement", "placeholder"),
@@ -553,26 +426,21 @@ def downloadAsCsv(
     allow_duplicate=True,
 )
 def update_layout(data):
-    headingAppTranslation = _("Wärmelast Approximation")
-    container1Translation = _(
-        "Als Testrefenzjahr haben wir die folgenden Werte gewählt:"
-    )
-    container2Translation = _("Koordinatensystem : Lambert konform konisch")
-    container3Translation = _("Rechtswert        : 4201500 Meter")
-    container4Translation = _("Hochwert          : 2848500 Meter")
-    container5Translation = _("Höhenlage        : 36 Meter über NN")
-    container6Translation = _("Erstellung des Datensatzes im Mai 2016")
-    container7Translation = _("Art des TRY       : mittleres Jahr")
-    container8Translation = _("Bezugszeitraum    : 1995-2012")
-    container9Translation = _(
-        "Datenbasis        : Beobachtungsdaten Zeitraum 1995-2012"
-    )
     optionsReferenceYear = [
-        {"label": _("Testreferenzjahr"), "value": "on"},
-        # {"label": _("Wetterstation"), "value": "off"},
+        {"label": _("2015"), "value": "2015"},
+        {"label": _("2045"), "value": "2045"},
     ]
     placeholderReferenceYear = _("Berechnungstyp")
-    placeholderStationPlaceholder = _("Auswahl der Station")
+    optionsZone = [
+        {"label": f"Zone{i}", "value": f"Zone{i}"} for i in range(16)
+    ]
+    placeholderZone = _("Auswahl der Zone")
+    optionTemp = [              
+                {"label": _("kalt"), "value": "kalt"},
+                {"label": _("normal"), "value": "normal"},
+                {"label": _("warm"), "value": "warm"},
+            ]
+    placeholderTemp= _("Auswahl der Temperatur")
     optionsDropdown = [
         {"label": _("Einfamilienhaus"), "value": "2"},
         {"label": _("Mehrfamilienhaus"), "value": "3"},
@@ -597,26 +465,17 @@ def update_layout(data):
     startDatePlaceholderText = _("Start Datum")
     endDatePlaceholderText = _("End Datum")
 
-    paragraphNoEntry = _("Es gibt keine Eingabe")
-
     buttonLabelApproximationStart = _("Approximation starten")
     buttonLabelDownloadCsv = _("Download als csv")
-    stationplaceholder = _("Auswahl der Station")
+
 
     return (
-        headingAppTranslation,
-        container1Translation,
-        container2Translation,
-        container3Translation,
-        container4Translation,
-        container5Translation,
-        container6Translation,
-        container7Translation,
-        container8Translation,
-        container9Translation,
         optionsReferenceYear,
         placeholderReferenceYear,
-        placeholderStationPlaceholder,
+        optionsZone,
+        placeholderZone,
+        optionTemp,
+        placeholderTemp,
         optionsDropdown,
         placeholderBuildingType,
         heatRequirementPlaceholder,
