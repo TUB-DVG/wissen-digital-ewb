@@ -46,7 +46,9 @@ app.layout = html.Div(
             value="2015",
         ),
         dcc.Dropdown(
-            options = [{"label": f"Zone{i}", "value": f"Zone{i}"} for i in range(16)],
+            options=[
+                {"label": f"Zone{i}", "value": f"Zone{i}"} for i in range(16)
+            ],
             placeholder=_("Auswahl der Zone"),
             id="Zone",
         ),
@@ -159,7 +161,6 @@ app.layout = html.Div(
     Output(component_id="datePicker", component_property="min_date_allowed"),
     Output(component_id="datePicker", component_property="max_date_allowed"),
     Input(component_id="referenceYear", component_property="value"),
-
 )
 # The following function returns the data range provided by the chosen station
 def dateRangePicker(referenceYear: str) -> Tuple[str, str]:
@@ -371,13 +372,9 @@ def downloadAsCsv(
     # To Do Add download for Wärmelast
     changed_id = [p["prop_id"] for p in dash.callback_context.triggered][0]
     if "btn-download-csv" in changed_id:
-        heatApproximation = pd.DataFrame.from_dict(
-            jsonifiedHeatApproximation
-        )
+        heatApproximation = pd.DataFrame.from_dict(jsonifiedHeatApproximation)
         labelsApplication = [
-            x["label"]
-            for x in labelsApplication
-            if x["value"] == application
+            x["label"] for x in labelsApplication if x["value"] == application
         ]
         heatApproximation.columns = [
             [
@@ -435,12 +432,12 @@ def update_layout(data):
         {"label": f"Zone{i}", "value": f"Zone{i}"} for i in range(16)
     ]
     placeholderZone = _("Auswahl der Zone")
-    optionTemp = [              
-                {"label": _("kalt"), "value": "kalt"},
-                {"label": _("normal"), "value": "normal"},
-                {"label": _("warm"), "value": "warm"},
-            ]
-    placeholderTemp= _("Auswahl der Temperatur")
+    optionTemp = [
+        {"label": _("kalt"), "value": "kalt"},
+        {"label": _("normal"), "value": "normal"},
+        {"label": _("warm"), "value": "warm"},
+    ]
+    placeholderTemp = _("Auswahl der Temperatur")
     optionsDropdown = [
         {"label": _("Einfamilienhaus"), "value": "2"},
         {"label": _("Mehrfamilienhaus"), "value": "3"},
@@ -467,7 +464,6 @@ def update_layout(data):
 
     buttonLabelApproximationStart = _("Approximation starten")
     buttonLabelDownloadCsv = _("Download als csv")
-
 
     return (
         optionsReferenceYear,

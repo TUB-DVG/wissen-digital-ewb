@@ -12,16 +12,15 @@ DATA_PATH = os.path.join(PATH, "Wärme_Strom.csv")
 TRY_PATH = os.path.join(PATH, "auxillary")
 
 
-                
 def filter_filenames(df, year=None, zone=None, temp=None):
     """
     filter file by filename
     """
     filtered_df = df.copy()
 
-    filtered_df = filtered_df[filtered_df['Year'] == year]
-    filtered_df = filtered_df[filtered_df['Zone'] == zone]
-    filtered_df = filtered_df[filtered_df['Temp'] == temp]
+    filtered_df = filtered_df[filtered_df["Year"] == year]
+    filtered_df = filtered_df[filtered_df["Zone"] == zone]
+    filtered_df = filtered_df[filtered_df["Temp"] == temp]
     return filtered_df
 
 
@@ -30,11 +29,11 @@ def read_file_contents(df):
     read content from files accorfing to filenamesand filepath
     """
     for filename in df["Filename"]:
-        #print(filename)
-        path = df[df["Filename"]==filename]["Path"].iloc[0]
-        #print(path)
+        # print(filename)
+        path = df[df["Filename"] == filename]["Path"].iloc[0]
+        # print(path)
 
-        with open(path, 'r') as file:
+        with open(path, "r") as file:
             lines = file.readlines()
 
         # Find the line containing column headers
@@ -54,7 +53,9 @@ def read_file_contents(df):
 
         # Extract header and data lines
         header_line = lines[header_index].strip()
-        data_lines = lines[header_index + 2:]  # Skip "***" line after the header
+        data_lines = lines[
+            header_index + 2 :
+        ]  # Skip "***" line after the header
 
         # Parse the data into a DataFrame
         column_names = header_line.split()
@@ -67,14 +68,32 @@ def read_file_contents(df):
         df = pd.DataFrame(data, columns=column_names)
 
         # Convert columns to appropriate data types
-        numeric_columns = ["RW", "HW", "MM", "DD", "HH", "t", "p", "WR", "WG", "N", "x", "RF", "B", "D", "A", "E", "IL"]
+        numeric_columns = [
+            "RW",
+            "HW",
+            "MM",
+            "DD",
+            "HH",
+            "t",
+            "p",
+            "WR",
+            "WG",
+            "N",
+            "x",
+            "RF",
+            "B",
+            "D",
+            "A",
+            "E",
+            "IL",
+        ]
         for col in numeric_columns:
             if col in df.columns:
-                df[col] = pd.to_numeric(df[col], errors='coerce')
+                df[col] = pd.to_numeric(df[col], errors="coerce")
 
     return df
 
-                
+
 def heatLoad(
     application: int,
     heatDemand: int,
@@ -86,9 +105,9 @@ def heatLoad(
 ) -> Tuple[int, pd.DataFrame, pd.DataFrame]:
     files = []
     for folder in os.listdir(TRY_PATH):
-        #print(folder)
-        for filename in os.listdir(os.path.join(TRY_PATH,folder)):
-            #print(filename)
+        # print(folder)
+        for filename in os.listdir(os.path.join(TRY_PATH, folder)):
+            # print(filename)
             if filename.endswith(".txt"):
                 parts = filename.split("_")
                 if len(parts) >= 3:
@@ -96,18 +115,21 @@ def heatLoad(
                     zone = parts[1]
                     temp = parts[2].split(".")[0]
                     filepath = os.path.join(TRY_PATH, folder, filename)
-                    files.append({"Year": year, 
-                                "Zone": zone, 
-                                "Temp": temp, 
-                                "Filename": filename, 
-                                "Path": filepath,
-                                })
+                    files.append(
+                        {
+                            "Year": year,
+                            "Zone": zone,
+                            "Temp": temp,
+                            "Filename": filename,
+                            "Path": filepath,
+                        }
+                    )
     df = pd.DataFrame(files)
-    filtered_df = filter_filenames(df,referenceYear,zone,temperature)
+    filtered_df = filter_filenames(df, referenceYear, zone, temperature)
     file_contents = read_file_contents(filtered_df)
     stationData = file_contents[["MM", "DD", "HH", "t"]]
     stationData["year"] = referenceYear
-    stationData.columns = ["MONTH", "DAY", "HOUR", "value","YEAR"]
+    stationData.columns = ["MONTH", "DAY", "HOUR", "value", "YEAR"]
     stationData["date"] = pd.to_datetime(
         stationData[["YEAR", "MONTH", "DAY", "HOUR"]],
         format="%Y-%m-%d %H",
