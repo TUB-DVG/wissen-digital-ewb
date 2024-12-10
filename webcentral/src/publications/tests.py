@@ -41,12 +41,10 @@ class TestDataImport(TestCase):
                 title__icontains=publication["title"]
             )
             self.assertEqual(len(publicationObj), 1)
-            abstractExcelValue = englishDf.loc[index, "abstract"] 
+            abstractExcelValue = englishDf.loc[index, "abstract"]
             if pd.isna(abstractExcelValue):
                 abstractExcelValue = ""
-            self.assertEqual(
-                publicationObj[0].abstract_en, abstractExcelValue  
-            )
+            self.assertEqual(publicationObj[0].abstract_en, abstractExcelValue)
 
     def testImportFile(self):
         """Test if the sorting into the two dictionaries representanting the english
@@ -67,7 +65,7 @@ class TestDataExport(TestCase):
     appNameClass = Publication
     importFile = "../doc/01_data/07_publication/publications.xlsx"
     appSpecificExportClass = DataExport
-    numberExpectedRowsXlsx = 7 
+    numberExpectedRowsXlsx = 7
     expectedColumns = [
         "type",
         "title",
@@ -86,9 +84,7 @@ class TestDataExport(TestCase):
         )
 
     def testExportFile(self):
-        """
-
-        """
+        """ """
         call_command(
             "data_export",
             self.appName,
@@ -106,14 +102,13 @@ class TestDataExport(TestCase):
             self.assertEqual(set(sheet.keys()), set(self.expectedColumns))
 
         os.remove("test_export.xlsx")
+
+
 class TestDataUpdate(TestCase):
-    """Test if the Update algorithm works in publications app
+    """Test if the Update algorithm works in publications app"""
 
-    """
     def testUpdateOneItem(self):
-        """
-
-        """
+        """ """
         call_command(
             "data_import",
             "publications",
@@ -125,6 +120,3 @@ class TestDataUpdate(TestCase):
             "publications",
             "../doc/01_data/07_publication/test_data/test_update_one_item.xlsx",
         )
-        
-
-

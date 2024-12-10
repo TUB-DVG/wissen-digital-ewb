@@ -18,13 +18,14 @@ from django.conf import settings
 if "django.contrib.sites" in settings.INSTALLED_APPS:
     from django.contrib.sites.models import Site
 
-from common.models import AbstractHistory, AbstractModelMethods  
+from common.models import AbstractHistory, AbstractModelMethods
 
 
 # class History(AbstractHistory):
 #     """History class for publictions
 #
 #     """
+
 
 class Publication(AbstractModelMethods):
     """

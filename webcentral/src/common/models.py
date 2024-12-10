@@ -10,6 +10,7 @@ from django.utils.translation import gettext as _
 
 from project_listing.models import Subproject
 
+
 class DbDiff(models.Model):
     """ORM-model definition of the `DBDiff`, which is instanciated if
     data conflicts appear in the data_import-process.
@@ -380,11 +381,13 @@ class AbstractHistory(models.Model):
     class Meta:
         abstract = True
 
+
 class AbstractModelMethods(models.Model):
     """This class implements methods, which are needed in the data import and
     data update process.
 
     """
+
     def isEqual(self, other):
         """Check equality of two instances of `Tools`"""
         for field in self._meta.get_fields():
@@ -538,11 +541,12 @@ class AbstractModelMethods(models.Model):
                 else:
                     setattr(self, field.name, getattr(newState, field.name))
 
-        self.save() 
-    
+        self.save()
+
     class Meta:
         abstract = True
-    
+
+
 class AbstractTechnicalFocus(AbstractModelMethods):
     """Abstract model, which holds the attributes, which are all present in the
     models Tools, Protocol, Dataset and Norm
@@ -667,12 +671,9 @@ class AbstractTechnicalFocus(AbstractModelMethods):
             return "n/a"
         return mappingDict[self.developmentState]
 
-    
-
     class Meta:
         abstract = True
 
-class History(AbstractHistory):
-    """
 
-    """
+class History(AbstractHistory):
+    """ """

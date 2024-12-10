@@ -18,7 +18,7 @@ class DataImportApp(DataImport):
     DJANGO_MODEL = "Publication"
     DJANGO_MODEL_OBJ = Publication
     DJANGO_APP = "publications"
-    APP_HISTORY_MODEL_OBJ = History 
+    APP_HISTORY_MODEL_OBJ = History
     MAPPING_EXCEL_DB_EN = {
         "title__en": "title_en",
         "abstract__en": "abstract_en",
@@ -78,8 +78,8 @@ class DataImportApp(DataImport):
                     readInValues[tableKey] = row[header.index(tableKey)]
 
         obj = self.DJANGO_MODEL_OBJ(**readInValues)
-        
-        tupleOrNone = self._checkIfItemExistsInDB(row[header.index("title")]) 
+
+        tupleOrNone = self._checkIfItemExistsInDB(row[header.index("title")])
 
         obj.save()
         obj.focus.add(*readInValuesM2M["focus"])
