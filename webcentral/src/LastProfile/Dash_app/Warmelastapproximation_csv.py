@@ -11,13 +11,35 @@ PATH = pathlib.Path(__file__).parent.resolve()
 DATA_PATH = os.path.join(PATH, "Wärme_Strom.csv")
 TRY_PATH = os.path.join(PATH, "auxillary")
 
+def load_files():
+    files = []
+    for folder in os.listdir(TRY_PATH):
+        # print(folder)
+        for filename in os.listdir(os.path.join(TRY_PATH, folder)):
+            # print(filename)
+            if filename.endswith(".txt"):
+                parts = filename.split("_")
+                if len(parts) >= 3:
+                    year = parts[0][-4:]
+                    zone = " ".join(parts[1:-1])
+                    temp = parts[-1].split(".")[0]
+                    filepath = os.path.join(TRY_PATH, folder, filename)
+                    files.append(
+                        {
+                            "Year": year,
+                            "Zone": zone,
+                            "Temp": temp,
+                            "Filename": filename,
+                            "Path": filepath,
+                        }
+                    )
+    return pd.DataFrame(files)
 
 def filter_filenames(df, year=None, zone=None, temp=None):
     """
     filter file by filename
     """
     filtered_df = df.copy()
-
     filtered_df = filtered_df[filtered_df["Year"] == year]
     filtered_df = filtered_df[filtered_df["Zone"] == zone]
     filtered_df = filtered_df[filtered_df["Temp"] == temp]
@@ -103,28 +125,8 @@ def heatLoad(
     zone: str,
     temperature: str,
 ) -> Tuple[int, pd.DataFrame, pd.DataFrame]:
-    files = []
-    for folder in os.listdir(TRY_PATH):
-        # print(folder)
-        for filename in os.listdir(os.path.join(TRY_PATH, folder)):
-            # print(filename)
-            if filename.endswith(".txt"):
-                parts = filename.split("_")
-                if len(parts) >= 3:
-                    year = parts[0][-4:]
-                    zone = parts[1]
-                    temp = parts[2].split(".")[0]
-                    filepath = os.path.join(TRY_PATH, folder, filename)
-                    files.append(
-                        {
-                            "Year": year,
-                            "Zone": zone,
-                            "Temp": temp,
-                            "Filename": filename,
-                            "Path": filepath,
-                        }
-                    )
-    df = pd.DataFrame(files)
+
+    df = load_files()
     filtered_df = filter_filenames(df, referenceYear, zone, temperature)
     file_contents = read_file_contents(filtered_df)
     stationData = file_contents[["MM", "DD", "HH", "t"]]

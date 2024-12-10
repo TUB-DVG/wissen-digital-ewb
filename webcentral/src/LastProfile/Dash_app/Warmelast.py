@@ -25,6 +25,21 @@ locale.setlocale(locale.LC_ALL, "de_DE.utf8")  # German time
 
 app = DjangoDash("Warmelast")
 
+zonelist = ['Berlin', 
+            'Bremerhaven', 
+            'Dresden', 
+            'Freiburg',
+            'Garmisch Partenkirchen', 
+            'Göttingen', 
+            'Hannover', 
+            'Kiel',
+            'München', 
+            'Nürnberg', 
+            'Oldenburg', 
+            'Rostock', 
+            'Worms']
+optionzone = [{"label": _(i), "value": i} for i in zonelist]
+
 
 # App layout
 app.layout = html.Div(
@@ -46,16 +61,14 @@ app.layout = html.Div(
             value="2015",
         ),
         dcc.Dropdown(
-            options=[
-                {"label": f"Zone{i}", "value": f"Zone{i}"} for i in range(16)
-            ],
+            options= optionzone,
             placeholder=_("Auswahl der Zone"),
             id="Zone",
         ),
         dcc.Dropdown(
             options=[
                 {"label": _("kalt"), "value": "kalt"},
-                {"label": _("normal"), "value": "normal"},
+                {"label": _("normal"), "value": "normal"}, 
                 {"label": _("warm"), "value": "warm"},
             ],
             placeholder=_("Auswahl der Temperatur"),
@@ -430,11 +443,9 @@ def update_layout(data):
         {"label": _("2045"), "value": "2045"},
     ]
     placeholderReferenceYear = _("Berechnungstyp")
-    optionsZone = [
-        {"label": f"Zone{i}", "value": f"Zone{i}"} for i in range(16)
-    ]
+    optionsZone = optionzone
     placeholderZone = _("Auswahl der Zone")
-    optionTemp = [
+    optionsTemp = [
         {"label": _("kalt"), "value": "kalt"},
         {"label": _("normal"), "value": "normal"},
         {"label": _("warm"), "value": "warm"},
@@ -472,7 +483,7 @@ def update_layout(data):
         placeholderReferenceYear,
         optionsZone,
         placeholderZone,
-        optionTemp,
+        optionsTemp,
         placeholderTemp,
         optionsDropdown,
         placeholderBuildingType,
