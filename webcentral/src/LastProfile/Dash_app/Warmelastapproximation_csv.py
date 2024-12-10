@@ -11,6 +11,7 @@ PATH = pathlib.Path(__file__).parent.resolve()
 DATA_PATH = os.path.join(PATH, "Wärme_Strom.csv")
 TRY_PATH = os.path.join(PATH, "auxillary")
 
+
 def load_files():
     files = []
     for folder in os.listdir(TRY_PATH):
@@ -34,6 +35,7 @@ def load_files():
                         }
                     )
     return pd.DataFrame(files)
+
 
 def filter_filenames(df, year=None, zone=None, temp=None):
     """

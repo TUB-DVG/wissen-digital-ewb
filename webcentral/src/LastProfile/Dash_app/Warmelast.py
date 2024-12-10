@@ -25,63 +25,65 @@ locale.setlocale(locale.LC_ALL, "de_DE.utf8")  # German time
 
 app = DjangoDash("Warmelast")
 
-zonelist = ['Berlin', 
-            'Bremerhaven', 
-            'Dresden', 
-            'Freiburg',
-            'Garmisch Partenkirchen', 
-            'Göttingen', 
-            'Hannover', 
-            'Kiel',
-            'München', 
-            'Nürnberg', 
-            'Oldenburg', 
-            'Rostock', 
-            'Worms']
+zonelist = [
+    "Berlin",
+    "Bremerhaven",
+    "Dresden",
+    "Freiburg",
+    "Garmisch Partenkirchen",
+    "Göttingen",
+    "Hannover",
+    "Kiel",
+    "München",
+    "Nürnberg",
+    "Oldenburg",
+    "Rostock",
+    "Worms",
+]
 template_option_zone = [{"label": _(i), "value": i} for i in zonelist]
-template_option_year =[
-                {"label": _("2015"), "value": "2015"},
-                {"label": _("2045"), "value": "2045"},
-            ]
+template_option_year = [
+    {"label": _("2015"), "value": "2015"},
+    {"label": _("2045"), "value": "2045"},
+]
 template_option_temperature = [
-                {"label": _("kalt"), "value": "kalt"},
-                {"label": _("normal"), "value": "normal"}, 
-                {"label": _("warm"), "value": "warm"},
-            ]
+    {"label": _("kalt"), "value": "kalt"},
+    {"label": _("normal"), "value": "normal"},
+    {"label": _("warm"), "value": "warm"},
+]
 template_option_application = [
-        {"label": _("Einfamilienhaus"), "value": "2"},
-        {"label": _("Mehrfamilienhaus"), "value": "3"},
-        {"label": _("Gebietskörperschaft"), "value": "4"},
-        {"label": _("Einzelhandel, Großhandel"), "value": "5"},
-        {"label": _("Metall, Kfz"), "value": "6"},
-        {"label": _("sonst. betr. Dienstleistungen"), "value": "7"},
-        {"label": _("Gaststätten"), "value": "8"},
-        {"label": _("Beherbergung"), "value": "9"},
-        {"label": _("Bäckereien"), "value": "10"},
-        {"label": _("Wäschereien"), "value": "11"},
-        {"label": _("Gartenbau"), "value": "12"},
-        {"label": _("Papier und Druck"), "value": "13"},
-        {"label": _("haushaltsähnliche Gewerbebetriebe"), "value": "14"},
-        {
-            "label": _("Summenlastprofil Gewerbe, Handel, Dienstleistung"),
-            "value": "15",
-        },
-    ]
+    {"label": _("Einfamilienhaus"), "value": "2"},
+    {"label": _("Mehrfamilienhaus"), "value": "3"},
+    {"label": _("Gebietskörperschaft"), "value": "4"},
+    {"label": _("Einzelhandel, Großhandel"), "value": "5"},
+    {"label": _("Metall, Kfz"), "value": "6"},
+    {"label": _("sonst. betr. Dienstleistungen"), "value": "7"},
+    {"label": _("Gaststätten"), "value": "8"},
+    {"label": _("Beherbergung"), "value": "9"},
+    {"label": _("Bäckereien"), "value": "10"},
+    {"label": _("Wäschereien"), "value": "11"},
+    {"label": _("Gartenbau"), "value": "12"},
+    {"label": _("Papier und Druck"), "value": "13"},
+    {"label": _("haushaltsähnliche Gewerbebetriebe"), "value": "14"},
+    {
+        "label": _("Summenlastprofil Gewerbe, Handel, Dienstleistung"),
+        "value": "15",
+    },
+]
 template_option_displaymonth = [
-                {"label": _("Januar"), "value": "1"},
-                {"label": _("Februar"), "value": "2"},
-                {"label": _("März"), "value": "3"},
-                {"label": _("April"), "value": "4"},
-                {"label": _("Mai"), "value": "5"},
-                {"label": _("Juni"), "value": "6"},
-                {"label": _("Juli"), "value": "7"},
-                {"label": _("August"), "value": "8"},
-                {"label": _("Sepember"), "value": "9"},
-                {"label": _("Oktober"), "value": "10"},
-                {"label": _("November"), "value": "11"},
-                {"label": _("Dezember"), "value": "12"},
-                {"label": _("Alle"), "value": "All"},
-            ]
+    {"label": _("Januar"), "value": "1"},
+    {"label": _("Februar"), "value": "2"},
+    {"label": _("März"), "value": "3"},
+    {"label": _("April"), "value": "4"},
+    {"label": _("Mai"), "value": "5"},
+    {"label": _("Juni"), "value": "6"},
+    {"label": _("Juli"), "value": "7"},
+    {"label": _("August"), "value": "8"},
+    {"label": _("Sepember"), "value": "9"},
+    {"label": _("Oktober"), "value": "10"},
+    {"label": _("November"), "value": "11"},
+    {"label": _("Dezember"), "value": "12"},
+    {"label": _("Alle"), "value": "All"},
+]
 # App layout
 app.layout = html.Div(
     [  # Title
@@ -93,23 +95,23 @@ app.layout = html.Div(
         ),
         # Dropdown for the application options
         dcc.Dropdown(
-            options= template_option_year,
+            options=template_option_year,
             placeholder=_("Berechnungstyp"),
             id="referenceYear",
             value="2015",
         ),
         dcc.Dropdown(
-            options= template_option_zone,
+            options=template_option_zone,
             placeholder=_("Auswahl der Zone"),
             id="Zone",
         ),
         dcc.Dropdown(
-            options= template_option_temperature,
+            options=template_option_temperature,
             placeholder=_("Auswahl der Temperatur"),
             id="Temp",
         ),
         dcc.Dropdown(
-            options= template_option_application,
+            options=template_option_application,
             placeholder=_("Auswahl des Gebäudetyps"),
             id="application",
             # <-- This is the line that will be changed by the dropdown callback
@@ -134,7 +136,7 @@ app.layout = html.Div(
         ),
         # List of available display months for the chosen data range
         dcc.RadioItems(
-            options= template_option_displaymonth,
+            options=template_option_displaymonth,
             value="All",
             id="displayMonth",
             inline=True,
@@ -175,7 +177,7 @@ app.layout = html.Div(
     Output(component_id="datePicker", component_property="start_date"),
     Output(component_id="datePicker", component_property="end_date"),
     Input(component_id="referenceYear", component_property="value"),
-    prevent_initial_call = True
+    prevent_initial_call=True,
 )
 # The following function returns the data range provided by the chosen station
 def dateRangePicker(referenceYear: str) -> Tuple[str, str]:
@@ -390,8 +392,11 @@ def downloadAsCsv(
             ],
             ["Anwendung:" + labelsApplication[0], "", "", ""],
             ["Zeitraum : Von " + startDate + " Bis " + endDate, "", "", ""],
-            [   "Zone:" ,zone,
-                "Temperature:" ,temperature,
+            [
+                "Zone:",
+                zone,
+                "Temperature:",
+                temperature,
             ],
             ["", "", "", ""],
             [
