@@ -51,7 +51,7 @@ def read_file_contents(df):
     read content from files accorfing to filenamesand filepath
     """
     for filename in df["Filename"]:
-        # print(filename)
+        print(filename)
         path = df[df["Filename"] == filename]["Path"].iloc[0]
         # print(path)
 

@@ -39,8 +39,49 @@ zonelist = ['Berlin',
             'Rostock', 
             'Worms']
 optionzone = [{"label": _(i), "value": i} for i in zonelist]
-
-
+optionyear =[
+                {"label": _("2015"), "value": "2015"},
+                {"label": _("2045"), "value": "2045"},
+            ]
+optiontemperature = [
+                {"label": _("kalt"), "value": "kalt"},
+                {"label": _("normal"), "value": "normal"}, 
+                {"label": _("warm"), "value": "warm"},
+            ]
+template_optionapplication = [
+        {"label": _("Einfamilienhaus"), "value": "2"},
+        {"label": _("Mehrfamilienhaus"), "value": "3"},
+        {"label": _("Gebietskörperschaft"), "value": "4"},
+        {"label": _("Einzelhandel, Großhandel"), "value": "5"},
+        {"label": _("Metall, Kfz"), "value": "6"},
+        {"label": _("sonst. betr. Dienstleistungen"), "value": "7"},
+        {"label": _("Gaststätten"), "value": "8"},
+        {"label": _("Beherbergung"), "value": "9"},
+        {"label": _("Bäckereien"), "value": "10"},
+        {"label": _("Wäschereien"), "value": "11"},
+        {"label": _("Gartenbau"), "value": "12"},
+        {"label": _("Papier und Druck"), "value": "13"},
+        {"label": _("haushaltsähnliche Gewerbebetriebe"), "value": "14"},
+        {
+            "label": _("Summenlastprofil Gewerbe, Handel, Dienstleistung"),
+            "value": "15",
+        },
+    ]
+template_option_displaymonth = [
+                {"label": _("Januar"), "value": "1"},
+                {"label": _("Februar"), "value": "2"},
+                {"label": _("März"), "value": "3"},
+                {"label": _("April"), "value": "4"},
+                {"label": _("Mai"), "value": "5"},
+                {"label": _("Juni"), "value": "6"},
+                {"label": _("Juli"), "value": "7"},
+                {"label": _("August"), "value": "8"},
+                {"label": _("Sepember"), "value": "9"},
+                {"label": _("Oktober"), "value": "10"},
+                {"label": _("November"), "value": "11"},
+                {"label": _("Dezember"), "value": "12"},
+                {"label": _("Alle"), "value": "All"},
+            ]
 # App layout
 app.layout = html.Div(
     [  # Title
@@ -52,10 +93,7 @@ app.layout = html.Div(
         ),
         # Dropdown for the application options
         dcc.Dropdown(
-            options=[
-                {"label": _("2015"), "value": "2015"},
-                {"label": _("2045"), "value": "2045"},
-            ],
+            options= optionyear,
             placeholder=_("Berechnungstyp"),
             id="referenceYear",
             value="2015",
@@ -66,39 +104,12 @@ app.layout = html.Div(
             id="Zone",
         ),
         dcc.Dropdown(
-            options=[
-                {"label": _("kalt"), "value": "kalt"},
-                {"label": _("normal"), "value": "normal"}, 
-                {"label": _("warm"), "value": "warm"},
-            ],
+            options= optiontemperature,
             placeholder=_("Auswahl der Temperatur"),
             id="Temp",
         ),
         dcc.Dropdown(
-            options=[
-                {"label": _("Einfamilienhaus"), "value": "2"},
-                {"label": _("Mehrfamilienhaus"), "value": "3"},
-                {"label": _("Gebietskörperschaft"), "value": "4"},
-                {"label": _("Einzelhandel, Großhandel"), "value": "5"},
-                {"label": _("Metall, Kfz"), "value": "6"},
-                {"label": _("sonst. betr. Dienstleistungen"), "value": "7"},
-                {"label": _("Gaststätten"), "value": "8"},
-                {"label": _("Beherbergung"), "value": "9"},
-                {"label": _("Bäckereien"), "value": "10"},
-                {"label": _("Wäschereien"), "value": "11"},
-                {"label": _("Gartenbau"), "value": "12"},
-                {"label": _("Papier und Druck"), "value": "13"},
-                {
-                    "label": _("haushaltsähnliche Gewerbebetriebe"),
-                    "value": "14",
-                },
-                {
-                    "label": _(
-                        "Summenlastprofil Gewerbe, Handel, Dienstleistung"
-                    ),
-                    "value": "15",
-                },
-            ],
+            options= template_optionapplication,
             placeholder=_("Auswahl des Gebäudetyps"),
             id="application",
             # <-- This is the line that will be changed by the dropdown callback
@@ -123,21 +134,7 @@ app.layout = html.Div(
         ),
         # List of available display months for the chosen data range
         dcc.RadioItems(
-            options=[
-                {"label": _("Januar"), "value": "1"},
-                {"label": _("Februar"), "value": "2"},
-                {"label": _("März"), "value": "3"},
-                {"label": _("April"), "value": "4"},
-                {"label": _("Mai"), "value": "5"},
-                {"label": _("Juni"), "value": "6"},
-                {"label": _("Juli"), "value": "7"},
-                {"label": _("August"), "value": "8"},
-                {"label": _("Sepember"), "value": "9"},
-                {"label": _("Oktober"), "value": "10"},
-                {"label": _("November"), "value": "11"},
-                {"label": _("Dezember"), "value": "12"},
-                {"label": _("Alle"), "value": "All"},
-            ],
+            options= template_option_displaymonth,
             value="All",
             id="displayMonth",
             inline=True,
@@ -175,7 +172,10 @@ app.layout = html.Div(
 @app.callback(
     Output(component_id="datePicker", component_property="min_date_allowed"),
     Output(component_id="datePicker", component_property="max_date_allowed"),
+    Output(component_id="datePicker", component_property="start_date"),
+    Output(component_id="datePicker", component_property="end_date"),
     Input(component_id="referenceYear", component_property="value"),
+    prevent_initial_call = True
 )
 # The following function returns the data range provided by the chosen station
 def dateRangePicker(referenceYear: str) -> Tuple[str, str]:
@@ -183,7 +183,7 @@ def dateRangePicker(referenceYear: str) -> Tuple[str, str]:
     minDate = datetime.datetime.strptime(f"01/01/{referenceYear}", "%m/%d/%Y")
     maxDate = datetime.datetime.strptime(f"12/31/{referenceYear}", "%m/%d/%Y")
 
-    return minDate, maxDate
+    return minDate, maxDate, None, None
 
 
 # Setting Diplay Month
@@ -197,21 +197,7 @@ def dateRangePicker(referenceYear: str) -> Tuple[str, str]:
 # The following function displays a list of available months in the data range selected
 def displayMonths(endDate: str, dataOnLoad, startDate: str) -> list:
     if endDate is None or startDate is None:
-        return [
-            {"label": _("Januar"), "value": "1"},
-            {"label": _("Februar"), "value": "2"},
-            {"label": _("März"), "value": "3"},
-            {"label": _("April"), "value": "4"},
-            {"label": _("Mai"), "value": "5"},
-            {"label": _("Juni"), "value": "6"},
-            {"label": _("Juli"), "value": "7"},
-            {"label": _("August"), "value": "8"},
-            {"label": _("Sepember"), "value": "9"},
-            {"label": _("Oktober"), "value": "10"},
-            {"label": _("November"), "value": "11"},
-            {"label": _("Dezember"), "value": "12"},
-            {"label": _("Alle"), "value": "All"},
-        ]
+        return template_option_displaymonth
     Months = (
         pd.date_range(startDate, endDate, freq="W")
         .strftime("%B")
@@ -438,38 +424,13 @@ def downloadAsCsv(
     allow_duplicate=True,
 )
 def update_layout(data):
-    optionsReferenceYear = [
-        {"label": _("2015"), "value": "2015"},
-        {"label": _("2045"), "value": "2045"},
-    ]
+    optionsReferenceYear = optionyear
     placeholderReferenceYear = _("Berechnungstyp")
     optionsZone = optionzone
     placeholderZone = _("Auswahl der Zone")
-    optionsTemp = [
-        {"label": _("kalt"), "value": "kalt"},
-        {"label": _("normal"), "value": "normal"},
-        {"label": _("warm"), "value": "warm"},
-    ]
+    optionsTemp = optiontemperature
     placeholderTemp = _("Auswahl der Temperatur")
-    optionsDropdown = [
-        {"label": _("Einfamilienhaus"), "value": "2"},
-        {"label": _("Mehrfamilienhaus"), "value": "3"},
-        {"label": _("Gebietskörperschaft"), "value": "4"},
-        {"label": _("Einzelhandel, Großhandel"), "value": "5"},
-        {"label": _("Metall, Kfz"), "value": "6"},
-        {"label": _("sonst. betr. Dienstleistungen"), "value": "7"},
-        {"label": _("Gaststätten"), "value": "8"},
-        {"label": _("Beherbergung"), "value": "9"},
-        {"label": _("Bäckereien"), "value": "10"},
-        {"label": _("Wäschereien"), "value": "11"},
-        {"label": _("Gartenbau"), "value": "12"},
-        {"label": _("Papier und Druck"), "value": "13"},
-        {"label": _("haushaltsähnliche Gewerbebetriebe"), "value": "14"},
-        {
-            "label": _("Summenlastprofil Gewerbe, Handel, Dienstleistung"),
-            "value": "15",
-        },
-    ]
+    optionsDropdown = template_optionapplication
     placeholderBuildingType = _("Auswahl des Gebäudetyps")
     heatRequirementPlaceholder = _("Jahreswärmebedarf in kWh/a")
     startDatePlaceholderText = _("Start Datum")
