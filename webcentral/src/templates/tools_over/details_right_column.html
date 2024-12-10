@@ -5,7 +5,7 @@
   <p>{{ boxObject.description }}</p>
 {% endif %}
 <h5 class="mt-4">{% translate "weitere Informationen" %}</h5>
-<p>{{ boxObject.furtherInformation }}</p>
+<p>{{ boxObject|get_m2m_or_attr:"furtherInformation" }}</p>
 <h5 class="mt-4">{% translate "Einsatzbereich" %}</h5>
 <p>{{ boxObject|get_m2m_or_attr:"applicationArea__applicationArea" }}</p>
 <h5 class="mt-4">{% translate "Verwendung" %}</h5>
@@ -13,14 +13,18 @@
 <h5 class="mt-4">{% translate "Nutzerschnittstelle" %}</h5>
 <p>
   {{ boxObject|get_m2m_or_attr:"userInterface__userInterface" }}
-  <br />
-  {{ boxObject|get_m2m_or_attr:"userInterfaceNotes" }}
+  {% if boxObject.userInterfaceNotes %}
+    <br />
+    {{ boxObject|get_m2m_or_attr:"userInterfaceNotes" }}
+  {% endif %}
 </p>
 <h5 class="mt-4">{% translate "Lizenz" %}</h5>
 <p class="mb-0">
   {{ boxObject|get_m2m_or_attr:"license__license" }}
-  <br />
-  {{ boxObject|get_m2m_or_attr:"licenseNotes" }}
+  {% if boxObject.licenseNotes %}
+    <br />
+    {{ boxObject|get_m2m_or_attr:"licenseNotes" }}
+  {% endif %}
 </p>
 <h5 class="mt-4">{% translate "Ist das Tool veröffentlicht?" %}</h5>
 {% if boxObject.released == True %}
