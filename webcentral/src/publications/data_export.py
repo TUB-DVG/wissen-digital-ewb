@@ -14,6 +14,7 @@ class DataExport:
         "copyright": "copyright",
         "url": "url",
         "abstract": "abstract",
+        "focus": "focus",
     }
 
     DATA_APP_DIR = "publications"

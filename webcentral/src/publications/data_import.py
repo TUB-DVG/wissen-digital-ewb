@@ -10,6 +10,7 @@ from common.models import Focus
 from .models import (
     Publication,
     Type,
+    History,
 )
 
 
@@ -17,6 +18,7 @@ class DataImportApp(DataImport):
     DJANGO_MODEL = "Publication"
     DJANGO_MODEL_OBJ = Publication
     DJANGO_APP = "publications"
+    APP_HISTORY_MODEL_OBJ = History 
     MAPPING_EXCEL_DB_EN = {
         "title__en": "title_en",
         "abstract__en": "abstract_en",
@@ -76,10 +78,16 @@ class DataImportApp(DataImport):
                     readInValues[tableKey] = row[header.index(tableKey)]
 
         obj = self.DJANGO_MODEL_OBJ(**readInValues)
+        
+        tupleOrNone = self._checkIfItemExistsInDB(row[header.index("title")]) 
+
         obj.save()
         obj.focus.add(*readInValuesM2M["focus"])
         if self._englishHeadersPresent(header):
             self._importEnglishTranslation(
                 obj, header, row, self.MAPPING_EXCEL_DB_EN
             )
-        return obj, True
+        if tupleOrNone is None:
+            return obj, True
+        idOfAlreadyPresentTool = tupleOrNone[0]
+        return self._checkIfEqualAndUpdate(obj, tupleOrNone[1])

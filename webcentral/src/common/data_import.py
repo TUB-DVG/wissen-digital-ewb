@@ -24,8 +24,10 @@ from django.core.serializers import serialize
 
 from common.models import DbDiff, Literature
 from protocols.models import Protocol
-from publications.models import Type
-
+from publications.models import Type, Publication
+from tools_over.models import Tools
+from TechnicalStandards.models import Norm
+from Datasets.models import Dataset
 # from .serializers import BackReferenceSerializer
 
 
@@ -464,7 +466,11 @@ class DataImport:
 
     def _checkIfItemExistsInDB(self, itemName: str) -> tuple:
         """Check if `djangoModel` holds a item with the name `itemName`"""
-        itemsWithName = self.DJANGO_MODEL_OBJ.objects.filter(name=itemName)
+        
+        if self.DJANGO_MODEL_OBJ in [Dataset, Norm, Tools, Protocol]:
+            itemsWithName = self.DJANGO_MODEL_OBJ.objects.filter(name=itemName)
+        elif self.DJANGO_MODEL_OBJ in [Publication]:
+            itemsWithName = self.DJANGO_MODEL_OBJ.objects.filter(title=itemName) 
         if len(itemsWithName) > 0:
             return itemsWithName[0].id, itemsWithName[0]
 
