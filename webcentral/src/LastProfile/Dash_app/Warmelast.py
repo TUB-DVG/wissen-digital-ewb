@@ -38,17 +38,17 @@ zonelist = ['Berlin',
             'Oldenburg', 
             'Rostock', 
             'Worms']
-optionzone = [{"label": _(i), "value": i} for i in zonelist]
-optionyear =[
+template_option_zone = [{"label": _(i), "value": i} for i in zonelist]
+template_option_year =[
                 {"label": _("2015"), "value": "2015"},
                 {"label": _("2045"), "value": "2045"},
             ]
-optiontemperature = [
+template_option_temperature = [
                 {"label": _("kalt"), "value": "kalt"},
                 {"label": _("normal"), "value": "normal"}, 
                 {"label": _("warm"), "value": "warm"},
             ]
-template_optionapplication = [
+template_option_application = [
         {"label": _("Einfamilienhaus"), "value": "2"},
         {"label": _("Mehrfamilienhaus"), "value": "3"},
         {"label": _("Gebietskörperschaft"), "value": "4"},
@@ -93,23 +93,23 @@ app.layout = html.Div(
         ),
         # Dropdown for the application options
         dcc.Dropdown(
-            options= optionyear,
+            options= template_option_year,
             placeholder=_("Berechnungstyp"),
             id="referenceYear",
             value="2015",
         ),
         dcc.Dropdown(
-            options= optionzone,
+            options= template_option_zone,
             placeholder=_("Auswahl der Zone"),
             id="Zone",
         ),
         dcc.Dropdown(
-            options= optiontemperature,
+            options= template_option_temperature,
             placeholder=_("Auswahl der Temperatur"),
             id="Temp",
         ),
         dcc.Dropdown(
-            options= template_optionapplication,
+            options= template_option_application,
             placeholder=_("Auswahl des Gebäudetyps"),
             id="application",
             # <-- This is the line that will be changed by the dropdown callback
@@ -359,6 +359,8 @@ def updateHeatGraph(
     Input("datePicker", "start_date"),
     Input("datePicker", "end_date"),
     State("application", "options"),
+    State("Zone", "value"),
+    State("Temp", "value"),
     prevent_initial_call=True,
 )
 def downloadAsCsv(
@@ -369,6 +371,8 @@ def downloadAsCsv(
     startDate: str,
     endDate: str,
     labelsApplication,
+    zone: str,
+    temperature: str,
 ):
     # To Do Add download for Wärmelast
     changed_id = [p["prop_id"] for p in dash.callback_context.triggered][0]
@@ -386,6 +390,9 @@ def downloadAsCsv(
             ],
             ["Anwendung:" + labelsApplication[0], "", "", ""],
             ["Zeitraum : Von " + startDate + " Bis " + endDate, "", "", ""],
+            [   "Zone:" ,zone,
+                "Temperature:" ,temperature,
+            ],
             ["", "", "", ""],
             [
                 "Datum",
@@ -424,13 +431,13 @@ def downloadAsCsv(
     allow_duplicate=True,
 )
 def update_layout(data):
-    optionsReferenceYear = optionyear
+    optionsReferenceYear = template_option_year
     placeholderReferenceYear = _("Berechnungstyp")
-    optionsZone = optionzone
+    optionsZone = template_option_zone
     placeholderZone = _("Auswahl der Zone")
-    optionsTemp = optiontemperature
+    optionsTemp = template_option_temperature
     placeholderTemp = _("Auswahl der Temperatur")
-    optionsDropdown = template_optionapplication
+    optionsDropdown = template_option_application
     placeholderBuildingType = _("Auswahl des Gebäudetyps")
     heatRequirementPlaceholder = _("Jahreswärmebedarf in kWh/a")
     startDatePlaceholderText = _("Start Datum")
