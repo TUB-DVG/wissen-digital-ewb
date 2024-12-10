@@ -1,5 +1,10 @@
 from django.db import models
 
+class ProtocolManager(models.Manager):
+    def get_by_natural_key(self, name):
+        return self.get(
+            name=name,
+        )
 
 class BusinessModel(models.Model):
     challenge = models.CharField(max_length=255, blank=True, null=True)
@@ -19,3 +24,5 @@ class BusinessModel(models.Model):
 
     def __str__(self):
         return self.challenge
+
+    objects = ProtocolManager()
