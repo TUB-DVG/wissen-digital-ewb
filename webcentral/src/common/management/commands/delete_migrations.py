@@ -11,6 +11,17 @@ class Command(BaseCommand):
         """
 
         """
-        currentDir = ob.getCwd()
-         
-        breakpoint() 
+        currentDir = os.getcwd()
+        for app in apps.app_configs.values():
+            if currentDir in app.path:
+                self._removeMigrationFiles(app)
+
+    def _removeMigrationFiles(self, app):
+        """Go into app/migrations folder and remove the migration-files.
+
+        """
+        os.chdir(app.path)
+        if "migrations" in os.listdir():
+            os.chdir("migrations")
+            os.system("rm -f 00*")
+
