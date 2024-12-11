@@ -5,9 +5,10 @@
 import json
 
 from django.db import models
-from project_listing.models import Subproject
 from django.db.models.functions import Now
 from django.utils.translation import gettext as _
+
+from project_listing.models import Subproject
 
 
 class DbDiff(models.Model):
@@ -381,7 +382,181 @@ class AbstractHistory(models.Model):
         abstract = True
 
 
-class AbstractTechnicalFocus(models.Model):
+class AbstractModelMethods(models.Model):
+    """This class implements methods, which are needed in the data import and
+    data update process.
+
+    """
+
+    def isEqual(self, other):
+        """Check equality of two instances of `Tools`"""
+        for field in self._meta.get_fields():
+            if not hasattr(self, field.name) or not hasattr(other, field.name):
+                continue
+            if isinstance(field, models.ManyToManyField) or isinstance(
+                field, models.ManyToManyRel
+            ):
+                firstObjAttr = self.getManyToManyWithTranslation(field.name)
+                secondObjAttr = other.getManyToManyWithTranslation(field.name)
+                if firstObjAttr != secondObjAttr:
+                    return False
+            else:
+                if not field.name == "id":
+                    firstObjAttr = getattr(self, field.name)
+                    secondObjAttr = getattr(other, field.name)
+                    if isinstance(field, models.BooleanField):
+                        if bool(firstObjAttr) != bool(secondObjAttr):
+                            return False
+
+                    else:
+                        if (firstObjAttr is None and secondObjAttr == "") or (
+                            secondObjAttr is None and firstObjAttr == ""
+                        ):
+                            continue
+                        if str(firstObjAttr) != str(secondObjAttr):
+                            return False
+
+        return True
+
+    def get_fields(self):
+        """Returns a list of field names and values for use in templates."""
+        return [field.name for field in self._meta.get_fields()]
+
+    def getManyToManyWithTranslation(self, manyToManyAttr) -> str:
+        """Wrapper around `getManyToManyAttrAsStr()` to return german and english version in one call.
+        If german and english translation are present in the concatened ManyToMany-model,
+        both versions are returned. Otherwise only the german version is fetched.
+
+        Arguments:
+        manyToManyAttr: str
+            attribute name of the ManyToMany attribute
+
+        Returns:
+            str: concatenated string of many to many attributes from connected model.
+        """
+        fields = self._meta.get_fields()
+        for field in fields:
+            if "_en" in field.name or "_de" in field.name:
+                germanAttrs = self.getManyToManyAttrAsStr(manyToManyAttr, "_de")
+                englishAttrs = self.getManyToManyAttrAsStr(
+                    manyToManyAttr, "_en"
+                )
+                return germanAttrs + ", " + englishAttrs
+
+        return self.getManyToManyAttrAsStr(manyToManyAttr, "_de")
+
+    def getManyToManyAttrAsStr(
+        self, manyToManyAttr, languageSuffix, separator=","
+    ):
+        """ """
+        if manyToManyAttr == "specificApplication":
+
+            querysetOfManyToManyElements = (
+                getattr(self, manyToManyAttr)
+                .all()
+                .order_by("referenceNumber_id")
+            )
+        elif (
+            manyToManyAttr == "technicalStandardsNorms"
+            or manyToManyAttr == "technicalStandardsProtocols"
+        ):
+            querysetOfManyToManyElements = (
+                getattr(self, manyToManyAttr).all().order_by("name")
+            )
+        elif manyToManyAttr == "protocol" or manyToManyAttr == "tools":
+            querysetOfManyToManyElements = (
+                getattr(self, f"{manyToManyAttr}_set").all().order_by("name")
+            )
+        else:
+            if hasattr(self, manyToManyAttr):
+                try:
+                    querysetOfManyToManyElements = (
+                        getattr(self, manyToManyAttr)
+                        .all()
+                        .order_by(manyToManyAttr)
+                    )
+                except:
+                    querysetOfManyToManyElements = getattr(
+                        self, manyToManyAttr
+                    ).all()
+
+        if len(querysetOfManyToManyElements) > 0:
+            fieldsOfManyToManyModel = querysetOfManyToManyElements[
+                0
+            ]._meta.get_fields()
+            fieldNames = [field.name for field in fieldsOfManyToManyModel]
+            suffixInFieldNames = False
+            for field in fieldNames:
+                if languageSuffix in field:
+                    suffixInFieldNames = True
+                    break
+
+        returnStr = ""
+        for element in querysetOfManyToManyElements:
+            if suffixInFieldNames:
+                if getattr(element, field) is not None:
+                    returnStr += getattr(element, field) + separator
+            else:
+                returnStr += element.__str__() + separator
+        return returnStr[: -len(separator)]
+
+    def _update(self, newState, historyObj):
+        """Set all fields of the new ORM object into the old object."""
+        stringifiedObj = json.loads(historyObj.stringifiedObj)
+
+        for field in self._meta.get_fields():
+            if field.name != "id":
+                if isinstance(field, models.ManyToManyField):
+                    listOfM2Mobjs = []
+                    for naturalKeyTuple in stringifiedObj[0]["fields"][
+                        field.name
+                    ]:
+                        if field.name != "specificApplication":
+
+                            listOfM2Mobjs.append(
+                                getattr(
+                                    self, field.name
+                                ).model.objects.get_by_natural_key(
+                                    *naturalKeyTuple
+                                )
+                            )
+                        else:
+                            specificApplicationElements = stringifiedObj[0][
+                                "fields"
+                            ][field.name]
+                            listOfM2Mobjs = []
+                            for (
+                                enargusprojectNumber
+                            ) in specificApplicationElements:
+                                listOfM2Mobjs.append(
+                                    Subproject.objects.get(
+                                        referenceNumber_id=enargusprojectNumber
+                                    )
+                                )
+                    getattr(self, field.name).set(listOfM2Mobjs)
+
+                elif isinstance(field, models.ManyToManyRel):
+                    if field.name in stringifiedObj[0]["fields"].keys():
+                        listOfM2Mobjs = []
+                        for many2manyRel in stringifiedObj[0]["fields"][
+                            field.name
+                        ]:
+                            listOfM2Mobjs.append(
+                                getattr(
+                                    self, field.name + "_set"
+                                ).model.objects.get_by_natural_key(many2manyRel)
+                            )
+                        getattr(self, field.name + "_set").set(listOfM2Mobjs)
+                else:
+                    setattr(self, field.name, getattr(newState, field.name))
+
+        self.save()
+
+    class Meta:
+        abstract = True
+
+
+class AbstractTechnicalFocus(AbstractModelMethods):
     """Abstract model, which holds the attributes, which are all present in the
     models Tools, Protocol, Dataset and Norm
 
@@ -505,158 +680,9 @@ class AbstractTechnicalFocus(models.Model):
             return "n/a"
         return mappingDict[self.developmentState]
 
-    def isEqual(self, other):
-        """Check equality of two instances of `Tools`"""
-        for field in self._meta.get_fields():
-            if isinstance(field, models.ManyToManyField) or isinstance(
-                field, models.ManyToManyRel
-            ):
-                firstObjAttr = self.getManyToManyWithTranslation(field.name)
-                secondObjAttr = other.getManyToManyWithTranslation(field.name)
-                if firstObjAttr != secondObjAttr:
-                    return False
-            else:
-                if not field.name == "id":
-                    firstObjAttr = getattr(self, field.name)
-                    secondObjAttr = getattr(other, field.name)
-                    if isinstance(field, models.BooleanField):
-                        if bool(firstObjAttr) != bool(secondObjAttr):
-                            return False
-
-                    else:
-                        if (firstObjAttr is None and secondObjAttr == "") or (
-                            secondObjAttr is None and firstObjAttr == ""
-                        ):
-                            continue
-                        if str(firstObjAttr) != str(secondObjAttr):
-                            return False
-
-        return True
-
-    def get_fields(self):
-        """Returns a list of field names and values for use in templates."""
-        return [field.name for field in self._meta.get_fields()]
-
-    def getManyToManyWithTranslation(self, manyToManyAttr) -> str:
-        """Wrapper around `getManyToManyAttrAsStr()` to return german and english version in one call.
-        If german and english translation are present in the concatened ManyToMany-model,
-        both versions are returned. Otherwise only the german version is fetched.
-
-        Arguments:
-        manyToManyAttr: str
-            attribute name of the ManyToMany attribute
-
-        Returns:
-            str: concatenated string of many to many attributes from connected model.
-        """
-        fields = self._meta.get_fields()
-        for field in fields:
-            if "_en" in field.name or "_de" in field.name:
-                germanAttrs = self.getManyToManyAttrAsStr(manyToManyAttr, "_de")
-                englishAttrs = self.getManyToManyAttrAsStr(
-                    manyToManyAttr, "_en"
-                )
-                return germanAttrs + ", " + englishAttrs
-
-        return self.getManyToManyAttrAsStr(manyToManyAttr, "_de")
-
-    def getManyToManyAttrAsStr(
-        self, manyToManyAttr, languageSuffix, separator=","
-    ):
-        """ """
-        if manyToManyAttr == "specificApplication":
-
-            querysetOfManyToManyElements = (
-                getattr(self, manyToManyAttr)
-                .all()
-                .order_by("referenceNumber_id")
-            )
-        elif (
-            manyToManyAttr == "technicalStandardsNorms"
-            or manyToManyAttr == "technicalStandardsProtocols"
-        ):
-            querysetOfManyToManyElements = (
-                getattr(self, manyToManyAttr).all().order_by("name")
-            )
-        elif manyToManyAttr == "protocol" or manyToManyAttr == "tools":
-            querysetOfManyToManyElements = (
-                getattr(self, f"{manyToManyAttr}_set").all().order_by("name")
-            )
-        else:
-            querysetOfManyToManyElements = (
-                getattr(self, manyToManyAttr).all().order_by(manyToManyAttr)
-            )
-        if len(querysetOfManyToManyElements) > 0:
-            fieldsOfManyToManyModel = querysetOfManyToManyElements[
-                0
-            ]._meta.get_fields()
-            fieldNames = [field.name for field in fieldsOfManyToManyModel]
-            suffixInFieldNames = False
-            for field in fieldNames:
-                if languageSuffix in field:
-                    suffixInFieldNames = True
-                    break
-
-        returnStr = ""
-        for element in querysetOfManyToManyElements:
-            if suffixInFieldNames:
-                if getattr(element, field) is not None:
-                    returnStr += getattr(element, field) + separator
-            else:
-                returnStr += element.__str__() + separator
-        return returnStr[: -len(separator)]
-
-    def _update(self, newState, historyObj):
-        """Set all fields of the new ORM object into the old object."""
-        stringifiedObj = json.loads(historyObj.stringifiedObj)
-
-        for field in self._meta.get_fields():
-            if field.name != "id":
-                if isinstance(field, models.ManyToManyField):
-                    listOfM2Mobjs = []
-                    for naturalKeyTuple in stringifiedObj[0]["fields"][
-                        field.name
-                    ]:
-                        if field.name != "specificApplication":
-
-                            listOfM2Mobjs.append(
-                                getattr(
-                                    self, field.name
-                                ).model.objects.get_by_natural_key(
-                                    *naturalKeyTuple
-                                )
-                            )
-                        else:
-                            specificApplicationElements = stringifiedObj[0][
-                                "fields"
-                            ][field.name]
-                            listOfM2Mobjs = []
-                            for (
-                                enargusprojectNumber
-                            ) in specificApplicationElements:
-                                listOfM2Mobjs.append(
-                                    Subproject.objects.get(
-                                        referenceNumber_id=enargusprojectNumber
-                                    )
-                                )
-                    getattr(self, field.name).set(listOfM2Mobjs)
-
-                elif isinstance(field, models.ManyToManyRel):
-                    if field.name in stringifiedObj[0]["fields"].keys():
-                        listOfM2Mobjs = []
-                        for many2manyRel in stringifiedObj[0]["fields"][
-                            field.name
-                        ]:
-                            listOfM2Mobjs.append(
-                                getattr(
-                                    self, field.name + "_set"
-                                ).model.objects.get_by_natural_key(many2manyRel)
-                            )
-                        getattr(self, field.name + "_set").set(listOfM2Mobjs)
-                else:
-                    setattr(self, field.name, getattr(newState, field.name))
-
-        self.save()
-
     class Meta:
         abstract = True
+
+
+class History(AbstractHistory):
+    """ """

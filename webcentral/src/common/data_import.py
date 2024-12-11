@@ -24,6 +24,10 @@ from django.core.serializers import serialize
 
 from common.models import DbDiff, Literature
 from protocols.models import Protocol
+from publications.models import Type, Publication
+from tools_over.models import Tools
+from TechnicalStandards.models import Norm
+from Datasets.models import Dataset
 
 # from .serializers import BackReferenceSerializer
 
@@ -294,6 +298,10 @@ class DataImport:
                         )[0]
                     )
             return listOfM2Mobjs
+        elif djangoModel._meta.model_name == "type":
+            return djangoModel.objects.get_or_create(
+                type=listOfStrings[0],
+            )[0]
         else:
             attrNamesOfModel = [
                 attr.name for attr in djangoModel._meta.get_fields()
@@ -459,7 +467,11 @@ class DataImport:
 
     def _checkIfItemExistsInDB(self, itemName: str) -> tuple:
         """Check if `djangoModel` holds a item with the name `itemName`"""
-        itemsWithName = self.DJANGO_MODEL_OBJ.objects.filter(name=itemName)
+
+        if self.DJANGO_MODEL_OBJ in [Dataset, Norm, Tools, Protocol]:
+            itemsWithName = self.DJANGO_MODEL_OBJ.objects.filter(name=itemName)
+        elif self.DJANGO_MODEL_OBJ in [Publication]:
+            itemsWithName = self.DJANGO_MODEL_OBJ.objects.filter(title=itemName)
         if len(itemsWithName) > 0:
             return itemsWithName[0].id, itemsWithName[0]
 
@@ -542,7 +554,7 @@ class DataImport:
         objsEqual = oldObj.isEqual(newObj)
         if not objsEqual:
             newHistoryObj = self.APP_HISTORY_MODEL_OBJ(
-                identifer=oldObj.name,
+                identifer=oldObj.__str__(),
                 stringifiedObj=serialize(
                     "custom_json", [oldObj], use_natural_foreign_keys=True
                 ),
@@ -572,7 +584,8 @@ class DataImport:
                         getattr(newObj, f"{field.name}_set").all()
                     )
                 else:
-                    setattr(oldObj, field.name, getattr(newObj, field.name))
+                    if hasattr(newObj, field.name):
+                        setattr(oldObj, field.name, getattr(newObj, field.name))
 
         oldObj.save()
         newObj.delete()

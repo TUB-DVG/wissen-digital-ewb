@@ -18,8 +18,14 @@ from django.conf import settings
 if "django.contrib.sites" in settings.INSTALLED_APPS:
     from django.contrib.sites.models import Site
 
+from common.models import AbstractHistory, AbstractModelMethods
 
-class Publication(models.Model):
+
+class History(AbstractHistory):
+    """History class for publictions"""
+
+
+class Publication(AbstractModelMethods):
     """
     Model representing a publication.
     """
@@ -241,7 +247,6 @@ class Publication(models.Model):
                     self.authors_list_simple.append(
                         self.simplify_name(names[0])
                     )
-
                 # number of prepositions
                 num_prepositions = 0
                 for name in names:
