@@ -274,7 +274,7 @@ if os.environ.get("MODE") == "production":
     SECURE_BROWSER_XSS_FILTER = True
     loggingDir = "/home/webcentraluser/djangoLog"
 else:
-    # CSRF_USE_SESSIONS = True 
+    # CSRF_USE_SESSIONS = True
     STATIC_ROOT = Path.joinpath(BASE_DIR, "static")
     STATIC_URL = "/static/"
     STATICFILES_DIRS = [Path.joinpath(BASE_DIR, "webcentral_app/static")]
