@@ -149,7 +149,7 @@ Astrid Aretz, Swantje Gährs, Jan Kegel, Torsten Grothmann, Valentin Rupp, Max v
 
 # Contact
 
-[ptj-ewb@fz-juelich.de](mailto:ptj-ewb@fz-juelich.de)
+[ptj-ewb@ptj.de ](mailto:ptj-ewb@ptj.de)
 
 
 
