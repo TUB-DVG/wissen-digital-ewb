@@ -42,9 +42,9 @@ zonelist = [
 ]
 template_option_zone = [{"label": i, "value": i} for i in zonelist]
 template_option_year = [
-                            {"label": "2015", "value": "2015"},
-                            {"label": "2045", "value": "2045"},
-                        ]
+    {"label": "2015", "value": "2015"},
+    {"label": "2045", "value": "2045"},
+]
 
 # App layout
 app.layout = html.Div(
@@ -60,7 +60,7 @@ app.layout = html.Div(
             options=template_option_year,
             placeholder=_("Berechnungstyp"),
             id="referenceYear",
-            #value="2015",
+            # value="2015",
         ),
         dcc.Dropdown(
             options=template_option_zone,
@@ -69,33 +69,38 @@ app.layout = html.Div(
         ),
         dcc.Dropdown(
             options=[
-                        {"label": _("kalt"), "value": "kalt"},
-                        {"label": _("normal"), "value": "normal"},
-                        {"label": _("warm"), "value": "warm"},
-                    ],
+                {"label": _("kalt"), "value": "kalt"},
+                {"label": _("normal"), "value": "normal"},
+                {"label": _("warm"), "value": "warm"},
+            ],
             placeholder=_("Auswahl der Temperatur"),
             id="Temp",
         ),
         dcc.Dropdown(
             options=[
-                        {"label": _("Einfamilienhaus"), "value": "2"},
-                        {"label": _("Mehrfamilienhaus"), "value": "3"},
-                        {"label": _("Gebietskörperschaft"), "value": "4"},
-                        {"label": _("Einzelhandel, Großhandel"), "value": "5"},
-                        {"label": _("Metall, Kfz"), "value": "6"},
-                        {"label": _("sonst. betr. Dienstleistungen"), "value": "7"},
-                        {"label": _("Gaststätten"), "value": "8"},
-                        {"label": _("Beherbergung"), "value": "9"},
-                        {"label": _("Bäckereien"), "value": "10"},
-                        {"label": _("Wäschereien"), "value": "11"},
-                        {"label": _("Gartenbau"), "value": "12"},
-                        {"label": _("Papier und Druck"), "value": "13"},
-                        {"label": _("haushaltsähnliche Gewerbebetriebe"), "value": "14"},
-                        {
-                            "label": _("Summenlastprofil Gewerbe, Handel, Dienstleistung"),
-                            "value": "15",
-                        },
-                    ],
+                {"label": _("Einfamilienhaus"), "value": "2"},
+                {"label": _("Mehrfamilienhaus"), "value": "3"},
+                {"label": _("Gebietskörperschaft"), "value": "4"},
+                {"label": _("Einzelhandel, Großhandel"), "value": "5"},
+                {"label": _("Metall, Kfz"), "value": "6"},
+                {"label": _("sonst. betr. Dienstleistungen"), "value": "7"},
+                {"label": _("Gaststätten"), "value": "8"},
+                {"label": _("Beherbergung"), "value": "9"},
+                {"label": _("Bäckereien"), "value": "10"},
+                {"label": _("Wäschereien"), "value": "11"},
+                {"label": _("Gartenbau"), "value": "12"},
+                {"label": _("Papier und Druck"), "value": "13"},
+                {
+                    "label": _("haushaltsähnliche Gewerbebetriebe"),
+                    "value": "14",
+                },
+                {
+                    "label": _(
+                        "Summenlastprofil Gewerbe, Handel, Dienstleistung"
+                    ),
+                    "value": "15",
+                },
+            ],
             placeholder=_("Auswahl des Gebäudetyps"),
             id="application",
             # <-- This is the line that will be changed by the dropdown callback
@@ -121,21 +126,21 @@ app.layout = html.Div(
         # List of available display months for the chosen data range
         dcc.RadioItems(
             options=[
-                        {"label": _("Januar"), "value": "1"},
-                        {"label": _("Februar"), "value": "2"},
-                        {"label": _("März"), "value": "3"},
-                        {"label": _("April"), "value": "4"},
-                        {"label": _("Mai"), "value": "5"},
-                        {"label": _("Juni"), "value": "6"},
-                        {"label": _("Juli"), "value": "7"},
-                        {"label": _("August"), "value": "8"},
-                        {"label": _("September"), "value": "9"},
-                        {"label": _("Oktober"), "value": "10"},
-                        {"label": _("November"), "value": "11"},
-                        {"label": _("Dezember"), "value": "12"},
-                        {"label": _("Alle"), "value": "All"},
-                    ],
-                            value="All",
+                {"label": _("Januar"), "value": "1"},
+                {"label": _("Februar"), "value": "2"},
+                {"label": _("März"), "value": "3"},
+                {"label": _("April"), "value": "4"},
+                {"label": _("Mai"), "value": "5"},
+                {"label": _("Juni"), "value": "6"},
+                {"label": _("Juli"), "value": "7"},
+                {"label": _("August"), "value": "8"},
+                {"label": _("September"), "value": "9"},
+                {"label": _("Oktober"), "value": "10"},
+                {"label": _("November"), "value": "11"},
+                {"label": _("Dezember"), "value": "12"},
+                {"label": _("Alle"), "value": "All"},
+            ],
+            value="All",
             id="displayMonth",
             inline=True,
         ),
@@ -198,20 +203,20 @@ def dateRangePicker(referenceYear: str) -> Tuple[str, str]:
 def displayMonths(endDate: str, dataOnLoad, startDate: str) -> list:
     if endDate is None or startDate is None:
         return [
-                    {"label": _("Januar"), "value": "1"},
-                    {"label": _("Februar"), "value": "2"},
-                    {"label": _("März"), "value": "3"},
-                    {"label": _("April"), "value": "4"},
-                    {"label": _("Mai"), "value": "5"},
-                    {"label": _("Juni"), "value": "6"},
-                    {"label": _("Juli"), "value": "7"},
-                    {"label": _("August"), "value": "8"},
-                    {"label": _("September"), "value": "9"},
-                    {"label": _("Oktober"), "value": "10"},
-                    {"label": _("November"), "value": "11"},
-                    {"label": _("Dezember"), "value": "12"},
-                    {"label": _("Alle"), "value": "All"},
-                ]
+            {"label": _("Januar"), "value": "1"},
+            {"label": _("Februar"), "value": "2"},
+            {"label": _("März"), "value": "3"},
+            {"label": _("April"), "value": "4"},
+            {"label": _("Mai"), "value": "5"},
+            {"label": _("Juni"), "value": "6"},
+            {"label": _("Juli"), "value": "7"},
+            {"label": _("August"), "value": "8"},
+            {"label": _("September"), "value": "9"},
+            {"label": _("Oktober"), "value": "10"},
+            {"label": _("November"), "value": "11"},
+            {"label": _("Dezember"), "value": "12"},
+            {"label": _("Alle"), "value": "All"},
+        ]
     Months = (
         pd.date_range(startDate, endDate, freq="W")
         .strftime("%B")
@@ -455,29 +460,29 @@ def update_layout(data):
     optionsZone = template_option_zone
     placeholderZone = _("Auswahl der Zone")
     optionsTemp = [
-    {"label": _("kalt"), "value": "kalt"},
-    {"label": _("normal"), "value": "normal"},
-    {"label": _("warm"), "value": "warm"},
+        {"label": _("kalt"), "value": "kalt"},
+        {"label": _("normal"), "value": "normal"},
+        {"label": _("warm"), "value": "warm"},
     ]
     placeholderTemp = _("Auswahl der Temperatur")
     optionsDropdown = [
-    {"label": _("Einfamilienhaus"), "value": "2"},
-    {"label": _("Mehrfamilienhaus"), "value": "3"},
-    {"label": _("Gebietskörperschaft"), "value": "4"},
-    {"label": _("Einzelhandel, Großhandel"), "value": "5"},
-    {"label": _("Metall, Kfz"), "value": "6"},
-    {"label": _("sonst. betr. Dienstleistungen"), "value": "7"},
-    {"label": _("Gaststätten"), "value": "8"},
-    {"label": _("Beherbergung"), "value": "9"},
-    {"label": _("Bäckereien"), "value": "10"},
-    {"label": _("Wäschereien"), "value": "11"},
-    {"label": _("Gartenbau"), "value": "12"},
-    {"label": _("Papier und Druck"), "value": "13"},
-    {"label": _("haushaltsähnliche Gewerbebetriebe"), "value": "14"},
-    {
-        "label": _("Summenlastprofil Gewerbe, Handel, Dienstleistung"),
-        "value": "15",
-    },
+        {"label": _("Einfamilienhaus"), "value": "2"},
+        {"label": _("Mehrfamilienhaus"), "value": "3"},
+        {"label": _("Gebietskörperschaft"), "value": "4"},
+        {"label": _("Einzelhandel, Großhandel"), "value": "5"},
+        {"label": _("Metall, Kfz"), "value": "6"},
+        {"label": _("sonst. betr. Dienstleistungen"), "value": "7"},
+        {"label": _("Gaststätten"), "value": "8"},
+        {"label": _("Beherbergung"), "value": "9"},
+        {"label": _("Bäckereien"), "value": "10"},
+        {"label": _("Wäschereien"), "value": "11"},
+        {"label": _("Gartenbau"), "value": "12"},
+        {"label": _("Papier und Druck"), "value": "13"},
+        {"label": _("haushaltsähnliche Gewerbebetriebe"), "value": "14"},
+        {
+            "label": _("Summenlastprofil Gewerbe, Handel, Dienstleistung"),
+            "value": "15",
+        },
     ]
     placeholderBuildingType = _("Auswahl des Gebäudetyps")
     heatRequirementPlaceholder = _("Jahreswärmebedarf in kWh/a")
