@@ -42,48 +42,10 @@ zonelist = [
 ]
 template_option_zone = [{"label": i, "value": i} for i in zonelist]
 template_option_year = [
-    {"label": "2015", "value": "2015"},
-    {"label": "2045", "value": "2045"},
-]
-template_option_temperature = [
-    {"label": _("kalt"), "value": "kalt"},
-    {"label": _("normal"), "value": "normal"},
-    {"label": _("warm"), "value": "warm"},
-]
-template_option_application = [
-    {"label": _("Einfamilienhaus"), "value": "2"},
-    {"label": _("Mehrfamilienhaus"), "value": "3"},
-    {"label": _("Gebietskörperschaft"), "value": "4"},
-    {"label": _("Einzelhandel, Großhandel"), "value": "5"},
-    {"label": _("Metall, Kfz"), "value": "6"},
-    {"label": _("sonst. betr. Dienstleistungen"), "value": "7"},
-    {"label": _("Gaststätten"), "value": "8"},
-    {"label": _("Beherbergung"), "value": "9"},
-    {"label": _("Bäckereien"), "value": "10"},
-    {"label": _("Wäschereien"), "value": "11"},
-    {"label": _("Gartenbau"), "value": "12"},
-    {"label": _("Papier und Druck"), "value": "13"},
-    {"label": _("haushaltsähnliche Gewerbebetriebe"), "value": "14"},
-    {
-        "label": _("Summenlastprofil Gewerbe, Handel, Dienstleistung"),
-        "value": "15",
-    },
-]
-template_option_displaymonth = [
-    {"label": _("Januar"), "value": "1"},
-    {"label": _("Februar"), "value": "2"},
-    {"label": _("März"), "value": "3"},
-    {"label": _("April"), "value": "4"},
-    {"label": _("Mai"), "value": "5"},
-    {"label": _("Juni"), "value": "6"},
-    {"label": _("Juli"), "value": "7"},
-    {"label": _("August"), "value": "8"},
-    {"label": _("September"), "value": "9"},
-    {"label": _("Oktober"), "value": "10"},
-    {"label": _("November"), "value": "11"},
-    {"label": _("Dezember"), "value": "12"},
-    {"label": _("Alle"), "value": "All"},
-]
+                            {"label": "2015", "value": "2015"},
+                            {"label": "2045", "value": "2045"},
+                        ]
+
 # App layout
 app.layout = html.Div(
     [  # Title
@@ -98,7 +60,7 @@ app.layout = html.Div(
             options=template_option_year,
             placeholder=_("Berechnungstyp"),
             id="referenceYear",
-            value="2015",
+            #value="2015",
         ),
         dcc.Dropdown(
             options=template_option_zone,
@@ -106,12 +68,34 @@ app.layout = html.Div(
             id="Zone",
         ),
         dcc.Dropdown(
-            options=template_option_temperature,
+            options=[
+                        {"label": _("kalt"), "value": "kalt"},
+                        {"label": _("normal"), "value": "normal"},
+                        {"label": _("warm"), "value": "warm"},
+                    ],
             placeholder=_("Auswahl der Temperatur"),
             id="Temp",
         ),
         dcc.Dropdown(
-            options=template_option_application,
+            options=[
+                        {"label": _("Einfamilienhaus"), "value": "2"},
+                        {"label": _("Mehrfamilienhaus"), "value": "3"},
+                        {"label": _("Gebietskörperschaft"), "value": "4"},
+                        {"label": _("Einzelhandel, Großhandel"), "value": "5"},
+                        {"label": _("Metall, Kfz"), "value": "6"},
+                        {"label": _("sonst. betr. Dienstleistungen"), "value": "7"},
+                        {"label": _("Gaststätten"), "value": "8"},
+                        {"label": _("Beherbergung"), "value": "9"},
+                        {"label": _("Bäckereien"), "value": "10"},
+                        {"label": _("Wäschereien"), "value": "11"},
+                        {"label": _("Gartenbau"), "value": "12"},
+                        {"label": _("Papier und Druck"), "value": "13"},
+                        {"label": _("haushaltsähnliche Gewerbebetriebe"), "value": "14"},
+                        {
+                            "label": _("Summenlastprofil Gewerbe, Handel, Dienstleistung"),
+                            "value": "15",
+                        },
+                    ],
             placeholder=_("Auswahl des Gebäudetyps"),
             id="application",
             # <-- This is the line that will be changed by the dropdown callback
@@ -136,8 +120,22 @@ app.layout = html.Div(
         ),
         # List of available display months for the chosen data range
         dcc.RadioItems(
-            options=template_option_displaymonth,
-            value="All",
+            options=[
+                        {"label": _("Januar"), "value": "1"},
+                        {"label": _("Februar"), "value": "2"},
+                        {"label": _("März"), "value": "3"},
+                        {"label": _("April"), "value": "4"},
+                        {"label": _("Mai"), "value": "5"},
+                        {"label": _("Juni"), "value": "6"},
+                        {"label": _("Juli"), "value": "7"},
+                        {"label": _("August"), "value": "8"},
+                        {"label": _("September"), "value": "9"},
+                        {"label": _("Oktober"), "value": "10"},
+                        {"label": _("November"), "value": "11"},
+                        {"label": _("Dezember"), "value": "12"},
+                        {"label": _("Alle"), "value": "All"},
+                    ],
+                            value="All",
             id="displayMonth",
             inline=True,
         ),
@@ -199,7 +197,21 @@ def dateRangePicker(referenceYear: str) -> Tuple[str, str]:
 # The following function displays a list of available months in the data range selected
 def displayMonths(endDate: str, dataOnLoad, startDate: str) -> list:
     if endDate is None or startDate is None:
-        return template_option_displaymonth
+        return [
+                    {"label": _("Januar"), "value": "1"},
+                    {"label": _("Februar"), "value": "2"},
+                    {"label": _("März"), "value": "3"},
+                    {"label": _("April"), "value": "4"},
+                    {"label": _("Mai"), "value": "5"},
+                    {"label": _("Juni"), "value": "6"},
+                    {"label": _("Juli"), "value": "7"},
+                    {"label": _("August"), "value": "8"},
+                    {"label": _("September"), "value": "9"},
+                    {"label": _("Oktober"), "value": "10"},
+                    {"label": _("November"), "value": "11"},
+                    {"label": _("Dezember"), "value": "12"},
+                    {"label": _("Alle"), "value": "All"},
+                ]
     Months = (
         pd.date_range(startDate, endDate, freq="W")
         .strftime("%B")
@@ -419,6 +431,7 @@ def downloadAsCsv(
 
 
 @app.callback(
+    Output("headingApp", "children"),
     Output("referenceYear", "options"),
     Output("referenceYear", "placeholder"),
     Output("Zone", "options"),
@@ -436,13 +449,36 @@ def downloadAsCsv(
     allow_duplicate=True,
 )
 def update_layout(data):
+    headingAppTranslation = _("Wärmelast Approximation")
     optionsReferenceYear = template_option_year
     placeholderReferenceYear = _("Berechnungstyp")
     optionsZone = template_option_zone
     placeholderZone = _("Auswahl der Zone")
-    optionsTemp = template_option_temperature
+    optionsTemp = [
+    {"label": _("kalt"), "value": "kalt"},
+    {"label": _("normal"), "value": "normal"},
+    {"label": _("warm"), "value": "warm"},
+    ]
     placeholderTemp = _("Auswahl der Temperatur")
-    optionsDropdown = template_option_application
+    optionsDropdown = [
+    {"label": _("Einfamilienhaus"), "value": "2"},
+    {"label": _("Mehrfamilienhaus"), "value": "3"},
+    {"label": _("Gebietskörperschaft"), "value": "4"},
+    {"label": _("Einzelhandel, Großhandel"), "value": "5"},
+    {"label": _("Metall, Kfz"), "value": "6"},
+    {"label": _("sonst. betr. Dienstleistungen"), "value": "7"},
+    {"label": _("Gaststätten"), "value": "8"},
+    {"label": _("Beherbergung"), "value": "9"},
+    {"label": _("Bäckereien"), "value": "10"},
+    {"label": _("Wäschereien"), "value": "11"},
+    {"label": _("Gartenbau"), "value": "12"},
+    {"label": _("Papier und Druck"), "value": "13"},
+    {"label": _("haushaltsähnliche Gewerbebetriebe"), "value": "14"},
+    {
+        "label": _("Summenlastprofil Gewerbe, Handel, Dienstleistung"),
+        "value": "15",
+    },
+    ]
     placeholderBuildingType = _("Auswahl des Gebäudetyps")
     heatRequirementPlaceholder = _("Jahreswärmebedarf in kWh/a")
     startDatePlaceholderText = _("Start Datum")
@@ -452,6 +488,7 @@ def update_layout(data):
     buttonLabelDownloadCsv = _("Download als csv")
 
     return (
+        headingAppTranslation,
         optionsReferenceYear,
         placeholderReferenceYear,
         optionsZone,
