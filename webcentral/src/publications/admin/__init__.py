@@ -11,6 +11,7 @@ from .typeadmin import TypeAdmin
 from .listadmin import ListAdmin
 from .orderedmodeladmin import OrderedModelAdmin
 
+
 class HistoryAdminApp(HistoryAdmin):
     """ """
 
