@@ -6,7 +6,7 @@ from .type import Type
 from .list import List
 from .publication import (
     Publication,
-    # History
+    History
 )
 from .customlink import CustomLink
 from .customfile import CustomFile

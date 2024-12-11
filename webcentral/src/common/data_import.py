@@ -554,7 +554,7 @@ class DataImport:
         objsEqual = oldObj.isEqual(newObj)
         if not objsEqual:
             newHistoryObj = self.APP_HISTORY_MODEL_OBJ(
-                identifer=oldObj.name,
+                identifer=oldObj.__str__(),
                 stringifiedObj=serialize(
                     "custom_json", [oldObj], use_natural_foreign_keys=True
                 ),
@@ -584,7 +584,8 @@ class DataImport:
                         getattr(newObj, f"{field.name}_set").all()
                     )
                 else:
-                    setattr(oldObj, field.name, getattr(newObj, field.name))
+                    if hasattr(newObj, field.name):
+                        setattr(oldObj, field.name, getattr(newObj, field.name))
 
         oldObj.save()
         newObj.delete()

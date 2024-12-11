@@ -82,8 +82,8 @@ class Serializer(DefaultSerializer):
                         self.handle_m2m_field(obj, field)
             for field in concrete_model._meta.related_objects:
                 if (
-                    self.selected_fields is None
-                    or field.attname in self.selected_fields
+                    hasattr(obj, field.name) and (self.selected_fields is None
+                    or field.attname in self.selected_fields)
                 ):
                     self.handle_backward_m2m_field(obj, field)
 

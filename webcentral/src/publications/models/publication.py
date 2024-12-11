@@ -21,10 +21,10 @@ if "django.contrib.sites" in settings.INSTALLED_APPS:
 from common.models import AbstractHistory, AbstractModelMethods
 
 
-# class History(AbstractHistory):
-#     """History class for publictions
-#
-#     """
+class History(AbstractHistory):
+    """History class for publictions
+
+    """
 
 
 class Publication(AbstractModelMethods):

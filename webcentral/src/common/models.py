@@ -468,9 +468,16 @@ class AbstractModelMethods(models.Model):
                 getattr(self, f"{manyToManyAttr}_set").all().order_by("name")
             )
         else:
-            querysetOfManyToManyElements = (
-                getattr(self, manyToManyAttr).all().order_by(manyToManyAttr)
-            )
+            if hasattr(self, manyToManyAttr):
+                try:
+                    querysetOfManyToManyElements = (
+                        getattr(self, manyToManyAttr).all().order_by(manyToManyAttr)
+                    )
+                except:
+                    querysetOfManyToManyElements = (
+                        getattr(self, manyToManyAttr).all()
+                    )
+ 
         if len(querysetOfManyToManyElements) > 0:
             fieldsOfManyToManyModel = querysetOfManyToManyElements[
                 0

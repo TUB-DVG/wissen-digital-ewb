@@ -6,8 +6,8 @@ import pandas as pd
 
 from .data_export import DataExport
 from .data_import import DataImport
-from .models import Publication
-
+from .models import Publication, History
+from common.models import Focus
 
 class TestDataImport(TestCase):
     """Class to test the data import of data from excel files."""
@@ -120,3 +120,22 @@ class TestDataUpdate(TestCase):
             "publications",
             "../doc/01_data/07_publication/test_data/test_update_one_item.xlsx",
         )
+
+        # number of history objects should be 1:
+        historyObjs = History.objects.all()
+        self.assertEqual(len(historyObjs), 1)
+        
+        # test if the changes were applied:
+        changedPublicationObj = Publication.objects.filter(title_de="Thesen zur Digitalisierung der Energiewende in Deutschland: Status Quo und Ausblick - eine Expertinnenbefragung der deutschen Forschungslandschaft")
+        self.assertEqual(len(changedPublicationObj), 1)
+
+        self.assertTrue("Der vorliegende Bericht Test des Moduls" in changedPublicationObj[0].abstract_de)
+        self.assertTrue("The present report Test by " in changedPublicationObj[0].abstract_en)
+
+        # test if a focus of tpe operational was added:
+        self.assertEqual(len(changedPublicationObj[0].focus.all()), 2)
+        operationalFocus = Focus.objects.filter(focus_de="betrieblich")
+        self.assertEqual(len(operationalFocus), 1)
+        self.assertEqual(operationalFocus[0].focus_en, "operational")
+        
+        self.assertEqual(len(operationalFocus[0].publication_set.all()), 1)
