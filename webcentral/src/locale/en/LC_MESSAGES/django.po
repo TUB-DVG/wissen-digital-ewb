@@ -1674,9 +1674,9 @@ msgstr ""
 #: templates/LastProfile/explanation.html:111
 msgid ""
 "Hier kann das Testreferenzjahr\n"
-"              (TRJ) oder eine spezifische Wetterstation gewählt werden"
+"              (TRJ) gewählt werden"
 msgstr ""
-"The test reference year (TRY) or a specific weather station can be selected "
+"The test reference year (TRY) can be selected "
 "here"
 
 #: templates/LastProfile/explanation.html:115
@@ -1727,14 +1727,6 @@ msgstr ""
 #: templates/LastProfile/explanation.html:177
 msgid "Download der Disseration"
 msgstr "Download the dissertation"
-
-#: templates/LastProfile/explanation.html:179
-msgid "Nutzung der Wetterdienst Bibliothek"
-msgstr "Use of the weather service library"
-
-#: templates/LastProfile/explanation.html:182
-msgid "Wetterdienst"
-msgstr "Weather Service"
 
 #: templates/LastProfile/explanation.html:184
 msgid "Nutzung der Standard-Lastprofile"
