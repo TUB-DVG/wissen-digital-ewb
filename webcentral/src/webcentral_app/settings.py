@@ -75,7 +75,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "csp.middleware.CSPMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "common.middleware.SessionExpiration",
+    # "common.middleware.SessionExpiration",
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -262,7 +262,7 @@ if os.environ.get("MODE") == "production":
     # MEDIA_ROOT=Path.joinpath(BASE_DIR,'media')
     MEDIA_ROOT = f"/home/{nameOfUnpriviledUser}/webcentral/media"
     MEDIA_URL = "/media/"
-    CSRF_COOKIE_SECURE = True
+    # CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_SECURE = True
     SESSION_COOKIE_SAMESITE = "Strict"
     SECURE_HSTS_SECONDS = 10
@@ -270,10 +270,11 @@ if os.environ.get("MODE") == "production":
     SECURE_HSTS_PRELOAD = True
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
-    CSRF_USE_SESSIONS = True
+    # CSRF_USE_SESSIONS = True
     SECURE_BROWSER_XSS_FILTER = True
     loggingDir = "/home/webcentraluser/djangoLog"
 else:
+    # CSRF_USE_SESSIONS = True 
     STATIC_ROOT = Path.joinpath(BASE_DIR, "static")
     STATIC_URL = "/static/"
     STATICFILES_DIRS = [Path.joinpath(BASE_DIR, "webcentral_app/static")]

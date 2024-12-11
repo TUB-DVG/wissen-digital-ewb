@@ -45,6 +45,14 @@ class TestMainPage(WebDriverSetup):
     which is no longer needed.)
 
     """
+    def testIfNoCookiesAreSet(self):
+        """Test if no cookies are set
+
+        """
+        self.driver.get(os.environ["siteUnderTest"])
+        cookies = self.driver.get_cookies()
+        self.assertEqual(len(cookies), 0, "No cookies should be set!")
+
 
     def testReloadOfResultsPage(self):
         """Check if reload of StartSearch-Result Page produces an error

@@ -62,7 +62,6 @@ dependencies = [
     "django-webpack-loader",
     "python-docx",
     "regex",
-
 ]
 
 # root folder of the python/django not found automatically
