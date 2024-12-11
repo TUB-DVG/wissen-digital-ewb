@@ -40,10 +40,10 @@ zonelist = [
     "Rostock",
     "Worms",
 ]
-template_option_zone = [{"label": _(i), "value": i} for i in zonelist]
+template_option_zone = [{"label": i, "value": i} for i in zonelist]
 template_option_year = [
-    {"label": _("2015"), "value": "2015"},
-    {"label": _("2045"), "value": "2045"},
+    {"label": "2015", "value": "2015"},
+    {"label": "2045", "value": "2045"},
 ]
 template_option_temperature = [
     {"label": _("kalt"), "value": "kalt"},
@@ -78,7 +78,7 @@ template_option_displaymonth = [
     {"label": _("Juni"), "value": "6"},
     {"label": _("Juli"), "value": "7"},
     {"label": _("August"), "value": "8"},
-    {"label": _("Sepember"), "value": "9"},
+    {"label": _("September"), "value": "9"},
     {"label": _("Oktober"), "value": "10"},
     {"label": _("November"), "value": "11"},
     {"label": _("Dezember"), "value": "12"},
