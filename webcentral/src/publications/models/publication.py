@@ -22,9 +22,7 @@ from common.models import AbstractHistory, AbstractModelMethods
 
 
 class History(AbstractHistory):
-    """History class for publictions
-
-    """
+    """History class for publictions"""
 
 
 class Publication(AbstractModelMethods):
