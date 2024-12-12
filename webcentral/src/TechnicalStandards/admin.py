@@ -17,6 +17,6 @@ class HistoryAdminApp(HistoryAdmin):
 
     modelInstance = Norm
     historyModelInstance = History
-
+    attributeName = "name" 
 
 admin.site.register(History, HistoryAdminApp)

@@ -1,7 +1,7 @@
 from django.db import models
 
 from common.data_import import DataImport
-from businessModel.models import BusinessModel
+from businessModel.models import BusinessModel, History
 
 
 class DataImportApp(DataImport):
@@ -17,6 +17,7 @@ class DataImportApp(DataImport):
 
     DJANGO_MODEL = "BusinessModel"
     DJANGO_MODEL_OBJ = BusinessModel
+    APP_HISTORY_MODEL_OBJ = History 
     DJANGO_APP = "businessModel"
 
     MAPPING_EXCEL_DB = {

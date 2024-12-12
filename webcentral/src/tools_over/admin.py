@@ -23,6 +23,6 @@ class HistoryAdminApp(HistoryAdmin):
 
     modelInstance = Tools
     historyModelInstance = History
-
+    attributeName = "name"
 
 admin.site.register(History, HistoryAdminApp)

@@ -13,7 +13,7 @@ class HistoryAdminApp(HistoryAdmin):
 
     modelInstance = BusinessModel
     historyModelInstance = History
-
+    attributeName = "challenge"
 
 admin.site.register(History, HistoryAdminApp)
 

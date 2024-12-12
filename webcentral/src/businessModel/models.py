@@ -1,6 +1,6 @@
 from django.db import models
 
-from common.models import AbstractHistory
+from common.models import AbstractHistory, AbstractModelMethods 
 
 
 class History(AbstractHistory):
@@ -14,7 +14,7 @@ class BusinessModelManager(models.Manager):
         )
 
 
-class BusinessModel(models.Model):
+class BusinessModel(AbstractModelMethods):
     challenge = models.CharField(max_length=255, blank=True, null=True)
     shortDescription = models.TextField(blank=True, null=True)
     property1 = models.CharField(max_length=255, blank=True, null=True)

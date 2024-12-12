@@ -10,6 +10,6 @@ admin.site.register(Dataset)
 class HistoryAdminApp(HistoryAdmin):
     modelInstance = Dataset
     historyModelInstance = History
-
+    attributeName = "name" 
 
 admin.site.register(History, HistoryAdminApp)
