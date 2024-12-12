@@ -1,6 +1,6 @@
 from django.db import models
 
-from common.models import AbstractHistory, AbstractModelMethods 
+from common.models import AbstractHistory, AbstractModelMethods
 
 
 class History(AbstractHistory):

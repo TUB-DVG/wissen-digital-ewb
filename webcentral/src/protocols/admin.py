@@ -19,4 +19,5 @@ class HistoryAdminApp(HistoryAdmin):
     historyModelInstance = History
     attributeName = "name"
 
+
 admin.site.register(History, HistoryAdminApp)

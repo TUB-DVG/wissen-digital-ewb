@@ -15,6 +15,7 @@ class HistoryAdminApp(HistoryAdmin):
     historyModelInstance = History
     attributeName = "challenge"
 
+
 admin.site.register(History, HistoryAdminApp)
 
 

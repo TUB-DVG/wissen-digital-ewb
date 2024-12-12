@@ -17,7 +17,8 @@ class HistoryAdminApp(HistoryAdmin):
 
     modelInstance = Publication
     historyModelInstance = History
-    attributeName = "title" 
+    attributeName = "title"
+
 
 admin.site.register(History, HistoryAdminApp)
 admin.site.register(Type, TypeAdmin)

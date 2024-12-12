@@ -17,7 +17,7 @@ class DataImportApp(DataImport):
 
     DJANGO_MODEL = "BusinessModel"
     DJANGO_MODEL_OBJ = BusinessModel
-    APP_HISTORY_MODEL_OBJ = History 
+    APP_HISTORY_MODEL_OBJ = History
     DJANGO_APP = "businessModel"
 
     MAPPING_EXCEL_DB = {
