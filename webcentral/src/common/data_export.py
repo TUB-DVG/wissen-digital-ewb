@@ -1,6 +1,7 @@
 import pandas as pd
 from django.db import models
 
+
 class AbstractDataExport:
     def __init__(self, filename):
         """ """

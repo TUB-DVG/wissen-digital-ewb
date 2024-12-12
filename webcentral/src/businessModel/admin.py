@@ -7,6 +7,7 @@ from .models import (
 )
 from common.admin import HistoryAdmin
 
+
 class HistoryAdminApp(HistoryAdmin):
     """ """
 
@@ -15,6 +16,7 @@ class HistoryAdminApp(HistoryAdmin):
 
 
 admin.site.register(History, HistoryAdminApp)
+
 
 class BusinessModelAdmin(TranslationAdmin):
     pass

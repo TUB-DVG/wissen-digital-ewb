@@ -109,7 +109,9 @@ class DataImportApp(DataImport):
                     readInValues[tableKey] = row[header.index(tableKey)]
 
         obj = self.DJANGO_MODEL_OBJ(**readInValues)
-        tupleOrNone = self._checkIfItemExistsInDB(row[header.index("challenge")], "challenge") 
+        tupleOrNone = self._checkIfItemExistsInDB(
+            row[header.index("challenge")], "challenge"
+        )
         obj.save()
         for readInM2MKey in readInValuesM2M.keys():
             try:

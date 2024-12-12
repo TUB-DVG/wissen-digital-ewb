@@ -1,4 +1,3 @@
-
 from common.data_export import AbstractDataExport
 from businessModel.models import BusinessModel
 
@@ -26,5 +25,3 @@ class DataExport(AbstractDataExport):
 
     DATA_APP_DIR = "10_business_models"
     EXPORT_MODEL_OBJ = BusinessModel
-
-

@@ -2,16 +2,17 @@ from django.db import models
 
 from common.models import AbstractHistory
 
-class History(AbstractHistory):
-    """
 
-    """
+class History(AbstractHistory):
+    """ """
+
 
 class BusinessModelManager(models.Manager):
     def get_by_natural_key(self, name):
         return self.get(
             name=name,
         )
+
 
 class BusinessModel(models.Model):
     challenge = models.CharField(max_length=255, blank=True, null=True)
