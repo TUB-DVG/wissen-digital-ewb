@@ -119,6 +119,8 @@ class Serializer(DefaultSerializer):
                     .iterator()
                 )
 
+        if field.name == "customlink" or field.name == "customfile":
+            return
         m2m_iter = getattr(obj, "_prefetched_objects_cache", {}).get(
             field.name,
             queryset_iterator(obj, field),
