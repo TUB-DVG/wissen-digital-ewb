@@ -40,4 +40,4 @@ class DataExport(AbstractDataExport):
     }
 
     DATA_APP_DIR = "02_tool_over"
-    EXPORT_MODEL = Dataset
+    EXPORT_MODEL_OBJ = Dataset
