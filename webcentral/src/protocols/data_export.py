@@ -4,6 +4,7 @@ from django.db import models
 from protocols.models import Protocol
 from common.data_export import AbstractDataExport
 
+
 class DataExport(AbstractDataExport):
     """ """
 
@@ -54,4 +55,3 @@ class DataExport(AbstractDataExport):
 
     DATA_APP_DIR = "18_protocols"
     EXPORT_MODEL_OBJ = Protocol
-

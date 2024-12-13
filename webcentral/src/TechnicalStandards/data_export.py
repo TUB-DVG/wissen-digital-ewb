@@ -4,6 +4,7 @@ from django.db import models
 from .models import Norm
 from common.data_export import AbstractDataExport
 
+
 class DataExport(AbstractDataExport):
     """ """
 

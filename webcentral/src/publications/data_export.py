@@ -4,6 +4,7 @@ from django.db import models
 from publications.models import Publication
 from common.data_export import AbstractDataExport
 
+
 class DataExport(AbstractDataExport):
     """ """
 
