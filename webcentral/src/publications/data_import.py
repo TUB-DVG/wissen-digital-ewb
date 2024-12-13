@@ -79,7 +79,9 @@ class DataImportApp(DataImport):
 
         obj = self.DJANGO_MODEL_OBJ(**readInValues)
 
-        tupleOrNone = self._checkIfItemExistsInDB(row[header.index("title")])
+        tupleOrNone = self._checkIfItemExistsInDB(
+            row[header.index("title")], "title"
+        )
 
         obj.save()
         obj.focus.add(*readInValuesM2M["focus"])

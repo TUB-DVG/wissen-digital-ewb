@@ -81,7 +81,7 @@ class Serializer(DefaultSerializer):
                     ):
                         self.handle_m2m_field(obj, field)
             for field in concrete_model._meta.related_objects:
-                if hasattr(obj, field.name) and (
+                if hasattr(obj, field.name + "_set") and (
                     self.selected_fields is None
                     or field.attname in self.selected_fields
                 ):
@@ -95,7 +95,6 @@ class Serializer(DefaultSerializer):
 
     def handle_backward_m2m_field(self, obj, field):
         """handle the backward referenced field"""
-        # breakpoint()
         # if field.remote_field.through._meta.auto_created:
         if self.use_natural_foreign_keys and hasattr(
             field.remote_field.model, "natural_key"
@@ -120,6 +119,8 @@ class Serializer(DefaultSerializer):
                     .iterator()
                 )
 
+        if field.name == "customlink" or field.name == "customfile":
+            return
         m2m_iter = getattr(obj, "_prefetched_objects_cache", {}).get(
             field.name,
             queryset_iterator(obj, field),

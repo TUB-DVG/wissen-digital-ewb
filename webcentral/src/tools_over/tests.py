@@ -381,7 +381,7 @@ class TestUpdate(AbstractTestUpdate):
         wufiTool = Tools.objects.filter(name__icontains="Wufi")
 
         self.assertEqual(len(wufiTool), 1)
-        self.assertTrue("hallo" in wufiTool[0].description_de)
+        self.assertTrue("Hallo" in wufiTool[0].description_de)
         self.assertTrue("Hello" in wufiTool[0].description_en)
 
     def testUpdateWithSameData(self):

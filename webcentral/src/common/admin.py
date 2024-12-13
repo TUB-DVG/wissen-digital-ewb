@@ -233,7 +233,11 @@ class HistoryAdmin(admin.ModelAdmin):
             )
             rollbackToolState = list(deserializedStringyfiedObj)[0].object
             toolStateInDB = self.modelInstance.objects.filter(
-                name=rollbackToolState.name
+                **{
+                    self.attributeName: getattr(
+                        rollbackToolState, self.attributeName
+                    )
+                }
             )[0]
             toolStateInDB._update(rollbackToolState, historyObj)
             historyObj.delete()
@@ -249,7 +253,9 @@ class HistoryAdmin(admin.ModelAdmin):
         )
         oldTool = list(deserializedStringyfiedObj)[0].object
 
-        currentToolState = self.modelInstance.objects.filter(name=oldTool.name)
+        currentToolState = self.modelInstance.objects.filter(
+            **{self.attributeName: getattr(oldTool, self.attributeName)}
+        )
 
         extra_context["oldTool"] = oldTool
         extra_context["rollbackStateStringified"] = json.loads(
@@ -264,7 +270,7 @@ class HistoryAdmin(admin.ModelAdmin):
         )[0]["fields"]
 
         extra_context["currentTool"] = self.modelInstance.objects.filter(
-            name=oldTool.name
+            **{self.attributeName: getattr(oldTool, self.attributeName)}
         )[0]
         # breakpoint()
         return super().change_view(

@@ -213,7 +213,9 @@ class DataImportApp(DataImport):
         obj = self.DJANGO_MODEL_OBJ(**readInValues)
 
         # check if the database already holds a dataset with the name already
-        tupleOrNone = self._checkIfItemExistsInDB(row[header.index("name")])
+        tupleOrNone = self._checkIfItemExistsInDB(
+            row[header.index("name")], "name"
+        )
         obj.save()
         for readInM2MKey in readInValuesM2M.keys():
             try:

@@ -1,7 +1,20 @@
 from django.db import models
 
+from common.models import AbstractHistory, AbstractModelMethods
 
-class BusinessModel(models.Model):
+
+class History(AbstractHistory):
+    """ """
+
+
+class BusinessModelManager(models.Manager):
+    def get_by_natural_key(self, name):
+        return self.get(
+            name=name,
+        )
+
+
+class BusinessModel(AbstractModelMethods):
     challenge = models.CharField(max_length=255, blank=True, null=True)
     shortDescription = models.TextField(blank=True, null=True)
     property1 = models.CharField(max_length=255, blank=True, null=True)
@@ -19,3 +32,5 @@ class BusinessModel(models.Model):
 
     def __str__(self):
         return self.challenge
+
+    objects = BusinessModelManager()

@@ -1,18 +1,7 @@
 from django.db import models
 
 from common.data_import import DataImport
-from tools_over.models import (
-    ApplicationArea,
-    Classification,
-    Focus,
-    LifeCyclePhase,
-    Scale,
-    TargetGroup,
-    Accessibility,
-)
-from project_listing.models import Subproject
-from common.models import License
-from Datasets.models import Dataset, History
+from businessModel.models import BusinessModel, History
 
 
 class DataImportApp(DataImport):
@@ -26,59 +15,43 @@ class DataImportApp(DataImport):
 
     """
 
-    DJANGO_MODEL = "Dataset"
-    DJANGO_MODEL_OBJ = Dataset
-    DJANGO_APP = "Datasets"
+    DJANGO_MODEL = "BusinessModel"
+    DJANGO_MODEL_OBJ = BusinessModel
     APP_HISTORY_MODEL_OBJ = History
+    DJANGO_APP = "businessModel"
 
     MAPPING_EXCEL_DB = {
-        "name": ("name", None),
-        "applicationArea": ("applicationArea", ApplicationArea),
-        "classification": ("classification", Classification),
-        "focus": ("focus", Focus),
-        "lifeCyclePhase": ("lifeCyclePhase", LifeCyclePhase),
-        "scale": ("lifeCyclePhase", Scale),
-        "targetGroup": ("targetGroup", TargetGroup),
-        "provider": ("provider", None),
-        "resources": ("resources", None),
-        "coverage": ("coverage", None),
-        "resolution": ("resolution", None),
-        # "comment": ("comment", False),
-        "description": ("description", None),
-        "availability": ("availability", None),
-        "alternatives": ("alternatives", None),
-        "developmentState": ("developmentState", None),
-        "description": ("description", None),
-        "furtherInformation": ("furtherInformation", None),
-        "image": ("image", None),
-        "lastUpdate": ("lastUpdate", None),
-        "license": ("license", License),
-        "licenseNotes": ("licenseNotes", None),
-        "accessibility": ("accessibility", Accessibility),
-        "yearOfRelease": ("yearOfRelease", None),
-        "released": ("released", None),
-        "releasedPlanned": ("releasedPlanned", None),
+        "challenge": ("challenge", None),
+        "shortDescription": ("shortDescription", None),
+        "property1": ("property1", None),
+        "property1Text": ("property1Text", None),
+        "property2": ("property2", None),
+        "property2Text": ("property2Text", None),
+        "property3": ("property3", None),
+        "property3Text": ("property3Text", None),
+        "property4": ("property4", None),
+        "property4Text": ("property4Text", None),
+        "property5": ("property5", None),
+        "property5Text": ("property5Text", None),
+        "imageIcon": ("imageIcon", None),
+        "imageIconSelected": ("imageIconSelected", None),
     }
 
     MAPPING_EXCEL_DB_EN = {
-        "name__en": "name_en",
-        "applicationArea__en": "applicationArea_en",
-        "classification__en": "classification_en",
-        "focus__en": "focus_en",
-        "lifeCyclePhase__en": "lifeCyclePhase_en",
-        "scale__en": "scale_en",
-        "targetGroup__en": "targetGroup_en",
-        "provider__en": "provider_en",
-        "availability__en": "availability_en",
-        "coverage__en": "coverage_en",
-        "resolution__en": "resolution_en",
-        # "comment__en": "comment_en",
-        "furtherInformation__en": "furtherInformation_en",
-        "lastUpdate__en": "lastUpdate_en",
-        "license__en": "license_en",
-        "licenseNotes__en": "licenseNotes_en",
-        "accessibility__en": "accessibility_en",
-        "description__en": "description_en",
+        "challenge__en": "challenge_en",
+        "shortDescription__en": "shortDescription_en",
+        "property1__en": "property1_en",
+        "property1Text__en": "property1Text_en",
+        "property2__en": "property2_en",
+        "property2Text__en": "property2Text_en",
+        "property3__en": "property3_en",
+        "property3Text__en": "property3Text_en",
+        "property4__en": "property4_en",
+        "property4Text__en": "property4Text_en",
+        "property5__en": "property5_en",
+        "property5Text__en": "property5Text_en",
+        "imageIcon__en": "imageIcon_en",
+        "imageIconSelected__en": "imageIconSelected_en",
     }
 
     def __init__(self, path_to_data_file):
@@ -136,26 +109,9 @@ class DataImportApp(DataImport):
                 else:
                     readInValues[tableKey] = row[header.index(tableKey)]
 
-        obj = self.DJANGO_MODEL_OBJ(
-            name=readInValues["name"],
-            provider=readInValues["provider"],
-            resources=readInValues["resources"],
-            coverage=readInValues["coverage"],
-            description=readInValues["description"],
-            availability=readInValues["availability"],
-            developmentState=readInValues["developmentState"],
-            furtherInformation=readInValues["furtherInformation"],
-            image=readInValues["image"],
-            lastUpdate=readInValues["lastUpdate"],
-            licenseNotes=readInValues["licenseNotes"],
-            yearOfRelease=readInValues["yearOfRelease"],
-            released=readInValues["released"],
-            releasedPlanned=readInValues["releasedPlanned"],
-        )
-
-        # check if the database already holds a dataset with the name already
+        obj = self.DJANGO_MODEL_OBJ(**readInValues)
         tupleOrNone = self._checkIfItemExistsInDB(
-            row[header.index("name")], "name"
+            row[header.index("challenge")], "challenge"
         )
         obj.save()
         for readInM2MKey in readInValuesM2M.keys():
@@ -169,7 +125,6 @@ class DataImportApp(DataImport):
                 obj, header, row, self.MAPPING_EXCEL_DB_EN
             )
         obj.save()
-
         if tupleOrNone is None:
             return obj, True
 

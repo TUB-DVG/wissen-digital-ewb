@@ -465,13 +465,11 @@ class DataImport:
 
         return False
 
-    def _checkIfItemExistsInDB(self, itemName: str) -> tuple:
+    def _checkIfItemExistsInDB(self, itemName: str, attrName: str) -> tuple:
         """Check if `djangoModel` holds a item with the name `itemName`"""
-
-        if self.DJANGO_MODEL_OBJ in [Dataset, Norm, Tools, Protocol]:
-            itemsWithName = self.DJANGO_MODEL_OBJ.objects.filter(name=itemName)
-        elif self.DJANGO_MODEL_OBJ in [Publication]:
-            itemsWithName = self.DJANGO_MODEL_OBJ.objects.filter(title=itemName)
+        itemsWithName = self.DJANGO_MODEL_OBJ.objects.filter(
+            **{attrName: itemName}
+        )
         if len(itemsWithName) > 0:
             return itemsWithName[0].id, itemsWithName[0]
 

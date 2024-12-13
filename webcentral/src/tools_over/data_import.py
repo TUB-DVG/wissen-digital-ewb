@@ -299,7 +299,9 @@ class DataImportApp(DataImport):
             # technicalStandardsProtocols__in=technicalStandardsProtocolsElements,
         )
 
-        tupleOrNone = self._checkIfItemExistsInDB(row[header.index("name")])
+        tupleOrNone = self._checkIfItemExistsInDB(
+            row[header.index("name")], "name"
+        )
 
         obj.save()
         # obj.id = toolInDb.id

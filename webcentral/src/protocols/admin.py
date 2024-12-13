@@ -17,6 +17,7 @@ class HistoryAdminApp(HistoryAdmin):
 
     modelInstance = Protocol
     historyModelInstance = History
+    attributeName = "name"
 
 
 admin.site.register(History, HistoryAdminApp)

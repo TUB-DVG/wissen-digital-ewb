@@ -50,9 +50,12 @@ jobs:
 
       - name: Execute unittest for datasets app
         run: docker exec -w /webcentral/src webcentral python manage.py test Datasets
+     
+      - name: Execute unittest for businessModel app
+        run: docker exec -w /webcentral/src webcentral python manage.py test businessModel 
       
       - name: Execute unittest for publications app
-        run: docker exec -w /webcentral/src webcentral python manage.py test pubpublicationss
+        run: docker exec -w /webcentral/src webcentral python manage.py test publications
       
       - name: Setup selenium dev-environment
         run: |
