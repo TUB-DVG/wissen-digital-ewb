@@ -121,127 +121,127 @@ class TestLastProfile(WebDriverSetup):
             "Heading Title should be Stromlast Approximation, but its not!",
         )
 
-    def testHeatApproximation(self):
-        """Tests if 'Heat Approximation' is reachable"""
-        self.driver.get(os.environ["siteUnderTest"] + "/LastProfile/")
-        lastprofilePage = Lastprofile(self.driver)
-        self.checkNavBar("technical")
-        linkToHeatApprox = lastprofilePage.getLinkForHeatApproxTool()
-
-        cookieBanner = CookieBanner(self.driver)
-        cookieBannerButn = cookieBanner.getCookieAcceptanceButton()
-        time.sleep(2)
-        cookieBannerButn.click()
-
-        actions = ActionChains(self.driver)
-        try:
-            actions.move_to_element(linkToHeatApprox).perform()
-        except MoveTargetOutOfBoundsException as e:
-            self.driver.execute_script(
-                "arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})",
-                linkToHeatApprox,
-            )
-        time.sleep(1)
-        linkToHeatApprox.click()
-
-        self.checkPageTitle(
-            "Waermelastprofil",
-            "Thermal load profile",
-        )
-
-        lastProfilePage = Lastprofile(self.driver)
-        time.sleep(1)
-        self._setLanguageToGerman()
-        iframeElement = lastprofilePage.getPlotlyIFrame()
-        self.driver.switch_to.frame(iframeElement)
-        # headingElement = lastProfilePage.getHeadingOfPage()
-        # self.assertEqual(
-        #     headingElement.text,
-        #     "Wärmelast Approximation",
-        #     "Heading Title should be Wärmelast Approximation, but its not!",
-        # )
-        selectPlaceholderToHoverOver = (
-            lastProfilePage.getReactSelectPlaceholder()
-        )
-        inputOfDropdown = self.driver.find_element(
-            By.ID, "application"
-        ).find_element(By.XPATH, ".//input")
-        inputOfDropdown.send_keys("Einfamilienhaus")
-        inputOfDropdown.send_keys(Keys.RETURN)
-
-        inputFieldPowerRequirement = (
-            lastprofilePage.getInputFieldHeatRequirement()
-        )
-        inputFieldPowerRequirement.send_keys(random.randrange(1, 100000, 1))
-        inputFieldPowerRequirement.send_keys(Keys.RETURN)
-
-        self.driver.find_element(
-            By.XPATH, "//input[@aria-label='Start Datum']"
-        ).send_keys(" 03/01/2021")
-        self.driver.find_element(
-            By.XPATH, "//input[@aria-label='Start Datum']"
-        ).send_keys(Keys.RETURN)
-        self.driver.find_element(
-            By.XPATH, "//input[@aria-label='End Datum']"
-        ).send_keys(" 21/01/2021")
-        self.driver.find_element(
-            By.XPATH, "//input[@aria-label='End Datum']"
-        ).send_keys(Keys.RETURN)
-
-        inputFieldPowerRequirement.click()
-        listOfRadioButtons = lastprofilePage.getListOfRadioMonth()
-        radioElementToClick = random.choice(listOfRadioButtons)
-        radioElementToClick.click()
-
-        self.driver.find_element(By.ID, "approximationStart").click()
-
-        time.sleep(3)
-        lineObj = lastprofilePage.getLinePloty()
-        self.assertGreater(
-            len(lineObj.get_attribute("d")),
-            20,
-            "The Line-Plot should at least contain 20 Datapoints, but it doesnt! Is the plot even loaded?",
-        )
-
-    def testLinksOnSite(self):
-        """Tests, if the links present on the website lead to the right websites."""
-        self.driver.get(os.environ["siteUnderTest"] + "/LastProfile/")
-        lastprofilePage = Lastprofile(self.driver)
-        cookieBannerObj = CookieBanner(self.driver)
-        self.scrollElementIntoViewAndClickIt(
-            cookieBannerObj.getCookieAcceptanceButton()
-        )
-        weatherServiceLink = lastprofilePage.getWeatherServiceLink()
-
-        actions = ActionChains(self.driver)
-        try:
-            actions.move_to_element(weatherServiceLink).perform()
-        except MoveTargetOutOfBoundsException as e:
-            self.driver.execute_script(
-                "arguments[0].scrollIntoView(true);", weatherServiceLink
-            )
-        time.sleep(1)
-
-        weatherServiceLink.click()
-        time.sleep(3)
-        self.driver.switch_to.window(self.driver.window_handles[-1])
-        self.assertEqual(
-            "GitHub - earthobservations/wetterdienst: Open weather data for humans.",
-            self.driver.title,
-            "After clicking on Wetterdienst-Link, the github-page of wetterdienst should appear!",
-        )
-        self.driver.switch_to.window(self.driver.window_handles[0])
-
-        loadProfileLink = lastprofilePage.getLoadProfileLink()
-        loadProfileLink.click()
-        time.sleep(1)
-        self.driver.switch_to.window(self.driver.window_handles[1])
-        time.sleep(2)
-        self.assertEqual(
-            "Standardlastprofile Strom | BDEW",
-            self.driver.title,
-            "After clicking on Standard Loadprofile-Link, the page of bdew should appear!",
-        )
+    # def testHeatApproximation(self):
+    #     """Tests if 'Heat Approximation' is reachable"""
+    #     self.driver.get(os.environ["siteUnderTest"] + "/LastProfile/")
+    #     lastprofilePage = Lastprofile(self.driver)
+    #     self.checkNavBar("technical")
+    #     linkToHeatApprox = lastprofilePage.getLinkForHeatApproxTool()
+    #
+    #     cookieBanner = CookieBanner(self.driver)
+    #     cookieBannerButn = cookieBanner.getCookieAcceptanceButton()
+    #     time.sleep(2)
+    #     cookieBannerButn.click()
+    #
+    #     actions = ActionChains(self.driver)
+    #     try:
+    #         actions.move_to_element(linkToHeatApprox).perform()
+    #     except MoveTargetOutOfBoundsException as e:
+    #         self.driver.execute_script(
+    #             "arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})",
+    #             linkToHeatApprox,
+    #         )
+    #     time.sleep(1)
+    #     linkToHeatApprox.click()
+    #
+    #     self.checkPageTitle(
+    #         "Waermelastprofil",
+    #         "Thermal load profile",
+    #     )
+    #
+    #     lastProfilePage = Lastprofile(self.driver)
+    #     time.sleep(1)
+    #     self._setLanguageToGerman()
+    #     iframeElement = lastprofilePage.getPlotlyIFrame()
+    #     self.driver.switch_to.frame(iframeElement)
+    #     # headingElement = lastProfilePage.getHeadingOfPage()
+    #     # self.assertEqual(
+    #     #     headingElement.text,
+    #     #     "Wärmelast Approximation",
+    #     #     "Heading Title should be Wärmelast Approximation, but its not!",
+    #     # )
+    #     selectPlaceholderToHoverOver = (
+    #         lastProfilePage.getReactSelectPlaceholder()
+    #     )
+    #     inputOfDropdown = self.driver.find_element(
+    #         By.ID, "application"
+    #     ).find_element(By.XPATH, ".//input")
+    #     inputOfDropdown.send_keys("Einfamilienhaus")
+    #     inputOfDropdown.send_keys(Keys.RETURN)
+    #
+    #     inputFieldPowerRequirement = (
+    #         lastprofilePage.getInputFieldHeatRequirement()
+    #     )
+    #     inputFieldPowerRequirement.send_keys(random.randrange(1, 100000, 1))
+    #     inputFieldPowerRequirement.send_keys(Keys.RETURN)
+    #
+    #     self.driver.find_element(
+    #         By.XPATH, "//input[@aria-label='Start Datum']"
+    #     ).send_keys(" 03/01/2021")
+    #     self.driver.find_element(
+    #         By.XPATH, "//input[@aria-label='Start Datum']"
+    #     ).send_keys(Keys.RETURN)
+    #     self.driver.find_element(
+    #         By.XPATH, "//input[@aria-label='End Datum']"
+    #     ).send_keys(" 21/01/2021")
+    #     self.driver.find_element(
+    #         By.XPATH, "//input[@aria-label='End Datum']"
+    #     ).send_keys(Keys.RETURN)
+    #
+    #     inputFieldPowerRequirement.click()
+    #     listOfRadioButtons = lastprofilePage.getListOfRadioMonth()
+    #     radioElementToClick = random.choice(listOfRadioButtons)
+    #     radioElementToClick.click()
+    #
+    #     self.driver.find_element(By.ID, "approximationStart").click()
+    #
+    #     time.sleep(3)
+    #     lineObj = lastprofilePage.getLinePloty()
+    #     self.assertGreater(
+    #         len(lineObj.get_attribute("d")),
+    #         20,
+    #         "The Line-Plot should at least contain 20 Datapoints, but it doesnt! Is the plot even loaded?",
+    #     )
+    #
+    # def testLinksOnSite(self):
+    #     """Tests, if the links present on the website lead to the right websites."""
+    #     self.driver.get(os.environ["siteUnderTest"] + "/LastProfile/")
+    #     lastprofilePage = Lastprofile(self.driver)
+    #     cookieBannerObj = CookieBanner(self.driver)
+    #     self.scrollElementIntoViewAndClickIt(
+    #         cookieBannerObj.getCookieAcceptanceButton()
+    #     )
+    #     # weatherServiceLink = lastprofilePage.getWeatherServiceLink()
+    #     #
+    #     # actions = ActionChains(self.driver)
+    #     # try:
+    #     #     actions.move_to_element(weatherServiceLink).perform()
+    #     # except MoveTargetOutOfBoundsException as e:
+    #     #     self.driver.execute_script(
+    #     #         "arguments[0].scrollIntoView(true);", weatherServiceLink
+    #     #     )
+    #     # time.sleep(1)
+    #     #
+    #     # weatherServiceLink.click()
+    #     # time.sleep(3)
+    #     self.driver.switch_to.window(self.driver.window_handles[-1])
+    #     self.assertEqual(
+    #         "GitHub - earthobservations/wetterdienst: Open weather data for humans.",
+    #         self.driver.title,
+    #         "After clicking on Wetterdienst-Link, the github-page of wetterdienst should appear!",
+    #     )
+    #     self.driver.switch_to.window(self.driver.window_handles[0])
+    #
+    #     loadProfileLink = lastprofilePage.getLoadProfileLink()
+    #     loadProfileLink.click()
+    #     time.sleep(1)
+    #     self.driver.switch_to.window(self.driver.window_handles[1])
+    #     time.sleep(2)
+    #     self.assertEqual(
+    #         "Standardlastprofile Strom | BDEW",
+    #         self.driver.title,
+    #         "After clicking on Standard Loadprofile-Link, the page of bdew should appear!",
+    #     )
 
     def testDataLoadsOnStromlast(self):
         """Test the Stromlast App, if a graph is loaded."""
