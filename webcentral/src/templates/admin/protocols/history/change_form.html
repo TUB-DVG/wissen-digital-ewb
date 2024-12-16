@@ -95,22 +95,27 @@
           <tbody>
             {% for key in currentStateStringified.keys %}
 
-              {% if rollbackStateStringified|get_item:key !=  currentStateStringified|get_item:key %}
+              {% if not key|stringformat:"s_de" in currentStateStringified.keys %}
 
-                <tr style="background-color: #87860f">
-                  <td>{{ key }}</td>
-                  <td>{{ currentStateStringified|get_item:key }}</td>
-                  <td>{{ rollbackStateStringified|get_item:key }}</td>
-                </tr>
-              {% else %}
-                <tr>
-                  <td>{{ key }}</td>
-                  <td>{{ currentStateStringified|get_item:key }}</td>
-                  <td>{{ rollbackStateStringified|get_item:key }}</td>
-                </tr>
+                {% if rollbackStateStringified|get_item:key !=  currentStateStringified|get_item:key %}
+
+                  <tr style="background-color: #87860f">
+                    <td>{{ key }}</td>
+                    <td>{{ currentStateStringified|get_item:key }}</td>
+                    <td>{{ rollbackStateStringified|get_item:key }}</td>
+                  </tr>
+                {% else %}
+                  <tr>
+                    <td>{{ key }}</td>
+                    <td>{{ currentStateStringified|get_item:key }}</td>
+                    <td>{{ rollbackStateStringified|get_item:key }}</td>
+                  </tr>
+                {% endif %}
               {% endif %}
+
             </tr>
           {% endfor %}
+
         </tbody>
       </table>
 
