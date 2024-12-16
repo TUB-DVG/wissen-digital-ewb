@@ -94,9 +94,9 @@
           </thead>
           <tbody>
             {% for key in currentStateStringified.keys %}
-              
+
               {% if not key|stringformat:"s_de" in currentStateStringified.keys %}
-              
+
                 {% if rollbackStateStringified|get_item:key !=  currentStateStringified|get_item:key %}
 
                   <tr style="background-color: #87860f">
@@ -111,9 +111,12 @@
                     <td>{{ rollbackStateStringified|get_item:key }}</td>
                   </tr>
                 {% endif %}
-              {% endif %} 
+              {% endif %}
+
             </tr>
-          {% endfor %}        </tbody>
+          {% endfor %}
+
+        </tbody>
       </table>
 
       {% block after_related_objects %}{% endblock %}
