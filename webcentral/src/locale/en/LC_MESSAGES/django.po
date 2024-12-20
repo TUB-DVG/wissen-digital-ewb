@@ -2645,6 +2645,12 @@ msgid ""
 "Datenschutz-Grundverordnung (DSGVO)</a> und dem <a href=\"https://www."
 "gesetze-im-internet.de/bdsg_2018/\">Bundesdatenschutzgesetz (BDSG)</a>."
 msgstr ""
+"Responsible handling of personal data is a priority for the Project Management Jülich (PTJ). We want our users to know when the Project Management Jülich is collecting what data and for what purpose."
+"The Project Management Jülich  operates a website hosted on the www.wissen-digital-ewb.de domain. This website serves to provide information about PTJ activities and to give the public easy access to information."
+"We do not process personal data beyond what is necessary. What data we will need and process on what basis and for what purpose will much depend on the type of service you are using, and on the purpose for which the data is required."
+"We have taken technical and organisational measures to ensure that both we as well as external service providers comply with the provisions governing data protection."
+"The processing of personal data at the NCP is handled in accordance with the <a href=\"https://eur-lex.europa.eu/legal-content/DE/TXT/PDF/?uri=CELEX:32016R0679&qid=1527147390147&from=EN\">Europäischen "
+"General Data Protection Regulation (GDPR)</a> and the <a href=\"https://www.gesetze-im-internet.de/bdsg_2018/\">Federal Data Protection Act (BDSG)</a>." 
 
 #: templates/pages/Datenschutzhinweis.html:41
 msgid "Grundlagen"
@@ -2689,8 +2695,8 @@ msgstr ""
 "\n"
 "Controller for the purposes of the General Data Protection Regulation (GDPR),"
 "other data protection laws applicable in Member states of the European Union "
-"and other provisions related to data protection is:Forschungszentrum Jülich "
-"GmbHWilhelm-Johnen-Strasse52428 JülichDeutschlandPhone: +49-2461-61-0 <br /"
+"and other provisions related to data protection is: Forschungszentrum Jülich "
+"GmbH Wilhelm-Johnen-Strasse 52428 Jülich Deutschland <br /> Phone: +49-2461-61-0 <br /"
 ">Email: info@fz-juelich.de <br />Website: www.fz-juelich.de <br />The Data "
 "Protection Officer of the controller is: <br />Frank Rinkens <br /"
 ">Forschungszentrum Jülich GmbH <br />Wilhelm-Johnen-Strasse <br />52428 "
@@ -2704,11 +2710,6 @@ msgid "Personenbezogene Daten"
 msgstr "Personal data"
 
 #: templates/pages/Datenschutzhinweis.html:70
-#, fuzzy
-#| msgid ""
-#| "Selbstverständlich beachtet die Technische Universität Berlin die "
-#| "gesetzlichen Bestimmungen zum Datenschutz und\n"
-#| "          andere rechtliche Bestimmungen und Vorgaben."
 msgid ""
 "Selbstverständlich beachtet der PtJ die gesetzlichen Bestimmungen zum "
 "Datenschutz und\n"
@@ -2735,8 +2736,6 @@ msgid "Datenverabeitung im Zusammenhang mit dem Besuch dieser Website"
 msgstr "Data processing in connection with the visit of this website"
 
 #: templates/pages/Datenschutzhinweis.html:82
-#, fuzzy
-#| msgid "Datenbasis"
 msgid "Datenferfassung"
 msgstr "Data collection"
 
@@ -2748,6 +2747,11 @@ msgid ""
 "                Im Einzelnen werden über jeden Zugriff/Abruf folgende Daten "
 "gespeichert::"
 msgstr ""
+"Every time a user accesses our internet service and every time a file is "
+"retrieved, data about this process is temporarily processed in a log file. "
+"Specifically, the following data is stored for each access/retrieval:"
+
+
 
 #: templates/pages/Datenschutzhinweis.html:91
 msgid "die IP-Adresse Ihres Gerätes,"
