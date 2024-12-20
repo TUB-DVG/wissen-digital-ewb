@@ -3681,13 +3681,10 @@ msgid "8 Haftungsausschluss"
 msgstr "8 Disclaimer"
 
 #: templates/pages/impressum.html:96
-#, fuzzy
-#| msgid "Inhalt der eigenen Seiten"
 msgid "9 Inhalt der eigenen Seiten"
 msgstr "9 Content of own pages"
 
 #: templates/pages/impressum.html:98
-#, fuzzy
 msgid ""
 "\n"
 "              Wir haben die Internet-Seiten des Projektträgers Jülich in der "
@@ -3698,6 +3695,7 @@ msgid ""
 "Informationen.\n"
 "            "
 msgstr ""
+"\n"
 "We have carefully compiled the web pages of the knowledge platform (wissen-"
 "digital-ewb.de). However, we neither guarantee nor accept liability for the "
 "information being up-to-date, complete or accurate."
@@ -3705,20 +3703,9 @@ msgstr ""
 #: templates/pages/impressum.html:106
 #, fuzzy
 msgid "10 Links auf externe Web-Seiten"
-msgstr "!= Links to external websites"
+msgstr "10 Links to external websites"
 
 #: templates/pages/impressum.html:109
-#, fuzzy
-#| msgid ""
-#| "Die Web-Seiten der Wissensplattform enthalten Links auf die Web-Seiten "
-#| "Dritter. Diese Links auf die Web-Seiten Dritter stellen keine Zustimmung "
-#| "zu deren Inhalt dar. Für die Inhalte der verlinkten Seiten ist stets der "
-#| "jeweilige Anbieter oder Betreiber der Seiten verantwortlich.\n"
-#| "                    Rechtswidrige Inhalte waren zum Zeitpunkt der "
-#| "Verlinkung nicht erkennbar. Wir übernehmen keine Gewähr für die "
-#| "fortwährende Aktualität, Richtigkeit und Vollständigkeit der verlinkten "
-#| "Inhalte, da diese Inhalte außerhalb unseres Verantwortungsbereichs liegen "
-#| "und wir auf die zukünftige Gestaltung keinen Einfluss haben."
 msgid ""
 "\n"
 "              Die Internet-Seiten des Projektträgers Jülich in der "
@@ -3735,6 +3722,7 @@ msgid ""
 "zukünftige Gestaltung keinen Einfluss haben.\n"
 "            "
 msgstr ""
+"\n"
 "The knowledge platform's websites contain links to third-party websites. "
 "These links to third-party websites do not constitute approval of their "
 "content. The respective provider or operator of the pages is always "
