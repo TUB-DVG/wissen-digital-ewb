@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-20 11:57+0000\n"
+"POT-Creation-Date: 2024-12-20 12:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2648,11 +2648,11 @@ msgstr ""
 
 #: templates/pages/Datenschutzhinweis.html:41
 msgid "Grundlagen"
-msgstr ""
+msgstr "Basic Informaion"
 
 #: templates/pages/Datenschutzhinweis.html:42
 msgid "Verantwortlicher und Datenschutzbeauftragter"
-msgstr ""
+msgstr "Responsible and Data Protection Officer"
 
 #: templates/pages/Datenschutzhinweis.html:44
 msgid ""
@@ -2688,30 +2688,16 @@ msgid ""
 "            "
 msgstr ""
 "Controller for the purposes of the General Data Protection Regulation (GDPR),"
-"other data protection laws applicable in Member states of the European Union and other provisions related to data protection is:"
-"Forschungszentrum Jülich GmbH"
-"Wilhelm-Johnen-Strasse"
-"52428 Jülich"
-"Deutschland"
-
-"Phone: +49-2461-61-0 <br />"
-"Email: info@fz-juelich.de <br />"
-"Website: www.fz-juelich.de <br />""
-
-"The Data Protection Officer of the controller is: <br />"
-
-"Frank Rinkens <br />"
-"Forschungszentrum Jülich GmbH <br />"
-"Wilhelm-Johnen-Strasse <br />"
-"52428 Jülich <br />"
-"Deutschland <br />"
-
-"Phone: +49-2461-61-9005 <br />"
-"Email: DSB@fz-juelich.de <br />"
-"Website: www.fz-juelich.de <br />"
-
-"Any data subject may, at any time, contact our Data Protection Officer directly with all"
-" questions and suggestions concerning data protection."
+"other data protection laws applicable in Member states of the European Union "
+"and other provisions related to data protection is:Forschungszentrum Jülich "
+"GmbHWilhelm-Johnen-Strasse52428 JülichDeutschlandPhone: +49-2461-61-0 <br /"
+">Email: info@fz-juelich.de <br />Website: www.fz-juelich.de <br />The Data "
+"Protection Officer of the controller is: <br />Frank Rinkens <br /"
+">Forschungszentrum Jülich GmbH <br />Wilhelm-Johnen-Strasse <br />52428 "
+"Jülich <br />Deutschland <br />Phone: +49-2461-61-9005 <br />Email: DSB@fz-"
+"juelich.de <br />Website: www.fz-juelich.de <br />Any data subject may, at "
+"any time, contact our Data Protection Officer directly with all questions "
+"and suggestions concerning data protection."
 
 #: templates/pages/Datenschutzhinweis.html:68
 msgid "Personenbezogene Daten"
@@ -2818,13 +2804,17 @@ msgid ""
 "Daten, die beim Zugriff auf das Internetangebot des PtJ protokolliert "
 "wurden, werden an Dritte nur übermittelt,\n"
 "                 soweit wir rechtlich dazu verpflichtet sind oder die "
-"Weitergabe im Falle von Angriffen auf die Kommunikationstechnik "
-"zur Rechts- oder Strafverfolgung erforderlich ist.\n"
+"Weitergabe im Falle von Angriffen auf die Kommunikationstechnik zur Rechts- "
+"oder Strafverfolgung erforderlich ist.\n"
 "                 Eine Weitergabe in anderen Fällen erfolgt nicht. Das PtJ "
 "führt diese Daten nicht mit anderen Datenquellen zusammen."
-msgstr "Data collected from visits to the PTJ web resources and stored on log files is transmitted to third parties only when required by law, or if attacks"
-" on thel communications technology system make it necessary to forward such data for purposes of legal action or criminal prosecution. Data will not be transferred for any other reason."
-"The PTJ does not collate these data with data from other sources."
+msgstr ""
+"Data collected from visits to the PTJ web resources and stored on log files "
+"is transmitted to third parties only when required by law, or if attacks on "
+"thel communications technology system make it necessary to forward such data "
+"for purposes of legal action or criminal prosecution. Data will not be "
+"transferred for any other reason.The PTJ does not collate these data with "
+"data from other sources."
 
 #: templates/pages/Datenschutzhinweis.html:137
 msgid ""
@@ -2874,8 +2864,8 @@ msgstr ""
 msgid ""
 "Wir setzen unter anderem folgende Cookies auf unserer Domain wissen-digital-"
 "ewb.de ein:"
-msgstr ""
-"We use the following cookies on our domain wissen-digital-ewb.de:"
+msgstr "We use the following cookies on our domain wissen-digital-ewb.de:"
+
 #: templates/pages/Datenschutzhinweis.html:160
 msgid ""
 "HTTPOnly: False, Secure: False, SameSite: None, Gültigkeitsdauer: 1 Tag (bis "
@@ -2883,9 +2873,10 @@ msgid ""
 "Anzeigeelemente (wie ein Splash-Fenster) während Ihres Besuchs zu steuern "
 "und ist somit nur kurzzeitig gültig."
 msgstr ""
-"HTTPOnly: False, Secure: False, SameSite: None, validity period: 1 day (until end of session or max. 1 day)."
-"This cookie is used to control certain display elements (such as a splash window) during your visit and is therefore only valid for a short time."
-
+"HTTPOnly: False, Secure: False, SameSite: None, validity period: 1 day "
+"(until end of session or max. 1 day).This cookie is used to control certain "
+"display elements (such as a splash window) during your visit and is "
+"therefore only valid for a short time."
 
 #: templates/pages/Datenschutzhinweis.html:166
 msgid ""
@@ -2898,7 +2889,6 @@ msgstr ""
 "This longer-lasting cookie sets a CSRF protection token to increase the "
 "security of your sessions and prevent malicious actions."
 
-
 #: templates/pages/Datenschutzhinweis.html:172
 msgid ""
 "HTTPOnly: True, Secure: True, SameSite: Strict, Gültigkeitsdauer: 1 Tag. "
@@ -2907,12 +2897,10 @@ msgid ""
 "oder das Cookie ist abgelaufen, wird der Warenkorb zurückgesetzt, sofern Sie "
 "den Bestellvorgang nicht abgeschlossen haben."
 msgstr ""
-"HTTPOnly: True, Secure: True, SameSite: Strict, validity period: 1 day. "
-"This cookie contains a randomly generated session ID for uniquely assigning "
-"your shopping cart and orders. If the session ends or the cookie expires, "
-"the shopping cart will be reset if you have not completed the ordering "
-"process."
-
+"HTTPOnly: True, Secure: True, SameSite: Strict, validity period: 1 day. This "
+"cookie contains a randomly generated session ID for uniquely assigning your "
+"shopping cart and orders. If the session ends or the cookie expires, the "
+"shopping cart will be reset if you have not completed the ordering process."
 
 #: templates/pages/Datenschutzhinweis.html:176
 msgid ""
@@ -2925,6 +2913,10 @@ msgid ""
 "dahin gesammelten Inhalte müssen bei erneuter Sitzung neu zusammengestellt "
 "werden."
 msgstr ""
+"Session cookies are deleted as soon as you end your session. As soon as you "
+"close your browser window or navigate to a different website, your shopping "
+"basket will be reset. This means that if you end your session before placing "
+"your order, you will have to fill your shopping basket again."
 
 #: templates/pages/Datenschutzhinweis.html:180
 msgid ""
@@ -2937,6 +2929,18 @@ msgid ""
 "jedoch jederzeit deaktiviert oder so eingestellt werden, dass Cookies nur "
 "für die Dauer der jeweiligen Verbindung zum Internet gespeichert bleiben."
 msgstr ""
+"You can use any internet browser to be informed whenever a cookie is set and "
+"to see what information is stored in it. For more detailed information, visit "
+"the websites of the Federal Commissioner for Data Protection and Freedom of "
+"Information and of the Federal Office for Information Security. There are "
+"also persistent cookies, which allow a provider to remember visitors even if "
+"they do not return until after a longer period of time. These cookies are "
+"stored as a text file on the hard drive of the user's computer. We do not "
+"use this type of cookie on our website. Most browsers' default settings will "
+"result in cookies being accepted automatically. It is, however, possible to "
+"disable the use of cookies or to change your browser settings to 'session "
+"cookies only', which means that all cookies are deleted as soon as you "
+"disconnect from the internet."
 
 #: templates/pages/Datenschutzhinweis.html:183
 msgid "Social-Media-Drittanbieter"
@@ -3119,17 +3123,32 @@ msgstr "Your rights"
 msgid ""
 "Sie haben gegenüber dem PtJ folgende Rechte hinsichtlich der Sie "
 "betreffenden personenbezogenen Daten:"
-msgstr "You have the following rights with regard to the personal data concerning your person:"
+msgstr ""
+"You have the following rights with regard to the personal data concerning "
+"your person:"
 
 #: templates/pages/Datenschutzhinweis.html:252
+msgid ""
+"Recht auf Auskunft, Art. 15 DSGVO Mit dem Recht auf Auskunft erhält der "
+"Betroffene eine umfassende Einsicht in die ihn angehenden Daten und einige "
+"andere wichtige Kriterien wie beispielsweise die Verarbeitungszwecke oder "
+"die Dauer der Speicherung. Es gelten die in § 34 BDSG geregelten Ausnahmen "
+"von diesem Recht."
+msgstr ""
+"Right of access, Art. 15 GDPR"
+"The right of access confers on the data subject a comprehensive right of access to the data concerning his/her person and to certain important information-related criteria,"
+"such as the purposes for which it is processed or the duration for which it will be stored. The exceptions to this right regulated in Section 34 Federal Data Protection Act apply."
+
+#: templates/pages/Datenschutzhinweis.html:255
 msgid ""
 "Recht auf Berichtigung, Art. 16 DSGVO Das Recht auf Berichtigung beinhaltet "
 "die Möglichkeit für den Betroffenen, unrichtige ihn angehende "
 "personenbezogene Daten korrigieren zu lassen."
-msgstr "Right to rectification, Art. 16 GDPR
-The right of rectification includes the possibility for the data subject to have inaccurate personal data corrected."
+msgstr ""
+"Right to rectification, Art. 16 GDPRThe right of rectification includes the "
+"possibility for the data subject to have inaccurate personal data corrected."
 
-#: templates/pages/Datenschutzhinweis.html:255
+#: templates/pages/Datenschutzhinweis.html:258
 msgid ""
 "Recht auf Löschung, Art. 17 DSGVO Das Recht auf Löschung beinhaltet die "
 "Möglichkeit für den Betroffenen, Daten beim Verantwortlichen löschen zu "
@@ -3138,11 +3157,14 @@ msgid ""
 "werden oder eine diesbezügliche Einwilligung widerrufen wurde. Es gelten die "
 "in § 35 BDSG geregelten Ausnahmen von diesem Recht. "
 msgstr ""
-"Right to erasure, Art. 17 GDPR"
-"The right to erasure includes the possibility for the data subject to have data deleted by the party responsible."
-"However, this is only possible if the personal data concerning his/her person are no longer needed, are processed unlawfully or if the relevant consent has been revoked. The exceptions to this right regulated in Section 35 Federal Data Protection Act apply."
+"Right to erasure, Art. 17 GDPRThe right to erasure includes the possibility "
+"for the data subject to have data deleted by the party responsible.However, "
+"this is only possible if the personal data concerning his/her person are no "
+"longer needed, are processed unlawfully or if the relevant consent has been "
+"revoked. The exceptions to this right regulated in Section 35 Federal Data "
+"Protection Act apply."
 
-#: templates/pages/Datenschutzhinweis.html:258
+#: templates/pages/Datenschutzhinweis.html:261
 msgid ""
 "Recht auf Einschränkung der Verarbeitung, Art. 18 DSGVO Das Recht auf "
 "Einschränkung der Verarbeitung beinhaltet die Möglichkeit für den "
@@ -3150,11 +3172,13 @@ msgid ""
 "Daten vorerst zu verhindern. Eine Einschränkung tritt vor allem in der "
 "Prüfungsphase anderer Rechtewahrnehmungen durch den Betroffenen ein."
 msgstr ""
-"Right to restriction of processing, Art. 18 GDPR"
-"The right to restrict the processing includes the possibility for the data subject to prevent further processing of personal data concerning his/her person for the time being"
-". A restriction particularly occurs pending verification of the exercise of other rights of the data subject."
+"Right to restriction of processing, Art. 18 GDPRThe right to restrict the "
+"processing includes the possibility for the data subject to prevent further "
+"processing of personal data concerning his/her person for the time being.A "
+"restriction particularly occurs pending verification of the exercise of "
+"other rights of the data subject."
 
-#: templates/pages/Datenschutzhinweis.html:261
+#: templates/pages/Datenschutzhinweis.html:264
 msgid ""
 "Recht auf Widerspruch gegen die Erhebung, Verarbeitung und beziehungsweise "
 "oder Nutzung, Art. 21 DSGVO Das Recht auf Widerspruch beinhaltet die "
@@ -3163,12 +3187,15 @@ msgid ""
 "durch die Wahrnehmung öffentlicher Aufgaben oder öffentlicher sowie privater "
 "Interessen gerechtfertigt ist. Es gelten die in § 36 BDSG geregelten "
 "Ausnahmen von diesem Recht."
-msgstr "Right to object to collection, processing and/or use, Art. 21 GDPR
-The right to object includes the possibility for data subjects to object, in a particular situation,"
-" to the further processing of their personal data, insofar as this is justified by the exercise of public functions or of public or private interests."
-" The exceptions to this right regulated in Section 36 Federal Data Protection Act apply."
+msgstr ""
+"Right to object to collection, processing and/or use, Art. 21 GDPRThe right "
+"to object includes the possibility for data subjects to object, in a "
+"particular situation, to the further processing of their personal data, "
+"insofar as this is justified by the exercise of public functions or of "
+"public or private interests. The exceptions to this right regulated in "
+"Section 36 Federal Data Protection Act apply."
 
-#: templates/pages/Datenschutzhinweis.html:264
+#: templates/pages/Datenschutzhinweis.html:267
 msgid ""
 "Recht auf Datenübertragbarkeit, Art. 20 DSGVO Das Recht auf "
 "Datenübertragbarkeit beinhaltet die Möglichkeit für den Betroffenen, die ihn "
@@ -3178,11 +3205,15 @@ msgid ""
 "steht dieses Recht aber dann nicht zur Verfügung, wenn die Datenverarbeitung "
 "der Wahrnehmung öffentlicher Aufgaben dient."
 msgstr ""
-"Right to data portability, Art. 20 GDPR
-The right to data portability includes the possibility for the data subject to obtain the personal data concerning his/her person"
-"from the person responsible in a standard, machine-readable format, in order to be able to forward them to another person responsible if necessary. According to Art. 20 (3) sentence 2 GDPR, however, this right does not apply if the data processing serves the performance of public tasks."
+"Right to data portability, Art. 20 GDPRThe right to data portability "
+"includes the possibility for the data subject to obtain the personal data "
+"concerning his/her personfrom the person responsible in a standard, machine-"
+"readable format, in order to be able to forward them to another person "
+"responsible if necessary. According to Art. 20 (3) sentence 2 GDPR, however, "
+"this right does not apply if the data processing serves the performance of "
+"public tasks."
 
-#: templates/pages/Datenschutzhinweis.html:267
+#: templates/pages/Datenschutzhinweis.html:270
 msgid ""
 " Recht auf Widerruf der Einwilligung, Art. 13 und 14 DSGVO Soweit die "
 "Verarbeitung der personenbezogenen Daten auf Grundlage einer Einwilligung "
@@ -3191,29 +3222,33 @@ msgid ""
 "aufgrund der getätigten Einwilligung bleibt bis zum Eingang des Widerrufs "
 "unberührt."
 msgstr ""
-"Right to revoke consent, Art. 13 and 14 GDPR2"
-"If personal data is processed on the basis of consent, the data subject may revoke such consent at any time"
-"for the purpose for which it was given. The lawfulness of the processing undertaken on the basis of this consent remains"
-"unaffected until receipt of the revocation."
+"Right to revoke consent, Art. 13 and 14 GDPR2If personal data is processed "
+"on the basis of consent, the data subject may revoke such consent at any "
+"timefor the purpose for which it was given. The lawfulness of the processing "
+"undertaken on the basis of this consent remainsunaffected until receipt of "
+"the revocation."
 
-#: templates/pages/Datenschutzhinweis.html:270
+#: templates/pages/Datenschutzhinweis.html:273
 msgid ""
-" Die vorgenannten Rechte können Sie unter den in Ziffer 1.1 genannten "
+" Die vorgenannten Rechte können Sie unter den in Ziffer 1 genannten "
 "Erreichbarkeiten schriftlich geltend machen.\n"
 "\n"
 "            Ihnen steht zudem gemäß Art. 77 DSGVO ein Beschwerderecht bei "
 "der datenschutzrechtlichen Aufsichtsbehörde, der Bundesbeauftragten für den "
 "Datenschutz und die Informationsfreiheit, zu.."
 msgstr ""
-"You can assert the aforementioned rights in writing using the contact details specified in Section 1.\n"
+"You can assert the aforementioned rights in writing using the contact "
+"details specified in Section 1.\n"
 "\n"
-"            In addition, according to Art. 77 GDPR, you have the right to lodge a complaint with the data protection supervisory authority, the Federal Commissioner for Data Protection and Freedom of Information."
+"            In addition, according to Art. 77 GDPR, you have the right to "
+"lodge a complaint with the data protection supervisory authority, the "
+"Federal Commissioner for Data Protection and Freedom of Information."
 
-#: templates/pages/Datenschutzhinweis.html:275
+#: templates/pages/Datenschutzhinweis.html:278
 msgid "Beschwerderecht"
 msgstr "Right of appeal"
 
-#: templates/pages/Datenschutzhinweis.html:277
+#: templates/pages/Datenschutzhinweis.html:280
 msgid ""
 "Sollten Sie Anhaltspunkte dafür erkennen, dass wir mit Ihren Daten nicht "
 "datenschutzgerecht umgehen, können Sie sich jederzeit an das\n"
@@ -3225,30 +3260,30 @@ msgstr ""
 "at the Technical University of Berlin or the supervisory authority at any "
 "time."
 
-#: templates/pages/Datenschutzhinweis.html:281
+#: templates/pages/Datenschutzhinweis.html:284
 msgid ""
 "Natürlich steht Ihnen auch das Recht zu, sich an die Aufsichtsbehörde zu "
 "wenden:"
 msgstr ""
 "Of course, you also have the right to contact the supervisory authority:"
 
-#: templates/pages/Datenschutzhinweis.html:284
+#: templates/pages/Datenschutzhinweis.html:287
 msgid "Berliner Beauftragte für Datenschutz und Informationsfreiheit"
 msgstr "Berlin Commissioner for Data Protection and Freedom of Information"
 
-#: templates/pages/Datenschutzhinweis.html:290
+#: templates/pages/Datenschutzhinweis.html:293
 msgid "Tel."
 msgstr "Phone"
 
-#: templates/pages/Datenschutzhinweis.html:292
+#: templates/pages/Datenschutzhinweis.html:295
 msgid "Fax"
 msgstr "Fax"
 
-#: templates/pages/Datenschutzhinweis.html:297
+#: templates/pages/Datenschutzhinweis.html:300
 msgid "Abschließende Hinweise"
 msgstr "Final Notes"
 
-#: templates/pages/Datenschutzhinweis.html:299
+#: templates/pages/Datenschutzhinweis.html:302
 msgid ""
 "Beachten Sie, dass sich Datenschutzbestimmungen und Handhabungen zum "
 "Datenschutz laufend ändern können, so dass es erforderlich ist,\n"
@@ -3516,7 +3551,8 @@ msgstr "Imprint"
 msgid ""
 "Projektträger Jülich | Forschungszentrum Jülich GmbH<br />\n"
 "            Wilhelm-Johnen-Straße, 52428 Jülich"
-msgstr "Projektträger Jülich | Forschungszentrum Jülich GmbH<br />\n"
+msgstr ""
+"Projektträger Jülich | Forschungszentrum Jülich GmbH<br />\n"
 "            Wilhelm-Johnen-Straße, 52428 Jülich"
 
 #: templates/pages/impressum.html:32
@@ -3557,12 +3593,11 @@ msgid ""
 "122624631<br />\n"
 "            Steuer-Nr.: 213/5700/0033"
 msgstr ""
-"52425 Jülich<br />"
-"Germany<br />"
-"As the parent institution of Project Management Jülich, Forschungszentrum Jülich GmbH is" 
-"entered in the commercial register of Düren District Court no. HR B 3498 <br>"
-"value-added tax no. pursuant to § 27 a of German VAT legislation: DE 122624631 <br>"
-"tax no.: 213/5700/0033"
+"52425 Jülich<br />Germany<br />As the parent institution of Project "
+"Management Jülich, Forschungszentrum Jülich GmbH isentered in the commercial "
+"register of Düren District Court no. HR B 3498 <br>value-added tax no. "
+"pursuant to § 27 a of German VAT legislation: DE 122624631 <br>tax no.: "
+"213/5700/0033"
 
 #: templates/pages/impressum.html:50
 msgid "3 Geschäftsführung der Forschungszentrum Jülich GmbH"
@@ -3574,9 +3609,8 @@ msgid ""
 "            Karsten Beneke (Stellv. Vorsitzender)<br />\n"
 "            Prof. Dr. Ir. Pieter Jansens"
 msgstr ""
-"Prof. Dr. Astrid Lambrecht (Chair of the Board of Directors)<br />"
-"Karsten Beneke (Vice-Chairman)<br />"
-"Prof. Dr. Ir. Pieter Jansens"
+"Prof. Dr. Astrid Lambrecht (Chair of the Board of Directors)<br />Karsten "
+"Beneke (Vice-Chairman)<br />Prof. Dr. Ir. Pieter Jansens"
 
 #: templates/pages/impressum.html:59
 msgid "4 Vorsitzender des Aufsichtsrats"
@@ -3604,10 +3638,10 @@ msgid ""
 "            Projektträger Jülich<br />\n"
 "            Leiter Kommunikationsmanagement (SPF 1)<br />\n"
 "            Wilhelm-Johnen-Straße, 52428 Jülich"
-msgstr "Alexander Simon<br />"
-"            Project Management Jülich<br />"
-"            Head of Communications Management (SPF 1) <br />"
-"            Wilhelm-Johnen-Straße, 52428 Jülich"
+msgstr ""
+"Alexander Simon<br />            Project Management Jülich<br />            "
+"Head of Communications Management (SPF 1) <br />            Wilhelm-Johnen-"
+"Straße, 52428 Jülich"
 
 #: templates/pages/impressum.html:82
 msgid "7 Copyright"
@@ -3630,16 +3664,18 @@ msgid ""
 "Jülich sind für eine Nutzung durch Dritte nicht freigegeben.\n"
 "            "
 msgstr ""
-"Copyright and all other rights for the website of Project Management Jülich at Forschungszentrum Jülich GmbH"
-"are reserved by Project Management Jülich at Forschungszentrum Jülich GmbH. The dissemination, including excerpts,"
-" of the information contained on the website is permitted for educational, scientific or private purposes,"
-" provided the source is quoted (unless otherwise expressly stated on the respective webpage)."" 
-"Use for commercial purposes is not permitted unless explicit permission has been granted by Forschungszentrum Jülich."
-" Pictures with a credit other than \"Forschungszentrum Jülich/Projektträger Jülich\" are not to be used by third parties."
+"Copyright and all other rights for the website of Project Management Jülich "
+"at Forschungszentrum Jülich GmbHare reserved by Project Management Jülich at "
+"Forschungszentrum Jülich GmbH. The dissemination, including excerpts, of the "
+"information contained on the website is permitted for educational, "
+"scientific or private purposes, provided the source is quoted (unless "
+"otherwise expressly stated on the respective webpage).Use for commercial "
+"purposes is not permitted unless explicit permission has been granted by "
+"Forschungszentrum Jülich. Pictures with a credit other than "
+"\"Forschungszentrum Jülich/Projektträger Jülich\" are not to be used by "
+"third parties."
 
 #: templates/pages/impressum.html:94
-#, fuzzy
-#| msgid "Haftungsausschluss"
 msgid "8 Haftungsausschluss"
 msgstr "8 Disclaimer"
 
@@ -3651,11 +3687,6 @@ msgstr "9 Content of own pages"
 
 #: templates/pages/impressum.html:98
 #, fuzzy
-#| msgid ""
-#| "Wir haben die Web-Seiten der Wissensplattform (wissen-digital-ewb.de) "
-#| "sorgfältig zusammengestellt. Allerdings übernehmen wir keine Gewähr oder "
-#| "Haftung für die fortwährende Aktualität, Vollständigkeit und Richtigkeit "
-#| "der angebotenen Informationen."
 msgid ""
 "\n"
 "              Wir haben die Internet-Seiten des Projektträgers Jülich in der "
@@ -3667,11 +3698,11 @@ msgid ""
 "            "
 msgstr ""
 "We have carefully compiled the web pages of the knowledge platform (wissen-"
-"digital-ewb.de). However, we neither guarantee nor accept liability for the information being up-to-date, complete or accurate."
+"digital-ewb.de). However, we neither guarantee nor accept liability for the "
+"information being up-to-date, complete or accurate."
 
 #: templates/pages/impressum.html:106
 #, fuzzy
-#| msgid "Links auf externe Web-Seiten"
 msgid "10 Links auf externe Web-Seiten"
 msgstr "!= Links to external websites"
 
