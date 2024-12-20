@@ -125,9 +125,11 @@ Thank you for helping us build a robust and comprehensive database system! If yo
 
 ## License / Copyright
 
+This software was originally developed by the [Institute for Digital Networking of Buildings, Energy Supply Systems and Users](https://www.tu.berlin/en/dvg) at the Technical University of Berlin. Since 2025 the [Projektträger Jülich (PTJ)](https://www.ptj.de/en/landing-page) is responsible for the maintenance and further development of the software.
+
 This repository is licensed under [MIT License](LICENSE). 
 
-This repo contains images, which have been created using the open-source [Privay Icons](https://github.com/Privacy-Icons/Privacy-Icons).
+This repo contains images, which have been created using the open-source [Privay Icons](https://github.com/Privacy-Icons/Privacy-Icons). 
 
 
 # Funding
@@ -135,16 +137,19 @@ This repo contains images, which have been created using the open-source [Privay
 
 We gratefully acknowledge the financial support by the Federal Ministry for Economic Affairs and Climate Action (BMWK), promotional reference: 03EWB004A-C.
 
-# Contributors Software (in no particular order)
+# Alumni
+
+## Contributors Software (in no particular order)
 
 Falk Cudok, Felix Rehmann, Rita Streblow, Martin Tobias Degner, Siling Chen, Ibukun Odeyemi, Kaifeng Xu, Ngoc Long Nguyen, Johanna Tengler, Marius Bieker
 
-# Contributors Content (in no particular order)
+## Contributors Content (in no particular order)
 
 Astrid Aretz, Swantje Gährs, Jan Kegel, Torsten Grothmann, Valentin Rupp, Max von Grafenstein, Isabel Kiefaber, Falk Cudok, Felix Rehmann, Rita Streblow, Martin Tobias Degner, Siling Chen, Ibukun Odeyemi, Kaifeng Xu, Ngoc Long Nguyen, Johanna Tengler, Marius Bieker
 
 # Contact
 
-[info@dvg.tu-berlin.de](mailto:info@dvg.tu-berlin.de)
+[ptj-ewb@ptj.de ](mailto:ptj-ewb@ptj.de)
+
 
 
