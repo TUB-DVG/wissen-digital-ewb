@@ -169,11 +169,11 @@ Page Banner END -->
           <p class="lead">
             <strong>sessionid</strong>
             <br />
-            {% blocktranslate %}HTTPOnly: True, Secure: True, SameSite: Strict, Gültigkeitsdauer: 1 Tag. Dieses Cookie enthält eine zufällig erzeugte Session-ID zur eindeutigen Zuordnung Ihres Warenkorbs und Ihrer Bestellungen. Wird die Sitzung beendet oder das Cookie ist abgelaufen, wird der Warenkorb zurückgesetzt, sofern Sie den Bestellvorgang nicht abgeschlossen haben.{% endblocktranslate %}
+            {% blocktranslate %}HTTPOnly: True, Secure: True, SameSite: Strict, Gültigkeitsdauer: 1 Tag. Dieses Cookie enthält eine zufällig erzeugte Session-ID.{% endblocktranslate %}
           </p>
 
           <p class="lead">
-            {% blocktranslate %}Diese Cookies können keine anderen Daten speichern als die für den Betrieb erforderlichen Informationen (z. B. Session-ID, CSRF-Token, Anzeigeeinstellungen). Durch die Session-ID kann Ihr Warenkorb während Ihres Besuchs eindeutig Ihrem Endgerät zugeordnet werden. Schließen Sie das Browserfenster oder rufen Sie eine andere Seite auf, bevor Sie den Bestellvorgang abschließen, wird Ihr Warenkorb zurückgesetzt und die bis dahin gesammelten Inhalte müssen bei erneuter Sitzung neu zusammengestellt werden.{% endblocktranslate %}
+            {% blocktranslate %}Diese Cookies können keine anderen Daten speichern als die für den Betrieb erforderlichen Informationen (z. B. Session-ID, CSRF-Token, Anzeigeeinstellungen). Durch die Session-ID kann eine Statistik über die Anzahl der Seitenaufrufe pro Tag geführt werden. Sie dient dazu, doppelte Zählungen vom selben Endgerät zu verhindern.{% endblocktranslate %}
           </p>
 
           <p class="lead">
