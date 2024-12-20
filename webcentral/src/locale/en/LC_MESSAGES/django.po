@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-11 13:04+0000\n"
+"POT-Creation-Date: 2024-12-20 11:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,7 +57,6 @@ msgstr "Gas Infrastructure"
 
 #: Datasets/views.py:95 Datasets/views.py:122
 #: templates/LastProfile/explanation.html:111
-#: templates/LastProfile/explanation.html:179
 #: templates/partials/_navbar.html:58
 #: templates/start_search/start_search.html:171 weatherdata_over/views.py:173
 msgid "Wetterdaten"
@@ -229,76 +228,76 @@ msgid "Jahresstrombedarf in kWh/a"
 msgstr "Annual electricity requirement in KWh/a"
 
 #: LastProfile/Dash_app/Stromlast.py:65 LastProfile/Dash_app/Stromlast.py:137
-#: LastProfile/Dash_app/Warmelast.py:73
+#: LastProfile/Dash_app/Warmelast.py:129 LastProfile/Dash_app/Warmelast.py:206
 msgid "Januar"
 msgstr "January"
 
 #: LastProfile/Dash_app/Stromlast.py:66 LastProfile/Dash_app/Stromlast.py:138
-#: LastProfile/Dash_app/Warmelast.py:74
+#: LastProfile/Dash_app/Warmelast.py:130 LastProfile/Dash_app/Warmelast.py:207
 msgid "Februar"
 msgstr "February"
 
 #: LastProfile/Dash_app/Stromlast.py:67 LastProfile/Dash_app/Stromlast.py:139
-#: LastProfile/Dash_app/Warmelast.py:75
+#: LastProfile/Dash_app/Warmelast.py:131 LastProfile/Dash_app/Warmelast.py:208
 msgid "März"
 msgstr "March"
 
 #: LastProfile/Dash_app/Stromlast.py:68 LastProfile/Dash_app/Stromlast.py:140
-#: LastProfile/Dash_app/Warmelast.py:76
+#: LastProfile/Dash_app/Warmelast.py:132 LastProfile/Dash_app/Warmelast.py:209
 msgid "April"
 msgstr "April"
 
 #: LastProfile/Dash_app/Stromlast.py:69 LastProfile/Dash_app/Stromlast.py:141
-#: LastProfile/Dash_app/Warmelast.py:77
+#: LastProfile/Dash_app/Warmelast.py:133 LastProfile/Dash_app/Warmelast.py:210
 msgid "Mai"
 msgstr "May"
 
 #: LastProfile/Dash_app/Stromlast.py:70 LastProfile/Dash_app/Stromlast.py:142
-#: LastProfile/Dash_app/Warmelast.py:78
+#: LastProfile/Dash_app/Warmelast.py:134 LastProfile/Dash_app/Warmelast.py:211
 msgid "Juni"
 msgstr "June"
 
 #: LastProfile/Dash_app/Stromlast.py:71 LastProfile/Dash_app/Stromlast.py:143
-#: LastProfile/Dash_app/Warmelast.py:79
+#: LastProfile/Dash_app/Warmelast.py:135 LastProfile/Dash_app/Warmelast.py:212
 msgid "Juli"
 msgstr "July"
 
 #: LastProfile/Dash_app/Stromlast.py:72 LastProfile/Dash_app/Stromlast.py:144
-#: LastProfile/Dash_app/Warmelast.py:80
+#: LastProfile/Dash_app/Warmelast.py:136 LastProfile/Dash_app/Warmelast.py:213
 msgid "August"
 msgstr "August"
 
 #: LastProfile/Dash_app/Stromlast.py:73 LastProfile/Dash_app/Stromlast.py:145
-#: LastProfile/Dash_app/Warmelast.py:81
+#: LastProfile/Dash_app/Warmelast.py:137 LastProfile/Dash_app/Warmelast.py:214
 msgid "September"
 msgstr "September"
 
 #: LastProfile/Dash_app/Stromlast.py:74 LastProfile/Dash_app/Stromlast.py:146
-#: LastProfile/Dash_app/Warmelast.py:82
+#: LastProfile/Dash_app/Warmelast.py:138 LastProfile/Dash_app/Warmelast.py:215
 msgid "Oktober"
 msgstr "October"
 
 #: LastProfile/Dash_app/Stromlast.py:75 LastProfile/Dash_app/Stromlast.py:147
-#: LastProfile/Dash_app/Warmelast.py:83
+#: LastProfile/Dash_app/Warmelast.py:139 LastProfile/Dash_app/Warmelast.py:216
 msgid "November"
 msgstr "November"
 
 #: LastProfile/Dash_app/Stromlast.py:76 LastProfile/Dash_app/Stromlast.py:148
-#: LastProfile/Dash_app/Warmelast.py:84
+#: LastProfile/Dash_app/Warmelast.py:140 LastProfile/Dash_app/Warmelast.py:217
 msgid "Dezember"
 msgstr "December"
 
 #: LastProfile/Dash_app/Stromlast.py:84 LastProfile/Dash_app/Stromlast.py:151
-#: LastProfile/Dash_app/Warmelast.py:144 LastProfile/Dash_app/Warmelast.py:451
+#: LastProfile/Dash_app/Warmelast.py:147 LastProfile/Dash_app/Warmelast.py:492
 msgid "Approximation starten"
 msgstr "Start approximation"
 
 #: LastProfile/Dash_app/Stromlast.py:87 LastProfile/Dash_app/Stromlast.py:152
-#: LastProfile/Dash_app/Warmelast.py:146 LastProfile/Dash_app/Warmelast.py:452
+#: LastProfile/Dash_app/Warmelast.py:149 LastProfile/Dash_app/Warmelast.py:493
 msgid "Download als csv"
 msgstr "Download as csv"
 
-#: LastProfile/Dash_app/Stromlast.py:227 LastProfile/Dash_app/Warmelast.py:336
+#: LastProfile/Dash_app/Stromlast.py:227 LastProfile/Dash_app/Warmelast.py:353
 msgid "Datum"
 msgstr "Date"
 
@@ -306,132 +305,133 @@ msgstr "Date"
 msgid "Stromlastgang in kW"
 msgstr "Current load profile in kW"
 
-#: LastProfile/Dash_app/Warmelast.py:49
-msgid "kalt"
-msgstr "cold"
-
-#: LastProfile/Dash_app/Warmelast.py:50
-msgid "normal"
-msgstr "normal"
-
-#: LastProfile/Dash_app/Warmelast.py:51
-msgid "warm"
-msgstr "warm"
-
-#: LastProfile/Dash_app/Warmelast.py:54
-msgid "Einfamilienhaus"
-msgstr "Single Family House"
-
-#: LastProfile/Dash_app/Warmelast.py:55
-msgid "Mehrfamilienhaus"
-msgstr "Multi Family House"
-
-#: LastProfile/Dash_app/Warmelast.py:56
-msgid "Gebietskörperschaft"
-msgstr "Local authority"
-
-#: LastProfile/Dash_app/Warmelast.py:57
-msgid "Einzelhandel, Großhandel"
-msgstr "Retail, Wholesale"
-
-#: LastProfile/Dash_app/Warmelast.py:58
-msgid "Metall, Kfz"
-msgstr "Metal, Automotive"
-
-#: LastProfile/Dash_app/Warmelast.py:59
-msgid "sonst. betr. Dienstleistungen"
-msgstr "Other operational services"
-
-#: LastProfile/Dash_app/Warmelast.py:60
-msgid "Gaststätten"
-msgstr "Restaurants"
-
-#: LastProfile/Dash_app/Warmelast.py:61
-msgid "Beherbergung"
-msgstr "Accommodation"
-
-#: LastProfile/Dash_app/Warmelast.py:62
-msgid "Bäckereien"
-msgstr "Bakeries"
-
-#: LastProfile/Dash_app/Warmelast.py:63
-msgid "Wäschereien"
-msgstr "Laundries"
-
-#: LastProfile/Dash_app/Warmelast.py:64
-msgid "Gartenbau"
-msgstr "horticulture"
-
-#: LastProfile/Dash_app/Warmelast.py:65
-msgid "Papier und Druck"
-msgstr "Paper and printing"
-
-#: LastProfile/Dash_app/Warmelast.py:66
-msgid "haushaltsähnliche Gewerbebetriebe"
-msgstr "Household-like businesses"
-
-#: LastProfile/Dash_app/Warmelast.py:68
-msgid "Summenlastprofil Gewerbe, Handel, Dienstleistung"
-msgstr "Total load profile for trade, commerce, services"
-
-#: LastProfile/Dash_app/Warmelast.py:85 LastProfile/Dash_app/Warmelast.py:217
-msgid "Alle"
-msgstr "All"
-
-#: LastProfile/Dash_app/Warmelast.py:92
+#: LastProfile/Dash_app/Warmelast.py:54 LastProfile/Dash_app/Warmelast.py:457
 msgid "Wärmelast Approximation"
 msgstr "Heat load approximation"
 
-#: LastProfile/Dash_app/Warmelast.py:99 LastProfile/Dash_app/Warmelast.py:440
+#: LastProfile/Dash_app/Warmelast.py:61 LastProfile/Dash_app/Warmelast.py:459
 msgid "Berechnungstyp"
 msgstr "Calculation type"
 
-#: LastProfile/Dash_app/Warmelast.py:105 LastProfile/Dash_app/Warmelast.py:442
+#: LastProfile/Dash_app/Warmelast.py:67 LastProfile/Dash_app/Warmelast.py:461
 msgid "Auswahl der Zone"
 msgstr "Selection of station"
 
-#: LastProfile/Dash_app/Warmelast.py:110 LastProfile/Dash_app/Warmelast.py:444
+#: LastProfile/Dash_app/Warmelast.py:72 LastProfile/Dash_app/Warmelast.py:463
+msgid "kalt"
+msgstr "cold"
+
+#: LastProfile/Dash_app/Warmelast.py:73 LastProfile/Dash_app/Warmelast.py:464
+msgid "normal"
+msgstr "normal"
+
+#: LastProfile/Dash_app/Warmelast.py:74 LastProfile/Dash_app/Warmelast.py:465
+msgid "warm"
+msgstr "warm"
+
+#: LastProfile/Dash_app/Warmelast.py:76 LastProfile/Dash_app/Warmelast.py:467
 msgid "Auswahl der Temperatur"
 msgstr "Selection of temperature"
 
-#: LastProfile/Dash_app/Warmelast.py:115 LastProfile/Dash_app/Warmelast.py:446
+#: LastProfile/Dash_app/Warmelast.py:81 LastProfile/Dash_app/Warmelast.py:469
+msgid "Einfamilienhaus"
+msgstr "Single Family House"
+
+#: LastProfile/Dash_app/Warmelast.py:82 LastProfile/Dash_app/Warmelast.py:470
+msgid "Mehrfamilienhaus"
+msgstr "Multi Family House"
+
+#: LastProfile/Dash_app/Warmelast.py:83 LastProfile/Dash_app/Warmelast.py:471
+msgid "Gebietskörperschaft"
+msgstr "Local authority"
+
+#: LastProfile/Dash_app/Warmelast.py:84 LastProfile/Dash_app/Warmelast.py:472
+msgid "Einzelhandel, Großhandel"
+msgstr "Retail, Wholesale"
+
+#: LastProfile/Dash_app/Warmelast.py:85 LastProfile/Dash_app/Warmelast.py:473
+msgid "Metall, Kfz"
+msgstr "Metal, Automotive"
+
+#: LastProfile/Dash_app/Warmelast.py:86 LastProfile/Dash_app/Warmelast.py:474
+msgid "sonst. betr. Dienstleistungen"
+msgstr "Other operational services"
+
+#: LastProfile/Dash_app/Warmelast.py:87 LastProfile/Dash_app/Warmelast.py:475
+msgid "Gaststätten"
+msgstr "Restaurants"
+
+#: LastProfile/Dash_app/Warmelast.py:88 LastProfile/Dash_app/Warmelast.py:476
+msgid "Beherbergung"
+msgstr "Accommodation"
+
+#: LastProfile/Dash_app/Warmelast.py:89 LastProfile/Dash_app/Warmelast.py:477
+msgid "Bäckereien"
+msgstr "Bakeries"
+
+#: LastProfile/Dash_app/Warmelast.py:90 LastProfile/Dash_app/Warmelast.py:478
+msgid "Wäschereien"
+msgstr "Laundries"
+
+#: LastProfile/Dash_app/Warmelast.py:91 LastProfile/Dash_app/Warmelast.py:479
+msgid "Gartenbau"
+msgstr "horticulture"
+
+#: LastProfile/Dash_app/Warmelast.py:92 LastProfile/Dash_app/Warmelast.py:480
+msgid "Papier und Druck"
+msgstr "Paper and printing"
+
+#: LastProfile/Dash_app/Warmelast.py:94 LastProfile/Dash_app/Warmelast.py:481
+msgid "haushaltsähnliche Gewerbebetriebe"
+msgstr "Household-like businesses"
+
+#: LastProfile/Dash_app/Warmelast.py:99 LastProfile/Dash_app/Warmelast.py:483
+msgid "Summenlastprofil Gewerbe, Handel, Dienstleistung"
+msgstr "Total load profile for trade, commerce, services"
+
+#: LastProfile/Dash_app/Warmelast.py:104 LastProfile/Dash_app/Warmelast.py:487
 #: templates/LastProfile/explanation.html:115
 msgid "Auswahl des Gebäudetyps"
 msgstr "Selection of building typ"
 
-#: LastProfile/Dash_app/Warmelast.py:123 LastProfile/Dash_app/Warmelast.py:447
+#: LastProfile/Dash_app/Warmelast.py:112 LastProfile/Dash_app/Warmelast.py:488
 msgid "Jahreswärmebedarf in kWh/a"
 msgstr "Annual heat requirement in kWh/a"
 
-#: LastProfile/Dash_app/Warmelast.py:133 LastProfile/Dash_app/Warmelast.py:448
+#: LastProfile/Dash_app/Warmelast.py:122 LastProfile/Dash_app/Warmelast.py:489
 msgid "Start Datum"
 msgstr "Start date"
 
-#: LastProfile/Dash_app/Warmelast.py:134 LastProfile/Dash_app/Warmelast.py:449
+#: LastProfile/Dash_app/Warmelast.py:123 LastProfile/Dash_app/Warmelast.py:490
 msgid "End Datum"
 msgstr "End date"
 
-#: LastProfile/Dash_app/Warmelast.py:156 LastProfile/Dash_app/Warmelast.py:259
+#: LastProfile/Dash_app/Warmelast.py:141 LastProfile/Dash_app/Warmelast.py:218
+#: LastProfile/Dash_app/Warmelast.py:234
+msgid "Alle"
+msgstr "All"
+
+#: LastProfile/Dash_app/Warmelast.py:159 LastProfile/Dash_app/Warmelast.py:276
 msgid "Es gibt keine Eingabe"
 msgstr "There is no input"
 
-#: LastProfile/Dash_app/Warmelast.py:306 LastProfile/Dash_app/Warmelast.py:339
+#: LastProfile/Dash_app/Warmelast.py:323 LastProfile/Dash_app/Warmelast.py:356
 msgid "Wärmelastgang in kW"
 msgstr "Heat load profile in kW"
 
-#: LastProfile/Dash_app/Warmelast.py:316
+#: LastProfile/Dash_app/Warmelast.py:333
 msgid "Fehlende Angaben"
 msgstr "Missing values"
 
-#: LastProfile/Dash_app/Warmelast.py:326 LastProfile/Dash_app/Warmelast.py:342
+#: LastProfile/Dash_app/Warmelast.py:343 LastProfile/Dash_app/Warmelast.py:359
 msgid "Trinkwarmwasser-Lastgang in kW"
 msgstr "Domestic hot water load profile in kW"
 
-#: LastProfile/Dash_app/Warmelast.py:347
+#: LastProfile/Dash_app/Warmelast.py:364
 msgid "Für die ausgewählte Station gibt es "
 msgstr "For the selected stations exist "
 
-#: LastProfile/Dash_app/Warmelast.py:349
+#: LastProfile/Dash_app/Warmelast.py:366
 msgid " fehlende Werte, die in der Grafik rot markiert sind. "
 msgstr " missing values, which are marked in red in the plot. "
 
@@ -605,13 +605,13 @@ msgstr ""
 "Energiewendebauen research initative are confronted with, have been "
 "systematically addressed and are presented here."
 
-#: common/models.py:500
+#: common/models.py:675
 #, fuzzy
 #| msgid "Veröffentlichungen"
 msgid "Veröffentlichungskandidat"
 msgstr "Publications"
 
-#: common/models.py:501 templates/tools_over/explanationApps.html:85
+#: common/models.py:676 templates/tools_over/explanationApps.html:85
 #: templates/tools_over/explanationTools.html:81
 msgid "Veröffentlicht"
 msgstr "Published"
@@ -1600,7 +1600,7 @@ msgstr ""
 "downloaded."
 
 #: templates/LastProfile/explanation.html:51
-#: templates/LastProfile/explanation.html:184
+#: templates/LastProfile/explanation.html:179
 msgid "Stromlast"
 msgstr "Electrical Load Profiles"
 
@@ -1675,9 +1675,7 @@ msgstr ""
 msgid ""
 "Hier kann das Testreferenzjahr\n"
 "              (TRJ) gewählt werden"
-msgstr ""
-"The test reference year (TRY) can be selected "
-"here"
+msgstr "The test reference year (TRY) can be selected here"
 
 #: templates/LastProfile/explanation.html:115
 msgid "Gebäudetyp"
@@ -1728,11 +1726,11 @@ msgstr ""
 msgid "Download der Disseration"
 msgstr "Download the dissertation"
 
-#: templates/LastProfile/explanation.html:184
+#: templates/LastProfile/explanation.html:179
 msgid "Nutzung der Standard-Lastprofile"
 msgstr "Use of standard load profiles"
 
-#: templates/LastProfile/explanation.html:187
+#: templates/LastProfile/explanation.html:182
 msgid "Standard-Lastprofile beim BDEW"
 msgstr "Standard load profiles at BDEW"
 
@@ -2234,14 +2232,18 @@ msgstr ""
 
 #: templates/admin/Datasets/history/change_form.html:6
 #: templates/admin/TechnicalStandards/history/change_form.html:6
+#: templates/admin/businessModel/history/change_form.html:6
 #: templates/admin/protocols/history/change_form.html:6
+#: templates/admin/publications/history/change_form.html:6
 #: templates/admin/tools_over/history/change_form.html:6
 msgid "Error:"
 msgstr ""
 
 #: templates/admin/Datasets/history/change_form.html:30
 #: templates/admin/TechnicalStandards/history/change_form.html:30
+#: templates/admin/businessModel/history/change_form.html:30
 #: templates/admin/protocols/history/change_form.html:30
+#: templates/admin/publications/history/change_form.html:30
 #: templates/admin/publications/import_bibtex.html:14
 #: templates/admin/tools_over/history/change_form.html:30
 msgid "Home"
@@ -2249,7 +2251,9 @@ msgstr ""
 
 #: templates/admin/Datasets/history/change_form.html:40
 #: templates/admin/TechnicalStandards/history/change_form.html:40
+#: templates/admin/businessModel/history/change_form.html:40
 #: templates/admin/protocols/history/change_form.html:40
+#: templates/admin/publications/history/change_form.html:40
 #: templates/admin/publications/publication_change_list.html:15
 #: templates/admin/tools_over/history/change_form.html:40
 #, python-format
@@ -2258,7 +2262,9 @@ msgstr ""
 
 #: templates/admin/Datasets/history/change_form.html:81
 #: templates/admin/TechnicalStandards/history/change_form.html:81
+#: templates/admin/businessModel/history/change_form.html:81
 #: templates/admin/protocols/history/change_form.html:81
+#: templates/admin/publications/history/change_form.html:81
 #: templates/admin/tools_over/history/change_form.html:81
 msgid "Please correct the error below."
 msgid_plural "Please correct the errors below."
@@ -2616,53 +2622,116 @@ msgstr "Data protection notice"
 
 #: templates/pages/Datenschutzhinweis.html:31
 msgid ""
-"Vielen Dank für Ihr Interesse an der Wissensplattform. Der Schutz der "
-"persönlichen Daten von Besucher*innen unserer\n"
-"          Webseiten ist uns sehr wichtig. Deshalb möchten wir Sie hier über "
-"den Datenschutz dieses Webangebots unter wissen-digital-ewb.de\n"
-"          informieren. Die Website wird durch das Institut für Digitale "
-"Vernetzung von Gebäuden, Energieversorgungsanlagen und Nutzenden \n"
-"          an der TU Berlin betrieben. Im folgenden mit DVG abgekürzt."
+"Für den Projektträger Jülich, Forschungszentrum Jülich GmbH (PtJ) hat ein "
+"verantwortungsbewusster Umgang mit personenbezogenen Daten hohe Priorität.\n"
+"            Wir möchten, dass Nutzerinnen und Nutzer wissen, wann welche "
+"Daten durch den PtJ erhoben und verwendet werden.\n"
+"\n"
+"            Das PTJ betreibt unter der Domain www.wissen-digital-ewb.de eine "
+"Internetseite, auf der es die Öffentlichkeit über seine Tätigkeit informiert "
+"und der Öffentlichkeit niedrigschwellig Informationen zur Verfügung stellt.\n"
+"            Personenbezogene Daten werden nur im notwendigen Umfang "
+"verarbeitet. Welche Daten zu welchem Zweck und auf welcher Grundlage "
+"benötigt und verarbeitet werden,\n"
+"            richtet sich maßgeblich nach der Art der Leistung, die von Ihnen "
+"in Anspruch genommen wird, beziehungsweise ist abhängig davon, für welchen "
+"Zweck diese benötigt werden.\n"
+"            Wir haben technische und organisatorische Maßnahmen getroffen, "
+"die sicherstellen, dass die Vorschriften über den Datenschutz sowohl von uns "
+"als auch von unseren externen Dienstleistern beachtet werden.\n"
+"            Die Verarbeitung personenbezogener Daten bei PtJ erfolgt in "
+"Übereinstimmung mit der <a href=\"https://eur-lex.europa.eu/legal-content/DE/"
+"TXT/PDF/?uri=CELEX:32016R0679&qid=1527147390147&from=EN\">Europäischen "
+"Datenschutz-Grundverordnung (DSGVO)</a> und dem <a href=\"https://www."
+"gesetze-im-internet.de/bdsg_2018/\">Bundesdatenschutzgesetz (BDSG)</a>."
 msgstr ""
-"Thank you for your interest in the knowledge platform. The protection of the "
-"personal data of visitors to our websites is very important to us. We would "
-"therefore like to inform you here about the data protection of this website "
-"atwissen-digital-ewb.de. The website is operated by the Institute for "
-"Digital Networking of Buildings, Energy Supply Systems and Users at the TU "
-"Berlin. Hereafter abbreviated as DVG."
 
-#: templates/pages/Datenschutzhinweis.html:37
-msgid "Gegenstand des Datenschutzes"
-msgstr "Subject of data protection"
-
-#: templates/pages/Datenschutzhinweis.html:39
-msgid ""
-"Der Datenschutz befasst sich mit personenbezogenen Daten. Diese sind nach "
-"Artikel 4 Nr. 1 der Europäischen\n"
-"          Datenschutzgrundverordnung (EU-DSGVO) alle Informationen, die sich "
-"auf eine identifizierte oder identifizierbare natürliche \n"
-"          Person beziehen, also alle Informationen, die dazu genutzt werden "
-"können, Sie zu identifizieren. Hierunter fallen z.B. \n"
-"          Angaben wie Name, Privat-Adresse, E-Mail-Adresse oder "
-"Telefonnummer, aber auch Nutzungsdaten wie Ihre IP-Adresse."
+#: templates/pages/Datenschutzhinweis.html:41
+msgid "Grundlagen"
 msgstr ""
-"Data protection deals with personal data. According to Article 4 No. 1 of "
-"the European General Data Protection Regulation (EU-GDPR), this is all "
-"information that relates to an identified or identifiable natural person, i."
-"e. all information that can be used to identify you. This includes, for "
-"example, information such as name, private address, email address or "
-"telephone number, but also usage data such as your IP address."
 
-#: templates/pages/Datenschutzhinweis.html:45
+#: templates/pages/Datenschutzhinweis.html:42
+msgid "Verantwortlicher und Datenschutzbeauftragter"
+msgstr ""
+
+#: templates/pages/Datenschutzhinweis.html:44
 msgid ""
-"Selbstverständlich beachtet die Technische Universität Berlin die "
-"gesetzlichen Bestimmungen zum Datenschutz und\n"
+"\n"
+"\n"
+"            Verantwortlicher im Sinne der Datenschutz-Grundverordnung, "
+"sonstiger in den Mitgliedstaaten der Europäischen Union geltenden "
+"Datenschutzgesetze und anderer Bestimmungen mit datenschutzrechtlichem "
+"Charakter ist:\n"
+"            \n"
+"            Projektträger Jülich, Forschungszentrum Jülich GmbH (nachfolgend "
+"PtJ)<br />\n"
+"            Wilhelm-Johnen-Strasse, 52428 Jülich, Deutschland<br />\n"
+"            Tel.: +49-2461-61-0<br />\n"
+"            E-Mail: <a href=\"mailto:ptj@ptj.de\">ptj@ptj.de</a><br />\n"
+"            De-Mail: poststelle@ptj.de-mail.de<br />\n"
+"            Website: www.ptj.de<br />\n"
+"\n"
+"            Der Datenschutzbeauftragte des für die Verarbeitung "
+"Verantwortlichen ist:\n"
+"            \n"
+"            Frank Rinkens<br />\n"
+"            Forschungszentrum Jülich GmbH<br />\n"
+"            Wilhelm-Johnen-Strasse, 52428 Jülich, Deutschland<br />\n"
+"            Tel.: +49-2461-61-9005<br />\n"
+"            E-Mail: <a href=\"mailto:DSB@fz-juelich.de\">DSB@fz-juelich.de</"
+"a><br />\n"
+"            Website: www.fz-juelich.de<br />\n"
+"            \n"
+"            Jede betroffene Person kann sich jederzeit bei allen Fragen und "
+"Anregungen zum Datenschutz direkt an unseren Datenschutzbeauftragten "
+"wenden.\n"
+"            "
+msgstr ""
+"Controller for the purposes of the General Data Protection Regulation (GDPR),"
+"other data protection laws applicable in Member states of the European Union and other provisions related to data protection is:"
+"Forschungszentrum Jülich GmbH"
+"Wilhelm-Johnen-Strasse"
+"52428 Jülich"
+"Deutschland"
+
+"Phone: +49-2461-61-0 <br />"
+"Email: info@fz-juelich.de <br />"
+"Website: www.fz-juelich.de <br />""
+
+"The Data Protection Officer of the controller is: <br />"
+
+"Frank Rinkens <br />"
+"Forschungszentrum Jülich GmbH <br />"
+"Wilhelm-Johnen-Strasse <br />"
+"52428 Jülich <br />"
+"Deutschland <br />"
+
+"Phone: +49-2461-61-9005 <br />"
+"Email: DSB@fz-juelich.de <br />"
+"Website: www.fz-juelich.de <br />"
+
+"Any data subject may, at any time, contact our Data Protection Officer directly with all"
+" questions and suggestions concerning data protection."
+
+#: templates/pages/Datenschutzhinweis.html:68
+msgid "Personenbezogene Daten"
+msgstr "Personal data"
+
+#: templates/pages/Datenschutzhinweis.html:70
+#, fuzzy
+#| msgid ""
+#| "Selbstverständlich beachtet die Technische Universität Berlin die "
+#| "gesetzlichen Bestimmungen zum Datenschutz und\n"
+#| "          andere rechtliche Bestimmungen und Vorgaben."
+msgid ""
+"Selbstverständlich beachtet der PtJ die gesetzlichen Bestimmungen zum "
+"Datenschutz und\n"
 "          andere rechtliche Bestimmungen und Vorgaben."
 msgstr ""
 "Of course, the Technical University of Berlin observes the legal provisions "
 "on data protection and other legal regulations and requirements."
 
-#: templates/pages/Datenschutzhinweis.html:49
+#: templates/pages/Datenschutzhinweis.html:74
 msgid ""
 "Wir tun alles dafür, dass Sie uns bezüglich Ihrer persönlichen Daten "
 "vertrauen können. So erfolgt die Übertragung\n"
@@ -2675,51 +2744,56 @@ msgstr ""
 "In addition, our websites are protected by technical measures against damage "
 "or unauthorized access."
 
-#: templates/pages/Datenschutzhinweis.html:54
-msgid "Allgemeiner Datenschutzhinweis"
-msgstr "General data protection notice"
+#: templates/pages/Datenschutzhinweis.html:80
+msgid "Datenverabeitung im Zusammenhang mit dem Besuch dieser Website"
+msgstr "Data processing in connection with the visit of this website"
 
-#: templates/pages/Datenschutzhinweis.html:58
+#: templates/pages/Datenschutzhinweis.html:82
+#, fuzzy
+#| msgid "Datenbasis"
+msgid "Datenferfassung"
+msgstr "Data collection"
+
+#: templates/pages/Datenschutzhinweis.html:86
 msgid ""
-"Wenn Sie Webseiten der TU Berlin aufrufen oder Daten dieser Seiten "
-"herunterladen, werden Informationen hierüber in einer Logdatei\n"
-"              mit folgendem Inhalt gespeichert:"
+"Bei jedem Zugriff eines Nutzers auf unser Internet-Angebot und bei jedem "
+"Abruf einer Datei werden Daten über diesen Vorgang vorübergehend in einer "
+"Protokolldatei verarbeitet.\n"
+"                Im Einzelnen werden über jeden Zugriff/Abruf folgende Daten "
+"gespeichert::"
 msgstr ""
-"If you access TU Berlin websites or download data from these pages, "
-"information about this will be stored in a log file with the following "
-"content:"
 
-#: templates/pages/Datenschutzhinweis.html:63
+#: templates/pages/Datenschutzhinweis.html:91
 msgid "die IP-Adresse Ihres Gerätes,"
 msgstr "the IP address of your device,"
 
-#: templates/pages/Datenschutzhinweis.html:67
+#: templates/pages/Datenschutzhinweis.html:95
 msgid "das Datum und die Uhrzeit des Seitenaufrufs,"
 msgstr "the date and time of the page view,"
 
-#: templates/pages/Datenschutzhinweis.html:72
+#: templates/pages/Datenschutzhinweis.html:100
 msgid "die aufgerufene Seite bzw. der Name der abgerufenen Datei,"
 msgstr "the page accessed or the name of the file accessed,"
 
-#: templates/pages/Datenschutzhinweis.html:76
+#: templates/pages/Datenschutzhinweis.html:104
 msgid "die übertragene Datenmenge,"
 msgstr "the amount of data transferred,"
 
-#: templates/pages/Datenschutzhinweis.html:80
+#: templates/pages/Datenschutzhinweis.html:108
 msgid "der \\"
 msgstr ""
 
-#: templates/pages/Datenschutzhinweis.html:85
+#: templates/pages/Datenschutzhinweis.html:113
 msgid ""
 "die Webseite, von der aus Sie die aktuelle Seite oder Datei aufgerufen haben"
 msgstr "the website from which you accessed the current page or file"
 
-#: templates/pages/Datenschutzhinweis.html:90
+#: templates/pages/Datenschutzhinweis.html:118
 msgid "und die Statusmeldung, ob der Zugriff bzw. Abruf erfolgreich war."
 msgstr ""
 "and the status message as to whether the access or retrieval was successful."
 
-#: templates/pages/Datenschutzhinweis.html:95
+#: templates/pages/Datenschutzhinweis.html:123
 msgid ""
 "Diese nicht anonymisierten Logdaten werden nach zwei Wochen automatisch "
 "gelöscht, nicht archiviert und ausschließlich zu nicht\n"
@@ -2739,7 +2813,20 @@ msgstr ""
 "Paragraph 1 Letter f EU GDPR. A right to object according to Article 21 EU "
 "GDPR is not possible due to a lack of technical feasibility."
 
-#: templates/pages/Datenschutzhinweis.html:104
+#: templates/pages/Datenschutzhinweis.html:130
+msgid ""
+"Daten, die beim Zugriff auf das Internetangebot des PtJ protokolliert "
+"wurden, werden an Dritte nur übermittelt,\n"
+"                 soweit wir rechtlich dazu verpflichtet sind oder die "
+"Weitergabe im Falle von Angriffen auf die Kommunikationstechnik "
+"zur Rechts- oder Strafverfolgung erforderlich ist.\n"
+"                 Eine Weitergabe in anderen Fällen erfolgt nicht. Das PtJ "
+"führt diese Daten nicht mit anderen Datenquellen zusammen."
+msgstr "Data collected from visits to the PTJ web resources and stored on log files is transmitted to third parties only when required by law, or if attacks"
+" on thel communications technology system make it necessary to forward such data for purposes of legal action or criminal prosecution. Data will not be transferred for any other reason."
+"The PTJ does not collate these data with data from other sources."
+
+#: templates/pages/Datenschutzhinweis.html:137
 msgid ""
 "Um Ihre übermittelten Daten bestmöglich zu schützen, nutzen wir für jegliche "
 "Übertragung von Daten SSL-Verschlüsselung. Sie\n"
@@ -2760,17 +2847,108 @@ msgstr ""
 "such as inquiries or logins - cannot be read by third parties thanks to SSL "
 "encryption."
 
-#: templates/pages/Datenschutzhinweis.html:113
+#: templates/pages/Datenschutzhinweis.html:145
+msgid "Session Cookies"
+msgstr "Session Cookies"
+
+#: templates/pages/Datenschutzhinweis.html:146
+msgid "Cookies"
+msgstr "Cookies"
+
+#: templates/pages/Datenschutzhinweis.html:148
+msgid ""
+"Auf unserer Seite sowie bei der Anzeige von Bannern setzen wir verschiedene "
+"Cookies ein, die teils nur während Ihres Besuchs gültig sind und teils "
+"darüber hinaus bestehen.\n"
+"             Dies ist aus technischen Gründen für die Bereitstellung der "
+"Funktionen und zur Gewährleistung einer korrenten Darstellung der Inhalte "
+"notwendig.\n"
+"            "
+msgstr ""
+"On our site and when displaying banners, we use various cookies that are "
+"partly only valid during your visit and partly exist beyond that. This is "
+"necessary for technical reasons to provide the functions and ensure correct "
+"display of the content."
+
+#: templates/pages/Datenschutzhinweis.html:154
+msgid ""
+"Wir setzen unter anderem folgende Cookies auf unserer Domain wissen-digital-"
+"ewb.de ein:"
+msgstr ""
+"We use the following cookies on our domain wissen-digital-ewb.de:"
+#: templates/pages/Datenschutzhinweis.html:160
+msgid ""
+"HTTPOnly: False, Secure: False, SameSite: None, Gültigkeitsdauer: 1 Tag (bis "
+"Sitzungsende bzw. max. 1 Tag). Dieses Cookie dient dazu, bestimmte "
+"Anzeigeelemente (wie ein Splash-Fenster) während Ihres Besuchs zu steuern "
+"und ist somit nur kurzzeitig gültig."
+msgstr ""
+"HTTPOnly: False, Secure: False, SameSite: None, validity period: 1 day (until end of session or max. 1 day)."
+"This cookie is used to control certain display elements (such as a splash window) during your visit and is therefore only valid for a short time."
+
+
+#: templates/pages/Datenschutzhinweis.html:166
+msgid ""
+"HTTPOnly: False, Secure: False, SameSite: Lax, Gültigkeitsdauer: 10 Monate. "
+"Dieses länger gültige Cookie setzt einen CSRF-Schutz-Token, um die "
+"Sicherheit Ihrer Sitzungen zu erhöhen und missbräuchliche Aktionen zu "
+"verhindern."
+msgstr ""
+"HTTPOnly: False, Secure: False, SameSite: Lax, validity period: 10 months."
+"This longer-lasting cookie sets a CSRF protection token to increase the "
+"security of your sessions and prevent malicious actions."
+
+
+#: templates/pages/Datenschutzhinweis.html:172
+msgid ""
+"HTTPOnly: True, Secure: True, SameSite: Strict, Gültigkeitsdauer: 1 Tag. "
+"Dieses Cookie enthält eine zufällig erzeugte Session-ID zur eindeutigen "
+"Zuordnung Ihres Warenkorbs und Ihrer Bestellungen. Wird die Sitzung beendet "
+"oder das Cookie ist abgelaufen, wird der Warenkorb zurückgesetzt, sofern Sie "
+"den Bestellvorgang nicht abgeschlossen haben."
+msgstr ""
+"HTTPOnly: True, Secure: True, SameSite: Strict, validity period: 1 day. "
+"This cookie contains a randomly generated session ID for uniquely assigning "
+"your shopping cart and orders. If the session ends or the cookie expires, "
+"the shopping cart will be reset if you have not completed the ordering "
+"process."
+
+
+#: templates/pages/Datenschutzhinweis.html:176
+msgid ""
+"Diese Cookies können keine anderen Daten speichern als die für den Betrieb "
+"erforderlichen Informationen (z. B. Session-ID, CSRF-Token, "
+"Anzeigeeinstellungen). Durch die Session-ID kann Ihr Warenkorb während Ihres "
+"Besuchs eindeutig Ihrem Endgerät zugeordnet werden. Schließen Sie das "
+"Browserfenster oder rufen Sie eine andere Seite auf, bevor Sie den "
+"Bestellvorgang abschließen, wird Ihr Warenkorb zurückgesetzt und die bis "
+"dahin gesammelten Inhalte müssen bei erneuter Sitzung neu zusammengestellt "
+"werden."
+msgstr ""
+
+#: templates/pages/Datenschutzhinweis.html:180
+msgid ""
+"Sie können mit jedem Internetbrowser einsehen, wenn Cookies gesetzt werden, "
+"und welche Informationen diese enthalten. Ausführliche Informationen hierzu "
+"finden Sie auf den Internetauftritten der Bundesbeauftragten für den "
+"Datenschutz und die Informationsfreiheit sowie des Bundesamts für Sicherheit "
+"in der Informationstechnik. Bitte beachten Sie, dass die meisten Browser "
+"standardmäßig Cookies akzeptieren. Das Speichern von Cookies kann von Ihnen "
+"jedoch jederzeit deaktiviert oder so eingestellt werden, dass Cookies nur "
+"für die Dauer der jeweiligen Verbindung zum Internet gespeichert bleiben."
+msgstr ""
+
+#: templates/pages/Datenschutzhinweis.html:183
 msgid "Social-Media-Drittanbieter"
 msgstr "Third Party Social Media Providers"
 
-#: templates/pages/Datenschutzhinweis.html:114
+#: templates/pages/Datenschutzhinweis.html:184
 msgid "Social-Media-Links"
 msgstr "Social media links"
 
-#: templates/pages/Datenschutzhinweis.html:116
+#: templates/pages/Datenschutzhinweis.html:186
 msgid ""
-"Wir verweisen in unseren Webseiten auf TU Berlin-spezifische Präsenzen bzw. "
+"Wir verweisen in unseren Webseiten auf PtJ-spezifische Präsenzen bzw. "
 "Profile von sozialen Netzwerken der nachstehend\n"
 "          aufgeführten Drittanbieter bzw. bieten die Möglichkeit zum Teilen "
 "unseres Webangebotes in den sozialen Netzwerken der nachstehend \n"
@@ -2784,7 +2962,7 @@ msgid ""
 "Dienst des jeweiligen sozialen Netzwerks geleitet. Die \n"
 "          Rechtsgrundlage bildet Art. 6 Abs. 1 lit. a EU-DSGVO."
 msgstr ""
-"On our websites we refer to TU Berlin-specific presences or social network "
+"On our websites we refer to PTJ-specific presences or social network "
 "profiles of the third-party providers listed below or offer the option of "
 "sharing our web offerings in the social networks of the third-party "
 "providers listed below. The integration takes place via a linked graphic of "
@@ -2796,7 +2974,7 @@ msgstr ""
 "respective social network. The legal basis is Article 6 Paragraph 1 Letter a "
 "EU GDPR."
 
-#: templates/pages/Datenschutzhinweis.html:125
+#: templates/pages/Datenschutzhinweis.html:195
 msgid ""
 "Hierbei werden dann durch das jeweilige Netzwerk Informationen über die Sie "
 "erfasst. Dies sind zunächst Daten wie IP-Adresse Ihres\n"
@@ -2826,7 +3004,7 @@ msgstr ""
 "assigned to your user account, you must log out before clicking on the "
 "graphic. It is also possible to configure your user accounts accordingly."
 
-#: templates/pages/Datenschutzhinweis.html:135
+#: templates/pages/Datenschutzhinweis.html:205
 msgid ""
 "Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland, ein "
 "Tochterunternehmen der Google LLC, 1600 Amphitheatre\n"
@@ -2836,11 +3014,11 @@ msgstr ""
 "subsidiary of Google LLC, 1600 Amphitheater Parkway, Mountain View, CA 94043 "
 "USA"
 
-#: templates/pages/Datenschutzhinweis.html:137
+#: templates/pages/Datenschutzhinweis.html:207
 msgid "Datenschutzerklärung:"
 msgstr "Data protection:"
 
-#: templates/pages/Datenschutzhinweis.html:142
+#: templates/pages/Datenschutzhinweis.html:212
 msgid ""
 "Für die Darstellung von Videoinhalten nutzt unsere Website unter anderem ein "
 "Plugin zur Einbindung von YouTube-Videos.\n"
@@ -2866,7 +3044,7 @@ msgstr ""
 "video that you have just accessed, even if you are not logged in to the "
 "video portal or do not have an account there."
 
-#: templates/pages/Datenschutzhinweis.html:150
+#: templates/pages/Datenschutzhinweis.html:220
 msgid ""
 "YouTube kann Ihr Surfverhalten direkt Ihrem persönlichen Profil zuzuordnen, "
 "sollten Sie in Ihrem YouTube Konto eingeloggt sein. Durch vorheriges "
@@ -2876,7 +3054,7 @@ msgstr ""
 "if you are logged into your YouTube account. You can prevent this by logging "
 "out beforehand."
 
-#: templates/pages/Datenschutzhinweis.html:153
+#: templates/pages/Datenschutzhinweis.html:223
 msgid ""
 "Die Nutzung von YouTube erfolgt erst mit Ihrer Zustimmung durch Ihren "
 "aktiven Start des Videos im Sinne von Art. 6 Abs. 1 lit. a EU-DSGVO."
@@ -2884,7 +3062,7 @@ msgstr ""
 "The use of YouTube only takes place with your consent by actively starting "
 "the video within the meaning of Art. 6 Para. 1 lit. a EU GDPR."
 
-#: templates/pages/Datenschutzhinweis.html:156
+#: templates/pages/Datenschutzhinweis.html:226
 msgid ""
 "Einzelheiten zum Umgang mit Nutzerdaten finden Sie in der "
 "Datenschutzerklärung von YouTube unter:"
@@ -2892,11 +3070,11 @@ msgstr ""
 "Details on how to handle user data can be found in YouTube’s privacy policy "
 "at:"
 
-#: templates/pages/Datenschutzhinweis.html:161
+#: templates/pages/Datenschutzhinweis.html:231
 msgid "Ort der Speicherung und zweckgebundene Datenverwendung"
 msgstr "Location of storage and intended use of data"
 
-#: templates/pages/Datenschutzhinweis.html:164
+#: templates/pages/Datenschutzhinweis.html:234
 msgid ""
 "Wir erheben, verarbeiten und speichern Ihre personenbezogenen Daten "
 "ausschließlich intern (i.d.R. auf eigenen Servern) nur für den\n"
@@ -2919,7 +3097,7 @@ msgstr ""
 "information only takes place within the scope of the statutory information "
 "obligations or if we are obliged to provide information by a court decision."
 
-#: templates/pages/Datenschutzhinweis.html:172
+#: templates/pages/Datenschutzhinweis.html:242
 msgid ""
 "Wir nehmen auch den Universitäts-internen Datenschutz sehr ernst. Unsere "
 "Mitarbeiter und Mitarbeiterinnen sowie die von uns\n"
@@ -2933,56 +3111,109 @@ msgstr ""
 "maintain confidentiality and compliance with data protection laws "
 "regulations."
 
-#: templates/pages/Datenschutzhinweis.html:177
-msgid "Auskunftsrecht"
-msgstr "Right of information"
+#: templates/pages/Datenschutzhinweis.html:247
+msgid "Ihre Rechte"
+msgstr "Your rights"
 
-#: templates/pages/Datenschutzhinweis.html:179
+#: templates/pages/Datenschutzhinweis.html:249
 msgid ""
-"Sie erhalten jederzeit ohne Angabe von Gründen kostenfrei Auskunft über Ihre "
-"bei uns gespeicherten Daten. Hierzu\n"
-"          wenden Sie sich bitte an die im Impressum angegebene "
-"Kontaktadresse. Gerne stehen wir Ihnen für weitergehende Fragen zu unseren \n"
-"          Datenschutzhinweisen zur Verfügung."
-msgstr ""
-"You can receive information about your data stored by us free of charge at "
-"any time without giving any reason. To do so, please contact the contact "
-"address provided in the legal notice. We will be happy to answer any further "
-"questions you may have about our data protection information."
+"Sie haben gegenüber dem PtJ folgende Rechte hinsichtlich der Sie "
+"betreffenden personenbezogenen Daten:"
+msgstr "You have the following rights with regard to the personal data concerning your person:"
 
-#: templates/pages/Datenschutzhinweis.html:184
+#: templates/pages/Datenschutzhinweis.html:252
 msgid ""
-"Darüber hinaus haben Sie das Recht auf Berichtigung, Löschung, Einschränkung "
-"und Übertragung Ihrer Daten."
-msgstr ""
-"In addition, you have the right to correct, delete, restrict and transfer "
-"your data."
+"Recht auf Berichtigung, Art. 16 DSGVO Das Recht auf Berichtigung beinhaltet "
+"die Möglichkeit für den Betroffenen, unrichtige ihn angehende "
+"personenbezogene Daten korrigieren zu lassen."
+msgstr "Right to rectification, Art. 16 GDPR
+The right of rectification includes the possibility for the data subject to have inaccurate personal data corrected."
 
-#: templates/pages/Datenschutzhinweis.html:187
+#: templates/pages/Datenschutzhinweis.html:255
 msgid ""
-"Sie haben auch das Recht jederzeit gegen die Verarbeitung der Sie "
-"betreffenden personenbezogenen Daten, die aufgrund von Art. 6 Abs.\n"
-"          1 Buchstabe e und f EU-DSGVO erfolgt, Widerspruch einzulegen. Die "
-"fachverantwortliche Stelle darf danach die Sie betreffenden \n"
-"          personenbezogenen Daten nicht mehr verarbeiten, es sei denn, diese "
-"kann zwingende schutzwürdige Gründe für die Verarbeitung \n"
-"          nachweisen, die Ihren Interessen, Rechte und Freiheiten "
-"überwiegen, oder die Verarbeitung der Geltendmachung, Ausübung oder \n"
-"          Verteidigung von Rechtsansprüchen dient."
+"Recht auf Löschung, Art. 17 DSGVO Das Recht auf Löschung beinhaltet die "
+"Möglichkeit für den Betroffenen, Daten beim Verantwortlichen löschen zu "
+"lassen. Dies ist allerdings nur dann möglich, wenn die ihn angehenden "
+"personenbezogenen Daten nicht mehr notwendig sind, rechtswidrig verarbeitet "
+"werden oder eine diesbezügliche Einwilligung widerrufen wurde. Es gelten die "
+"in § 35 BDSG geregelten Ausnahmen von diesem Recht. "
 msgstr ""
-"You also have the right to object at any time to the processing of your "
-"personal data, which is carried out on the basis of Article 6 Paragraph 1 "
-"Letters e and f EU GDPR. The responsible body may no longer process the "
-"personal data concerning you unless it can demonstrate compelling legitimate "
-"reasons for the processing that outweigh your interests, rights and "
-"freedoms, or the processing serves to assert, exercise or defend legal "
-"claims."
+"Right to erasure, Art. 17 GDPR"
+"The right to erasure includes the possibility for the data subject to have data deleted by the party responsible."
+"However, this is only possible if the personal data concerning his/her person are no longer needed, are processed unlawfully or if the relevant consent has been revoked. The exceptions to this right regulated in Section 35 Federal Data Protection Act apply."
 
-#: templates/pages/Datenschutzhinweis.html:194
+#: templates/pages/Datenschutzhinweis.html:258
+msgid ""
+"Recht auf Einschränkung der Verarbeitung, Art. 18 DSGVO Das Recht auf "
+"Einschränkung der Verarbeitung beinhaltet die Möglichkeit für den "
+"Betroffenen, eine weitere Verarbeitung der ihn angehenden personenbezogenen "
+"Daten vorerst zu verhindern. Eine Einschränkung tritt vor allem in der "
+"Prüfungsphase anderer Rechtewahrnehmungen durch den Betroffenen ein."
+msgstr ""
+"Right to restriction of processing, Art. 18 GDPR"
+"The right to restrict the processing includes the possibility for the data subject to prevent further processing of personal data concerning his/her person for the time being"
+". A restriction particularly occurs pending verification of the exercise of other rights of the data subject."
+
+#: templates/pages/Datenschutzhinweis.html:261
+msgid ""
+"Recht auf Widerspruch gegen die Erhebung, Verarbeitung und beziehungsweise "
+"oder Nutzung, Art. 21 DSGVO Das Recht auf Widerspruch beinhaltet die "
+"Möglichkeit, für Betroffene, in einer besonderen Situation der weiteren "
+"Verarbeitung ihrer personenbezogenen Daten zu widersprechen, soweit diese "
+"durch die Wahrnehmung öffentlicher Aufgaben oder öffentlicher sowie privater "
+"Interessen gerechtfertigt ist. Es gelten die in § 36 BDSG geregelten "
+"Ausnahmen von diesem Recht."
+msgstr "Right to object to collection, processing and/or use, Art. 21 GDPR
+The right to object includes the possibility for data subjects to object, in a particular situation,"
+" to the further processing of their personal data, insofar as this is justified by the exercise of public functions or of public or private interests."
+" The exceptions to this right regulated in Section 36 Federal Data Protection Act apply."
+
+#: templates/pages/Datenschutzhinweis.html:264
+msgid ""
+"Recht auf Datenübertragbarkeit, Art. 20 DSGVO Das Recht auf "
+"Datenübertragbarkeit beinhaltet die Möglichkeit für den Betroffenen, die ihn "
+"angehenden personenbezogenen Daten in einem gängigen, maschinenlesbaren "
+"Format vom Verantwortlichen zu erhalten, um sie ggf. an einen anderen "
+"Verantwortlichen weiterleiten zu lassen. Gemäß Art. 20 Abs. 3 Satz 2 DSGVO "
+"steht dieses Recht aber dann nicht zur Verfügung, wenn die Datenverarbeitung "
+"der Wahrnehmung öffentlicher Aufgaben dient."
+msgstr ""
+"Right to data portability, Art. 20 GDPR
+The right to data portability includes the possibility for the data subject to obtain the personal data concerning his/her person"
+"from the person responsible in a standard, machine-readable format, in order to be able to forward them to another person responsible if necessary. According to Art. 20 (3) sentence 2 GDPR, however, this right does not apply if the data processing serves the performance of public tasks."
+
+#: templates/pages/Datenschutzhinweis.html:267
+msgid ""
+" Recht auf Widerruf der Einwilligung, Art. 13 und 14 DSGVO Soweit die "
+"Verarbeitung der personenbezogenen Daten auf Grundlage einer Einwilligung "
+"erfolgt, kann der Betroffene diese jederzeit für den entsprechenden Zweck "
+"mit Wirkung für die Zukunft widerrufen. Die Rechtmäßigkeit der Verarbeitung "
+"aufgrund der getätigten Einwilligung bleibt bis zum Eingang des Widerrufs "
+"unberührt."
+msgstr ""
+"Right to revoke consent, Art. 13 and 14 GDPR2"
+"If personal data is processed on the basis of consent, the data subject may revoke such consent at any time"
+"for the purpose for which it was given. The lawfulness of the processing undertaken on the basis of this consent remains"
+"unaffected until receipt of the revocation."
+
+#: templates/pages/Datenschutzhinweis.html:270
+msgid ""
+" Die vorgenannten Rechte können Sie unter den in Ziffer 1.1 genannten "
+"Erreichbarkeiten schriftlich geltend machen.\n"
+"\n"
+"            Ihnen steht zudem gemäß Art. 77 DSGVO ein Beschwerderecht bei "
+"der datenschutzrechtlichen Aufsichtsbehörde, der Bundesbeauftragten für den "
+"Datenschutz und die Informationsfreiheit, zu.."
+msgstr ""
+"You can assert the aforementioned rights in writing using the contact details specified in Section 1.\n"
+"\n"
+"            In addition, according to Art. 77 GDPR, you have the right to lodge a complaint with the data protection supervisory authority, the Federal Commissioner for Data Protection and Freedom of Information."
+
+#: templates/pages/Datenschutzhinweis.html:275
 msgid "Beschwerderecht"
 msgstr "Right of appeal"
 
-#: templates/pages/Datenschutzhinweis.html:196
+#: templates/pages/Datenschutzhinweis.html:277
 msgid ""
 "Sollten Sie Anhaltspunkte dafür erkennen, dass wir mit Ihren Daten nicht "
 "datenschutzgerecht umgehen, können Sie sich jederzeit an das\n"
@@ -2994,30 +3225,30 @@ msgstr ""
 "at the Technical University of Berlin or the supervisory authority at any "
 "time."
 
-#: templates/pages/Datenschutzhinweis.html:200
+#: templates/pages/Datenschutzhinweis.html:281
 msgid ""
 "Natürlich steht Ihnen auch das Recht zu, sich an die Aufsichtsbehörde zu "
 "wenden:"
 msgstr ""
 "Of course, you also have the right to contact the supervisory authority:"
 
-#: templates/pages/Datenschutzhinweis.html:203
+#: templates/pages/Datenschutzhinweis.html:284
 msgid "Berliner Beauftragte für Datenschutz und Informationsfreiheit"
 msgstr "Berlin Commissioner for Data Protection and Freedom of Information"
 
-#: templates/pages/Datenschutzhinweis.html:209
+#: templates/pages/Datenschutzhinweis.html:290
 msgid "Tel."
 msgstr "Phone"
 
-#: templates/pages/Datenschutzhinweis.html:211
+#: templates/pages/Datenschutzhinweis.html:292
 msgid "Fax"
 msgstr "Fax"
 
-#: templates/pages/Datenschutzhinweis.html:216
+#: templates/pages/Datenschutzhinweis.html:297
 msgid "Abschließende Hinweise"
 msgstr "Final Notes"
 
-#: templates/pages/Datenschutzhinweis.html:218
+#: templates/pages/Datenschutzhinweis.html:299
 msgid ""
 "Beachten Sie, dass sich Datenschutzbestimmungen und Handhabungen zum "
 "Datenschutz laufend ändern können, so dass es erforderlich ist,\n"
@@ -3281,60 +3512,196 @@ msgstr "Further Reading and References"
 msgid "Impressum"
 msgstr "Imprint"
 
-#: templates/pages/impressum.html:27
-msgid "Kontakt"
-msgstr "Contact"
+#: templates/pages/impressum.html:28
+msgid ""
+"Projektträger Jülich | Forschungszentrum Jülich GmbH<br />\n"
+"            Wilhelm-Johnen-Straße, 52428 Jülich"
+msgstr "Projektträger Jülich | Forschungszentrum Jülich GmbH<br />\n"
+"            Wilhelm-Johnen-Straße, 52428 Jülich"
 
 #: templates/pages/impressum.html:32
-msgid "Postanschrift"
-msgstr "Postal address"
+#, fuzzy
+#| msgid "Kontakt"
+msgid "1 Kontakt"
+msgstr "Contact"
 
 #: templates/pages/impressum.html:34
-msgid "Sekretariat"
-msgstr "Secretariat"
-
-#: templates/pages/impressum.html:36
 msgid ""
-"z.Hd. Fachgebiet: Digitale Vernetzung von Gebäuden, "
-"Energieversorgungsanlagen und Nutzenden"
+"Tel.: 02461 61-2626<br />\n"
+"            Fax: 02461 61-5837<br />\n"
+"            E-Mail: <a href=\"mailto:ptj@ptj.de\">ptj@ptj.de</a><br />\n"
+"            De-Mail: <a href=\"mailto:poststelle@ptj.de-mail."
+"de\">poststelle@ptj.de-mail.de</a><br />\n"
+"            <a href=\"https://www.ptj.de\" target=\"_blank\">www.ptj.de</a>"
 msgstr ""
-"For the attention of the specialist area: Digital networking of buildings, "
-"energy supply systems and users"
+"Tel.: 02461 61-2626<br />\n"
+"            Fax: 02461 61-5837<br />\n"
+"            E-Mail: <a href=\"mailto:ptj@ptj.de\">ptj@ptj.de</a><br />\n"
+"            De-Mail: <a href=\"mailto:poststelle@ptj.de-mail."
+"de\">poststelle@ptj.de-mail.de</a><br />\n"
+"            <a href=\"https://www.ptj.de\" target=\"_blank\">www.ptj.de</a>"
+
+#: templates/pages/impressum.html:41
+#, fuzzy
+#| msgid "Postanschrift"
+msgid "2 Postanschrift"
+msgstr "Postal address"
 
 #: templates/pages/impressum.html:43
-msgid "Haftungsausschluss"
-msgstr "Disclaimer"
-
-#: templates/pages/impressum.html:44
-msgid "Inhalt der eigenen Seiten"
-msgstr "Content of own pages"
-
-#: templates/pages/impressum.html:46
 msgid ""
-"Wir haben die Web-Seiten der Wissensplattform (wissen-digital-ewb.de) "
-"sorgfältig zusammengestellt. Allerdings übernehmen wir keine Gewähr oder "
-"Haftung für die fortwährende Aktualität, Vollständigkeit und Richtigkeit der "
-"angebotenen Informationen."
+"52425 Jülich<br />\n"
+"            Die Forschungszentrum Jülich GmbH als Trägerorganisation des "
+"Projektträgers Jülich ist eingetragen im Handelsregister des Amtsgerichts "
+"Düren Nr. HR B 3498<br />\n"
+"            Umsatzsteuer-Id-Nr. gem. § 27 a Umsatzsteuergesetz: DE "
+"122624631<br />\n"
+"            Steuer-Nr.: 213/5700/0033"
 msgstr ""
-"We have carefully compiled the web pages of the knowledge platform (wissen-"
-"digital-ewb.de). However, we assume no liability or guarantee that the "
-"information provided is always up-to-date, complete and correct."
-
-#: templates/pages/impressum.html:48
-msgid "Links auf externe Web-Seiten"
-msgstr "Links to external websites"
+"52425 Jülich<br />"
+"Germany<br />"
+"As the parent institution of Project Management Jülich, Forschungszentrum Jülich GmbH is" 
+"entered in the commercial register of Düren District Court no. HR B 3498 <br>"
+"value-added tax no. pursuant to § 27 a of German VAT legislation: DE 122624631 <br>"
+"tax no.: 213/5700/0033"
 
 #: templates/pages/impressum.html:50
+msgid "3 Geschäftsführung der Forschungszentrum Jülich GmbH"
+msgstr "3 Board of Directors of Forschungszentrum Jülich GmbH"
+
+#: templates/pages/impressum.html:53
 msgid ""
-"Die Web-Seiten der Wissensplattform enthalten Links auf die Web-Seiten "
-"Dritter. Diese Links auf die Web-Seiten Dritter stellen keine Zustimmung zu "
-"deren Inhalt dar. Für die Inhalte der verlinkten Seiten ist stets der "
-"jeweilige Anbieter oder Betreiber der Seiten verantwortlich.\n"
-"                    Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung "
-"nicht erkennbar. Wir übernehmen keine Gewähr für die fortwährende "
-"Aktualität, Richtigkeit und Vollständigkeit der verlinkten Inhalte, da diese "
-"Inhalte außerhalb unseres Verantwortungsbereichs liegen und wir auf die "
-"zukünftige Gestaltung keinen Einfluss haben."
+"Prof. Dr. Astrid Lambrecht (Vorsitzende)<br />\n"
+"            Karsten Beneke (Stellv. Vorsitzender)<br />\n"
+"            Prof. Dr. Ir. Pieter Jansens"
+msgstr ""
+"Prof. Dr. Astrid Lambrecht (Chair of the Board of Directors)<br />"
+"Karsten Beneke (Vice-Chairman)<br />"
+"Prof. Dr. Ir. Pieter Jansens"
+
+#: templates/pages/impressum.html:59
+msgid "4 Vorsitzender des Aufsichtsrats"
+msgstr "4 Chairman of the Supervisory Board"
+
+#: templates/pages/impressum.html:62
+msgid "Ministerialdirektor Stefan Müller"
+msgstr "Ministerialdirektor Stefan Müller"
+
+#: templates/pages/impressum.html:66
+msgid "5 Leiterin des Projektträgers Jülich"
+msgstr "5 Head of Project Management Jülich"
+
+#: templates/pages/impressum.html:69
+msgid "Dr. Stephanie Bauer"
+msgstr "Dr. Stephanie Bauer"
+
+#: templates/pages/impressum.html:73
+msgid "6 Verantwortlicher nach § 18 Abs. 2 Medienstaatsvertrag (MStV)"
+msgstr "6 Responsible for the website"
+
+#: templates/pages/impressum.html:76
+msgid ""
+"Alexander Simon<br />\n"
+"            Projektträger Jülich<br />\n"
+"            Leiter Kommunikationsmanagement (SPF 1)<br />\n"
+"            Wilhelm-Johnen-Straße, 52428 Jülich"
+msgstr "Alexander Simon<br />"
+"            Project Management Jülich<br />"
+"            Head of Communications Management (SPF 1) <br />"
+"            Wilhelm-Johnen-Straße, 52428 Jülich"
+
+#: templates/pages/impressum.html:82
+msgid "7 Copyright"
+msgstr "7 Copyright"
+
+#: templates/pages/impressum.html:84
+msgid ""
+"\n"
+"              Für die Internet-Seiten des Projektträgers Jülich in der "
+"Forschungszentrum Jülich GmbH liegen Copyright \n"
+"              und alle weiteren Rechte beim Projektträger Jülich in der "
+"Forschungszentrum Jülich GmbH. Die Weiterverbreitung, \n"
+"              auch in Auszügen, für pädagogische, wissenschaftliche oder "
+"private Zwecke ist unter Angabe der Quelle gestattet \n"
+"              (sofern nichts anderes an der entsprechenden Stelle "
+"ausdrücklich angegeben). Eine Verwendung im gewerblichen \n"
+"              Bereich ist ohne ausdrückliche Zustimmung des "
+"Forschungszentrums Jülich nicht gestattet. Bilder mit einem anderen \n"
+"              Quellennachweis als Forschungszentrum Jülich/Projektträger "
+"Jülich sind für eine Nutzung durch Dritte nicht freigegeben.\n"
+"            "
+msgstr ""
+"Copyright and all other rights for the website of Project Management Jülich at Forschungszentrum Jülich GmbH"
+"are reserved by Project Management Jülich at Forschungszentrum Jülich GmbH. The dissemination, including excerpts,"
+" of the information contained on the website is permitted for educational, scientific or private purposes,"
+" provided the source is quoted (unless otherwise expressly stated on the respective webpage)."" 
+"Use for commercial purposes is not permitted unless explicit permission has been granted by Forschungszentrum Jülich."
+" Pictures with a credit other than \"Forschungszentrum Jülich/Projektträger Jülich\" are not to be used by third parties."
+
+#: templates/pages/impressum.html:94
+#, fuzzy
+#| msgid "Haftungsausschluss"
+msgid "8 Haftungsausschluss"
+msgstr "8 Disclaimer"
+
+#: templates/pages/impressum.html:96
+#, fuzzy
+#| msgid "Inhalt der eigenen Seiten"
+msgid "9 Inhalt der eigenen Seiten"
+msgstr "9 Content of own pages"
+
+#: templates/pages/impressum.html:98
+#, fuzzy
+#| msgid ""
+#| "Wir haben die Web-Seiten der Wissensplattform (wissen-digital-ewb.de) "
+#| "sorgfältig zusammengestellt. Allerdings übernehmen wir keine Gewähr oder "
+#| "Haftung für die fortwährende Aktualität, Vollständigkeit und Richtigkeit "
+#| "der angebotenen Informationen."
+msgid ""
+"\n"
+"              Wir haben die Internet-Seiten des Projektträgers Jülich in der "
+"Forschungszentrum Jülich GmbH sorgfältig \n"
+"              zusammengestellt. Allerdings übernehmen wir keine Gewähr oder "
+"Haftung für die fortwährende Aktualität, \n"
+"              Vollständigkeit und Richtigkeit der angebotenen "
+"Informationen.\n"
+"            "
+msgstr ""
+"We have carefully compiled the web pages of the knowledge platform (wissen-"
+"digital-ewb.de). However, we neither guarantee nor accept liability for the information being up-to-date, complete or accurate."
+
+#: templates/pages/impressum.html:106
+#, fuzzy
+#| msgid "Links auf externe Web-Seiten"
+msgid "10 Links auf externe Web-Seiten"
+msgstr "!= Links to external websites"
+
+#: templates/pages/impressum.html:109
+#, fuzzy
+#| msgid ""
+#| "Die Web-Seiten der Wissensplattform enthalten Links auf die Web-Seiten "
+#| "Dritter. Diese Links auf die Web-Seiten Dritter stellen keine Zustimmung "
+#| "zu deren Inhalt dar. Für die Inhalte der verlinkten Seiten ist stets der "
+#| "jeweilige Anbieter oder Betreiber der Seiten verantwortlich.\n"
+#| "                    Rechtswidrige Inhalte waren zum Zeitpunkt der "
+#| "Verlinkung nicht erkennbar. Wir übernehmen keine Gewähr für die "
+#| "fortwährende Aktualität, Richtigkeit und Vollständigkeit der verlinkten "
+#| "Inhalte, da diese Inhalte außerhalb unseres Verantwortungsbereichs liegen "
+#| "und wir auf die zukünftige Gestaltung keinen Einfluss haben."
+msgid ""
+"\n"
+"              Die Internet-Seiten des Projektträgers Jülich in der "
+"Forschungszentrum Jülich GmbH enthalten Links auf die \n"
+"              Web-Seiten Dritter. Diese Links auf die Web-Seiten Dritter "
+"stellen keine Zustimmung zu deren Inhalt dar. Für \n"
+"              die Inhalte der verlinkten Seiten ist stets der jeweilige "
+"Anbieter oder Betreiber der Seiten verantwortlich.\n"
+"              Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht "
+"erkennbar. Wir übernehmen keine Gewähr für die \n"
+"              fortwährende Aktualität, Richtigkeit und Vollständigkeit der "
+"verlinkten Inhalte, da diese Inhalte außerhalb \n"
+"              unseres Verantwortungsbereichs liegen und wir auf die "
+"zukünftige Gestaltung keinen Einfluss haben.\n"
+"            "
 msgstr ""
 "The knowledge platform's websites contain links to third-party websites. "
 "These links to third-party websites do not constitute approval of their "
@@ -3345,71 +3712,18 @@ msgstr ""
 "is outside our area of responsibility and we have no influence on its future "
 "design."
 
-#: templates/pages/impressum.html:52
+#: templates/pages/impressum.html:119
+#, fuzzy
+#| msgid ""
+#| "Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links "
+#| "umgehend entfernen."
 msgid ""
-"Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend "
-"entfernen."
+"\n"
+"              Bei Bekanntwerden von Rechtsverletzungen werden wir derartige "
+"Links umgehend entfernen.\n"
+"            "
 msgstr ""
 "When we become aware of legal violations, we will promptly remove such links."
-
-#: templates/pages/impressum.html:57
-msgid ""
-"\n"
-"              Der Herausgeber ist bestrebt, in allen Publikationen die "
-"Urheberrechte der verwendeten Bilder, Grafiken, Ton- und Videodokumente "
-"sowie Texte zu beachten, von ihm selbst erstellte Bilder, Grafiken, Ton- und "
-"Videodokumente sowie Texte zu nutzen oder auf lizenzfreie Grafiken, Ton- und "
-"Videodokumente sowie Texte zurückzugreifen.\n"
-"            "
-msgstr ""
-"\n"
-"The publisher endeavors to observe the copyrights of the images, graphics, "
-"sound and video documents, and texts used in all publications; to use "
-"images, graphics, sound and video documents, and texts created by the "
-"publisher; or to use license-free graphics, sound and video documents, and "
-"texts."
-
-#: templates/pages/impressum.html:62
-msgid ""
-"\n"
-"              Alle innerhalb des Internetangebotes genannten und ggf. durch "
-"Dritte geschützten Marken- und Warenzeichen unterliegen uneingeschränkt den "
-"Bestimmungen des jeweils gültigen Kennzeichenrechts und den Besitzrechten "
-"der jeweiligen eingetragenen Eigentümer. Allein aufgrund der bloßen Nennung "
-"ist nicht der Schluss zu ziehen, dass Markenzeichen nicht durch Rechte "
-"Dritter geschützt sind!\n"
-"            "
-msgstr ""
-"\n"
-"All brands and trademarks mentioned within the website and possibly "
-"protected by third parties are subject without restriction to the provisions "
-"of the applicable trademark law and the ownership rights of the respective "
-"registered owners. The fact alone that a trademark appears within a text "
-"does not imply that it is not protected by the rights of third parties!"
-
-#: templates/pages/impressum.html:67
-msgid ""
-"\n"
-"              Das Copyright für veröffentlichte, vom Herausgeber selbst "
-"erstellte Inhalte und Objekte bleibt allein beim Herausgeber der Seiten. "
-"Eine Vervielfältigung, Verarbeitung, Einspeicherung oder Verwendung solcher "
-"Grafiken, Ton- und Videodokumente sowie Texte in anderen elektronischen oder "
-"gedruckten Publikationen ist ohne ausdrückliche Zustimmung des Autors nicht "
-"gestattet. Unberührt davon bleibt das Kopieren und Herunterladen für den "
-"privaten, wissenschaftlichen und nicht kommerziellen Gebrauch. Wir erlauben "
-"ausdrücklich und begrüßen das Zitieren unserer Dokumente und Webseiten sowie "
-"das Setzen von Links auf unsere Website.\n"
-"            "
-msgstr ""
-"\n"
-"The copyright for published content and objects created by the publisher "
-"themselves remains solely with the publisher of the pages. Any duplication, "
-"processing, storage or use of objects such as diagrams, sound and video "
-"documents, or texts in other electronic or printed publications is not "
-"permitted without the author's agreement. This does not apply to copying and "
-"downloading for private, scientific and non-commercial use. We expressly "
-"permit and welcome the citing of our documents and web pages as well as the "
-"linking to our website."
 
 #: templates/pages/index.html:5 templates/start_search/start_search.html:4
 msgid "Wissensplattform - Digitalisierung Energiewendebauen"
@@ -5830,6 +6144,164 @@ msgstr "Free to use"
 #: weatherdata_over/views.py:109
 msgid "MIT-Lizenz"
 msgstr "MIT license"
+
+#~ msgid ""
+#~ "Vielen Dank für Ihr Interesse an der Wissensplattform. Der Schutz der "
+#~ "persönlichen Daten von Besucher*innen unserer\n"
+#~ "          Webseiten ist uns sehr wichtig. Deshalb möchten wir Sie hier "
+#~ "über den Datenschutz dieses Webangebots unter wissen-digital-ewb.de\n"
+#~ "          informieren. Die Website wird durch das Institut für Digitale "
+#~ "Vernetzung von Gebäuden, Energieversorgungsanlagen und Nutzenden \n"
+#~ "          an der TU Berlin betrieben. Im folgenden mit DVG abgekürzt."
+#~ msgstr ""
+#~ "Thank you for your interest in the knowledge platform. The protection of "
+#~ "the personal data of visitors to our websites is very important to us. We "
+#~ "would therefore like to inform you here about the data protection of this "
+#~ "website atwissen-digital-ewb.de. The website is operated by the Institute "
+#~ "for Digital Networking of Buildings, Energy Supply Systems and Users at "
+#~ "the TU Berlin. Hereafter abbreviated as DVG."
+
+#~ msgid "Gegenstand des Datenschutzes"
+#~ msgstr "Subject of data protection"
+
+#~ msgid ""
+#~ "Der Datenschutz befasst sich mit personenbezogenen Daten. Diese sind nach "
+#~ "Artikel 4 Nr. 1 der Europäischen\n"
+#~ "          Datenschutzgrundverordnung (EU-DSGVO) alle Informationen, die "
+#~ "sich auf eine identifizierte oder identifizierbare natürliche \n"
+#~ "          Person beziehen, also alle Informationen, die dazu genutzt "
+#~ "werden können, Sie zu identifizieren. Hierunter fallen z.B. \n"
+#~ "          Angaben wie Name, Privat-Adresse, E-Mail-Adresse oder "
+#~ "Telefonnummer, aber auch Nutzungsdaten wie Ihre IP-Adresse."
+#~ msgstr ""
+#~ "Data protection deals with personal data. According to Article 4 No. 1 of "
+#~ "the European General Data Protection Regulation (EU-GDPR), this is all "
+#~ "information that relates to an identified or identifiable natural person, "
+#~ "i.e. all information that can be used to identify you. This includes, for "
+#~ "example, information such as name, private address, email address or "
+#~ "telephone number, but also usage data such as your IP address."
+
+#~ msgid "Allgemeiner Datenschutzhinweis"
+#~ msgstr "General data protection notice"
+
+#~ msgid ""
+#~ "Wenn Sie Webseiten der TU Berlin aufrufen oder Daten dieser Seiten "
+#~ "herunterladen, werden Informationen hierüber in einer Logdatei\n"
+#~ "              mit folgendem Inhalt gespeichert:"
+#~ msgstr ""
+#~ "If you access TU Berlin websites or download data from these pages, "
+#~ "information about this will be stored in a log file with the following "
+#~ "content:"
+
+#~ msgid "Auskunftsrecht"
+#~ msgstr "Right of information"
+
+#~ msgid ""
+#~ "Sie erhalten jederzeit ohne Angabe von Gründen kostenfrei Auskunft über "
+#~ "Ihre bei uns gespeicherten Daten. Hierzu\n"
+#~ "          wenden Sie sich bitte an die im Impressum angegebene "
+#~ "Kontaktadresse. Gerne stehen wir Ihnen für weitergehende Fragen zu "
+#~ "unseren \n"
+#~ "          Datenschutzhinweisen zur Verfügung."
+#~ msgstr ""
+#~ "You can receive information about your data stored by us free of charge "
+#~ "at any time without giving any reason. To do so, please contact the "
+#~ "contact address provided in the legal notice. We will be happy to answer "
+#~ "any further questions you may have about our data protection information."
+
+#~ msgid ""
+#~ "Darüber hinaus haben Sie das Recht auf Berichtigung, Löschung, "
+#~ "Einschränkung und Übertragung Ihrer Daten."
+#~ msgstr ""
+#~ "In addition, you have the right to correct, delete, restrict and transfer "
+#~ "your data."
+
+#~ msgid ""
+#~ "Sie haben auch das Recht jederzeit gegen die Verarbeitung der Sie "
+#~ "betreffenden personenbezogenen Daten, die aufgrund von Art. 6 Abs.\n"
+#~ "          1 Buchstabe e und f EU-DSGVO erfolgt, Widerspruch einzulegen. "
+#~ "Die fachverantwortliche Stelle darf danach die Sie betreffenden \n"
+#~ "          personenbezogenen Daten nicht mehr verarbeiten, es sei denn, "
+#~ "diese kann zwingende schutzwürdige Gründe für die Verarbeitung \n"
+#~ "          nachweisen, die Ihren Interessen, Rechte und Freiheiten "
+#~ "überwiegen, oder die Verarbeitung der Geltendmachung, Ausübung oder \n"
+#~ "          Verteidigung von Rechtsansprüchen dient."
+#~ msgstr ""
+#~ "You also have the right to object at any time to the processing of your "
+#~ "personal data, which is carried out on the basis of Article 6 Paragraph 1 "
+#~ "Letters e and f EU GDPR. The responsible body may no longer process the "
+#~ "personal data concerning you unless it can demonstrate compelling "
+#~ "legitimate reasons for the processing that outweigh your interests, "
+#~ "rights and freedoms, or the processing serves to assert, exercise or "
+#~ "defend legal claims."
+
+#~ msgid "Sekretariat"
+#~ msgstr "Secretariat"
+
+#~ msgid ""
+#~ "z.Hd. Fachgebiet: Digitale Vernetzung von Gebäuden, "
+#~ "Energieversorgungsanlagen und Nutzenden"
+#~ msgstr ""
+#~ "For the attention of the specialist area: Digital networking of "
+#~ "buildings, energy supply systems and users"
+
+#~ msgid ""
+#~ "\n"
+#~ "              Der Herausgeber ist bestrebt, in allen Publikationen die "
+#~ "Urheberrechte der verwendeten Bilder, Grafiken, Ton- und Videodokumente "
+#~ "sowie Texte zu beachten, von ihm selbst erstellte Bilder, Grafiken, Ton- "
+#~ "und Videodokumente sowie Texte zu nutzen oder auf lizenzfreie Grafiken, "
+#~ "Ton- und Videodokumente sowie Texte zurückzugreifen.\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "The publisher endeavors to observe the copyrights of the images, "
+#~ "graphics, sound and video documents, and texts used in all publications; "
+#~ "to use images, graphics, sound and video documents, and texts created by "
+#~ "the publisher; or to use license-free graphics, sound and video "
+#~ "documents, and texts."
+
+#~ msgid ""
+#~ "\n"
+#~ "              Alle innerhalb des Internetangebotes genannten und ggf. "
+#~ "durch Dritte geschützten Marken- und Warenzeichen unterliegen "
+#~ "uneingeschränkt den Bestimmungen des jeweils gültigen Kennzeichenrechts "
+#~ "und den Besitzrechten der jeweiligen eingetragenen Eigentümer. Allein "
+#~ "aufgrund der bloßen Nennung ist nicht der Schluss zu ziehen, dass "
+#~ "Markenzeichen nicht durch Rechte Dritter geschützt sind!\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "All brands and trademarks mentioned within the website and possibly "
+#~ "protected by third parties are subject without restriction to the "
+#~ "provisions of the applicable trademark law and the ownership rights of "
+#~ "the respective registered owners. The fact alone that a trademark appears "
+#~ "within a text does not imply that it is not protected by the rights of "
+#~ "third parties!"
+
+#~ msgid ""
+#~ "\n"
+#~ "              Das Copyright für veröffentlichte, vom Herausgeber selbst "
+#~ "erstellte Inhalte und Objekte bleibt allein beim Herausgeber der Seiten. "
+#~ "Eine Vervielfältigung, Verarbeitung, Einspeicherung oder Verwendung "
+#~ "solcher Grafiken, Ton- und Videodokumente sowie Texte in anderen "
+#~ "elektronischen oder gedruckten Publikationen ist ohne ausdrückliche "
+#~ "Zustimmung des Autors nicht gestattet. Unberührt davon bleibt das "
+#~ "Kopieren und Herunterladen für den privaten, wissenschaftlichen und nicht "
+#~ "kommerziellen Gebrauch. Wir erlauben ausdrücklich und begrüßen das "
+#~ "Zitieren unserer Dokumente und Webseiten sowie das Setzen von Links auf "
+#~ "unsere Website.\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "The copyright for published content and objects created by the publisher "
+#~ "themselves remains solely with the publisher of the pages. Any "
+#~ "duplication, processing, storage or use of objects such as diagrams, "
+#~ "sound and video documents, or texts in other electronic or printed "
+#~ "publications is not permitted without the author's agreement. This does "
+#~ "not apply to copying and downloading for private, scientific and non-"
+#~ "commercial use. We expressly permit and welcome the citing of our "
+#~ "documents and web pages as well as the linking to our website."
 
 #~ msgid "Auswahl des Bundesland"
 #~ msgstr "Selection of the state"
