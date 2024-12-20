@@ -3733,16 +3733,13 @@ msgstr ""
 "design."
 
 #: templates/pages/impressum.html:119
-#, fuzzy
-#| msgid ""
-#| "Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links "
-#| "umgehend entfernen."
 msgid ""
 "\n"
 "              Bei Bekanntwerden von Rechtsverletzungen werden wir derartige "
 "Links umgehend entfernen.\n"
 "            "
 msgstr ""
+"\n"
 "When we become aware of legal violations, we will promptly remove such links."
 
 #: templates/pages/index.html:5 templates/start_search/start_search.html:4
