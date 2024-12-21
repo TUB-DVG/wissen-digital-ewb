@@ -71,10 +71,9 @@ That imports the sql-dump from the `postgres`-folder into the database. After th
 when you started the development environment or 
 
 ```
-   http://127.0.0.1:PORT_TO_OUTSIDE
+   https://127.0.0.1
 ```
-
-where `PORT_TO_OUTSIDE` needs to be replaced by the port, which is set in the `.env`-file.
+when started in production mode. Please note, that SSL-certificates need to be provided to run the production environment.
 
 ## Starting the App with an empty database
 
