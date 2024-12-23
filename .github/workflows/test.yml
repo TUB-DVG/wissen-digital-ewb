@@ -31,7 +31,7 @@ jobs:
 
 
       - name: Run dev-environment
-        run: ./run up_initial dev postgres/webcentral_db_20241213_fixed_tools.sql
+        run: ./run up_initial dev postgres/webcentral_db_20241223_update_logos.sql
 
       - name: Execute unittest for common app
         run: docker exec -w /webcentral/src webcentral python manage.py test common 
