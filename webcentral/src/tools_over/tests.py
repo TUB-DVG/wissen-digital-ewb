@@ -46,7 +46,7 @@ class TestToolsDataImport(TestCase):
         call_command(
             "data_import",
             "tools_over",
-            "../doc/01_data/02_tool_over/tools_with_weatherdata.xlsx",
+            "../doc/01_data/02_tool_over/2024_12_tools_with_weatherdata.xlsx",
         )
 
         # test if the english translation was imported:
@@ -88,7 +88,7 @@ class TestToolsDataImport(TestCase):
         call_command(
             "data_import",
             "tools_over",
-            "../doc/01_data/02_tool_over/tools_with_weatherdata.xlsx",
+            "../doc/01_data/02_tool_over/2024_12_tools_with_weatherdata.xlsx",
         )
         geoTool = Tools.objects.get(name="GEO-HANDlight")
         self.assertEqual(geoTool.lastUpdate_de, "2024-10-17 00:00:00")
@@ -230,7 +230,7 @@ class TestExportClass(TestCase):
         call_command(
             "data_import",
             "tools_over",
-            "../doc/01_data/02_tool_over/tools_with_weatherdata.xlsx",
+            "../doc/01_data/02_tool_over/2024_12_tools_with_weatherdata.xlsx",
         )
 
         # test if the english translation was imported:
@@ -361,7 +361,7 @@ class TestUpdate(AbstractTestUpdate):
         call_command(
             "data_import",
             "tools_over",
-            "../doc/01_data/02_tool_over/tools_with_weatherdata.xlsx",
+            "../doc/01_data/02_tool_over/2024_12_tools_with_weatherdata.xlsx",
         )
 
         self.assertGreater(len(Tools.objects.all()), 100)
@@ -397,7 +397,7 @@ class TestUpdate(AbstractTestUpdate):
         call_command(
             "data_import",
             "tools_over",
-            "../doc/01_data/02_tool_over/tools_with_weatherdata.xlsx",
+            "../doc/01_data/02_tool_over/2024_12_tools_with_weatherdata.xlsx",
         )
 
         self.assertEqual(len(History.objects.all()), 0)
@@ -409,7 +409,7 @@ class TestUpdate(AbstractTestUpdate):
         call_command(
             "data_import",
             "tools_over",
-            "../doc/01_data/02_tool_over/tools_with_weatherdata.xlsx",
+            "../doc/01_data/02_tool_over/2024_12_tools_with_weatherdata.xlsx",
         )
 
         call_command(
