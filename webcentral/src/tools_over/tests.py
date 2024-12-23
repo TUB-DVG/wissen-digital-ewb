@@ -389,7 +389,7 @@ class TestUpdate(AbstractTestUpdate):
         call_command(
             "data_import",
             "tools_over",
-            "../doc/01_data/02_tool_over/tools_with_weatherdata.xlsx",
+            "../doc/01_data/02_tool_over/2024_12_tools_with_weatherdata.xlsx",
         )
 
         numberOfTools = len(Tools.objects.all())
